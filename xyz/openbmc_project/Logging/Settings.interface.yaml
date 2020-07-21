@@ -8,3 +8,22 @@ properties:
       description: >
           If true, a hardware failure within the system will result in a
           Quiesce of the BMC state. If false, no action is taken.
+    - name: SelPolicy
+      type: enum[self.Policy]
+      description: >
+          The SEL policy to store SEL events.
+enumerations:
+    - name: Policy
+      description: >
+          Possible SEL policies.
+      values:
+        - name: Circular
+          description: >
+              SEL events will be stored in circular way.
+              i.e. SEL events will be rotated on reaching max sel entries.
+              Represented as 0x01 IPMI raw value.
+        - name: Linear
+          description: >
+              SEL events will be stored in linear way.
+              i.e. SEL events will not be stored on reaching max sel entries.
+              Represented as 0x00 IPMI raw value.
