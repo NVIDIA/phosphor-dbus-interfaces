@@ -1,18 +1,13 @@
 project('phosphor-dbus-interfaces', 'cpp',
-    meson_version: '>= 0.54.1',
+    meson_version: '>= 0.57.0',
     default_options: [
         'buildtype=debugoptimized',
-        'cpp_std=c++17',
+        'cpp_std=c++20',
         'warning_level=3',
         'werror=true',
     ],
     version: '1.0.0',
 )
-# meson_version >= 0.54.1 is necessary because that is the first place meson
-# generates unique object filenames for two files with the same `basename`.
-# Many sdbus++ generated files have `basename` collisions because they are
-# named like `.../server.cpp`.  Prior to this version, meson would create a
-# ninja recipe for a single `server.o` file.
 
 # Get sdbusplus dependency.
 sdbusplus_dep = dependency('sdbusplus', required: false)
@@ -43,10 +38,11 @@ if get_option('data_xyz_openbmc_project')
 endif
 
 # Install the selected YAML files.
+inst_yaml_dir = get_option('datadir') / 'phosphor-dbus-yaml/yaml'
 foreach d : selected_subdirs
     install_subdir(
         d,
-        install_dir: get_option('datadir') / 'phosphor-dbus-yaml/yaml' / d,
+        install_dir: inst_yaml_dir / d,
         strip_directory: true,
     )
 endforeach
@@ -118,8 +114,16 @@ libphosphor_dbus = library(
 )
 
 import('pkgconfig').generate(
-    libraries: libphosphor_dbus,
+    libphosphor_dbus,
     name: meson.project_name(),
     version: meson.project_version(),
-    description: 'Generated sdbusplus bindings for phosphor-dbus-interfaces'
+    description: 'Generated sdbusplus bindings for phosphor-dbus-interfaces',
+    variables: ['yamldir=' + '${pc_sysrootdir}${prefix}' / inst_yaml_dir],
+)
+
+phosphor_dbus_interfaces_dep = declare_dependency(
+    include_directories: include_directories('gen'),
+    link_with: libphosphor_dbus,
+    dependencies: sdbusplus_dep,
+    variables: ['yamldir=' + meson.project_source_root()],
 )
