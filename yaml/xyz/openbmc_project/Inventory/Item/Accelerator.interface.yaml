@@ -7,7 +7,7 @@ description: >
 properties:
     - name: Type
       type: enum[self.AcceleratorType]
-      default: 'Accelerator'
+      default: 'Unknown'
       description: >
           The type of accelerator.
 
@@ -16,12 +16,15 @@ enumerations:
       description: >
           Possible accelerator type
       values:
-        - name: 'Accelerator'
+        - name: 'ASIC'
           description: >
-              An accelerator.
+              An ASIC.
         - name: 'FPGA'
           description: >
               An FPGA.
         - name: 'GPU'
           description: >
               A GPU.
+        - name: 'Unknown'
+          description: >
+              An unknown type.
