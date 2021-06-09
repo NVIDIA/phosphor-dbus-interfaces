@@ -86,16 +86,15 @@ generated_others += custom_target(
 subdir('Dimension')
 generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Decorator/Dimension__markdown'.underscorify(),
-    input: [ meson.project_source_root() / 'xyz/openbmc_project/Inventory/Decorator/Dimension.interface.yaml',  ],
+    input: [ '../../../../../xyz/openbmc_project/Inventory/Decorator/Dimension.interface.yaml',  ],
     output: [ 'Dimension.md' ],
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
         '--tool', sdbusplusplus_prog,
-        '--directory', meson.project_source_root(),
+        '--directory', meson.current_source_dir() / '../../../../..',
         'xyz/openbmc_project/Inventory/Decorator/Dimension',
     ],
-    build_by_default: true,
 )
 
 subdir('I2CDevice')
@@ -157,16 +156,15 @@ generated_others += custom_target(
 subdir('PowerLimit')
 generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Decorator/PowerLimit__markdown'.underscorify(),
-    input: [ meson.project_source_root() / 'xyz/openbmc_project/Inventory/Decorator/PowerLimit.interface.yaml',  ],
+    input: [ '../../../../../xyz/openbmc_project/Inventory/Decorator/PowerLimit.interface.yaml',  ],
     output: [ 'PowerLimit.md' ],
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
         '--tool', sdbusplusplus_prog,
-        '--directory', meson.project_source_root(),
+        '--directory', meson.current_source_dir() / '../../../../..',
         'xyz/openbmc_project/Inventory/Decorator/PowerLimit',
     ],
-    build_by_default: true,
 )
 
 subdir('Replaceable')
