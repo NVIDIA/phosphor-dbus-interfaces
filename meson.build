@@ -1,10 +1,11 @@
 project('phosphor-dbus-interfaces', 'cpp',
-    meson_version: '>= 0.57.0',
+    meson_version: '>= 0.58.0',
     default_options: [
         'buildtype=debugoptimized',
         'cpp_std=c++20',
         'warning_level=3',
         'werror=true',
+        'generate_md=' + (meson.is_subproject() ? 'false' : 'true'),
     ],
     version: '1.0.0',
 )
@@ -23,8 +24,6 @@ else
     )
 endif
 
-realpath_prog = find_program('realpath')
-
 # Parse options to determine appropriate subdirectories to support.
 selected_subdirs = []
 if get_option('data_com_ibm')
@@ -41,7 +40,7 @@ endif
 inst_yaml_dir = get_option('datadir') / 'phosphor-dbus-yaml/yaml'
 foreach d : selected_subdirs
     install_subdir(
-        d,
+        'yaml' / d,
         install_dir: inst_yaml_dir / d,
         strip_directory: true,
     )
@@ -53,7 +52,6 @@ if not get_option('libphosphor_dbus')
     subdir_done()
 endif
 
-generated_root = meson.current_build_dir() / 'gen'
 generated_sources = []
 generated_others = []
 yaml_sources = []
@@ -69,43 +67,51 @@ custom_target(
     output: 'md',
     capture: true,
     depends: generated_others,
-    build_by_default: true)
+    build_by_default: get_option('generate_md'))
 
-# Parse through the list from sdbus++-gendir and put into sets.
-generated_headers = []
-generated_cpp = []
-generated_others_files = []
-
-foreach g : generated_sources generated_others
-    foreach f : g.to_list()
-        rel_path = run_command(
-            realpath_prog,
-            '--relative-to', generated_root,
-            f.full_path(),
-        ).stdout().strip().split('\n')[-1]
-
-        if rel_path.endswith('.hpp')
-            generated_headers += rel_path
-        elif rel_path.endswith('.cpp')
-            generated_cpp += rel_path
+generated_files_headers = []
+generated_files_cpp = []
+foreach s : generated_sources
+    foreach f : s.to_list()
+        p = f.full_path()
+        if p.endswith('.hpp')
+            generated_files_headers += f
+        elif p.endswith('.cpp')
+            generated_files_cpp += f
         else
-            generated_others_files += rel_path
+            error('Unknown filetype: ' + p)
         endif
     endforeach
 endforeach
 
+generated_root = meson.current_build_dir() / 'gen/'
+exclude_cpp = []
+foreach f : generated_files_cpp
+    exclude_cpp += f.full_path().replace(generated_root, '')
+endforeach
+
 # Install the generated header files.
+exclude = exclude_cpp
+foreach o : generated_others
+    foreach f : o.to_list()
+        exclude += f.full_path().replace(generated_root, '')
+    endforeach
+endforeach
 install_subdir(
     generated_root,
-    exclude_files: [ generated_cpp, generated_others_files ],
+    exclude_files: exclude,
     install_dir: get_option('includedir'),
     strip_directory: true,
 )
 
 # Install the generated markdown files.
+exclude = exclude_cpp
+foreach f : generated_files_headers
+    exclude += f.full_path().replace(generated_root, '')
+endforeach
 install_subdir(
     generated_root,
-    exclude_files: [ generated_headers, generated_cpp ],
+    exclude_files: exclude,
     install_dir: get_option('datadir') / 'doc' / meson.project_name(),
     strip_directory: true,
 )
@@ -114,6 +120,7 @@ install_subdir(
 libphosphor_dbus = library(
     'phosphor_dbus',
     generated_sources,
+    implicit_include_directories: false,
     include_directories: include_directories('gen'),
     dependencies: sdbusplus_dep,
     version: meson.project_version(),
@@ -129,8 +136,9 @@ import('pkgconfig').generate(
 )
 
 phosphor_dbus_interfaces_dep = declare_dependency(
+    sources: generated_files_headers,
     include_directories: include_directories('gen'),
     link_with: libphosphor_dbus,
     dependencies: sdbusplus_dep,
-    variables: ['yamldir=' + meson.project_source_root()],
+    variables: ['yamldir=' + meson.project_source_root() / 'yaml'],
 )
