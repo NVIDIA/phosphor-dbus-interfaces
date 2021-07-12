@@ -4,7 +4,7 @@ description: >
 properties:
     - name: Type
       type: enum[self.ChassisType]
-      default: RackMount
+      default: Unknown
       description: >
           The type of physical form factor of the chassis.
 
@@ -15,21 +15,27 @@ enumerations:
       values:
         - name: Component
           description: >
-              A small chassis, card, or device that contains devices for a particular
-              subsystem or function.
+              A small chassis, card, or device that contains devices for a
+              particular subsystem or function.
         - name: Enclosure
           description: >
-              A generic term for a chassis that does not fit any other description.
+              A generic term for a chassis that does not fit any other
+              description.
         - name: Module
           description: >
-              A small, typically removable, chassis or card that contains devices
-              for a particular subsystem or function.
+              A small, typically removable, chassis or card that contains
+              devices for a particular subsystem or function.
         - name: RackMount
           description: >
-              A group of racks that form a single entity or share infrastructure.
+              A single-system chassis designed specifically for mounting in an
+              equipment rack.
         - name: StandAlone
           description: >
-              A single, free-standing system, commonly called a tower or desktop chassis.
+              A single, free-standing system, commonly called a tower or
+              desktop chassis.
+        - name: Unknown
+          description: >
+              An unknown chassis type.
         - name: Zone
           description: >
               A logical division or portion of a physical chassis that contains

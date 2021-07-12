@@ -48,6 +48,7 @@ generated_others += custom_target(
 subdir('Condition')
 subdir('Control')
 subdir('Dump')
+subdir('HardwareIsolation')
 subdir('Inventory')
 generated_others += custom_target(
     'xyz/openbmc_project/Inventory__markdown'.underscorify(),
@@ -65,6 +66,7 @@ generated_others += custom_target(
 subdir('Ipmi')
 subdir('Led')
 subdir('Logging')
+subdir('MCTP')
 subdir('Memory')
 subdir('Network')
 subdir('Nvme')

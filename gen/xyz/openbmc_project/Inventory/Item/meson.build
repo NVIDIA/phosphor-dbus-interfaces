@@ -166,17 +166,17 @@ generated_others += custom_target(
     ],
 )
 
-subdir('Endpoint')
+subdir('Drive')
 generated_others += custom_target(
-    'xyz/openbmc_project/Inventory/Item/Endpoint__markdown'.underscorify(),
-    input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/Endpoint.interface.yaml',  ],
-    output: [ 'Endpoint.md' ],
+    'xyz/openbmc_project/Inventory/Item/Drive__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/Drive.interface.yaml',  ],
+    output: [ 'Drive.md' ],
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Inventory/Item/Endpoint',
+        'xyz/openbmc_project/Inventory/Item/Drive',
     ],
 )
 
@@ -387,6 +387,20 @@ generated_others += custom_target(
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../../yaml',
         'xyz/openbmc_project/Inventory/Item/Rotor',
+    ],
+)
+
+subdir('Storage')
+generated_others += custom_target(
+    'xyz/openbmc_project/Inventory/Item/Storage__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/Storage.interface.yaml',  ],
+    output: [ 'Storage.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Inventory/Item/Storage',
     ],
 )
 
