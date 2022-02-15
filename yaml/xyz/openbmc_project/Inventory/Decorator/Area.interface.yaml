@@ -1,13 +1,13 @@
 description: >
-    Implement to provide sensor area properties. It defines the area or device
-    to which the sensor measurement applies.
+    Implement to provide resource area properties. It defines the area or device
+    to which the inventory item belongs too.
     It can apply to non-inventory item, such as "Exhaust".
 
 properties:
     - name: PhysicalContext
       type: enum[self.PhysicalContextType]
       description: >
-          The area or device to which the sensor measurement applies.
+          The area or device to which the resource belongs too.
 
 enumerations:
     - name: PhysicalContextType
