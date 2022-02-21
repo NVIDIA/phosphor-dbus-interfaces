@@ -1,0 +1,10 @@
+description: >
+    Implement to provide SPDM specific attributes.
+
+associations:
+    - name: inventory
+      description: >
+          Objects that implement this interface can optionally implement the
+          inventory_object association to provide a link to the inventory paths
+          for which this device acts as a root of trust.
+      reverse_name: associated_ROT
