@@ -109,6 +109,14 @@ properties:
       flags:
           - readonly
 
+    - name: Slot
+      type: byte
+      description: >
+          A slot (index) of a certificate chain which was used for the last signing measurements.
+          It points to the slot number in the "Certificate" property, described below.
+      flags:
+          - readonly
+
     - name: Certificate
       type: array[struct[byte,array[byte]]]
       description: >
