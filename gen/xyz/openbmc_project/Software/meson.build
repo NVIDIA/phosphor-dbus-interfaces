@@ -125,6 +125,20 @@ generated_others += custom_target(
     ],
 )
 
+subdir('UpdatePolicy')
+generated_others += custom_target(
+    'xyz/openbmc_project/Software/UpdatePolicy__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Software/UpdatePolicy.interface.yaml',  ],
+    output: [ 'UpdatePolicy.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/UpdatePolicy',
+    ],
+)
+
 subdir('Version')
 generated_others += custom_target(
     'xyz/openbmc_project/Software/Version__markdown'.underscorify(),

@@ -1,0 +1,31 @@
+description: >
+    Implement this interface for clients to configure the firmware update
+    policy. The properties override the default policy of the firmware package
+    and is applied during firmware update. The properties are modified only by
+    the client and firmware update has no side effect on the properties. If the
+    policy is no longer applicable, the client is expected to reset the policy
+    to the defaults.
+
+properties:
+    - name: Targets
+      type: array[object_path]
+      description: >
+          An array of D-Bus object paths that are in the
+          /xyz/openbmc_project/software/ namespace that indicate the firmware
+          targets to be updated. The targets for firmware update will be the
+          intersection of the Targets property and the firmware inventory
+          the package is intended to update. If the Targets property is empty,
+          the targets intended to be updated by package will be updated.
+
+    - name: ForceUpdate
+      type: boolean
+      default: false
+      description: >
+          If ForceUpdate is set to true, it is a request to the implementer to
+          bypass update policies, such as allowing a component be downgraded.
+          If ForceUpdate is set to false, the implementer will proceed with the
+          default policies of the system or the firmware package. ForceUpdate
+          policy applies for all the targets to be updated.
+
+
+
