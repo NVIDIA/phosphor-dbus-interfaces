@@ -118,11 +118,11 @@ properties:
           - readonly
 
     - name: Certificate
-      type: array[struct[byte,array[byte]]]
+      type: array[struct[byte,string]]
       description: >
           According to the SPDM specification a responder may provide up to 8 certificate chains.
-          Each certificate shall be in ASN.1 DER-encoded X.509 v3 format.
-          The ASN.1 DER encoding of each individual certificate can be analyzed to determine its length.
+          Each certificate shall be in ASN.1 PEM-encoded X.509 v3 format.
+          The ASN.1 PEM encoding of each individual certificate can be analyzed to determine its length.
           The format of provided structure:
             - array of the certificates:
               - byte - slot number;
