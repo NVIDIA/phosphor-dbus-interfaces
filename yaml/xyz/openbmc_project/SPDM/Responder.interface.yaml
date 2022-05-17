@@ -194,7 +194,7 @@ properties:
       type: array[byte]
       description: >
           The last used nonce.
-          It should be a random number up to 32 bytes.
+          It should be a random number of exactly 32 bytes.
           It may be provided by an SPDM D-Bus client or the SPDM daemon itself.
       flags:
           - readonly  
@@ -395,6 +395,11 @@ enumerations:
             SPDM requester failed on signature verification for measurements provided by SPDM responder.
             SPDM daemon will stop communication with this responder until new Refresh command.
             Redfish client may map this error to: 502 Bad Gateway
+        
+        - name: 'Error_InvalidArguments'
+          description: >
+            The arguments provided to the Refresh method were invalid.
+            So the call is ignored, and communication with this responder will not be started.
 
         - name: "Error_Other"
           description: >
