@@ -34,6 +34,16 @@ properties:
       default: -infinity
       description: >
           The Minimum supported sensor reading.
+    - name: MaxAllowableValue
+      type: double
+      default: infinity
+      description: >
+          The Maximum allowable sensor reading.
+    - name: MinAllowableValue
+      type: double
+      default: -infinity
+      description: >
+          The Minimum allowable sensor reading.
     - name: Unit
       type: enum[self.Unit]
       description: >
