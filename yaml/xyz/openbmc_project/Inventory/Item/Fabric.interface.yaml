@@ -27,3 +27,6 @@ enumerations:
         - name: OEM
           description: >
               An OEM-specific.
+        - name: PCIe
+          description: >
+              An PCIe.
