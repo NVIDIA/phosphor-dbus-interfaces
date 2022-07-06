@@ -40,3 +40,22 @@ properties:
           DSP0239 specification. A device that supports a given message type
           may not support that message type equally across all buses that
           connect to the device.
+
+    - name: MediumType
+      type: enum[self.MediaTypes]
+      description: >
+          MediumType is the type of the physical medium on which the MCTP
+          traffic for this endpoint is transmitted. The physical media is not
+          limited to physical mediums with a standard transport binding.
+
+enumerations:
+  - name: MediaTypes
+    description: >
+        The possible list of physical media.
+    values:
+      - name: SMBus
+      - name: PCIe
+      - name: USB
+      - name: KCS
+      - name: Serial
+      - name: SPI

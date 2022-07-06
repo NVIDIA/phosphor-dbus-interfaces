@@ -1,0 +1,36 @@
+description: >
+    Implement to provide information about AF_UNIX sockets
+
+properties:
+    - name: Type
+      type: int16
+      flags:
+          - readonly
+      description: >
+          Valid socket types in the UNIX domain are SOCK_STREAM for a
+          stream-oriented socket, SOCK_DGRAM for a datagram oriented socket and
+          SOCK_SEQPACKET for a sequenced-packet socket that is connection
+          oriented.
+
+    - name: Protocol
+      type: int16
+      flags:
+          - readonly
+      default: 0
+      description: >
+          The protocol sepcifies a particular protocol to be used with the
+          socket. Normally only a single protocol exists to support a particular
+          socket type within a given protocol family, in which case protocol can
+          be specified as 0.
+
+    - name: Address
+      type: array[byte]
+      description: >
+          The address to which the UNIX domain socket is bound. Address can be
+          null-terminated filesystem pathname, empty if it is unnamed or if it
+          is abstract socket the first byte is null byte('\0') followed by the
+          socket address.
+
+
+
+
