@@ -1,0 +1,41 @@
+description: >
+    Implement to specify boot flags.
+
+properties:
+    - name: ForceProgressEventTraps
+      type: boolean
+      description: >
+          Force progress event traps.
+    - name: LockOutPowerButton
+      type: boolean
+      description: >
+          Lock out power button.
+    - name: LockOutResetButton
+      type: boolean
+      description: >
+          Lock out reset button.
+    - name: LockOutSleepButton
+      type: boolean
+      description: >
+          Lock out sleep button.
+    - name: PasswordBypass
+      type: boolean
+      description: >
+          Bypass user password.
+    - name: CMOSClear
+      type: boolean
+      description: >
+          Clear CMOS on next boot.
+    - name: LockKeyboard
+      type: boolean
+      description: >
+          Lock keyboard.
+    - name: SharedModeOverride
+      type: boolean
+      description: >
+          Temporarily place channel into shared access mode.
+    - name: ScreenBlank
+      type: boolean
+      description: >
+          Blank screen.
+

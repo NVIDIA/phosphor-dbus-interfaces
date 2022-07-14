@@ -1,0 +1,24 @@
+description: >
+    Implement to control serial/modem mux after POST.
+
+properties:
+    - name: MuxOverride
+      type: enum[self.Modes]
+      description: >
+          Mux override mode.
+
+enumerations:
+    - name: Modes
+      description: >
+          Possible mux modes.
+      values:
+        - name: Default
+          description: >
+              Use recommended setting.
+        - name: BMC
+          description: >
+              Request BIOS to set mux to BMC.
+        - name: System
+          description: >
+              Request BIOS to set mux to system.
+

@@ -1,0 +1,25 @@
+description: >
+    Implement to designate the startup firmware verbosity.
+
+properties:
+    - name: Verbosity
+      type: enum[self.Levels]
+      description: >
+          The desired firmware verbosity
+      default: Default
+
+enumerations:
+    - name: Levels
+      description: >
+        Requestable firmware verbosity levels.
+      values:
+        - name: Default
+          description: >
+            Request default firmare verbosity.
+        - name: Quiet
+          description: >
+            Request quiet display.
+        - name: Verbose
+          description: >
+            Request verbose disaply.
+

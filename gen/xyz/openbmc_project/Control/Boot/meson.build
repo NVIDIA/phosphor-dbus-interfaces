@@ -1,4 +1,74 @@
 # Generated file; do not modify.
+subdir('ConsoleRedirection')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/Boot/ConsoleRedirection__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/ConsoleRedirection.interface.yaml',  ],
+    output: [ 'ConsoleRedirection.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Control/Boot/ConsoleRedirection',
+    ],
+)
+
+subdir('FirmwareVerbosity')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/Boot/FirmwareVerbosity__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/FirmwareVerbosity.interface.yaml',  ],
+    output: [ 'FirmwareVerbosity.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Control/Boot/FirmwareVerbosity',
+    ],
+)
+
+subdir('Flags')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/Boot/Flags__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/Flags.interface.yaml',  ],
+    output: [ 'Flags.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Control/Boot/Flags',
+    ],
+)
+
+subdir('Instance')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/Boot/Instance__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/Instance.interface.yaml',  ],
+    output: [ 'Instance.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Control/Boot/Instance',
+    ],
+)
+
+subdir('InstanceType')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/Boot/InstanceType__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/InstanceType.interface.yaml',  ],
+    output: [ 'InstanceType.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Control/Boot/InstanceType',
+    ],
+)
+
 subdir('Mode')
 generated_others += custom_target(
     'xyz/openbmc_project/Control/Boot/Mode__markdown'.underscorify(),
@@ -10,6 +80,20 @@ generated_others += custom_target(
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../../yaml',
         'xyz/openbmc_project/Control/Boot/Mode',
+    ],
+)
+
+subdir('MuxOverride')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/Boot/MuxOverride__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/MuxOverride.interface.yaml',  ],
+    output: [ 'MuxOverride.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Control/Boot/MuxOverride',
     ],
 )
 

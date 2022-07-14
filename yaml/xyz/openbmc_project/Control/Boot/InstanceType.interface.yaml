@@ -1,0 +1,25 @@
+description: >
+    Implement to designate the type of a boot source instance.
+
+properties:
+    - name: BootSourceInstanceType
+      type: enum[self.InstanceTypes]
+      description: >
+          The desired boot source instance type.
+      default: Unspecified
+
+enumerations:
+    - name: InstanceTypes
+      description: >
+        Requestable boot source instance types.
+      values:
+        - name: Unspecified
+          description: >
+            Requested device instance type is unspecified.
+        - name: Internal
+          description: >
+            Requested device is internal.
+        - name: External
+          description: >
+            Requested device is external.
+

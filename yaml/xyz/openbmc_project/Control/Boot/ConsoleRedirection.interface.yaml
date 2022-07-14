@@ -1,0 +1,24 @@
+description: >
+    Implement to control console redirection.
+
+properties:
+    - name: ConsoleRedirection
+      type: enum[self.Redirections]
+      description: >
+          Console redirection mode.
+
+enumerations:
+    - name: Redirections
+      description: >
+          Possible console redirection configurations.
+      values:
+        - name: Default
+          description: >
+              Console redirection occurs per BIOS configuration setting.
+        - name: Suppress
+          description: >
+              Suppress console redirection if enabled.
+        - name: Enable
+          description: >
+              Request console redirection be enabled.
+

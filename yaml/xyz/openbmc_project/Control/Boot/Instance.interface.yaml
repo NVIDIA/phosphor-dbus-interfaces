@@ -1,0 +1,9 @@
+description: >
+    Implement to designate which device instance to boot from.
+
+properties:
+    - name: BootSourceInstance
+      type: uint32
+      description: >
+          The desired boot device instance index.
+
