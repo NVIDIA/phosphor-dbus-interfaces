@@ -36,6 +36,16 @@ properties:
           The total number of lanes, phys, or other physical transport
           links that this switch contains.
 
+    - name: DeviceId
+      type: string
+      description: >
+             device ID for this switch.
+
+    - name: VendorId
+      type: string
+      description: >
+             vendor ID for this switch.
+
 enumerations:
     - name: SwitchType
       description: >

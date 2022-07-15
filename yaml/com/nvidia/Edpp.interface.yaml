@@ -1,0 +1,32 @@
+description: >
+   Implement to provide Processor Environment Metrics EDPp scaling.
+properties:
+    - name: AllowableMax
+      type: size
+      description: >
+           Maximum allowable value of the SetPoint property.
+      flags:
+          - readonly
+
+    - name: AllowableMin
+      type: size
+      description: >
+           minimum allowable value of the SetPoint property.
+      flags:
+          - readonly
+
+    - name: SetPoint
+      type: struct[size,boolean]
+      description: >
+            set point control value of EDPp scaling percentage and persistency value across reboots.
+
+methods:
+    - name: Reset
+      description: >
+        Reset Edpp.
+      errors:
+        - xyz.openbmc_project.Common.Error.InternalFailure
+        - xyz.openbmc_project.Common.Error.NotAllowed
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable
+

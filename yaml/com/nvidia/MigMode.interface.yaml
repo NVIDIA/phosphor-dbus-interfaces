@@ -1,0 +1,9 @@
+description: >
+   Implement to provide GPU MIGMode Details The new Multi-Instance GPU (MIG) feature allows GPUs based on the NVIDIA Ampere architecture.
+
+properties:
+    - name: MIGModeEnabled
+      type: boolean
+      description: >
+            multiple-Instance GPU (MIG) mode is enabled for this processor.
+
