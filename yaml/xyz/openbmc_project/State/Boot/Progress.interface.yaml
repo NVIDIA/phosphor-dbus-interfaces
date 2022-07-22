@@ -18,6 +18,13 @@ properties:
           This can be compared with the current BootProgress value
           to know how long the boot has been on the current boot step.
 
+    - name: BootProgressOem
+      type: string
+      description: >
+        BootProgressOem will store the last Bootprogress code received.
+        This property will be mapped to Redfish OemLastState property.
+        The redfish will display this property only if Bootprogress stage is OEM.
+
 enumerations:
     - name: ProgressStages
       description: >
@@ -56,3 +63,8 @@ enumerations:
           - name: MotherboardInit
             description: >
                 Motherboard/Basebord Initialization.
+          - name: OEM
+            description: >
+                 The OEM value is used to indicate the OEM bootprogress stages .
+                 If the last received boot progress code doesnt match to standard boot
+                 progress stages then the OEM boot progress stage will be set.
