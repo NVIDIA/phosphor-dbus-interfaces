@@ -3,16 +3,17 @@ description: >
     implementing Sensor.Threshold.PerformanceLoss must be instantiated in the
     correct hierarchy within the sensors namespace.  The following sensor
     hierarchies are recognized:
-      temperature
-      fan_tach
-      voltage
+      airflow
       altitude
       current
-      power
       energy
-      utilization
-      airflow
+      fan_tach
+      humidity
+      power
       pressure
+      temperature
+      utilization
+      voltage
 
     Additionally, any object implementing Sensor.Threshold.PerformanceLoss must
     also implement Sensor.Value.
@@ -53,31 +54,31 @@ signals:
       description: >
           The high threshold alarm asserted.
       properties:
-         - name: SensorValue
-           type: double
-           description: >
-               The sensor value that triggered the alarm change.
+          - name: SensorValue
+            type: double
+            description: >
+                The sensor value that triggered the alarm change.
     - name: PerformanceLossHighAlarmDeasserted
       description: >
           The high threshold alarm deasserted.
       properties:
-         - name: SensorValue
-           type: double
-           description: >
-               The sensor value that triggered the alarm change.
+          - name: SensorValue
+            type: double
+            description: >
+                The sensor value that triggered the alarm change.
     - name: PerformanceLossLowAlarmAsserted
       description: >
           The low threshold alarm asserted.
       properties:
-         - name: SensorValue
-           type: double
-           description: >
-               The sensor value that triggered the alarm change.
+          - name: SensorValue
+            type: double
+            description: >
+                The sensor value that triggered the alarm change.
     - name: PerformanceLossLowAlarmDeasserted
       description: >
           The low threshold alarm deasserted.
       properties:
-         - name: SensorValue
-           type: double
-           description: >
-               The sensor value that triggered the alarm change.
+          - name: SensorValue
+            type: double
+            description: >
+                The sensor value that triggered the alarm change.

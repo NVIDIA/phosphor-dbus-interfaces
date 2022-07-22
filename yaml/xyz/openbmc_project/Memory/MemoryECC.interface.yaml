@@ -24,19 +24,19 @@ properties:
           The memory ECC mode enabled/disabled.
 
 enumerations:
-   - name: ECCStatus
-     description: >
-       The operating system statuses.
-     values:
-       - name: ok
-         description: >
-           There is no ECC error occurred.
-       - name: CE
-         description: >
-           correctable ECC detected.
-       - name: UE
-         description: >
-           uncorrectable ECC detected.
-       - name: LogFull
-         description: >
-           ECC logging reach limits.
+    - name: ECCStatus
+      description: >
+          The operating system statuses.
+      values:
+          - name: ok
+            description: >
+                There is no ECC error occurred.
+          - name: CE
+            description: >
+                correctable ECC detected.
+          - name: UE
+            description: >
+                uncorrectable ECC detected.
+          - name: LogFull
+            description: >
+                ECC logging reach limits.
