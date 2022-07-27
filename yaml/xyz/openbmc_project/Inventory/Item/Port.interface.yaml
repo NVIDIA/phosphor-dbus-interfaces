@@ -15,6 +15,80 @@ properties:
       default: Ethernet
       description: >
           The protocol being sent over this port.
+    
+    - name: TXWidth
+      type: uint16
+      description: >
+          This property shall contain the total number of lanes for transmitting packets.
+      flags:
+          - readonly 
+
+    - name: RXWidth
+      type: uint16
+      description: >
+          This property shall contain the total number of lanes for receiving packets.
+      flags:
+          - readonly
+
+    - name: TXNoProtocolBytes
+      type: uint64
+      description: >
+          Transmitted NVLink data throughput without 
+          protocol overhead.
+      flags:
+          - readonly
+
+    - name: RXNoProtocolBytes
+      type: uint64
+      description: >
+          Received NVLink data throughput without 
+          protocol overhead.
+      flags:
+          - readonly
+
+    - name: ReplayCount
+      type: uint32
+      description: >
+          Nvlink replay error count.
+      flags:
+          - readonly
+    
+    - name: RecoveryCount
+      type: uint32
+      description: >
+          Nvlink recovery error count.
+      flags:
+          - readonly
+
+    - name: FlitCRCCount
+      type: uint32
+      description: >
+          Nvlink flit CRC error count.
+      flags:
+          - readonly
+
+    - name: DataCRCCount
+      type: uint32
+      description: >
+          Nvlink data CRC error count.
+      flags:
+          - readonly
+
+    - name: TrainingError
+      type: uint16
+      description: >
+          This property shall indicate whether the NVLink 
+          training error was detected.
+      flags:
+          - readonly
+
+    - name: RuntimeError
+      type: uint16
+      description: >
+          This property shall indicate whether the NVLink
+           runtime error was detected.
+      flags:
+          - readonly
 
     - name: ProtocolVersion
       type: string

@@ -1,0 +1,15 @@
+description: >
+    Implement to provide PCIe clock reference status.
+properties:
+    - name: PCIeReferenceClockEnabled
+      type: boolean
+      description: >
+          Contains PCIe Reference Clock Status.
+      flags:
+          - readonly
+    - name: PCIeReferenceClockCount
+      type: uint64
+      description: >
+          This property shall contain the number of PCIe reference clock and reset pairs on this baseboard.
+      flags:
+          - readonly

@@ -1,0 +1,9 @@
+description: >
+    Implement to provide nvlink clock reference status.
+properties:
+    - name: NVLinkReferenceClockEnabled
+      type: boolean
+      description: >
+          Contains NVLink reference clock status.
+      flags:
+          - readonly

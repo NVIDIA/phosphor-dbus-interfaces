@@ -1,0 +1,29 @@
+# Generated file; do not modify.
+subdir('MemoryRowRemapping')
+generated_others += custom_target(
+    'com/nvidia/NVLink/MemoryRowRemapping__markdown'.underscorify(),
+    input: [ '../../../../yaml/com/nvidia/NVLink/MemoryRowRemapping.interface.yaml',  ],
+    output: [ 'MemoryRowRemapping.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'com/nvidia/NVLink/MemoryRowRemapping',
+    ],
+)
+
+subdir('NVLinkRefClock')
+generated_others += custom_target(
+    'com/nvidia/NVLink/NVLinkRefClock__markdown'.underscorify(),
+    input: [ '../../../../yaml/com/nvidia/NVLink/NVLinkRefClock.interface.yaml',  ],
+    output: [ 'NVLinkRefClock.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'com/nvidia/NVLink/NVLinkRefClock',
+    ],
+)
+

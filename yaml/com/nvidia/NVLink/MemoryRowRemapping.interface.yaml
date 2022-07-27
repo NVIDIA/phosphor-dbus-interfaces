@@ -1,0 +1,15 @@
+description: >
+    Implement to provide memory Row ReMapping Counts.
+properties:
+    - name: ceRowRemappingCount
+      type: uint32
+      description: >
+          Contains correctable Row Mapping Count.
+      flags:
+          - readonly
+    - name: ueRowRemappingCount
+      type: uint32
+      description: >
+          Contains uncorrectable Row Mapping Count.
+      flags:
+          - readonly
