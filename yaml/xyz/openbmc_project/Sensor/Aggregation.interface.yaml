@@ -1,0 +1,13 @@
+description: >
+    Implement to provide aggregated metrics for all sensors.
+properties:
+    - name: SensorMetrics
+      type: dict[string, struct[double, path, uint64]]
+      description: >
+          A map that stores mapping from sensor name to its value,
+          chassis path and timestamp when the sensor reading got refreshed
+    - name: StaleSensorUpperLimitms
+      type: uint32
+      description: >
+          Time interval in miliseconds to calculate the staleness of a sensor. This metric 
+          will be common to all the sensor for a given platform
