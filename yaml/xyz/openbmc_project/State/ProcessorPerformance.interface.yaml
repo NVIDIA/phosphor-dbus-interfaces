@@ -1,11 +1,18 @@
 description: >
-    Implement to provide value of performance state of a processor (CPU, GPU, etc).  
+    Implement to provide value of performance state of a processor (CPU, GPU, etc).
 
 properties:
     - name: Value
       type: enum[self.PerformanceStates]    
       description: >
           This is current discreate value of the sensor. 
+
+    - name: ThrottleReason
+      type: array[enum[self.ThrottleReasons]]
+      description: >
+        Throttle reasons for a processor.
+      flags:
+        - readonly
 
 enumerations:
     - name: PerformanceStates
@@ -23,4 +30,46 @@ enumerations:
                 To represent the performance state is degraded.  
           - name: Unknown
             description: >
-                To represent the performance state as unknown.  
+                To represent the performance state as unknown.
+
+    - name: ThrottleReasons
+      description: >
+          Different value types for processor throttling reason.
+      values:
+          - name: Idle
+            description: >
+                Processor idle.
+          - name: UserDefined
+            description: >
+                User defined clocks.
+          - name: AppClock
+            description: >
+                Applicaiton Clock Settings.
+          - name: SWPowerCap
+            description: >
+                Software powercap.
+          - name: HWSlowdown
+            description: >
+                Hardware slowdown.
+          - name: HWThermalSlowdown
+            description: >
+                Hardware thermal slowdown.
+          - name: HWPowerBrakeSlowdown
+            description: >
+                Hardware power brake slowdown.
+          - name: SyncBoost
+            description: >
+                Sync boost.
+          - name: SWThermalSlowdownTavg
+            description: >
+                Software thermal slowdown Tavg.
+          - name: SWThermalSlowdownTLimit
+            description: >
+                Software thermal slowdown Tlimit.
+          - name: DisplayClock
+            description: >
+                Display Clock Settings.
+          - name: None
+            description: >
+                Not Throttled.
+
