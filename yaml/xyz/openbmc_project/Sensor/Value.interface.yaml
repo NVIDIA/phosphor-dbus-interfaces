@@ -8,6 +8,7 @@ description: >
       current
       energy
       fan_tach
+      frequency
       humidity
       power
       pressure
@@ -54,6 +55,7 @@ properties:
           For objects in the current namespace, Unit must be "Amperes".
           For objects in the energy namespace, Unit must be "Joules".
           For objects in the fan_tach namespace, Unit must be "RPMS".
+          For objects in the frequency namespace, Unit must be "Hertz".
           For objects in the humidity namespace, Unit must be "PercentRH"
           For objects in the power namespace, Unit must be "Watts".
           For objects in the pressure namespace, Unit must be "Pascals"
@@ -75,6 +77,9 @@ enumerations:
           - name: DegreesC
             description: >
                 Temperature as degrees Celsius.
+          - name: Hertz
+            description: >
+                Frequency as Hertz.
           - name: Joules
             description: >
                 Energy transfer as Joules.
