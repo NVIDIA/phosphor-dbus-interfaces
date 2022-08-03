@@ -188,6 +188,12 @@ enumerations:
         - name: Enabled
           description: >
               This link is enabled.
+        - name: Error
+          description: >
+              This link is in error state.              
+        - name: Unknown
+          description: >
+              This link state is not known.  
 
     - name: LinkStatusType
       description: >
