@@ -218,22 +218,22 @@ enumerations:
           used by the SPDM requester and responder communication.
           See the SPDM specification for more details.
       values:
-        - name: 'SHA_256'
+        - name: 'TPM_ALG_SHA_256'
           description: >
             SHA 256
-        - name: 'SHA_384'
+        - name: 'TPM_ALG_SHA_384'
           description: >
             SHA 384
-        - name: 'SHA_512'
+        - name: 'TPM_ALG_SHA_512'
           description: >
             SHA 512
-        - name: 'SHA3_256'
+        - name: 'TPM_ALG_SHA3_256'
           description: >
             SHA3 256
-        - name: 'SHA3_384'
+        - name: 'TPM_ALG_SHA3_384'
           description: >
             SHA3 384
-        - name: 'SHA3_512'
+        - name: 'TPM_ALG_SHA3_512'
           description: >
             SHA3 512
         - name: 'OEM'
@@ -277,31 +277,31 @@ enumerations:
         - name: 'CHACHA20_POLY1305'
           description: >
             SPDM-enumerated AEAD algorithm for the purposes of signature verification.
-        - name: 'RSASSA_2048'
+        - name: 'TPM_ALG_RSASSA_2048'
           description: >
             SPDM-enumerated asymmetric key signature algorithm for the purposes of signature verification.
-        - name: 'RSAPSS_2048'
+        - name: 'TPM_ALG_RSAPSS_2048'
           description: >
             SPDM-enumerated asymmetric key signature algorithm for the purposes of signature verification.
-        - name: 'RSASSA_3072'
+        - name: 'TPM_ALG_RSASSA_3072'
           description: >
             SPDM-enumerated asymmetric key signature algorithm for the purposes of signature verification.
-        - name: 'RSAPSS_3072'
+        - name: 'TPM_ALG_RSAPSS_3072'
           description: >
             SPDM-enumerated asymmetric key signature algorithm for the purposes of signature verification.
-        - name: 'ECDSA_ECC_NIST_P256'
+        - name: 'TPM_ALG_ECDSA_ECC_NIST_P256'
           description: >
             SPDM-enumerated asymmetric key signature algorithm for the purposes of signature verification.
-        - name: 'RSASSA_4096'
+        - name: 'TPM_ALG_RSASSA_4096'
           description: >
             SPDM-enumerated asymmetric key signature algorithm for the purposes of signature verification.
-        - name: 'RSAPSS_4096'
+        - name: 'TPM_ALG_RSAPSS_4096'
           description: >
             SPDM-enumerated asymmetric key signature algorithm for the purposes of signature verification.
-        - name: 'ECDSA_ECC_NIST_P384'
+        - name: 'TPM_ALG_ECDSA_ECC_NIST_P384'
           description: >
             SPDM-enumerated asymmetric key signature algorithm for the purposes of signature verification.
-        - name: 'ECDSA_ECC_NIST_P521'
+        - name: 'TPM_ALG_ECDSA_ECC_NIST_P521'
           description: >
             SPDM-enumerated asymmetric key signature algorithm for the purposes of signature verification.
         - name: 'OEM'
