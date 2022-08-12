@@ -30,3 +30,4 @@ generated_others += custom_target(
 
 subdir('NVLink')
 subdir('Protocol')
+subdir('Secureboot')

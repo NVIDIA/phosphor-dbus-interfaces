@@ -1,0 +1,30 @@
+description: >
+    Implement to set and get the Vendor Field Mode state.
+
+methods:
+    - name: SetVendorFieldModeStatus
+      description: >
+        Set the Vendor Field Mode state.
+      parameters:
+        - name: Status
+          type: boolean
+          description: >
+            Status of the vendor field mode.
+    - name: IsVendorFieldModeEnabled
+      description: >
+        Get the Vendor Field Mode state.
+      returns:
+        - name: Status
+          type: boolean
+          description: >
+            Return the state of the Vendor Field Mode.
+
+properties:
+    - name: VendorFieldModeEnabled
+      type: boolean
+      default: False
+      description: >
+          Indicate the state of the Vendor Field Mode, whether the vendor field mode
+          is enabled or disabled.If the state is True the Vendor Field Mode is enabled,
+          otherwise it is disbaled.The default state of the Vendor Field Mode is set
+          to False.

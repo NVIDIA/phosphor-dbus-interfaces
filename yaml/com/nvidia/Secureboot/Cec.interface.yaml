@@ -1,0 +1,8 @@
+description: >
+    Interface which communicates about the interrupt from CEC regarding the secure firmware update.
+properties:
+    - name: Status
+      type: boolean
+      description: >
+          A boolean gets toggled when CEC triggers the interrupt.
+
