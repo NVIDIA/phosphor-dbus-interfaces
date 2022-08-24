@@ -82,3 +82,13 @@ properties:
       errors:
         # Indicate a failure to apply changes to the processor.
         - xyz.openbmc_project.Common.Device.Error.WriteFailure
+    - name: SpeedConfig
+      type: struct[boolean, uint32]
+      description: >
+        The property stores the SpeedLocked and SpeedLimit as a tuple.
+        SpeedLocked indicates whether the clock speed of the processor is fixed at the
+        value specified in the SpeedLimit property and SpeedLimit is the clock limit
+        of the processor in MHz.
+      errors:
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+        - xyz.openbmc_project.Common.Device.Error.WriteFailure
