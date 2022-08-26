@@ -1,0 +1,44 @@
+description: >
+    This interface contains a GetAll method, which can be implemented
+    to allow retrieval of xyz.openbmc_project.Logging.Entry objects
+    directly over D-Bus, without needing the errors defined in
+    the *.Error/metadata.yaml files.
+
+methods:
+    - name: GetAll
+      description: >
+          Get an array of strings from a certain namespace.
+      parameters:
+        - name: namespace
+          type: string
+          description: >
+            Parameter for name of namespace.
+        - name: errortype
+          type: enum[xyz.openbmc_project.Logging.Entry.Level]
+          description: Log Event Error Type
+      returns:
+        - name: paths
+          type: array[string]
+          description: >
+            An array of strings.
+      errors:
+        - xyz.openbmc_project.Common.Error.ResourceNotFound
+
+    - name: DeleteAll
+      description: >
+          Deletes all entries in a certain namespace.
+      parameters:
+        - name: Namespace
+          type: string
+          description: >
+            Parameter for name of namespace.
+        - name: errortype
+          type: enum[xyz.openbmc_project.Logging.Entry.Level]
+          description: Log Event Error Type
+      returns:
+        - name: result
+          type: boolean
+          description: >
+            Boolean result for DeleteAll operation.
+      errors:
+        - xyz.openbmc_project.Common.Error.ResourceNotFound
