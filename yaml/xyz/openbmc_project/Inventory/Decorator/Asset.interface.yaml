@@ -1,6 +1,10 @@
 description: >
     Implement to provide item physical asset attributes.
 properties:
+    - name: SKU
+      type: string
+      description: >
+          The Stock-keeping unit number for the chassis inventory items.
     - name: Name
       type: string
       description: >
