@@ -116,7 +116,14 @@ properties:
       type: boolean
       description: >
         True if the credential bootstrapping is enabled for Host Interface.
-      default: false
+      default: true
+
+    - name: EnableAfterReset
+      type: boolean
+      description: >
+        An indication to set/reset the CredentialBootstrap property on host power reset
+        for the Host Interface.
+      default: true
 
 enumerations:
     - name: AttributeType
