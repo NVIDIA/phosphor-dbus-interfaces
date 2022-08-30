@@ -1,4 +1,5 @@
 # Generated file; do not modify.
+subdir('Common')
 subdir('Edpp')
 generated_others += custom_target(
     'com/nvidia/Edpp__markdown'.underscorify(),
