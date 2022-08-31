@@ -1,0 +1,7 @@
+description: >
+    Implement to provide a instance number for an inventory item.
+properties:
+    - name: InstanceNumber
+      type: uint64
+      description: >
+          The instance number under the same inventory item type

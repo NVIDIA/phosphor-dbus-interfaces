@@ -404,6 +404,20 @@ generated_others += custom_target(
     ],
 )
 
+subdir('ProcessorModule')
+generated_others += custom_target(
+    'xyz/openbmc_project/Inventory/Item/ProcessorModule__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/ProcessorModule.interface.yaml',  ],
+    output: [ 'ProcessorModule.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Inventory/Item/ProcessorModule',
+    ],
+)
+
 subdir('Rotor')
 generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/Rotor__markdown'.underscorify(),
