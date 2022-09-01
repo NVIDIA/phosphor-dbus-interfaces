@@ -1,0 +1,67 @@
+description: >
+    Implement to provide D-Bus raw SMBPBI access to the GPU, Nvswitch and Baseboard.
+
+methods:
+    - name: SyncCmd
+      description: >
+          Send raw SMBPBI Sync command(s) to the GPU,Nvswitch and Baseboard.
+      parameters:
+          - name: Device
+            type: string
+            description: >
+                The device to use for the command.
+          - name: DeviceId
+            type: byte
+            description: >
+                The deviceId to use for the command.
+          - name: OpCode
+            type: byte
+            description: >
+                The Opcode to use for the command.
+          - name: Arg1
+            type: byte
+            description: >
+                The argument 1  to use for the command.
+          - name: Arg2
+            type: byte
+            description: >
+                The argument 2  to use for the command.
+          - name: DataIn
+            type: uint32
+            description: >
+                Input Data value for the raw command.
+          - name: ExtDataIn
+            type: uint32
+            description: >
+                Extended Input Data value for the raw command.
+      returns:
+          - name: Results
+            type: struct[int32,uint32,uint32,uint32]
+            description: >
+                rc value and status, dataout, extdataout for the sync command.
+
+    - name: AsyncCmd
+      description: >
+          Send raw SMBPBI Async command(s) to the GPU,Nvswitch and Baseboard.
+      parameters:
+          - name: Device
+            type: string
+            description: >
+                The device to use for the command.
+          - name: DeviceId
+            type: byte
+            description: >
+                The deviceId to use for the command.
+          - name: Arg
+            type: byte
+            description: >
+                The argument to use for the command.
+          - name: DataIn
+            type: array[uint32]
+            description: >
+      returns:
+          - name: Results
+            type: struct[int32,uint32,uint32,array[uint32]]
+            description: >
+                rc value and status, dataout, asyncdataout for the Async command.
+
