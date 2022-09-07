@@ -41,6 +41,20 @@ generated_others += custom_target(
     ],
 )
 
+subdir('Persistence')
+generated_others += custom_target(
+    'xyz/openbmc_project/State/Decorator/Persistence__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/State/Decorator/Persistence.interface.yaml',  ],
+    output: [ 'Persistence.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/State/Decorator/Persistence',
+    ],
+)
+
 subdir('PowerState')
 generated_others += custom_target(
     'xyz/openbmc_project/State/Decorator/PowerState__markdown'.underscorify(),

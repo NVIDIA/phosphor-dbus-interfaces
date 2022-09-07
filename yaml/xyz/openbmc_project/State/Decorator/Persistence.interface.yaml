@@ -1,0 +1,7 @@
+description: >
+    Implement to indicate the persistence of the object
+properties:
+    - name: persistent
+      type: boolean
+      description: >
+        The persistence status of the object.
