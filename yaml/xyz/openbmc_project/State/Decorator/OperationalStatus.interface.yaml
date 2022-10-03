@@ -16,6 +16,9 @@ enumerations:
       description: >
           Possible state type
       values:
+        - name: None
+          description: >
+              None of the below
         - name: Absent
           description: >
               This function or resource is either not present or detected.
@@ -42,3 +45,6 @@ enumerations:
         - name: Updating
           description: >
               The element is updating and might be unavailable or degraded.
+        - name: Fault
+          description: >
+              The element or resource fault.
