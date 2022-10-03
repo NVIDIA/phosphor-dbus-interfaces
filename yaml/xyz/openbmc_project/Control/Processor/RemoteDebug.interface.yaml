@@ -1,0 +1,14 @@
+description: >
+    Processor Remote debug  settings.
+properties:
+    - name: Enabled
+      type: boolean
+      description: >
+          Whether remote debug mode is enabled for the processor resource.
+      errors:
+          # Indicate that this property is permanently unable to be changed.
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          # Indicate that this property is temporarily unable to be changed.
+          - xyz.openbmc_project.Common.Error.Unavailable
+          # Indicate a failure to apply changes to the processor.
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure
