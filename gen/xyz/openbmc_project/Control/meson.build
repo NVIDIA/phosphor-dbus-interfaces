@@ -201,6 +201,20 @@ generated_others += custom_target(
     ],
 )
 
+subdir('TransportRedundancy')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/TransportRedundancy__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Control/TransportRedundancy.interface.yaml',  ],
+    output: [ 'TransportRedundancy.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Control/TransportRedundancy',
+    ],
+)
+
 subdir('VoltageRegulatorControl')
 generated_others += custom_target(
     'xyz/openbmc_project/Control/VoltageRegulatorControl__markdown'.underscorify(),

@@ -1,0 +1,7 @@
+description: >
+    Interface allowing to enable or disable transport path redundancy.
+properties:
+    - name: Enabled
+      type: boolean
+      description: >
+          When true, transport path redundancy is enabled.
