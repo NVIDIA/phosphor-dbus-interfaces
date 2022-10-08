@@ -1,0 +1,43 @@
+description: >
+    Implement interface to control Gpu Manager Server
+
+methods:
+    - name: RtEEPROMRegTblRead
+      description: >
+         Read from Retimer EEPROM
+      parameters:
+       - name: Register
+         type: byte
+         description: >
+             Register offset to read data from EEPROM
+       - name: Lenght
+         type: int32
+         description: >
+            Size of read, only support 4 or 64 bytes
+      returns:
+          - name: rc
+            type: int32
+            description: >
+                Result code from read (0 for pass)
+          - name: DataOut
+            type: array[uint32]
+            description: >
+                Data output from read operation
+    - name: RtEEPROMRegTblWrite
+      description: >
+         Write to Retimer EEPROM
+      parameters:
+       - name: Register
+         type: byte
+         description: >
+             Register offset to write data to EEPROM
+       - name: DataIn
+         type: array[uint32]
+         description: >
+            Data to write, only accept array size of 1 or 16
+            double words
+      returns:
+          - name: rc
+            type: int32
+            description: >
+                Result code from read (0 for pass)
