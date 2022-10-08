@@ -1,5 +1,8 @@
 description: >
-    Implement interface to control Gpu Manager Server
+    Implement an interface to interact with Gpu Manager Server
+    This can be used for Retimer firmware update module to
+    direct write/read the retimer's EEPROM register table
+    througth dbus
 
 methods:
     - name: RtEEPROMRegTblRead
