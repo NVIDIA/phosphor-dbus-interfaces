@@ -7,11 +7,11 @@ methods:
          Read from Retimer EEPROM
       parameters:
        - name: Register
-         type: byte
+         type: uint32
          description: >
              Register offset to read data from EEPROM
-       - name: Lenght
-         type: int32
+       - name: Length
+         type: uint32
          description: >
             Size of read, only support 4 or 64 bytes
       returns:
@@ -28,7 +28,7 @@ methods:
          Write to Retimer EEPROM
       parameters:
        - name: Register
-         type: byte
+         type: uint32
          description: >
              Register offset to write data to EEPROM
        - name: DataIn
