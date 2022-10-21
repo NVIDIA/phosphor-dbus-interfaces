@@ -1,0 +1,21 @@
+description: >
+    Implement to provide fpga type .
+
+properties:
+    - name: FpgaType
+      type: enum[self.FPGAType]
+      default: "Discrete"
+      description: >
+          The type of FPGA.
+
+enumerations:
+    - name: FPGAType
+      description: >
+          Possible fpga type
+      values:
+          - name: "Discrete"
+            description: >
+                The discrete FPGA device.
+          - name: "Integrated"
+            description: >
+                The FPGA device integrated with other processor in the single chip.
