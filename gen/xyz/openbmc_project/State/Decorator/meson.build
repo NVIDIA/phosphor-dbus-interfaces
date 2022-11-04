@@ -83,3 +83,17 @@ generated_others += custom_target(
     ],
 )
 
+subdir('SecureState')
+generated_others += custom_target(
+    'xyz/openbmc_project/State/Decorator/SecureState__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/State/Decorator/SecureState.interface.yaml',  ],
+    output: [ 'SecureState.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/State/Decorator/SecureState',
+    ],
+)
+

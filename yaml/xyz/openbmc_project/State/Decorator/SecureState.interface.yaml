@@ -1,0 +1,10 @@
+description: >
+    Implement to indicate the secure state of the object. A object in secure
+    state only can be updated by the private key used to create the object.
+properties:
+    - name: secure
+      type: boolean
+      description: >
+        The secure state of the object.
+      flags:
+          - readonly

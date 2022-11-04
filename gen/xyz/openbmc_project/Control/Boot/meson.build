@@ -1,4 +1,18 @@
 # Generated file; do not modify.
+subdir('ClearNonVolatileVariables')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/Boot/ClearNonVolatileVariables__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/ClearNonVolatileVariables.interface.yaml',  ],
+    output: [ 'ClearNonVolatileVariables.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Control/Boot/ClearNonVolatileVariables',
+    ],
+)
+
 subdir('ConsoleRedirection')
 generated_others += custom_target(
     'xyz/openbmc_project/Control/Boot/ConsoleRedirection__markdown'.underscorify(),

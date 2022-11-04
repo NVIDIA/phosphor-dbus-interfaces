@@ -1,0 +1,8 @@
+description: >
+    Implement to specify Clear Nonvolatile Variables request
+
+properties:
+    - name: Clear
+      type: boolean
+      description: >
+          Clear Nonvolatile Variables on next boot.
