@@ -112,6 +112,11 @@ properties:
           The number of lanes, phys, or other physical transport links
           that this port contains.
 
+    - name: ActiveWidth
+      type: size
+      description: >
+          The number of active lanes for this interface.
+
     - name: LinkState
       type: enum[self.LinkStates]
       default: Enabled
