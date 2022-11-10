@@ -1,0 +1,10 @@
+description: >
+   Implement to provide the Alert caused by PWR_GD state runtime change.
+
+properties:
+    - name: AbnormalPowerChange
+      type: boolean
+      description: >
+            Represents PWR_GD state runtime change.
+      flags:
+          - readonly

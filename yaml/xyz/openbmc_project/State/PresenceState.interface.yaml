@@ -1,0 +1,10 @@
+description: >
+   Implement to provide Alert caused by PRSNT state run time change.
+
+properties:
+    - name: Presence
+      type: boolean
+      description: >
+            represents PRSNT state run time change.
+      flags:
+          - readonly

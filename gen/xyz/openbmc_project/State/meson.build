@@ -72,6 +72,20 @@ generated_others += custom_target(
 )
 
 subdir('OperatingSystem')
+subdir('PowerChange')
+generated_others += custom_target(
+    'xyz/openbmc_project/State/PowerChange__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/State/PowerChange.interface.yaml',  ],
+    output: [ 'PowerChange.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/State/PowerChange',
+    ],
+)
+
 subdir('PowerOnHours')
 generated_others += custom_target(
     'xyz/openbmc_project/State/PowerOnHours__markdown'.underscorify(),
@@ -86,6 +100,20 @@ generated_others += custom_target(
     ],
 )
 
+subdir('PresenceState')
+generated_others += custom_target(
+    'xyz/openbmc_project/State/PresenceState__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/State/PresenceState.interface.yaml',  ],
+    output: [ 'PresenceState.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/State/PresenceState',
+    ],
+)
+
 subdir('ProcessorPerformance')
 generated_others += custom_target(
     'xyz/openbmc_project/State/ProcessorPerformance__markdown'.underscorify(),
@@ -97,6 +125,20 @@ generated_others += custom_target(
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/State/ProcessorPerformance',
+    ],
+)
+
+subdir('ResetStatus')
+generated_others += custom_target(
+    'xyz/openbmc_project/State/ResetStatus__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/State/ResetStatus.interface.yaml',  ],
+    output: [ 'ResetStatus.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/State/ResetStatus',
     ],
 )
 

@@ -1,0 +1,10 @@
+description: >
+   Implement to provide Link Training and Status State Machine.
+
+properties:
+    - name: LTSSMState
+      type: uint32
+      description: >
+            Represents LTSSM State.
+      flags:
+          - readonly

@@ -36,3 +36,7 @@ properties:
       type: int64
       description: >
           The total number of NAKs issued on the PCIe link by the receiver.
+    - name: ueCount
+      type: uint32
+      description: >
+          The total number of the PCIe uncorrectable errors on the device.
