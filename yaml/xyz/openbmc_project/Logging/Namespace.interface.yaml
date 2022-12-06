@@ -42,3 +42,19 @@ methods:
             Boolean result for DeleteAll operation.
       errors:
         - xyz.openbmc_project.Common.Error.ResourceNotFound
+
+    - name: GetStats
+      description: >
+          Gets Stats about Phosphor Logging Entries
+      parameters:
+        - name: Namespace
+          type: string
+          description: >
+            Parameter for name of namespace.
+      returns:
+        - name: result
+          type: struct[uint32, uint64]
+          description: >
+            Returns tuple of LatestEntryId, LatestEntryTimeStamp
+      errors:
+        - xyz.openbmc_project.Common.Error.ResourceNotFound
