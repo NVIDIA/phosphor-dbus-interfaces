@@ -9,19 +9,18 @@ methods:
       description: >
           Get an array of strings from a certain namespace.
       parameters:
-        - name: Namespace
+        - name: namespace
           type: string
           description: >
             Parameter for name of namespace.
-        - name: ResolvedType
-          type: enum[self.ResolvedFilterType]
-          description: >
-            Parameter for Resolved, Unresolved or Both.
+        - name: errortype
+          type: enum[xyz.openbmc_project.Logging.Entry.Level]
+          description: Log Event Error Type
       returns:
         - name: paths
-          type: dict[path, dict[string, dict[string, variant[boolean, size, int64, string, array[byte], array[string], uint64]]]]
+          type: array[string]
           description: >
-            A dictionary of filtered object paths with properties.
+            An array of strings.
       errors:
         - xyz.openbmc_project.Common.Error.ResourceNotFound
 
@@ -43,18 +42,3 @@ methods:
             Boolean result for DeleteAll operation.
       errors:
         - xyz.openbmc_project.Common.Error.ResourceNotFound
-
-enumerations:
-    - name: ResolvedFilterType
-      description: >
-          Filter Type.
-      values:
-          - name: Resolved
-            description: >
-                Resolved value Type.
-          - name: Unresolved
-            description: >
-                Unresolved value Type.
-          - name: Both
-            description: >
-                Resolved & Unresolved Type
