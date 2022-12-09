@@ -1,0 +1,13 @@
+description: >
+    This interface contains a GetStats method, which can be implemented
+    to allow retrieval of Statistics of the Dump Logs.
+
+methods:
+    - name: GetStats
+      description: >
+          Gets Stats about Phosphor Debug Collector Dumps
+      returns:
+        - name: result
+          type: struct[uint32, uint64]
+          description: >
+            Returns tuple of LatestEntryId, LatestEntryTimeStamp
