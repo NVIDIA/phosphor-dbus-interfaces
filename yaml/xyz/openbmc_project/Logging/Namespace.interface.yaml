@@ -9,18 +9,19 @@ methods:
       description: >
           Get an array of strings from a certain namespace.
       parameters:
-        - name: namespace
+        - name: Namespace
           type: string
           description: >
             Parameter for name of namespace.
-        - name: errortype
-          type: enum[xyz.openbmc_project.Logging.Entry.Level]
-          description: Log Event Error Type
+        - name: ResolvedType
+          type: enum[self.ResolvedFilterType]
+          description: >
+            Parameter for Resolved, Unresolved or Both.
       returns:
         - name: paths
-          type: array[string]
+          type: dict[path, dict[string, dict[string, variant[boolean, size, int64, string, array[byte], array[string], uint64]]]]
           description: >
-            An array of strings.
+            A dictionary of filtered object paths with properties.
       errors:
         - xyz.openbmc_project.Common.Error.ResourceNotFound
 
@@ -58,3 +59,18 @@ methods:
             Returns tuple of LatestEntryId, LatestEntryTimeStamp
       errors:
         - xyz.openbmc_project.Common.Error.ResourceNotFound
+
+enumerations:
+    - name: ResolvedFilterType
+      description: >
+          Filter Type.
+      values:
+          - name: Resolved
+            description: >
+                Resolved value Type.
+          - name: Unresolved
+            description: >
+                Unresolved value Type.
+          - name: Both
+            description: >
+                Resolved & Unresolved Type
