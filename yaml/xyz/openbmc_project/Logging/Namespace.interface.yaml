@@ -19,7 +19,7 @@ methods:
             Parameter for Resolved, Unresolved or Both.
       returns:
         - name: paths
-          type: dict[path, dict[string, dict[string, variant[boolean, size, int64, string, array[byte], array[string], uint64]]]]
+          type: dict[path, dict[string, dict[string, variant[boolean, uint32, int64, string, array[byte], array[string], uint64]]]]
           description: >
             A dictionary of filtered object paths with properties.
       errors:

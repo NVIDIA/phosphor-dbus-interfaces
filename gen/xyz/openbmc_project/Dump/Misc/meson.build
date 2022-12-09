@@ -11,3 +11,4 @@ generated_sources += custom_target(
         'xyz/openbmc_project/Dump/Misc',
     ],
 )
+
