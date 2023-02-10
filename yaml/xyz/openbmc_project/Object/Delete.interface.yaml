@@ -9,3 +9,4 @@ methods:
           - xyz.openbmc_project.Common.Error.NotAllowed
           - xyz.openbmc_project.Common.Error.Unavailable
           - xyz.openbmc_project.Common.Error.InsufficientPermission
+          - xyz.openbmc_project.Common.Error.ResourceNotFound
