@@ -24,6 +24,11 @@ properties:
       description: >
           Indicates when the state is completed since the Epoch
           (1 Jan 1970 00:00:00 UTC), in microseconds.
+    - name: Progress
+      type: byte
+      description: >
+          An integer between 0 and 100 representing the percentage of 
+          completion of the operation.
 
 enumerations:
     - name: OperationStatus
