@@ -4,6 +4,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/Decorator/Availability__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/State/Decorator/Availability.interface.yaml',  ],
     output: [ 'Availability.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -32,6 +33,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/Decorator/OperationalStatus__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/State/Decorator/OperationalStatus.interface.yaml',  ],
     output: [ 'OperationalStatus.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -60,6 +62,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/Decorator/PowerState__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/State/Decorator/PowerState.interface.yaml',  ],
     output: [ 'PowerState.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -74,6 +77,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/Decorator/PowerSystemInputs__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/State/Decorator/PowerSystemInputs.interface.yaml',  ],
     output: [ 'PowerSystemInputs.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),

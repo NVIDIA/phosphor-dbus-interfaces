@@ -4,6 +4,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Association__markdown'.underscorify(),
     input: [ '../../../yaml/xyz/openbmc_project/Association.interface.yaml',  ],
     output: [ 'Association.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -19,6 +20,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Certs__markdown'.underscorify(),
     input: [ '../../../yaml/xyz/openbmc_project/Certs.errors.yaml',  ],
     output: [ 'Certs.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -36,6 +38,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Common__markdown'.underscorify(),
     input: [ '../../../yaml/xyz/openbmc_project/Common.errors.yaml',  ],
     output: [ 'Common.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -54,6 +57,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/HardwareIsolation__markdown'.underscorify(),
     input: [ '../../../yaml/xyz/openbmc_project/HardwareIsolation.errors.yaml',  ],
     output: [ 'HardwareIsolation.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -68,6 +72,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Inventory__markdown'.underscorify(),
     input: [ '../../../yaml/xyz/openbmc_project/Inventory.errors.yaml',  ],
     output: [ 'Inventory.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -90,6 +95,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/ObjectMapper__markdown'.underscorify(),
     input: [ '../../../yaml/xyz/openbmc_project/ObjectMapper.interface.yaml',  ],
     output: [ 'ObjectMapper.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -108,6 +114,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/ScheduledTime__markdown'.underscorify(),
     input: [ '../../../yaml/xyz/openbmc_project/ScheduledTime.errors.yaml',  ],
     output: [ 'ScheduledTime.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -127,6 +134,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Time__markdown'.underscorify(),
     input: [ '../../../yaml/xyz/openbmc_project/Time.errors.yaml',  ],
     output: [ 'Time.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
