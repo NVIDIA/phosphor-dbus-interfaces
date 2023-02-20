@@ -5,6 +5,7 @@ generated_others += custom_target(
     'com/nvidia/Edpp__markdown'.underscorify(),
     input: [ '../../../yaml/com/nvidia/Edpp.interface.yaml',  ],
     output: [ 'Edpp.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -19,6 +20,7 @@ generated_others += custom_target(
     'com/nvidia/MigMode__markdown'.underscorify(),
     input: [ '../../../yaml/com/nvidia/MigMode.interface.yaml',  ],
     output: [ 'MigMode.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),

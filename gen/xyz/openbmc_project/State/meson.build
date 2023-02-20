@@ -82,6 +82,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/PowerChange__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/State/PowerChange.interface.yaml',  ],
     output: [ 'PowerChange.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -111,6 +112,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/PresenceState__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/State/PresenceState.interface.yaml',  ],
     output: [ 'PresenceState.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -125,6 +127,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/ProcessorPerformance__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/State/ProcessorPerformance.interface.yaml',  ],
     output: [ 'ProcessorPerformance.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -139,6 +142,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/ResetStatus__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/State/ResetStatus.interface.yaml',  ],
     output: [ 'ResetStatus.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),

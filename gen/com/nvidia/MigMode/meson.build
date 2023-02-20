@@ -3,6 +3,7 @@ generated_sources += custom_target(
     'com/nvidia/MigMode__cpp'.underscorify(),
     input: [ '../../../../yaml/com/nvidia/MigMode.interface.yaml',  ],
     output: [ 'server.cpp', 'server.hpp', 'client.hpp',  ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'cpp',
         '--output', meson.current_build_dir(),

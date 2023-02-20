@@ -33,6 +33,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/Assembly__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/Assembly.interface.yaml',  ],
     output: [ 'Assembly.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -212,6 +213,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/Endpoint__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/Endpoint.interface.yaml',  ],
     output: [ 'Endpoint.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -241,6 +243,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/Fabric__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/Fabric.interface.yaml',  ],
     output: [ 'Fabric.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -300,6 +303,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/ManagementService__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/ManagementService.interface.yaml',  ],
     output: [ 'ManagementService.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -404,6 +408,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/Port__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/Port.interface.yaml',  ],
     output: [ 'Port.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -433,6 +438,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/ProcessorModule__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/ProcessorModule.interface.yaml',  ],
     output: [ 'ProcessorModule.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -462,6 +468,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/SPDMResponder__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/SPDMResponder.interface.yaml',  ],
     output: [ 'SPDMResponder.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -506,6 +513,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/Switch__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/Switch.interface.yaml',  ],
     output: [ 'Switch.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -580,6 +588,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/Zone__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/Zone.interface.yaml',  ],
     output: [ 'Zone.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
