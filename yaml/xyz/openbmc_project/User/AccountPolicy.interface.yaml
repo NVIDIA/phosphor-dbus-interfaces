@@ -10,6 +10,7 @@ properties:
           feature is disabled.
       errors:
           - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.NotAllowed
 
     - name: AccountUnlockTimeout
       type: uint32
