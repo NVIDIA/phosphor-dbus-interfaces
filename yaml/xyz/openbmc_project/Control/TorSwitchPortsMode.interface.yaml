@@ -1,0 +1,26 @@
+description: >
+    Implement to specify the Tor Switch Ports mode of operation.
+
+properties:
+    - name: TorSwitchPortsMode
+      type: enum[self.Modes]
+      description: >
+          The Tor Switch Ports mode.
+
+enumerations:
+    - name: Modes
+      description: >
+          Possible modes of Tor Switch Ports.
+      values:
+          - name: None
+            description: >
+                Allow, no Ports to access the RJ45.
+          - name: BMC
+            description: >
+                Allow, only the BMC to access to RJ45.
+          - name: DPU
+            description: >
+                Allow, only the DPU to access to RJ45.
+          - name: All
+            description: >
+                Allow, both BMC and DPU to access the RJ45.
