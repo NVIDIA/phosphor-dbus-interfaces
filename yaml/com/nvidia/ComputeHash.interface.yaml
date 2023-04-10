@@ -1,0 +1,32 @@
+description: >
+   Implement to provide hash computation of firmware for non-pldm devices.
+properties:
+    - name: Digest
+      type: string
+      description: >
+           This property shall contain the digest of this firmware using the
+           hash algorithm indicated by Algorithm property.
+      flags:
+          - readonly
+    - name: Algorithm
+      type: string
+      description: >
+           This property shall contain the hash algorithm used to compute the
+           digest of this firmware.
+      flags:
+          - readonly
+methods:
+    - name: GetHash
+      description: >
+        This method shall compute the digest of this firmware using a hash
+        algorithm specified in Algorithm property. Once hash compute is
+        done Digest property will be updated with the hash value.
+      parameters:
+          - name: DeviceId
+            type: uint16
+            description: >
+                Device Id for which hash needs to be computed. For example
+                retimer Id.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.InvalidArgument

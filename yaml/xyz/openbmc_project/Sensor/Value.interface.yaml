@@ -14,6 +14,7 @@ description: >
       temperature
       utilization
       voltage
+      counter
 
     Any service implementing Sensor.Value on one or more objects must implement
     org.freedesktop.DBus.ObjectManager on /xyz/openbmc_project/sensors.
@@ -59,6 +60,7 @@ properties:
           "Pascals" For objects in the temperature namespace, Unit must be
           "DegreesC". For objects in the utilization namespace, Unit must be
           "Percent" For objects in the voltage namespace, Unit must be "Volts".
+          For objects in the counter namespace, Unit must be "Counts".
 
 enumerations:
     - name: Unit
@@ -101,6 +103,9 @@ enumerations:
           - name: Watts
             description: >
                 Rate of energy transfer as Watts.
+          - name: Counts
+            description: >
+                A counter
 
 associations:
     - name: inventory

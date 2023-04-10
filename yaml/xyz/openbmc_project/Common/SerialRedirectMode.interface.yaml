@@ -1,0 +1,30 @@
+description: >
+    Implement to set and get the Serial Redirect Mode state.
+
+methods:
+    - name: SetSerialRedirectModeStatus
+      description: >
+        Set the Serial Redirect Mode state.
+      parameters:
+        - name: Status
+          type: boolean
+          description: >
+            Status of the serial redirect mode.
+    - name: IsSerialRedirectModeEnabled
+      description: >
+        Get the Serial Redirect Mode state.
+      returns:
+        - name: Status
+          type: boolean
+          description: >
+            Return the state of the serial redirect mode.
+
+properties:
+    - name: SerialRedirectModeEnabled
+      type: boolean
+      default: False
+      description: >
+          Indicate the state of the serial redirect mode, whether the serial
+          redirect mode is enabled or disabled. If the state is True the
+          serial redirect mode is enabled, otherwise it is disbaled. The default
+          state of the serial redirect mode is set to False.

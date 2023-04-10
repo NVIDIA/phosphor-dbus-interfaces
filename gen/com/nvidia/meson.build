@@ -1,5 +1,19 @@
 # Generated file; do not modify.
 subdir('Common')
+subdir('ComputeHash')
+generated_others += custom_target(
+    'com/nvidia/ComputeHash__markdown'.underscorify(),
+    input: [ '../../../yaml/com/nvidia/ComputeHash.interface.yaml',  ],
+    output: [ 'ComputeHash.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/ComputeHash',
+    ],
+)
+
 subdir('Edpp')
 generated_others += custom_target(
     'com/nvidia/Edpp__markdown'.underscorify(),
