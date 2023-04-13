@@ -1,0 +1,23 @@
+description: >
+    Implement to provide nvlink Metrics.
+properties:
+    - name: NVLinkRawTxBandwidthGbps
+      type: double
+      description: current bandwidth transferred on NVLink with protocol overhead in gigabit per second (Gbit/s).
+      flags:
+        - readonly
+    - name: NVLinkRawRxBandwidthGbps
+      type: double
+      description: current bandwidth received on NVLink with protocol overhead in gigabit per second (Gbit/s).
+      flags:
+        - readonly
+    - name: NVLinkDataTxBandwidthGbps
+      type: double
+      description: current bandwidth transferred on NVLink without protocol overhead in gigabit per second (Gbit/s).
+      flags:
+        - readonly
+    - name: NVLinkDataRxBandwidthGbps
+      type: double
+      description: current bandwidth received on NVLink without protocol overhead in gigabit per second (Gbit/s).
+      flags:
+        - readonly

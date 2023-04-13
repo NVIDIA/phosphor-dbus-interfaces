@@ -28,6 +28,20 @@ generated_others += custom_target(
     ],
 )
 
+subdir('GPMMetrics')
+generated_others += custom_target(
+    'com/nvidia/GPMMetrics__markdown'.underscorify(),
+    input: [ '../../../yaml/com/nvidia/GPMMetrics.interface.yaml',  ],
+    output: [ 'GPMMetrics.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/GPMMetrics',
+    ],
+)
+
 subdir('MemoryPageRetirementCount')
 generated_others += custom_target(
     'com/nvidia/MemoryPageRetirementCount__markdown'.underscorify(),
