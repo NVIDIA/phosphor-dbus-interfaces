@@ -1,0 +1,24 @@
+description: >
+    This interface represent a single boot option within a system.
+
+properties:
+    - name: Enabled
+      type: boolean
+      description: >
+          An indication of whether the boot option is enabled.
+      default: true
+
+    - name: Description
+      type: string
+      description: >
+          Description of this boot option.
+
+    - name: DisplayName
+      type: string
+      description: >
+          The user-readable display name of the boot option.
+
+    - name: UefiDevicePath
+      type: string
+      description: >
+          The UEFI device path to access this UEFI boot option.
