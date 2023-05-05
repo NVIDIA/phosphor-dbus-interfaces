@@ -1,0 +1,10 @@
+description: >
+   Implement to provide Grace Memory Controller details, the page retirement count.
+
+properties:
+    - name: MemoryPageRetirementCount
+      type: uint32
+      description: >
+            Contains page retirement count.
+      flags:
+          - readonly

@@ -1,0 +1,11 @@
+description: >
+   Implement to provide Grace Memory Controller details, the memory spare channel presence state.
+
+properties:
+    - name: MemorySpareChannelPresence
+      type: boolean
+      description: >
+            Memory Spare Channel is presence for this processor.
+      flags:
+          - readonly
+

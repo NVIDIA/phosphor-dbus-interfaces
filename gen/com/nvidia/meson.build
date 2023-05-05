@@ -28,6 +28,34 @@ generated_others += custom_target(
     ],
 )
 
+subdir('MemoryPageRetirementCount')
+generated_others += custom_target(
+    'com/nvidia/MemoryPageRetirementCount__markdown'.underscorify(),
+    input: [ '../../../yaml/com/nvidia/MemoryPageRetirementCount.interface.yaml',  ],
+    output: [ 'MemoryPageRetirementCount.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/MemoryPageRetirementCount',
+    ],
+)
+
+subdir('MemorySpareChannel')
+generated_others += custom_target(
+    'com/nvidia/MemorySpareChannel__markdown'.underscorify(),
+    input: [ '../../../yaml/com/nvidia/MemorySpareChannel.interface.yaml',  ],
+    output: [ 'MemorySpareChannel.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/MemorySpareChannel',
+    ],
+)
+
 subdir('MigMode')
 generated_others += custom_target(
     'com/nvidia/MigMode__markdown'.underscorify(),
