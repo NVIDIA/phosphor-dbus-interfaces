@@ -83,6 +83,20 @@ generated_others += custom_target(
     ],
 )
 
+subdir('PackageInformation')
+generated_others += custom_target(
+    'xyz/openbmc_project/Software/PackageInformation__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Software/PackageInformation.interface.yaml',  ],
+    output: [ 'PackageInformation.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/PackageInformation',
+    ],
+)
+
 subdir('RedundancyPriority')
 generated_others += custom_target(
     'xyz/openbmc_project/Software/RedundancyPriority__markdown'.underscorify(),

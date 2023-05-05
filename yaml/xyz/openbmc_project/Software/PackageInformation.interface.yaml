@@ -1,0 +1,33 @@
+description: >
+    PackageInformation interface provides information about firmware package
+    properties such as package version, package verification status.
+    To provide other package properties, applications which implements this
+    interface are also expected to implement EpochTime interface for timestamp,
+    ComputeHash interface for package digest information. Additionally
+    implement Delete Interface to remove the firmware package and clear
+    firmware package information properties.
+
+properties:
+    - name: PackageVersion
+      type: string
+      description: >
+          Package version of firmware package. This value should be read from
+          package metadata.
+    - name: VerificationStatus
+      type: enum[self.PackageVerificationStatus]
+      description: >
+          Verification status of firmware package. Should indicate verification
+          status of the package by validating package metadata, signature
+          verification etc.
+enumerations:
+    - name: PackageVerificationStatus
+      description: >
+          The possible values of this property indicate package verification
+          status of firmware package.
+      values:
+          - name: Valid
+            description: >
+                Package is valid.
+          - name: Invalid
+            description: >
+                Package is invalid.
