@@ -1,7 +1,7 @@
 description: >
     The boot order information for this computer system.
 
-method:
+methods:
     - name: CreateBootOption
       description: >
           To create a new DBus object with BootOption DBus interface and using
