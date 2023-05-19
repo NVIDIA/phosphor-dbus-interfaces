@@ -20,14 +20,17 @@ endif
 
 # Parse options to determine appropriate subdirectories to support.
 selected_subdirs = []
+if get_option('data_com_google')
+    selected_subdirs += 'com/google'
+endif
 if get_option('data_com_ibm')
     selected_subdirs += 'com/ibm'
 endif
 if get_option('data_com_intel')
     selected_subdirs += 'com/intel'
 endif
-if get_option('data_com_google')
-    selected_subdirs += 'com/google'
+if get_option('data_com_meta')
+    selected_subdirs += 'com/meta'
 endif
 if get_option('data_org_freedesktop')
     selected_subdirs += 'org/freedesktop'
@@ -148,3 +151,5 @@ phosphor_dbus_interfaces_dep = declare_dependency(
     dependencies: sdbusplus_dep,
     variables: ['yamldir=' + meson.project_source_root() / 'yaml'],
 )
+
+meson.override_dependency('phosphor-dbus-interfaces', phosphor_dbus_interfaces_dep)
