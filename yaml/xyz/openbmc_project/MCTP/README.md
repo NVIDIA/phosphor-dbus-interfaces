@@ -28,7 +28,9 @@ ID. This aids in the enumeration of the endpoints belonging to an MCTP network.
 The D-Bus object implements the `xyz.openbmc_project.MCTP.Endpoint`
 and `xyz.openbmc_project.Common.UnixSocket` interface. The object may also
 optionally implement `xyz.openbmc_project.Common.UUID` interface to address the
-requirement for devices with multiple endpoints and for hot-plug devices.
+requirement for devices with multiple endpoints and for hot-plug devices. The
+object may also implement the `xyz.openbmc_project.MCTP.Binding` interface to
+describe the transport binding used by mctpd for the given endpoint.
 
 An MCTP Network may provide an optional MCTP Network ID that can be used to
 differentiate different MCTP Networks when more than one MCTP Network can be
