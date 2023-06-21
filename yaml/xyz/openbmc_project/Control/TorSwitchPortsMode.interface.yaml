@@ -24,3 +24,6 @@ enumerations:
           - name: All
             description: >
                 Allow, both BMC and DPU to access the RJ45.
+          - name: Disabled
+            description: >
+                Tor Switch disabled.
