@@ -1,0 +1,120 @@
+description: >
+    Provides SCP (Secure Copy Protocol) using key-based authentication.
+    Transfers from remote server to local path. Supports one transfer at a time.
+
+methods:
+    - name: DownloadViaSCP
+      description: >
+          Starts an on-demand service which runs a shell script to perform the SCP and to update
+          the three properties below accordingly.
+          Dropbear SCP will be used for transfering the file. In order to avoid any interaction sessions, the user
+          is required to:
+          1. Use AddRemoteServerPublicKey to add the remote server public key to the BMC's known_host file.
+          2. Use GenerateSelfKeyPair to receive BMC root's public key and add it to the remote server's
+          authorized_keys file.
+          Only one transfer is allowed at a time. Throws a NotAllowed error in case of initiating 
+          a request while a transfer is already in progress.
+      parameters:
+          - name: ServerAddress
+            type: string
+            description: >
+                The SCP Server IP Address.
+          - name: Username
+            type: string
+            description: >
+                The username to authenticate the file transfer.
+          - name: SourceFilePath
+            type: string
+            description: >
+                The source file path on the remote server.
+          - name: Target
+            type: string
+            description: >
+                The target directory (local path) to apply the image.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+
+    - name: AddRemoteServerPublicKey
+      description: >
+          Adds remote server public key to the known_host file.
+      parameters:
+          - name: ServerAddress
+            type: string
+            description: >
+                The server IP address.
+          - name: PublicKeyStr
+            type: string
+            description: >
+                The remote server's public key string ("<type> <key>").
+                For example: "ssh-ed25519  AAAAC3NzaC1lZDI1NTE5AAAAIE5ttDN3G6Anko1Gul/dpvUWnlKGbdXAYJNkINf6UGqR"
+                No validation is done on the input - that is up to the caller.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+    - name: RevokeAllRemoteServerPublicKeys
+      description: >
+          Removes all public keys of a remote server from the known_host file.
+      parameters:
+          - name: ServerAddress
+            type: string
+            description: >
+                The server IP address.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+    - name: GenerateSelfKeyPair
+      description: >
+          Generates a key pair for the BMC and returns the public key string ("<type> <key>").
+      returns:
+          - name: selfPublicKeyStr
+            type: string
+            description: >
+                The generated public key string ("<type> <key>"), or an empty string in case of failure.
+
+properties:
+    - name: FileName
+      type: string
+      description: >
+          The name of the file that is being transferred.
+          This property is updated with each transfer attempt.
+
+    - name: Target
+      type: string
+      description: >
+          The target location where the file is being transferred to.
+          This property is updated with each transfer attempt.
+
+    - name: TransferStatus
+      type: enum[self.Status]
+      description: >
+          Indicates the current status of the transfer. This property is updated last,
+          ensuring that both FileName and Target are updated and available for reading when it changes.
+
+enumerations:
+    - name: Status
+      description: >
+          Enumeration representing the possible statuses of a file transfer.
+      values:
+          - name: None
+            description: >
+                Initial state.
+          - name: Started
+            description: >
+                The transfer has started.
+          - name: Invalid
+            description: >
+                The transfer failed due to invalid parameter.
+          - name: UnknownHost
+            description: >
+                The transfer failed due to unknown host.
+          - name: UnauthorizedClient
+            description: >
+                The transfer failed due to unauthorized client.
+          - name: Failed
+            description: >
+                The transfer has failed.
+          - name: Completed
+            description: >
+                The transfer has completed.
