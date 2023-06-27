@@ -1,0 +1,16 @@
+description: >
+    Implement the UEFI configurtion parameters for boot.
+
+properties:
+    - name: TargetDevicePath
+      type: string
+      description: >
+          Boot from a specific UEFI device path of the device
+    - name: TargetBootOption
+      type: string
+      description: >
+          Boot Option from BootOrder array to preform on a one-time boot
+    - name: TargetURI
+      type: string
+      description: >
+          The HTTP URI to boot from
