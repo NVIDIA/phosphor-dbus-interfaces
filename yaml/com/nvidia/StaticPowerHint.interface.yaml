@@ -69,6 +69,12 @@ properties:
       minimum allowable value of WorkloadFactor parameter.
     flags:
       - readonly
+  - name: StateOfLastEstimatePower
+    type: enum[self.StateOfEstimatePower]
+    default: "Invalid"
+    description: >
+      The state for last time of EstimatePower method call.
+
 methods:
   - name: EstimatePower
     description: >
@@ -90,3 +96,24 @@ methods:
     errors:
       - xyz.openbmc_project.Common.Error.Unavailable
       - xyz.openbmc_project.Common.Error.InvalidArgument
+
+enumerations:
+  - name: StateOfEstimatePower
+    description: >
+      The state of EstimatePower method
+    values:
+      - name: "Completed"
+        description: >
+          EstimatePower operation is completed. PowerEstimate property is updated with the calculated value.
+      - name: "InProgress"
+        description: >
+          EstimatePower operation is in progress. PowerEstimate property is not ready yet.
+      - name: "Failed"
+        description: >
+          EstimatePower operation failed. Retry the EstimatePower operation to calculate PowerEstimate.
+      - name: "InvalidArgument"
+        description: >
+          EstimatePower operation failed due to invalid argument. Retry the EstimatePower operation with valid arguments
+      - name: "Invalid"
+        description: >
+          EstimatePower operation has not called since service started. PowerEstimate property is invalid.
