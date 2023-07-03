@@ -1,0 +1,94 @@
+description: >
+    Implement to provide UEFI Secure Boot Database Signature management
+    features.
+
+    UEFI Secure Boot Database Signature is digital signature of the boot
+    loaders, drivers, and other essential components of the system. UEFI Secure
+    Boot Database maintains lists of signautres, including  signatures of code
+    that is authorized to run on the platform and signatures of code that is
+    forbidden. An OpenBMC implementation providing UEFI Secre Boot Database
+    Signature management functions. An implementation service should
+    additionally implement xyz.openbmc_project.Object.Delete to allow the
+    deletion of individual signature objects.
+
+properties:
+    - name: SignatureString
+      type: string
+      description: >
+          The string of for the signature.
+
+    - name: Format
+      type: enum[self.SignatureFormat]
+      default: Unspecified
+      description: >
+          The format of the signature.
+
+enumerations:
+    - name: SignatureFormat
+      description: >
+          The format of the signature.
+      values:
+          - name: Unspecified
+            description: >
+                Unspecified type.
+
+          - name: EFI_CERT_SHA256_GUID
+            description: >
+                This identifies a signature containing a SHA-256 hash.
+
+          - name: EFI_CERT_RSA2048_GUID
+            description: >
+                This identifies a signature containing an RSA-2048 key.
+
+          - name: EFI_CERT_RSA2048_SHA256_GUID
+            description: >
+                This identifies a signature containing a RSA-2048 signature of a
+                SHA-256 hash.
+
+          - name: EFI_CERT_SHA1_GUID
+            description: >
+                This identifies a signature containing a SHA-1 hash.
+
+          - name: EFI_CERT_RSA2048_SHA1_GUID
+            description: >
+                This identifies a signature containing a RSA-2048 signature of a
+                SHA-1 hash.
+
+          - name: EFI_CERT_X509_GUID
+            description: >
+                This identifies a signature based on an X.509 certificate.
+
+          - name: EFI_CERT_SHA224_GUID
+            description: >
+                This identifies a signature containing a SHA-224 hash.
+
+          - name: EFI_CERT_SHA384_GUID
+            description: >
+                This identifies a signature containing a SHA-384 hash.
+
+          - name: EFI_CERT_SHA512_GUID
+            description: >
+                This identifies a signature containing a SHA-512 hash.
+
+          - name: EFI_CERT_X509_SHA256_GUID
+            description: >
+                This identifies a signature containing the SHA256 hash of an
+                X.509 certificate's To-Be-Signed contents, and a time of
+                revocation.
+
+          - name: EFI_CERT_X509_SHA384_GUID
+            description: >
+                This identifies a signature containing the SHA384 hash of an
+                X.509 certificate's To-Be-Signed contents, and a time of
+                revocation.
+
+          - name: EFI_CERT_X509_SHA512_GUID
+            description: >
+                This identifies a signature containing the SHA512 hash of an
+                X.509 certificate's To-Be-Signed contents, and a time of
+                revocation.
+
+          - name: EFI_CERT_TYPE_PKCS7_GUID
+            description: >
+                This identifies a signature containing a DER-encoded PKCS #7
+                version 1.5 [RFC2315] SignedData value.

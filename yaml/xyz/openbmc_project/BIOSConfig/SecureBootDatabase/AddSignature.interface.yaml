@@ -1,0 +1,29 @@
+description: >
+    Signature management interface to add a
+    xyz.openbmc_project.BIOSConfig.SecureBootDatabase.Signature.
+
+methods:
+    - name: Add
+      description: >
+          Add a signature.
+          NotAllowed error thrown if signature already exists.
+      parameters:
+          - name: SignatureString
+            type: string
+            description: >
+                The string of for the signature.
+
+          - name: Format
+            type: enum[xyz.openbmc_project.BIOSConfig.SecureBootDatabase.Signature.SignatureFormat]
+            description: >
+                The format of the signature.
+
+      returns:
+          - name: ObjectPath
+            type: string
+            description: >
+                D-Bus object path to created object.
+
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.NotAllowed
