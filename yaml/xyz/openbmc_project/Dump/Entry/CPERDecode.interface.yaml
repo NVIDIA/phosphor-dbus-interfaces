@@ -1,0 +1,50 @@
+#Example CPER Decoded Information YAML file
+# To be moved into different interfaces based on type of error
+description: Implement this to dump CPER Decoded information on the DBus
+
+properties:
+  - name: Section_Type
+    type: string
+    description: Indicates the type of section in which the error occured
+  - name: FRU_ID
+    type: string
+    description: The FRU ID indicates the unique physical device which throws an error
+  - name: Severity
+    type: string
+    description: Indicates the section severity of the error
+  - name: NV_IPSignature
+    type: string
+    description: Indicates the IP Signature of the NV CPER Type
+  - name: NV_Severity
+    type: string
+    description: Indicates the severity of the NV CPER Type
+  - name: NV_Socket_Number
+    type: string
+    description: Indicates the socket number of the NV CPER Type
+  - name: PCIE_Vendor_ID
+    type: string
+    description: Indicates the Vendor ID of the PCIE CPER Type
+  - name: PCIE_Device_ID
+    type: string
+    description: Indicates the Device ID of the PCIE CPER Type
+  - name: PCIE_Class_Code
+    type: string
+    description: Indicates the Class Code of the PCIE CPER Type
+  - name: PCIE_Function_Number
+    type: string
+    description: Indicates the Function Number of the PCIE CPER Type
+  - name: PCIE_Device_Number
+    type: string
+    description: Indicates the Device Number of the PCIE CPER Type
+  - name: PCIE_Segment_Number
+    type: string
+    description: Indicates the Segment Number of the PCIE CPER Type
+  - name: PCIE_Device_Bus_Number
+    type: string
+    description: Indicates the Device Bus Number of the PCIE CPER Type
+  - name: PCIE_Secondary_Bus_Number
+    type: string
+    description: Indicates the Secondary Bus Number of the PCIE CPER Type
+  - name: PCIE_Slot_Number
+    type: string
+    description: Indicates the Slot Number of the PCIE CPER Type
