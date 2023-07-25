@@ -140,6 +140,34 @@ generated_others += custom_target(
     ],
 )
 
+subdir('NicAttribute')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/NicAttribute__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Control/NicAttribute.interface.yaml',  ],
+    output: [ 'NicAttribute.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Control/NicAttribute',
+    ],
+)
+
+subdir('NicTristateAttribute')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/NicTristateAttribute__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Control/NicTristateAttribute.interface.yaml',  ],
+    output: [ 'NicTristateAttribute.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Control/NicTristateAttribute',
+    ],
+)
+
 subdir('Power')
 subdir('PowerSupplyAttributes')
 generated_others += custom_target(
@@ -186,6 +214,20 @@ generated_others += custom_target(
 
 subdir('Security')
 subdir('Service')
+subdir('SmartNicOsState')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/SmartNicOsState__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Control/SmartNicOsState.interface.yaml',  ],
+    output: [ 'SmartNicOsState.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Control/SmartNicOsState',
+    ],
+)
+
 subdir('TPM')
 subdir('ThermalMode')
 generated_others += custom_target(

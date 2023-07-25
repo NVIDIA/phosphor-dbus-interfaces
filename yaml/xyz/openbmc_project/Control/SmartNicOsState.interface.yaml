@@ -1,0 +1,53 @@
+description: >
+    Implement to show smart NIC os state
+
+properties:
+    - name: SmartNicOsState
+      type: enum[self.Modes]
+      description: >
+          Smart NIC OS State
+
+enumerations:
+    - name: Modes
+      description: >
+          Smart NIC OS State modes
+      values:
+          - name: BootRom
+            description: >
+                Reset / Boot-ROM
+          - name: BL2
+            description: >
+                BL2
+          - name: BL31
+            description: >
+                BL31
+          - name: UEFI
+            description: >
+                UEFI
+          - name: OsStarting
+            description: >
+                OS starting
+          - name: OsIsRunning
+            description: >
+                OS is running
+          - name: LowPowerStandby
+            description: >
+                Low-Power standby
+          - name: FirmwareUpdateInProgress
+            description: >
+                Firmware update in progress
+          - name: OsCrashDumpInProgress
+            description: >
+                OS Crash Dump in progress
+          - name: OsCrashDumpIsComplete
+            description: >
+                OS Crash Dump is complete
+          - name: FWFaultCrashDumpInProgress
+            description: >
+                FW Fault Crash Dump in progress
+          - name: FWFaultCrashDumpIsComplete
+            description: >
+                FW Fault Crash Dump is complete
+          - name: Invalid
+            description: >
+                Extra state used for Invalid states  
