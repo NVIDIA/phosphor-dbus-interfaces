@@ -20,12 +20,12 @@ properties:
           An indication of whether this switch is enabled.
 
     - name: CurrentBandwidth
-      type: size
+      type: double
       description: >
           The current internal bandwidth of this switch in Gbps.
 
     - name: MaxBandwidth
-      type: size
+      type: double
       description: >
           The maximum internal bandwidth of this switch as currently
           configured.
