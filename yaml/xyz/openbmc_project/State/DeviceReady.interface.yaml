@@ -1,0 +1,44 @@
+description: >
+    Implement to indicate the states of any device in openbmc.
+properties:
+    - name: State
+      type: enum[self.States]
+      description: >
+        The object known state.
+    - name: DeviceType
+      type: enum[self.DeviceTypes]
+      description: >
+        The object known device type
+
+enumerations:
+    - name: States
+      description: >
+          Possible state type
+      values:
+        - name: Enabled
+          description: >
+              This Device is enabled.
+        - name: StandbyOffline
+          description: >
+              This Device is enabled but awaits an external
+              action to activate it.
+        - name: Starting
+          description: >
+              This Device is starting.
+        - name: Disabled
+          description: >
+              This Device is disabled.
+    - name: DeviceTypes
+      description: >
+          Possible device type
+      values:
+        - name: MC
+          description: >
+              This resource indicates about MC state
+        - name: ERoT
+          description: >
+              This resource indicates about ERoT state
+        - name: FPGA
+          description: >
+              This resource indicates about FPGA state
+        
