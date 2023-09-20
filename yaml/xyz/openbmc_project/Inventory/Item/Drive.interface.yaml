@@ -17,11 +17,21 @@ properties:
       type: enum[self.DriveType]
       description: >
           The type of physical form factor of the Drive.
+    - name: FormFactor
+      default: U2
+      type: enum[self.DriveFormFactor]
+      description: >
+          The form factor of the Drive inserted in this slot.
     - name: EncryptionStatus
       default: Unknown
       type: enum[self.DriveEncryptionState]
       description: >
           The current state of encryption on the drive.
+    - name: Operation
+      default: NoOperation
+      type: enum[self.OperationType]
+      description: >
+          An operation currently running on this resource.
     - name: LockedStatus
       default: Unknown
       type: enum[self.DriveLockState]
@@ -78,6 +88,58 @@ enumerations:
           - name: Unknown
             description: >
                 The Drive type is unknown.
+    - name: DriveFormFactor
+      description: >
+          Possible Drive formfactor
+      values:
+          - name: Drive2_5
+            description: >
+                A 2.5 inch drive.
+          - name: Drive3_5
+            description: >
+                A 3.5 inch drive.
+          - name: EDSFF_1U_Long
+            description: >
+                An EDSFF 1U Long (E1.L) drive.
+          - name: EDSFF_1U_Short
+            description: >
+                An EDSFF 1U Short (E1.S) drive.
+          - name: EDSFF_E3_Long
+            description: >
+                An EDSFF E3 Long (E3.L) drive.
+          - name: EDSFF_E3_Short
+            description: >
+                An EDSFF E3 Short (E3.S) drive.
+          - name: M2_22110
+            description: >
+                An M.2 22110 drive.
+          - name: M2_2230
+            description: >
+                An M.2 2230 drive.
+          - name: M2_2242
+            description: >
+                An M.2 2242 drive.
+          - name: M2_2260
+            description: >
+                An M.2 2260 drive.
+          - name: M2_2280
+            description: >
+                An M.2 2280 drive.
+          - name: OEM
+            description: >
+                An OEM-defined form factor.
+          - name: PCIeHalfLength
+            description: >
+                A half length PCIe add in card.
+          - name: PCIeSlotFullLength
+            description: >
+                A full length PCIe add in card.
+          - name: PCIeSlotLowProfile
+            description: >
+                A low profile PCIe add in card.
+          - name: U2
+            description: >
+                A U.2 drive.
     - name: DriveEncryptionState
       description: >
           Possible encryption states drives could have
@@ -104,3 +166,52 @@ enumerations:
           - name: Unknown
             description: >
                 The locked state of the drive is not known.
+    - name: OperationType
+      description: >
+          The type of the operation.
+      values:
+          - name: ChangeRAIDType
+            description: >
+                A ChangeRAIDType operation is being performed.
+          - name: ChangeStripSize
+            description: >
+                A ChangeStripSize operation is being performed.
+          - name: CheckConsistency
+            description: >
+                A CheckConsistency operation is being performed.
+          - name: Compress
+            description: >
+                A Compress operation is being performed.
+          - name: Decrypt
+            description: >
+                A Decrypt operation is being performed.
+          - name: Deduplicate
+            description: >
+                A Deduplicate operation is being performed.
+          - name: Delete
+            description: >
+                A Delete operation is being performed.
+          - name: Encrypt
+            description: >
+                An Encrypt operation is being performed.
+          - name: Format
+            description: >
+                A Format operation is being performed.
+          - name: Initialize
+            description: >
+                An Initialize operation is being performed.
+          - name: Rebuild
+            description: >
+                A Rebuild operation is being performed.
+          - name: Replicate
+            description: >
+                A Replicate operation is being performed.
+          - name: Resize
+            description: >
+                A Resize operation is being performed.
+          - name: Sanitize
+            description: >
+                A Sanitize operation is being performed.
+          - name: NoOperation
+            description: >
+                No operation is being performed.
