@@ -1,0 +1,21 @@
+description: >
+    Profile configuration and management.
+    The profiles service is responsible for managing and storing profile configurations 
+    within the BMC.
+    Pending list hold the list of pending profiles that needs actions to be done.
+
+properties:
+    - name: ActivationPendingList
+      type: array[string]
+      flags:
+          - readonly
+      description: >
+          List of profiles object paths, pending activation.
+    - name: DeletePendingList
+      type: array[string]
+      flags:
+          - readonly
+      description: >
+          List of profiles object paths, pending delete.
+
+

@@ -1,0 +1,52 @@
+description: >
+    Profile configuration and management.
+    Implementing a profile manager that mange the different profiles under the BMC. 
+    The profiles service is responsible for storing, validate and configure the BMC
+    according to the profile. 
+
+methods:
+    - name: Update
+      description: >
+          Update a profile, this can include modification of existing or adding a new profile.
+      parameters:
+          - name: isBios
+            type: boolean
+            description: >
+                Is command was trigger by Bios.
+      returns:
+          - name: profileNumber
+            type: uint16
+            description: >
+                Will return the number of the profile in the objects list.
+                In case or error, it will return MAX_UINT16
+      errors:
+          - xyz.openbmc_project.Common.Error.ResourceNotFound
+properties:
+    - name: FactoryResetStatus
+      type: enum[xyz.openbmc_project.Profiles.Statuses.Status]
+      description: >
+          Tracks the status of the factory reset. This factory reset restore to the default profile
+          in BMC, UEFI, NIC and ATF. 
+    - name: BmcVersion
+      type: uint64
+      flags:
+        - readonly
+      description: >
+          Version of the BMC, a profile can be install only if the version has the 
+          same or lower than the BMC version. 
+    - name: ActiveProfileNumber
+      default: 0xff
+      type: byte
+      flags:
+        - readonly
+      description: >
+          The current active profile. 
+    - name: OemDefaultProfileNumber
+      type: byte
+      flags:
+        - readonly
+      default: 0xff
+      description: >
+          The default OEM profile number. 
+
+

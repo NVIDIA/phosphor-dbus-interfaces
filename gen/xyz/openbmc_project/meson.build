@@ -102,6 +102,7 @@ generated_others += custom_target(
 subdir('PCIe')
 subdir('PFR')
 subdir('PLDM')
+subdir('Profiles')
 subdir('SPDM')
 subdir('ScheduledTime')
 generated_others += custom_target(

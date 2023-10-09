@@ -1,0 +1,35 @@
+description: >
+    Profile configuration and management.
+    Implementing a profile configurations interface for the profiles service. 
+
+properties:
+    - name: Version
+      type: uint64
+      description: >
+          Version of the profile, a profile can be install only if the version is the 
+          same or lower than the BMC version. 
+    - name: UUID
+      type: string
+      description: >
+          Unique ID of the profile. 
+    - name: Owner
+      type: enum[self.Owner]
+      description: >
+          The owner (priority) of the profile and the one that signed on it with its private key. 
+    - name: Description 
+      type: string
+      description: >
+          Description of the profile. Can be change by the user.   
+    - name: IsDefault 
+      type: boolean
+      description: >
+            If the profile is the default one. 
+
+enumerations:
+    - name: Owner
+      description: >
+          The possible owner of a profile
+      values:
+          - name: "User"
+          - name: "Nvidia"
+          - name: "OEM"

@@ -1,0 +1,69 @@
+description: >
+    Profile configuration and management.
+    Implementing a profile interface for the profiles service. 
+    The profile statuses.
+
+properties:
+    - name: AddProfile
+      type: enum[self.Status]
+      default: None
+      description: >
+          Track the status adding a new profile.
+    - name: ActivateProfile
+      type: enum[self.Status]
+      default: None
+      description: >
+          Track the status activating a profile.
+    - name: DeleteProfile
+      type: enum[self.Status]
+      default: None
+      description: >
+          Track the status deleting a profile.
+
+enumerations:
+    - name: Status
+      description: >
+          The status of the profile actions.
+      values:
+          - name: "None"
+            description: >
+                Not active.
+          - name: "Start"
+            description: >
+                BMC started the requested action.
+          - name: "StartBios"
+            description: >
+                Request to start action by Bios.
+          - name: "PendingBios"
+            description: >
+                BMC pending Bios to start handing pending actions.
+          - name: "FinishVerification"
+            description: >
+                Finish authenticate and verification of the profile.
+          - name: "FinishVerificationBios"
+            description: >
+                Finish authenticate and verification of the profile, request done by Bios.
+          - name: "ProfileSaved"
+            description: >
+                The profile has been saved to the BMC.
+          - name: "ProfileSavedBios"
+            description: >
+                The profile has been saved to the BMC, request done by Bios.
+          - name: "BiosStarted"
+            description: >
+                Bios started the requested action. BMC is pending the Bios to finish.
+          - name: "BiosFinished"
+            description: >
+                Bios has finish the requested action.
+          - name: "BmcStarted"
+            description: >
+                After Bios has finished, BMC start the requested action.
+          - name: "Active"
+            description: >
+                Profile is active.
+          - name: "Failed"
+            description: >
+                Failed to do the requested action.
+          
+
+
