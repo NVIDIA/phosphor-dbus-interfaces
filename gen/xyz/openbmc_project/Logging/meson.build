@@ -1,4 +1,18 @@
 # Generated file; do not modify.
+subdir('Capacity')
+generated_others += custom_target(
+    'xyz/openbmc_project/Logging/Capacity__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Logging/Capacity.interface.yaml',  ],
+    output: [ 'Capacity.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Logging/Capacity',
+    ],
+)
+
 subdir('Create')
 generated_others += custom_target(
     'xyz/openbmc_project/Logging/Create__markdown'.underscorify(),
