@@ -1,0 +1,10 @@
+description: >
+    This interface contains methods to set/get error info capacity,
+    which can be implemented to allow to set/get the capacity
+    directly over D-Bus.
+
+properties:
+    - name: InfoLogCapacity
+      type: size
+      description: >
+          Capacity of SEL info event.
