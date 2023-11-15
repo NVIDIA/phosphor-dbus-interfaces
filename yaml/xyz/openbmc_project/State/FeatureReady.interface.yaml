@@ -35,6 +35,9 @@ enumerations:
         - name: Telemetry
           description: >
               This resource indicates about telemetry status
+        - name: SensorAggregation
+          description: >
+              This resource indicates about sensor aggregation status
         - name: FWUpdate
           description: >
               This resource indicates about FW Update status
