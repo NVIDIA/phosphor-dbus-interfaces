@@ -28,6 +28,9 @@ enumerations:
         - name: Disabled
           description: >
               This Device is disabled.
+        - name: Unknown
+          description: >
+              This Device is in unknown state due to internal error.
     - name: DeviceTypes
       description: >
           Possible device type

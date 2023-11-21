@@ -28,6 +28,9 @@ enumerations:
         - name: Disabled
           description: >
               This Service is disabled.
+        - name: Unknown
+          description: >
+              This Service is in unknown state due to internal error.
     - name: ServiceTypes
       description: >
           Possible service type

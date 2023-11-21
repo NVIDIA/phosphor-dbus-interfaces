@@ -28,6 +28,9 @@ enumerations:
         - name: Disabled
           description: >
               This Feature is disabled.
+        - name: Unknown
+          description: >
+              This Feature is in unknown state due to internal error.
     - name: FeatureTypes
       description: >
           Possible feature type

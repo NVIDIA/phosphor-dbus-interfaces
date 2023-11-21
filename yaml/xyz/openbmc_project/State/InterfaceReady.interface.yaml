@@ -28,6 +28,9 @@ enumerations:
         - name: Disabled
           description: >
               This Interface is disabled.
+        - name: Unknown
+          description: >
+              This Interface is in unknown state due to internal error.
     - name: InterfaceTypes
       description: >
           Possible interface type
