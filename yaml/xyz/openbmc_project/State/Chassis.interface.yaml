@@ -64,6 +64,9 @@ enumerations:
           - name: "TransitioningToOn"
             description: >
                 Firmware is transitioning the chassis to an On state
+          - name: "Unknown"
+            description: >
+                Chassis state is in Unknown state due to internal error.
 
     - name: PowerStatus
       description: >
