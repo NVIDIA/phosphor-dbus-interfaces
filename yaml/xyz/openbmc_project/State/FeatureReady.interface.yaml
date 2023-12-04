@@ -1,0 +1,49 @@
+description: >
+    Implement to indicate the states of any feature in openbmc.
+properties:
+    - name: State
+      type: enum[self.States]
+      description: >
+        The object known state.
+    - name: FeatureType
+      type: enum[self.FeatureTypes]
+      description: >
+        The object known feature type
+
+enumerations:
+    - name: States
+      description: >
+          Possible state type
+      values:
+        - name: Enabled
+          description: >
+              This Feature is enabled.
+        - name: StandbyOffline
+          description: >
+              This Feature is enabled but awaits an external
+              action to activate it.
+        - name: Starting
+          description: >
+              This Feature is starting.
+        - name: Disabled
+          description: >
+              This Feature is disabled.
+        - name: Unknown
+          description: >
+              This Feature is in unknown state due to internal error.
+    - name: FeatureTypes
+      description: >
+          Possible feature type
+      values:
+        - name: Telemetry
+          description: >
+              This resource indicates about telemetry status
+        - name: SensorAggregation
+          description: >
+              This resource indicates about sensor aggregation status
+        - name: FWUpdate
+          description: >
+              This resource indicates about FW Update status
+        - name: MC
+          description: >
+              This resource indicates about Management Controller status

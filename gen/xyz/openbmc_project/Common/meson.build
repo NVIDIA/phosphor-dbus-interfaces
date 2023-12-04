@@ -148,6 +148,20 @@ generated_others += custom_target(
     ],
 )
 
+subdir('SCP')
+generated_others += custom_target(
+    'xyz/openbmc_project/Common/SCP__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Common/SCP.interface.yaml',  ],
+    output: [ 'SCP.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Common/SCP',
+    ],
+)
+
 subdir('SerialRedirectMode')
 generated_others += custom_target(
     'xyz/openbmc_project/Common/SerialRedirectMode__markdown'.underscorify(),

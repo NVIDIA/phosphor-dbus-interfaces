@@ -1,14 +1,117 @@
 description: >
-    Processor Remote debug  settings.
+  Processor Remote debug control
 properties:
-    - name: Enabled
-      type: boolean
+    - name: JtagDebug
+      type: enum[self.DebugState]
       description: >
-          Whether remote debug mode is enabled for the processor resource.
+          JTAG_ENABLE, Jtag debug enable
+      flags:
+          - readonly
+
+    - name: DeviceDebug
+      type: enum[self.DebugState]
+      description: >
+          DEVICEEN, Device debug enabled
+      flags:
+          - readonly
+
+    - name: SecurePrivilegeNonInvasiveDebug
+      type: enum[self.DebugState]
+      description: >
+        SPNIDEN, Secure Privilege Non-Invasive Debug Enable
+      flags:
+          - readonly
+
+    - name: SecurePrivilegeInvasiveDebug
+      type: enum[self.DebugState]
+      description: >
+          SPIDEN, Secure Privilege Invasive Debug Enable
+      flags:
+          - readonly
+
+    - name: NonInvasiveDebug
+      type: enum[self.DebugState]
+      description: >
+          NIDEN, non-invasive debug enable
+      flags:
+          - readonly
+
+    - name: InvasiveDebug
+      type: enum[self.DebugState]
+      description: >
+          DBGEN, invasive debug enable
+      flags:
+          - readonly
+
+    - name: Timeout
+      type: uint32
+      default: 30
+      description: >
+          Set a timeout of the remote debug in minutes. It is needed to refresh the timeout to keep the remote debug enabled.
+          Note that a 30 mins of timeout would be set by default unless a new timeout is set by the BMC.
+
+methods:
+    - name: Enable
+      description: >
+          Request to enable the debug policy
+      parameters:
+        - name: DebugPolicy
+          type: enum[self.DebugPolicy]
       errors:
-          # Indicate that this property is permanently unable to be changed.
-          - xyz.openbmc_project.Common.Error.NotAllowed
-          # Indicate that this property is temporarily unable to be changed.
-          - xyz.openbmc_project.Common.Error.Unavailable
-          # Indicate a failure to apply changes to the processor.
-          - xyz.openbmc_project.Common.Device.Error.WriteFailure
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+        - xyz.openbmc_project.Common.Error.NotAllowed
+
+    - name: Disable
+      description: >
+          Request to disable debug interface
+      parameters:
+          - name: DebugPolicy
+            type: enum[self.DebugPolicy]
+      errors:
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+
+enumerations:
+    - name: DebugState
+      description: >
+          Debug policy state
+      values:
+          - name: Enabled
+            description: >
+                Always enabled or toggled on
+          - name: Disabled
+            description: >
+                Disconnected but toggleable
+          - name: Offline
+            description: >
+                Offline, cannot be enabled
+          - name: Unknown
+            description: >
+                State is unknown.
+
+    - name: DebugPolicy
+      description: >
+          Available Debug Policy
+      values:
+          - name: JtagDebug
+            description: >
+                JTAG_ENABLE, Jtag debug enable
+
+          - name: DeviceDebug
+            description: >
+                DEVICEEN, Device debug enabled
+
+          - name: SecurePrivilegeNonInvasiveDebug
+            description: >
+                SPNIDEN, Secure Privilege Non-Invasive Debug Enable
+
+          - name: SecurePrivilegeInvasiveDebug
+            description: >
+                SPIDEN, Secure Privilege Invasive Debug Enable
+
+          - name: NonInvasiveDebug
+            description: >
+                NIDEN, non-invasive debug enable
+
+          - name: InvasiveDebug
+            description: >
+                DBGEN, invasive debug enable

@@ -29,6 +29,20 @@ generated_others += custom_target(
     ],
 )
 
+subdir('AggregationMetric')
+generated_others += custom_target(
+    'xyz/openbmc_project/Sensor/AggregationMetric__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Sensor/AggregationMetric.interface.yaml',  ],
+    output: [ 'AggregationMetric.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Sensor/AggregationMetric',
+    ],
+)
+
 subdir('Device')
 generated_others += custom_target(
     'xyz/openbmc_project/Sensor/Device__markdown'.underscorify(),

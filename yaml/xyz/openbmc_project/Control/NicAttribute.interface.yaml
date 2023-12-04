@@ -1,0 +1,24 @@
+description: >
+    Implement to set/get NIC attributes
+
+properties:
+    - name: NicAttribute
+      type: enum[self.Modes]
+      description: >
+          NicAttribute support some of NIC attributes
+
+enumerations:
+    - name: Modes
+      description: >
+          NIC attribute modes
+      values:
+
+          - name: Disabled
+            description: >
+                Disabled
+          - name: Enabled
+            description: >
+                Enabled
+          - name: Invalid
+            description: >
+                 Extra state used for Invalid states

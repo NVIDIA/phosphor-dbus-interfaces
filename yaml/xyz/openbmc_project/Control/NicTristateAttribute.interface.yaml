@@ -1,0 +1,26 @@
+description: >
+    Implement to set/get NIC tristate attributes
+
+properties:
+    - name: NicTristateAttribute
+      type: enum[self.Modes]
+      description: >
+          NicTristateAttribute support some of NIC attributes
+
+enumerations:
+    - name: Modes
+      description: >
+          NIC tristate attribute modes
+      values:
+          - name: Default
+            description: >
+                Factory reset
+          - name: Enabled
+            description: >
+                Enabled
+          - name: Disabled
+            description: >
+                Disabled
+          - name: Invalid
+            description: >
+                 Extra state used for Invalid states

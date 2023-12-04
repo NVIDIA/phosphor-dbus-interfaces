@@ -1,0 +1,52 @@
+description: >
+    Implement to indicate the states of an interface in openbmc.
+properties:
+    - name: State
+      type: enum[self.States]
+      description: >
+        The object known state.
+    - name: InterfaceType
+      type: enum[self.InterfaceTypes]
+      description: >
+        The object known interface type
+
+enumerations:
+    - name: States
+      description: >
+          Possible state type
+      values:
+        - name: Enabled
+          description: >
+              This Interface is enabled.
+        - name: StandbyOffline
+          description: >
+              This Interface is enabled but awaits an external
+              action to activate it.
+        - name: Starting
+          description: >
+              This Interface is starting.
+        - name: Disabled
+          description: >
+              This Interface is disabled.
+        - name: Unknown
+          description: >
+              This Interface is in unknown state due to internal error.
+    - name: InterfaceTypes
+      description: >
+          Possible interface type
+      values:
+        - name: USB
+          description: >
+              This resource indicates about USB interface
+        - name: PCIe
+          description: >
+              This resource indicates about PCIe interface
+        - name: SSIF
+          description: >
+              This resource indicates about SSIF interface
+        - name: SMBus
+          description: >
+              This resource indicates about SMBus interface
+        - name: Ethernet
+          description: >
+              This resource indicates about Ethernet interface 

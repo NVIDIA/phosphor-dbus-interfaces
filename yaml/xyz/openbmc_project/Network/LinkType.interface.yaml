@@ -1,0 +1,26 @@
+description: >
+    This defines the link type of the network.
+
+properties:
+    - name: LinkType
+      type: enum[self.PossibleLinks]
+      default: Ethernet
+      flags:
+      - readonly
+      description: >
+        Current link type of the network. Read only.
+      errors:
+      - xyz::openbmc_project.Common.Error.NotAllowed
+
+enumerations:
+  - name: PossibleLinks
+    description: >
+        List of possible link types of the network.
+        LinkType is the active link type from this list.
+    values:
+      - name: Ethernet
+        description: >
+          Network link type- Ethernet.
+      - name: InfiniBand
+        description: >
+          Network link type- InfiniBand.

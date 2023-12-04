@@ -1,0 +1,119 @@
+description: >
+  Implement to provide Static Power Hint calculator for querying TDP of CPU to setting it ahead of running the application.
+  Static Power Hint = function(workload factor, CPU Clock, Temperature)
+
+properties:
+  - name: PowerEstimate
+    type: double
+    description: >
+      Estimated Power consumption in Watts.
+    flags:
+      - readonly
+  - name: Valid
+    type: boolean
+    description: >
+      Indicating the Power value is valid
+    flags:
+      - readonly
+  - name: CpuClockFrequency
+    type: double
+    description: >
+      The CPU Clock Frequency parameter for this estimation.
+    flags:
+      - readonly
+  - name: MaxCpuClockFrequency
+    type: double
+    description: >
+      Maximum allowable value of CPU Clock Frequency parameter.
+    flags:
+      - readonly
+  - name: MinCpuClockFrequency
+    type: double
+    description: >
+      Minimum allowable value of CPU Clock Frequency parameter.
+    flags:
+      - readonly
+  - name: Temperature
+    type: double
+    description: >
+      The Temperature parameter for this estimation.
+    flags:
+      - readonly
+  - name: MaxTemperature
+    type: double
+    description: >
+      Maximum allowable value of Temperature parameter.
+    flags:
+      - readonly
+  - name: MinTemperature
+    type: double
+    description: >
+      minimum allowable value of Temperature parameter.
+    flags:
+      - readonly
+  - name: WorkloadFactor
+    type: double
+    description: >
+      The WorkloadFactor parameter for this estimation.
+    flags:
+      - readonly
+  - name: MaxWorkloadFactor
+    type: double
+    description: >
+      Maximum allowable value of WorkloadFactor parameter.
+    flags:
+      - readonly
+  - name: MinWorkloadFactor
+    type: double
+    description: >
+      minimum allowable value of WorkloadFactor parameter.
+    flags:
+      - readonly
+  - name: StateOfLastEstimatePower
+    type: enum[self.StateOfEstimatePower]
+    default: "Invalid"
+    description: >
+      The state for last time of EstimatePower method call.
+
+methods:
+  - name: EstimatePower
+    description: >
+      This method estimates the power consumption according the input CPU clock frequency,
+      Workload factor and temperature.
+    parameters:
+      - name: CpuClockFrequency
+        type: double
+        description: >
+          CPU Clock Frequency in Hertz
+      - name: WorkloadFactor
+        type: double
+        description: >
+          Workload Factor
+      - name: Temperature
+        type: double
+        description: >
+          Temperature in degrees Celsius
+    errors:
+      - xyz.openbmc_project.Common.Error.Unavailable
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+
+enumerations:
+  - name: StateOfEstimatePower
+    description: >
+      The state of EstimatePower method
+    values:
+      - name: "Completed"
+        description: >
+          EstimatePower operation is completed. PowerEstimate property is updated with the calculated value.
+      - name: "InProgress"
+        description: >
+          EstimatePower operation is in progress. PowerEstimate property is not ready yet.
+      - name: "Failed"
+        description: >
+          EstimatePower operation failed. Retry the EstimatePower operation to calculate PowerEstimate.
+      - name: "InvalidArgument"
+        description: >
+          EstimatePower operation failed due to invalid argument. Retry the EstimatePower operation with valid arguments
+      - name: "Invalid"
+        description: >
+          EstimatePower operation has not called since service started. PowerEstimate property is invalid.

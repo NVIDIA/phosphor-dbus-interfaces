@@ -6,6 +6,12 @@ properties:
       type: enum[self.Sources]
       description: >
           The desired boot image source.
+    - name: AllowedSources
+      type: array[enum[self.Sources]]
+      description: >
+          Implement a list of sources to boot images from.
+          The list will be set by the UEFI to let the user 
+          know what are the allowed values.
 
 enumerations:
     - name: Sources
@@ -48,3 +54,12 @@ enumerations:
         - name: HTTP
           description: >
             Boot from a remote source over http/https.
+        - name: UefiShell
+          description: >
+            Boot from UEFI shell.
+        - name: UefiDevicePath
+          description: >
+            Boot from the UEFI device.
+        - name: UefiBootOption
+          description: >
+            Boot from the UEFI device in the Next Boot only.

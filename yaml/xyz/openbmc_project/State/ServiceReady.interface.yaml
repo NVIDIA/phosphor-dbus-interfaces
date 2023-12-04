@@ -1,0 +1,52 @@
+description: >
+    Implement to indicate the states of a service in openbmc.
+properties:
+    - name: State
+      type: enum[self.States]
+      description: >
+        The object known state.
+    - name: ServiceType
+      type: enum[self.ServiceTypes]
+      description: >
+        The object known service type
+
+enumerations:
+    - name: States
+      description: >
+          Possible state type
+      values:
+        - name: Enabled
+          description: >
+              This Service is enabled.
+        - name: StandbyOffline
+          description: >
+              This Service is enabled but awaits an external
+              action to activate it.
+        - name: Starting
+          description: >
+              This Service is starting.
+        - name: Disabled
+          description: >
+              This Service is disabled.
+        - name: Unknown
+          description: >
+              This Service is in unknown state due to internal error.
+    - name: ServiceTypes
+      description: >
+          Possible service type
+      values:
+        - name: MCTP
+          description: >
+              This resource indicates about MCTP service
+        - name: NSM
+          description: >
+              This resource indicates about NSM service
+        - name: PLDM
+          description: >
+              This resource indicates about PLDM service
+        - name: SSIFBridge
+          description: >
+              This resource indicates about SSIFBridge service
+        - name: SMBPBI
+          description: >
+              This resource indicates about SMBPBI service      

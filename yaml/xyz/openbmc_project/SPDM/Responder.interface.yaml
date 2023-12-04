@@ -197,7 +197,7 @@ properties:
           It should be a random number of exactly 32 bytes.
           It may be provided by an SPDM D-Bus client or the SPDM daemon itself.
       flags:
-          - readonly  
+          - readonly
 
     - name: SessionId
       type: array[uint32]
@@ -210,6 +210,31 @@ properties:
           The final session ID = Concatenate (ReqSessionID, RspSessionID).
           For now this parameter is optional as the current SPDM daemon implementation does not provide
           secure sessions implementation.
+
+    - name: Capabilities
+      type: uint32
+      flags:
+        - readonly
+      description: >
+        Responder capabilities according to the Responder flags fields definition in
+        DSP0274_1.1.0c.
+        Bits:
+          - 0:      CACHE_CAP
+          - 1:      CERT_CAP
+          - 2:      CHAL_CAP
+          - 3-4:    MEAS_CAP
+          - 5:      MEAS_FRESH_CAP
+          - 6:      ENCRYPT_CAP
+          - 7:      MAC_CAP
+          - 8:      MUT_AUTH_CAP
+          - 9:      KEY_EX_CAP
+          - 10-11:  PSK_CAP
+          - 12:     ENCAP_CAP
+          - 13:     HBEAT_CAP
+          - 14:     KEY_UPD_CAP
+          - 15:     HANDSHAKE_IN_THE_CLEAR_CAP
+          - 16:     PUB_KEY_ID_CAP
+          - 17-31:  RESERVED
 
 enumerations:
     - name: HashingAlgorithms

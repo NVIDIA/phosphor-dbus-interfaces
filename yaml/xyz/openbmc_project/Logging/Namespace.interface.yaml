@@ -60,6 +60,12 @@ methods:
       errors:
         - xyz.openbmc_project.Common.Error.ResourceNotFound
 
+properties:
+    - name: AutoClearResolvedLogEnabled
+      type: boolean
+      description: >
+          Gets the value of internal property, true = remove Resolved Logs
+
 enumerations:
     - name: ResolvedFilterType
       description: >

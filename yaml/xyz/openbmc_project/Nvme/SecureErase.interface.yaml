@@ -1,0 +1,48 @@
+description: >
+    An interface to do drive sanitize method and wipe out the drive's content
+    Some sanitize methods may take longer time to finish erasing so
+    the method also implments xyz.openbmc_project.Common.Progress to track the
+    progress of the secure erase and the result.
+
+properties:
+    - name: SanitizeCapability
+      type: array[enum[self.EraseMethod]]
+      flags:
+          - readonly
+      description: >
+          This property shall indicate the Drive Sanitize cabability.
+
+methods:
+    - name: Erase
+      description: >
+          Erase the contents of the volume.
+      parameters:
+          - name: OverwritePasses
+            type: uint16
+            description: >
+                The number of times to overwrite the drive if performing an
+                overwrite type of sanitization.
+          - name: EraseType
+            type: enum[self.EraseMethod]
+            description: >
+                Describes what type of erase is done.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.ResourceNotFound
+          - xyz.openbmc_project.Common.Error.NotAllowed
+
+enumerations:
+    - name: EraseMethod
+      description: >
+          Indicates which erase method/step is being requested.
+      values:
+          - name: CryptoErase
+            description: >
+                Destroys the encryption key slots, preventing decyrption.
+          - name: BlockErase
+            description: >
+                Deleting all logical block addresses but leaving the data on
+                the drive
+          - name: Overwrite
+            description: >
+                Overwriting data by writing an implementation specific pattern

@@ -20,6 +20,47 @@ properties:
       flags:
         - readonly
 
+    - name: PowerLimitThrottleDuration
+      type: uint64
+      description: Total duration of throttling in nano seconds caused by a power limit of the processor since reset.
+      flags:
+        - readonly
+    - name: ThermalLimitThrottleDuration
+      type: uint64
+      description: Total duration of throttling in nano seconds caused by a thermal limit of the processor since reset.
+      flags:
+        - readonly
+    - name: PCIeTXBytes
+      type: uint32
+      description: Total number of bytes sent by the PCIe transmitter.
+      flags:
+        - readonly
+    - name: PCIeRXBytes
+      type: uint32
+      description: Total number of bytes received by the PCIe receiver.
+      flags:
+        - readonly
+    - name: HardwareViolationThrottleDuration
+      type: uint64
+      description: Total duration of throttling in nano seconds caused by hardware violation of the processor since reset.
+      flags:
+        - readonly
+    - name: GlobalSoftwareViolationThrottleDuration
+      type: uint64
+      description: Total duration of throttling in nano seconds caused by global software violation of the processor since reset.
+      flags:
+        - readonly
+    - name: AccumulatedGPUContextUtilizationDuration
+      type: uint32
+      description:  Total duration of the accumulated GPU context utilization of the processor since reset in nano seconds.
+      flags:
+        - readonly
+    - name: AccumulatedSMUtilizationDuration
+      type: uint32
+      description:  Total duration of the accumulated SM utilization of the processor since reset in nano seconds.
+      flags:
+        - readonly
+
 enumerations:
     - name: PerformanceStates
       description: >

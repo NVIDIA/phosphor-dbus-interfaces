@@ -46,6 +46,20 @@ generated_others += custom_target(
 )
 
 subdir('Decorator')
+subdir('DeviceReady')
+generated_others += custom_target(
+    'xyz/openbmc_project/State/DeviceReady__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/State/DeviceReady.interface.yaml',  ],
+    output: [ 'DeviceReady.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/State/DeviceReady',
+    ],
+)
+
 subdir('Drive')
 generated_others += custom_target(
     'xyz/openbmc_project/State/Drive__markdown'.underscorify(),
@@ -61,6 +75,20 @@ generated_others += custom_target(
     ],
 )
 
+subdir('FeatureReady')
+generated_others += custom_target(
+    'xyz/openbmc_project/State/FeatureReady__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/State/FeatureReady.interface.yaml',  ],
+    output: [ 'FeatureReady.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/State/FeatureReady',
+    ],
+)
+
 subdir('Host')
 generated_others += custom_target(
     'xyz/openbmc_project/State/Host__markdown'.underscorify(),
@@ -73,6 +101,20 @@ generated_others += custom_target(
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/State/Host',
+    ],
+)
+
+subdir('InterfaceReady')
+generated_others += custom_target(
+    'xyz/openbmc_project/State/InterfaceReady__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/State/InterfaceReady.interface.yaml',  ],
+    output: [ 'InterfaceReady.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/State/InterfaceReady',
     ],
 )
 
@@ -164,6 +206,20 @@ generated_others += custom_target(
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/State/ScheduledHostTransition',
+    ],
+)
+
+subdir('ServiceReady')
+generated_others += custom_target(
+    'xyz/openbmc_project/State/ServiceReady__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/State/ServiceReady.interface.yaml',  ],
+    output: [ 'ServiceReady.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/State/ServiceReady',
     ],
 )
 

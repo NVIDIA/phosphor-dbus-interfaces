@@ -1,0 +1,94 @@
+description: >
+    Implement to provide GPU metric properties.
+properties:
+    - name: GraphicsEngineActivityPercent 
+      type: double
+      description: Graphcis engine activity as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: SMActivityPercent
+      type: double
+      description: SM activity as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+          - readonly
+    - name: SMOccupancyPercent 
+      type: double
+      description: SM occupancy as a percentage, which is calculated by dividing the warps by the maximum warps.
+      flags:
+          - readonly
+    - name: TensorCoreActivityPercent
+      type: double
+      description: Tensor core activity as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: FP64ActivityPercent
+      type: double
+      description: FP64 activity as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: FP32ActivityPercent
+      type: double
+      description: FP32 activity as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: FP16ActivityPercent
+      type: double
+      description: FP16 activity as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: PCIeRawTxBandwidthGbps
+      type: double
+      description: current bandwidth transferred on PCIe in gigabit per second (Gbit/s). 
+      flags:
+        - readonly
+    - name: PCIeRawRxBandwidthGbps
+      type: double
+      description: current bandwidth received on PCIe in gigabit per second (Gbit/s).
+      flags:
+        - readonly
+    - name: NVDecUtilizationPercent
+      type: double
+      description: NvDec utilization as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: NVJpgUtilizationPercent
+      type: double
+      description: NvJPG utilization as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: NVOfaUtilizationPercent
+      type: double
+      description:  NvOFA utilization as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: IntergerActivityUtilizationPercent
+      type: double
+      description:  Integer activity utilization as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: DMMAUtilizationPercent
+      type: double
+      description:  DMMA utilization as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: HMMAUtilizationPercent
+      type: double
+      description:  HMMA utilization as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: IMMAUtilizationPercent
+      type: double
+      description:  IMMA utilization as a percentage, which is calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: NVDecInstanceUtilizationPercent
+      type: array[double]
+      description:  Array of NvDec instance utilization as a percentage, calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+    - name: NVJpgInstanceUtilizationPercent
+      type: array[double]
+      description: Array of NvJPG instance utilization as a percentage, calculated by dividing the active cycles by the total cycles.
+      flags:
+        - readonly
+

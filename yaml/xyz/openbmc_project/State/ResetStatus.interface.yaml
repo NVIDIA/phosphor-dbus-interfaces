@@ -1,5 +1,5 @@
 description: >
-   Implement to provide GPU Reset Requirements.
+   Implement to provide Reset Requirements.
 
 properties:
     - name: ResetRequired
@@ -12,5 +12,11 @@ properties:
       type: boolean
       description: >
             Represents Drain and Reset Requirement.
+      flags:
+          - readonly
+    - name: ResetAsserted
+      type: boolean
+      description: >
+            Represents whether Reset is Asserted or not.
       flags:
           - readonly

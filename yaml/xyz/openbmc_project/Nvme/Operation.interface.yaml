@@ -1,0 +1,60 @@
+description: >
+    An interface to do drive opertion
+
+properties:
+    - name: Operation
+      default: NoOperation
+      type: enum[self.OperationType]
+      description: >
+          An operation currently running on this resource.
+
+enumerations:
+    - name: OperationType
+      description: >
+          The type of the operation.
+      values:
+          - name: ChangeRAIDType
+            description: >
+                A ChangeRAIDType operation is being performed.
+          - name: ChangeStripSize
+            description: >
+                A ChangeStripSize operation is being performed.
+          - name: CheckConsistency
+            description: >
+                A CheckConsistency operation is being performed.
+          - name: Compress
+            description: >
+                A Compress operation is being performed.
+          - name: Decrypt
+            description: >
+                A Decrypt operation is being performed.
+          - name: Deduplicate
+            description: >
+                A Deduplicate operation is being performed.
+          - name: Delete
+            description: >
+                A Delete operation is being performed.
+          - name: Encrypt
+            description: >
+                An Encrypt operation is being performed.
+          - name: Format
+            description: >
+                A Format operation is being performed.
+          - name: Initialize
+            description: >
+                An Initialize operation is being performed.
+          - name: Rebuild
+            description: >
+                A Rebuild operation is being performed.
+          - name: Replicate
+            description: >
+                A Replicate operation is being performed.
+          - name: Resize
+            description: >
+                A Resize operation is being performed.
+          - name: Sanitize
+            description: >
+                A Sanitize operation is being performed.
+          - name: NoOperation
+            description: >
+                No operation is being performed.
