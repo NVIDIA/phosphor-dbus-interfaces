@@ -1,0 +1,101 @@
+description: >
+    This interface provides the Board Manager Metric values for resource
+    utilization.
+
+properties:
+    - name: Value
+      type: double
+      description: >
+          The current metric value.
+      flags:
+          - readonly
+    - name: MaxValue
+      type: double
+      default: infinity
+      flags:
+          - readonly
+      description: >
+          The maximum supported metric value.
+    - name: MinValue
+      type: double
+      default: -infinity
+      flags:
+          - readonly
+      description: >
+          The minimum supported metric value.
+    - name: Unit
+      type: enum[self.Unit]
+      description: >
+          The unit for metric value. For example, memory in bytes, CPU in
+          percent, reboots in count.
+      flags:
+          - const
+
+enumerations:
+    - name: Unit
+      description: >
+          Metric value unit.
+      values:
+          - name: Bytes
+            description: >
+                Unit to indicate bytes.
+          - name: Count
+            description: >
+                Unit to indicate counts.
+          - name: Percent
+            description: >
+                Unit to indicate percentage.
+
+associations:
+    - name: measuring
+      description: >
+          Metrics measure the inventory item's resource utilization, therefore
+          implement an association to the inventory item.
+      reverse_names:
+          - measured_by
+      required_endpoint_interfaces:
+          - xyz.openbmc_project.Inventory.Item
+
+paths:
+    - namespace: /xyz/openbmc_project/metric
+      description: >
+          The root path for all Metrics.
+      segments:
+          - name: TotalMemory
+            description: >
+                The total memory metric.
+            value: memory/total
+          - name: FreeMemory
+            description: >
+                The free memory metric.
+            value: memory/free
+          - name: AvailableMemory
+            description: >
+                The available memory metric.
+            value: memory/available
+          - name: SharedMemory
+            description: >
+                The shared memory utilization.
+            value: memory/shared
+          - name: BufferedAndCachedMemory
+            description: >
+                The buffered and cached memory memory utilization.
+            value: memory/buffered_and_cached
+          - name: KernelCPU
+            description: >
+                The kernel CPU utilization.
+            value: cpu/kernel
+          - name: UserCPU
+            description: >
+                The user CPU utilization.
+            value: cpu/user
+          - name: RebootCount
+            description: >
+                Reboot statistic to track number of times device rebooted
+                without failure.
+            value: reboot/count
+          - name: RebootCountWithFailure
+            description: >
+                Reboot statistic to track number of times device rebooted
+                because of a failure.
+            value: reboot/count_with_failure

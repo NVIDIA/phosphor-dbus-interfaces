@@ -71,3 +71,19 @@ associations:
       reverse_name: powering
       required_endpoint_interfaces:
           - xyz.openbmc_project.Inventory.Item.PowerSupply
+    - name: measured_by
+      description: >
+          Objects that implement Item can optionally implement the 'measured_by'
+          association to provide a link to one or more metrics.
+      reverse_name: measuring
+      required_endpoint_interfaces:
+          - xyz.openbmc_project.Metrics
+    - name: monitored_by
+      description: >
+          Any inventory Item (usually Boards or Chassis) can optionally
+          implement the 'monitored_by' association to provide a link to the
+          chassis intrusion sensor that is monitoring its security state against
+          intrusion events.
+      reverse_name: monitoring
+      required_endpoint_interfaces:
+          - xyz.openbmc_project.Chassis.Intrusion

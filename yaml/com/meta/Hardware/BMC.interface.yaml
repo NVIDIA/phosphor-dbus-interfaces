@@ -9,5 +9,7 @@ enumerations:
       values:
           - name: Bletchley
           - name: GreatLakes
+          - name: Harma
+          - name: Minerva
           - name: TiogaPass
           - name: YosemiteV2
