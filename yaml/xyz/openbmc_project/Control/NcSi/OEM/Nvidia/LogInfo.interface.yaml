@@ -1,0 +1,16 @@
+description: >
+    Implement command log info from NIC, over NC-SI
+
+methods:
+    - name: getLogInfo
+      description: >
+          Execute a command to request log info from NIC over NC-SI
+      parameters:
+          - name: readHandle
+            type: uint32
+            description: The log entry to be requested
+      returns:
+          - name: Results
+            type: struct[uint32, uint32, uint32, uint32, uint32, uint32, array[byte]]
+            description: >
+                The result of the command.
