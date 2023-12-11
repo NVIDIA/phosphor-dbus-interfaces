@@ -1,0 +1,37 @@
+description: >
+    This defines a Port to be exposed for system management.
+    It contains properties that describe a port of a switch, controller,
+    chassis, or any other device that could be connected to another entity.
+
+properties:
+    - name: TXNoProtocolBytes
+      type: uint64
+      description: >
+          Transmitted NVLink data throughput without 
+          protocol overhead.
+      flags:
+          - readonly
+
+    - name: RXNoProtocolBytes
+      type: uint64
+      description: >
+          Received NVLink data throughput without 
+          protocol overhead.
+      flags:
+          - readonly
+
+    - name: RuntimeError
+      type: uint16
+      description: >
+          This property shall indicate whether the NVLink
+           runtime error was detected.
+      flags:
+          - readonly
+
+    - name: TrainingError
+      type: uint16
+      description: >
+          This property shall indicate whether the NVLink
+          training error was detected.
+      flags:
+          - readonly

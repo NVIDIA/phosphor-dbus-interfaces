@@ -1,0 +1,69 @@
+description: >
+    This defines a Port to be exposed for system management.
+    It contains properties that describe a port of a switch, controller,
+    chassis, or any other device that could be connected to another entity.
+
+properties:
+    - name: TXWidth
+      type: uint16
+      description: >
+          This property shall contain the total number of lanes for transmitting packets.
+      flags:
+          - readonly 
+
+    - name: RXWidth
+      type: uint16
+      description: >
+          This property shall contain the total number of lanes for receiving packets.
+      flags:
+          - readonly
+
+    - name: ReplayCount
+      type: uint32
+      description: >
+          Nvlink replay error count.
+      flags:
+          - readonly
+
+    - name: FlitCRCCount
+      type: uint32
+      description: >
+          Nvlink flit CRC error count.
+      flags:
+          - readonly
+
+    - name: RecoveryCount
+      type: uint32
+      description: >
+          Nvlink recovery error count.
+      flags:
+          - readonly
+
+    - name: DataCRCCount
+      type: uint32
+      description: >
+          Nvlink data CRC error count.
+      flags:
+          - readonly
+
+    - name: ProtocolVersion
+      type: string
+      description: >
+          The protocol version being sent over this port.
+          Example: "4.0" or "1.1"
+
+    - name: MaxSpeed
+      type: size
+      description: >
+          The maximum speed of this port in Gbps.
+
+    - name: Width
+      type: size
+      description: >
+          The number of lanes, phys, or other physical transport links
+          that this port contains.
+
+    - name: ActiveWidth
+      type: size
+      description: >
+          The number of active lanes for this interface.

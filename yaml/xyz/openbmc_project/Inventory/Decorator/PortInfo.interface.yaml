@@ -1,0 +1,66 @@
+description: >
+    This defines a Port to be exposed for system management.
+    It contains properties that describe a port of a switch, controller,
+    chassis, or any other device that could be connected to another entity.
+
+properties:
+    - name: Type
+      type: enum[self.PortType]
+      default: UpstreamPort
+      description: >
+          Indicates the port type.
+
+    - name: Protocol
+      type: enum[self.PortProtocol]
+      default: Ethernet
+      description: >
+          The protocol being sent over this port.
+
+    - name: CurrentSpeed
+      type: size
+      description: >
+          The current speed of this port in Gbps.
+
+enumerations:
+    - name: PortType
+      description: >
+          Possible port types.
+      values:
+        - name: BidirectionalPort
+          description: >
+              This port connects to any type of device.
+        - name: DownstreamPort
+          description: >
+              This port connects to a target device.
+        - name: InterswitchPort
+          description: >
+              This port connects to another switch.
+        - name: ManagementPort
+          description: >
+              This port connects to a switch manager.
+        - name: UnconfiguredPort
+          description: >
+              This port has not yet been configured.
+        - name: UpstreamPort
+          description: >
+              This port connects to a host device.
+
+    - name: PortProtocol
+      description: >
+          Possible protocols supported by port.
+      values:
+        - name: Ethernet
+          description: >
+              An Ethernet.
+        - name: FC
+          description: >
+              A Fibre Channel.
+        - name: NVLink
+          description: >
+              An NVLink.
+        - name: OEM
+          description: >
+              An OEM-specific.
+        - name: PCIe
+          description: >
+              An PCIe.

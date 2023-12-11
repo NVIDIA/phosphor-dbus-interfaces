@@ -1,0 +1,188 @@
+description: >
+    This defines a Port Metric to be exposed for system management.
+    It contains properties that describe different counters of ports
+    of device.
+
+properties:
+    - name: TXPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of packets transmitted on port.
+      flags:
+          - readonly
+
+    - name: RXPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of packets received on port.
+      flags:
+          - readonly
+
+    - name: RXMulticastPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of multicast packets received on a device.
+      flags:
+          - readonly
+
+    - name: RXUnicastPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of unicast packets received on a device.
+      flags:
+          - readonly
+
+    - name: MalformedPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of malformed packets.
+      flags:
+          - readonly
+
+    - name: VL15DroppedPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of VL15 dropped packets.
+      flags:
+          - readonly
+
+    - name: RXErrors
+      type: uint64
+      default: 0
+      description: >
+          The total number of packets containing errors.
+      flags:
+          - readonly
+
+    - name: VL15TXPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of packets transmitted on a device [VL15].
+      flags:
+          - readonly
+
+    - name: VL15TXData
+      type: uint64
+      default: 0
+      description: >
+          Transmitted data from the port [VL15].
+      flags:
+          - readonly
+
+    - name: TXUnicastPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of unicast packets transmitted on a device.
+      flags:
+          - readonly
+
+    - name: TXMulticastPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of multicast packets transmitted on a device.
+      flags:
+          - readonly
+
+    - name: TXBroadcastPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of broadcast packets transmitted on a device.
+      flags:
+          - readonly
+
+    - name: TXDiscardPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of discarded packets during transmision.
+      flags:
+          - readonly
+
+    - name: MTUDiscard
+      type: uint64
+      default: 0
+      description: >
+          The total number of discarded due to MTU [maximum transmit unit].
+      flags:
+          - readonly
+
+    - name: IBG2RXPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of packets received on a device [IBG2].
+      flags:
+          - readonly
+
+    - name: IBG2TXPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of packets transmitted on a device [IBG2].
+      flags:
+          - readonly
+
+    - name: SymbolError
+      type: uint64
+      default: 0
+      description: >
+          The total number of minor link errors detected.
+      flags:
+          - readonly
+
+    - name: LinkErrorRecoveryCounter
+      type: uint64
+      description: >
+          Link recovery error count.
+      flags:
+          - readonly
+
+    - name: LinkDownCount
+      type: uint64
+      default: 0
+      description: >
+          The total number of times link was downed.
+      flags:
+          - readonly
+
+    - name: RXRemotePhysicalErrorPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of remote physical error received on port.
+      flags:
+          - readonly
+
+    - name: RXSwitchRelayErrorPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of switch relay error received on the port.
+      flags:
+          - readonly
+
+    - name: QP1DroppedPkts
+      type: uint64
+      default: 0
+      description: >
+          The total number of Qp1 dropped packets.
+      flags:
+          - readonly
+
+    - name: TXWait
+      type: uint64
+      default: 0
+      description: >
+          The total number of times the transmission was waiting.
+      flags:
+          - readonly
