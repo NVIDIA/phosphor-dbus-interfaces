@@ -10,7 +10,7 @@ properties:
       description: >
         Current link type of the network. Read only.
       errors:
-      - xyz::openbmc_project.Common.Error.NotAllowed
+      - xyz.openbmc_project.Common.Error.NotAllowed
 
 enumerations:
   - name: PossibleLinks

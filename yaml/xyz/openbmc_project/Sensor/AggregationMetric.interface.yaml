@@ -2,7 +2,7 @@ description: >
     Implement to provide aggregated metrics for all sensors.
 properties:
     - name: SensorMetrics
-      type: dict[string, struct[variant[string, int32, int16, int64, uint16, uint32, uint64, double, boolean], uint64, path]]
+      type: dict[string, struct[variant[string, int32, int16, int64, uint16, uint32, uint64, double, boolean], uint64, object_path]]
       description: >
           A map that stores mapping from sensor name to its value,
           chassis path and timestamp when the sensor reading got refreshed
