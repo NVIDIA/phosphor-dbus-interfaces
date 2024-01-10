@@ -3,8 +3,19 @@ description: >
     which can be implemented to allow to set/get the capacity
     directly over D-Bus.
 
+methods:
+    - name: SetInfoLogCapacity
+      description: >
+          Set capacity of SEL info event.
+      parameters:
+          - name: InfoLogCapacity
+            type: size
+            description: >
+                Capacity of SEL info event.
+
 properties:
     - name: InfoLogCapacity
       type: size
+      access: read
       description: >
           Capacity of SEL info event.
