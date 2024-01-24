@@ -56,7 +56,7 @@ methods:
           Request to enable the debug policy
       parameters:
         - name: DebugPolicy
-          type: enum[self.DebugPolicy]
+          type: array[enum[self.DebugPolicy]]
       errors:
         - xyz.openbmc_project.Common.Error.InvalidArgument
         - xyz.openbmc_project.Common.Error.NotAllowed
@@ -66,9 +66,10 @@ methods:
           Request to disable debug interface
       parameters:
           - name: DebugPolicy
-            type: enum[self.DebugPolicy]
+            type: array[enum[self.DebugPolicy]]
       errors:
         - xyz.openbmc_project.Common.Error.InvalidArgument
+        - xyz.openbmc_project.Common.Error.NotAllowed
 
 enumerations:
     - name: DebugState
@@ -84,6 +85,9 @@ enumerations:
           - name: Offline
             description: >
                 Offline, cannot be enabled
+          - name: Pending
+            description: >
+                State is pending update
           - name: Unknown
             description: >
                 State is unknown.
