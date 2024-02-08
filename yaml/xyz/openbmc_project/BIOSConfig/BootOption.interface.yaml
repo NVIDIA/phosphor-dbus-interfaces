@@ -8,6 +8,11 @@ properties:
           An indication of whether the boot option is enabled.
       default: true
 
+    - name: PendingEnabled
+      type: boolean
+      description: >
+          A pending value enabling the boot option.
+
     - name: Description
       type: string
       description: >
