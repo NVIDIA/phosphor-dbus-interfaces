@@ -1,0 +1,12 @@
+description: >
+    Implement this to add FDR dump management.
+
+properties:
+    - name: SourceDumpId
+      type: uint32
+      description: >
+          The dump id provided by the source of the dump.
+          There are dumps which get generated outside the BMC, like a
+          system dump which gets generated and stored in the host memory.
+          All dumps will have a  unique id but when communicating to the
+          source of the dump the SourceDumpId will be used.

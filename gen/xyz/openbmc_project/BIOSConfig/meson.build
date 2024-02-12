@@ -4,6 +4,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/BIOSConfig/BootOption__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/BIOSConfig/BootOption.interface.yaml',  ],
     output: [ 'BootOption.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -18,6 +19,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/BIOSConfig/BootOrder__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/BIOSConfig/BootOrder.interface.yaml',  ],
     output: [ 'BootOrder.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -77,6 +79,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/BIOSConfig/SecureBoot__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/BIOSConfig/SecureBoot.interface.yaml',  ],
     output: [ 'SecureBoot.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),

@@ -51,6 +51,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/DeviceReady__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/State/DeviceReady.interface.yaml',  ],
     output: [ 'DeviceReady.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -80,6 +81,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/FeatureReady__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/State/FeatureReady.interface.yaml',  ],
     output: [ 'FeatureReady.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -109,6 +111,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/InterfaceReady__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/State/InterfaceReady.interface.yaml',  ],
     output: [ 'InterfaceReady.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -214,6 +217,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/State/ServiceReady__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/State/ServiceReady.interface.yaml',  ],
     output: [ 'ServiceReady.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),

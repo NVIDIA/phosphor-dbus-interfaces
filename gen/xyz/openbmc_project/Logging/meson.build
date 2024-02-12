@@ -4,6 +4,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Logging/Capacity__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/Logging/Capacity.interface.yaml',  ],
     output: [ 'Capacity.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -93,6 +94,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Logging/Namespace__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/Logging/Namespace.interface.yaml',  ],
     output: [ 'Namespace.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),

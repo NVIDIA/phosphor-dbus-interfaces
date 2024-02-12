@@ -2,5 +2,5 @@
 subdir('google')
 subdir('ibm')
 subdir('intel')
-subdir('nvidia')
 subdir('meta')
+subdir('nvidia')

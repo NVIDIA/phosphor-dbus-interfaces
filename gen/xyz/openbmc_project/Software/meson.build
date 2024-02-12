@@ -95,7 +95,7 @@ generated_others += custom_target(
     input: [ '../../../../yaml/xyz/openbmc_project/Software/Image.errors.yaml',  ],
     output: [ 'Image.md' ],
     depend_files: sdbusplusplus_depfiles,
-        command: [
+    command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
         '--tool', sdbusplusplus_prog,
@@ -109,6 +109,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Software/PackageInformation__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/Software/PackageInformation.interface.yaml',  ],
     output: [ 'PackageInformation.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),

@@ -4,6 +4,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Nvme/Operation__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/Nvme/Operation.interface.yaml',  ],
     output: [ 'Operation.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -18,6 +19,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Nvme/SecureErase__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/Nvme/SecureErase.interface.yaml',  ],
     output: [ 'SecureErase.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),

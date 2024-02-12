@@ -4,6 +4,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Control/Boot/ClearNonVolatileVariables__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/ClearNonVolatileVariables.interface.yaml',  ],
     output: [ 'ClearNonVolatileVariables.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -18,6 +19,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Control/Boot/ConsoleRedirection__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/ConsoleRedirection.interface.yaml',  ],
     output: [ 'ConsoleRedirection.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -32,6 +34,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Control/Boot/FirmwareVerbosity__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/FirmwareVerbosity.interface.yaml',  ],
     output: [ 'FirmwareVerbosity.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -46,6 +49,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Control/Boot/Flags__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/Flags.interface.yaml',  ],
     output: [ 'Flags.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -60,6 +64,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Control/Boot/Instance__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/Instance.interface.yaml',  ],
     output: [ 'Instance.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -74,6 +79,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Control/Boot/InstanceType__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/InstanceType.interface.yaml',  ],
     output: [ 'InstanceType.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -103,6 +109,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Control/Boot/MuxOverride__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/MuxOverride.interface.yaml',  ],
     output: [ 'MuxOverride.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
@@ -177,6 +184,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Control/Boot/UEFI__markdown'.underscorify(),
     input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/UEFI.interface.yaml',  ],
     output: [ 'UEFI.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
