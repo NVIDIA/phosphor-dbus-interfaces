@@ -15,3 +15,21 @@ properties:
       type: boolean
       description: >
           Whether the object is in fail-safe mode or not.
+    - name: ISTMode
+      type: enum[self.StateOfISTMode]
+      description: >
+            IST(InSiliconTest) mode for the object.
+enumerations:
+  - name: StateOfISTMode
+    description: >
+      The state of ISTMode.
+    values:
+      - name: "Disabled"
+        description: >
+          IST Mode Disabled.
+      - name: "InProgress"
+        description: >
+          IST Mode Enable/Disable In Progress.
+      - name: "Enabled"
+        description: >
+          IST Mode Enabled.
