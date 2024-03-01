@@ -51,12 +51,12 @@ properties:
       flags:
         - readonly
     - name: AccumulatedGPUContextUtilizationDuration
-      type: uint32
+      type: uint64
       description:  Total duration of the accumulated GPU context utilization of the processor since reset in nano seconds.
       flags:
         - readonly
     - name: AccumulatedSMUtilizationDuration
-      type: uint32
+      type: uint64
       description:  Total duration of the accumulated SM utilization of the processor since reset in nano seconds.
       flags:
         - readonly
