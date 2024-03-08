@@ -14,6 +14,7 @@ generated_sources += custom_target(
 
 subdir('Connector')
 subdir('Decorator')
+subdir('Host')
 subdir('Item')
 generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item__markdown'.underscorify(),
