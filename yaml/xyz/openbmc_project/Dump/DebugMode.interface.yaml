@@ -1,0 +1,7 @@
+description: >
+    Implement to indicate whether a component is in debug mode.
+properties:
+    - name: DebugMode
+      type: boolean
+      description: >
+        The state of debug mode.
