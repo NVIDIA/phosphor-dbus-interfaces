@@ -35,6 +35,9 @@ enumerations:
       description: >
           Possible feature type
       values:
+        - name: Manager
+          description: >
+              This resource indicates about Manager status
         - name: Telemetry
           description: >
               This resource indicates about telemetry status
