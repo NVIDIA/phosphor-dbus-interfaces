@@ -1,0 +1,21 @@
+description: >
+   Implement to provide GPU CCMode details. This new feature manage confidential compute mode on GPUs.
+
+properties:
+    - name: CCModeEnabled
+      type: boolean
+      description: >
+            Confidential Compute (CC) mode is enabled for this processor.
+    - name: PendingCCModeState
+      type: boolean
+      description: >
+            Confidential Compute (CC) mode pending status enabled.
+    - name: CCDevModeEnabled
+      type: boolean
+      description: >
+            Confidential Compute (CC) Development mode is enabled for this processor.
+    - name: PendingCCDevModeState
+      type: boolean
+      description: >
+            Confidential Compute (CC) Development mode pending status enabled.
+
