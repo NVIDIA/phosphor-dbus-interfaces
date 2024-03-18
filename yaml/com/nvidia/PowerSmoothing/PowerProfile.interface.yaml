@@ -1,0 +1,27 @@
+description: >
+    Implement this interface to provide a Power Profile
+
+properties:
+    - name: TMPFloorPercent
+      type: double
+      default: NaN
+      description: >
+          Total Module Power floor value in percent
+
+    - name: RampUpRate
+      type: double
+      default: NaN
+      description: >
+          Ramp-up rate in milliwatts  per second. 
+
+    - name: RampDownRate
+      type: double
+      default: NaN
+      description: >
+          Ramp-down rate in milliwatts  per second.
+
+    - name: RampDownHysteresis
+      type: double
+      default: NaN
+      description: >
+          Ramp-down hysteresis value  in milliseconds

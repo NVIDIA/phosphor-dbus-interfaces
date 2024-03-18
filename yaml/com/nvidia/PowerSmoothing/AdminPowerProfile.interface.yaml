@@ -1,0 +1,27 @@
+description: >
+    Implement this special interface to provide a Admin Power Profile which when overrident takes precedence for following controls
+
+properties:
+    - name: TMPFloorPercent
+      type: double
+      default: NaN
+      description: >
+          Total Module Floor Setting to be configured on device(in percentage) 
+
+    - name: RampUpRate
+      type: double
+      default: NaN
+      description: >
+          Ramp-up rate to be configured on device (in milliwatts  per second)
+
+    - name: RampDownRate
+      type: double
+      default: NaN
+      description: >
+          Ramp-down rate to be configured on device (in milliwatts  per second)
+
+    - name: RampDownHysteresis
+      type: double
+      default: NaN
+      description: >
+          Ramp-down hysteresis value to be configured on device in milliseconds
