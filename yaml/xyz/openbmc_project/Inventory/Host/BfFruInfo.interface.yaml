@@ -1,0 +1,16 @@
+description: >
+    Bluefield FRU Info
+
+properties:
+    - name: BaseGUID
+      type: string
+      description: >
+          GUIDs is a unique 16 byte identifier of the BlueField in an InfiniBand network, the GUID never changes.
+    - name: BaseMAC
+      type: string
+      description: >
+          Represents the base MAC address for high-speed data port 0
+    - name: Description
+      type: string
+      description: >
+          Description of the board and it capabilities

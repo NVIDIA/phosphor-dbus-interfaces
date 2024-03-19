@@ -14,6 +14,20 @@ generated_others += custom_target(
     ],
 )
 
+subdir('DebugMode')
+generated_others += custom_target(
+    'xyz/openbmc_project/Dump/DebugMode__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Dump/DebugMode.interface.yaml',  ],
+    output: [ 'DebugMode.md' ],
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Dump/DebugMode',
+    ],
+)
+
 subdir('Entry')
 generated_others += custom_target(
     'xyz/openbmc_project/Dump/Entry__markdown'.underscorify(),
