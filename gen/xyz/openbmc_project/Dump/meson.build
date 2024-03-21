@@ -19,6 +19,7 @@ generated_others += custom_target(
     'xyz/openbmc_project/Dump/DebugMode__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/Dump/DebugMode.interface.yaml',  ],
     output: [ 'DebugMode.md' ],
+    depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
