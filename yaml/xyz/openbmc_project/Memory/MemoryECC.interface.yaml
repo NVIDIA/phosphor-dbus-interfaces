@@ -26,6 +26,10 @@ properties:
       type: boolean
       description: >
           SRAM error threshold exceeded.
+    - name: PendingECCState
+      type: boolean
+      description: >
+          The pending ECC state of memory enabled/disabled.
 
 enumerations:
     - name: ECCStatus

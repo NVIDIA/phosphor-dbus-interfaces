@@ -7,3 +7,7 @@ properties:
       description: >
             multiple-Instance GPU (MIG) mode is enabled for this processor.
 
+    - name: PendingMIGState
+      type: boolean
+      description: >
+            pending multiple-Instance GPU (MIG) mode for this processor.
