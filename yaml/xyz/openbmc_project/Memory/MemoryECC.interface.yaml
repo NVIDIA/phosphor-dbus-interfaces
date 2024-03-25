@@ -22,6 +22,10 @@ properties:
       type: boolean
       description: >
           The memory ECC mode enabled/disabled.
+    - name: isThresholdExceeded
+      type: boolean
+      description: >
+          SRAM error threshold exceeded.
 
 enumerations:
     - name: ECCStatus
