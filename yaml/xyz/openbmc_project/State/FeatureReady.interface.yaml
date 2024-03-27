@@ -28,6 +28,12 @@ enumerations:
         - name: Disabled
           description: >
               This Feature is disabled.
+        - name: "UpdateInProgress"
+          description: >
+              This Feature is UpdateInProgress.
+        - name: "Quiesced"
+          description: >
+              This Feature is Quiesced.
         - name: Unknown
           description: >
               This Feature is in unknown state due to internal error.
