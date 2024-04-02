@@ -3,8 +3,84 @@ description: >
 
 properties:
     - name: LTSSMState
-      type: uint32
+      type: enum[self.State]
       description: >
             Represents LTSSM State.
       flags:
           - readonly
+
+enumerations:
+    - name: State
+      description: >
+          Represents Different States of LTSSSMState.
+      values:
+          - name: Detect
+            description: >
+                . Detect state, where the system determines the presence of a receiver at the end of the link by 
+                  sending electrical signals from the transmitter.
+          - name: Polling
+            description: >
+                . This state occurs when the LTSSM continuously polls the link partner to determine its current state. 
+          - name: Configuration
+            description: >
+                . The Configuration state focuses on setting the link width and the number of lanes through the downstream and upstream ports. 
+                  It ensures that both ends of the link are synchronized and prepared for efficient data transmission.
+          - name: Recovery
+            description: >
+                . This state manages data rate negotiation, ensuring a stable and adaptable link
+          - name: RecoveryEQ
+            description: >
+                . RecoveryEQ is a state in the operation of a PCI Express (PCIe) device where the link is in a recovery state
+                  due to equalization issues.
+          - name: L0
+            description: >
+                . LTSSM enters the L0 state, a fully operational state where the link is ready to operate at peak capacity.
+                  This is where high-speed data exchange occurs
+          - name: L0s
+            description: >
+                . L0s is a power-saving mode that optimizes power consumption while keeping the link active.
+          - name: L1
+            description: >
+                . This is a low-power state where the link is partially or fully powered down to conserve energy when data transmission is not required. 
+          - name: L1_PLL_PD
+            description: >
+                . In this state, the PCIe link has entered a low-power mode known as "L1" with the PLL (Phase-Locked Loop) power down.
+          - name: L2
+            description: >
+                . This is an even lower power state compared to L1, where the link is in a deeper sleep mode to further reduce power consumption.
+          - name: L1_CPM
+            description: >
+                . In this state, the PCIe link has entered a low-power mode known as "L1" with the Clock Power Management (CPM) enabled.
+          - name: L1_1
+            description: >
+                . In this state, the PCIe link is in the "L1" low-power state with a specific sub-state denoted as 1.
+          - name: L1_2
+            description: >
+                . In this state, the PCIe link is in the "L1" low-power state with a specific sub-state denoted as 2.
+          - name: HotReset
+            description: >
+                . Hot Reset state provides a recovery mechanism that can be initiated by software or by receiving specific signals. 
+          - name: Loopback
+            description: >
+                . The Loopback state serves as a valuable testing and debugging tool. It allows one device to act as a master and 
+                  the other as a slave, simplifying in-depth troubleshooting. 
+          - name: Disabled
+            description: >
+                . In the Disable state, all lanes transmit 16 to 32 TS1s with the disable bit asserted and 
+                  send 2 EIOS (End of Idle Ordered Set) to transition to electrical idle. 
+          - name: LinkDown
+            description: >
+                . In this state, the PCIe link is not established or has been disconnected, indicating a loss of link
+                  connectivity between the PCIe devices.
+          - name: LinkReady
+            description: >
+                . In this state, the PCIe link is established and ready for data transmission between the PCIe devices.
+          - name: LanesInSleep
+            description: >
+                .  In this state, some or all of the lanes in the PCIe link are in a low-power sleep mode, while other lanes may remain active.
+          - name: IllegalState
+            description: >
+                . In this state, the link is in an unexpected or illegal configuration or condition that violates the PCIe specification.
+          - name: NA
+            description: >
+                . value not available               
