@@ -14,6 +14,7 @@ generated_others += custom_target(
     ],
 )
 
+subdir('Attestation')
 subdir('BIOSConfig')
 subdir('Certs')
 generated_others += custom_target(
@@ -89,7 +90,7 @@ subdir('Led')
 subdir('Logging')
 subdir('MCTP')
 subdir('Memory')
-subdir('Metrics')
+subdir('Metric')
 subdir('Network')
 subdir('Nvme')
 subdir('Object')

@@ -10,6 +10,17 @@ properties:
           cycles of the BMC.
       errors:
           - xyz.openbmc_project.State.Host.Error.BMCNotReady
+          - xyz.openbmc_project.Common.Error.NotAllowed
+
+    - name: AllowedHostTransitions
+      type: set[enum[self.Transition]]
+      flags:
+          - const
+      description: >
+          A const property describing the allowed host transitions. Some systems
+          may not support all transitions so this property can be filled in with
+          only the supported transitions. If this property is empty then all are
+          supported. This list is valid from any CurrentHostState.
 
     - name: CurrentHostState
       type: enum[self.HostState]
@@ -24,12 +35,6 @@ properties:
       default: "Unknown"
       description: >
           A property to define restart cause of a host.
-
-    - name: LastPowerOnCause
-      type: enum[self.LastPowerOnCause]
-      default: 'Unknown'
-      description: >
-              A Property to determine Cause of Host Power on.
         
 enumerations:
     - name: Transition
@@ -128,13 +133,9 @@ enumerations:
             description: >
                 The host firmware crashed and the BMC has automatically
                 initiated a restart of the host firmware
-    - name: LastPowerOnCause
-      description: >
-        This records  Host Power On Cause.
-      values:
-          - name: 'Unknown'
-            description: >
-              Reason Unknown
-          - name: 'IPMICommand'
-            description: >
-              Ipmi command issued
+
+paths:
+    - namespace: /xyz/openbmc_project/state
+      segments:
+          - name: Host
+            value: host

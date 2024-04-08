@@ -98,13 +98,10 @@ enumerations:
             description: >
                 Type of the PCIe slot is unknown
 
-associations:
-    - name: upstream_processor
-      description: >
-          Objects that implement PCIeSlot can optionally implement the
-          upstream_processor association to provide a link back to a PCIe host
-          bridge or on-processor PCIe root complexes.
-      reverse_names:
-          - associated_pcie_slots
-      required_endpoint_interfaces:
-          - xyz.openbmc_project.Inventory.Item.Cpu
+association:
+    name: connected_to
+    description: >
+        Objects that are connected at the other end of the link.
+    reverse_name: connecting
+    required_endpoint_interfaces:
+        - xyz.openbmc_project.Inventory.Item.Cpu

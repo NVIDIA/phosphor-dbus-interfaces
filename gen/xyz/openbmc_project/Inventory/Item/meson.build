@@ -313,21 +313,6 @@ generated_others += custom_target(
     ],
 )
 
-subdir('MemoryBuffer')
-generated_others += custom_target(
-    'xyz/openbmc_project/Inventory/Item/MemoryBuffer__markdown'.underscorify(),
-    input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/MemoryBuffer.interface.yaml',  ],
-    output: [ 'MemoryBuffer.md' ],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Inventory/Item/MemoryBuffer',
-    ],
-)
-
 subdir('NetworkInterface')
 generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/NetworkInterface__markdown'.underscorify(),
@@ -550,6 +535,21 @@ generated_others += custom_target(
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../../yaml',
         'xyz/openbmc_project/Inventory/Item/Tpm',
+    ],
+)
+
+subdir('TrustedComponent')
+generated_others += custom_target(
+    'xyz/openbmc_project/Inventory/Item/TrustedComponent__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/TrustedComponent.interface.yaml',  ],
+    output: [ 'TrustedComponent.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Inventory/Item/TrustedComponent',
     ],
 )
 
