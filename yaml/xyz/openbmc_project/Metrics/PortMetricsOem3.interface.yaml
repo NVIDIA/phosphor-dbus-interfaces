@@ -35,3 +35,17 @@ properties:
           training error was detected.
       flags:
           - readonly
+
+    - name: TXWidth
+      type: uint16
+      description: >
+          This property shall contain the total number of lanes for transmitting packets.
+      flags:
+          - readonly
+
+    - name: RXWidth
+      type: uint16
+      description: >
+          This property shall contain the total number of lanes for receiving packets.
+      flags:
+          - readonly

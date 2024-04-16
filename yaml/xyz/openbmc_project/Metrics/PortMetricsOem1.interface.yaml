@@ -4,20 +4,6 @@ description: >
     chassis, or any other device that could be connected to another entity.
 
 properties:
-    - name: TXWidth
-      type: uint16
-      description: >
-          This property shall contain the total number of lanes for transmitting packets.
-      flags:
-          - readonly 
-
-    - name: RXWidth
-      type: uint16
-      description: >
-          This property shall contain the total number of lanes for receiving packets.
-      flags:
-          - readonly
-
     - name: ReplayCount
       type: uint32
       description: >
@@ -51,11 +37,6 @@ properties:
       description: >
           The protocol version being sent over this port.
           Example: "4.0" or "1.1"
-
-    - name: MaxSpeed
-      type: size
-      description: >
-          The maximum speed of this port in Gbps.
 
     - name: Width
       type: size

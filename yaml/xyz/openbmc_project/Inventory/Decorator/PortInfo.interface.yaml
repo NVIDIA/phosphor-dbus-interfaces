@@ -21,6 +21,11 @@ properties:
       description: >
           The current speed of this port in Gbps.
 
+    - name: MaxSpeed
+      type: size
+      description: >
+          The maximum speed of this port in Gbps.
+
 enumerations:
     - name: PortType
       description: >
