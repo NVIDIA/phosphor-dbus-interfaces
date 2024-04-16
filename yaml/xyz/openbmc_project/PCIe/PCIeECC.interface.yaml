@@ -32,7 +32,7 @@ properties:
       type: int64
       description: >
           The total number of NAKs issued on the PCIe link on the device.
-    - name: NAKRecievedCount
+    - name: NAKReceivedCount
       type: int64
       description: >
           The total number of NAKs issued on the PCIe link by the receiver.
