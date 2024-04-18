@@ -239,6 +239,36 @@ generated_others += custom_target(
     ],
 )
 
+subdir('PortInfo')
+generated_others += custom_target(
+    'xyz/openbmc_project/Inventory/Decorator/PortInfo__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/PortInfo.interface.yaml',  ],
+    output: [ 'PortInfo.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Inventory/Decorator/PortInfo',
+    ],
+)
+
+subdir('PortState')
+generated_others += custom_target(
+    'xyz/openbmc_project/Inventory/Decorator/PortState__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/PortState.interface.yaml',  ],
+    output: [ 'PortState.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Inventory/Decorator/PortState',
+    ],
+)
+
 subdir('PowerLimit')
 generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Decorator/PowerLimit__markdown'.underscorify(),
