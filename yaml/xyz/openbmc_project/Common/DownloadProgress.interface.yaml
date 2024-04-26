@@ -1,0 +1,55 @@
+description: >
+    Implement to provide the status and progress off a download operation from remote server.
+
+properties:
+    - name: Status
+      type: enum[self.DownloadStatus]
+      description: >
+          Indicate the state of the download operation.
+    - name: Progress
+      type: byte
+      default: 0
+      description: >
+          An integer between 0 and 100 respresenting the percentage of
+          completion of the download operation.
+    - name: SourceFile
+      type: string
+      description: >
+          The name of the source file that is being downloaded.
+    - name: DestDir
+      type: string
+      description: >
+          The destination directory where the source file should be saved after download.
+
+enumerations:
+- name: DownloadStatus
+  description: >
+      Enumeration representing the possible statuses of a file download operation.
+  values:
+      - name: Init
+        description: >
+            The download operation is in initialization.
+      - name: Started
+        description: >
+            The download operation has started.
+      - name: Invalid
+        description: >
+            The download operation failed due to invalid parameter.
+      - name: UnknownHost
+        description: >
+            The download operation failed due to unknown host.
+      - name: UnauthorizedClient
+        description: >
+            The download operation failed due to unauthorized client.
+      - name: BadCert
+        description: >
+            The download operation failed due to bad SSL certificate on the connection.
+      - name: InProgress
+        description: >
+            The download operation is in progress.
+      - name: Completed
+        description: >
+            The download operation is complete.
+      - name: Failed
+        description: >
+            The download operation has failed.

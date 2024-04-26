@@ -1,0 +1,35 @@
+description: >
+    Provides a method to download file from remote server to local path.
+    Supports one download at a time.
+
+methods:
+    - name: DownloadViaHTTP
+      description: >
+          Starts an on-demand service to perform file download from remote server using
+          HTTP or HTTPS protocol.
+          Only one download is allowed at a time. Throws a NotAllowed error in case of
+          initiating a request while a download is already in progress.
+          Download operation status and progress notifications are communicated via the
+          DownloadProgress interface.
+      parameters:
+          - name: ServerAddress
+            type: string
+            description: >
+                The Remote Server IP Address.
+          - name: Secure
+            type: boolean
+            description: >
+                Use secure HTTPS protocol to download from the remote server or not.
+          - name: SourceFile
+            type: string
+            description: >
+                The source file including the path on the remote server.
+          - name: DestDir
+            type: string
+            description: >
+                The destination directory (local path) where the source file should be
+                saved after download.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed

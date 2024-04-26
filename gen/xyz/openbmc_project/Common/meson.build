@@ -43,6 +43,21 @@ generated_others += custom_target(
     ],
 )
 
+subdir('DownloadProgress')
+generated_others += custom_target(
+    'xyz/openbmc_project/Common/DownloadProgress__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Common/DownloadProgress.interface.yaml',  ],
+    output: [ 'DownloadProgress.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Common/DownloadProgress',
+    ],
+)
+
 subdir('FactoryReset')
 generated_others += custom_target(
     'xyz/openbmc_project/Common/FactoryReset__markdown'.underscorify(),
@@ -100,6 +115,21 @@ generated_others += custom_target(
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/Common/FilePath',
+    ],
+)
+
+subdir('HTTP')
+generated_others += custom_target(
+    'xyz/openbmc_project/Common/HTTP__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Common/HTTP.interface.yaml',  ],
+    output: [ 'HTTP.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Common/HTTP',
     ],
 )
 
