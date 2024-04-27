@@ -110,6 +110,12 @@ enumerations:
           - name: SWThermalSlowdownTavg
             description: >
                 Software thermal slowdown Tavg.
+          - name: ClockOptimizedForPower
+            description: >
+                Clock Optimized For Power
+          - name: ClockOptimizedForThermalEngage
+            description: >
+                Clock Optimized For Thermal Engaged
           - name: SWThermalSlowdownTLimit
             description: >
                 Software thermal slowdown Tlimit.
