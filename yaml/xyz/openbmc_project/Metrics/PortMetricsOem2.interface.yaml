@@ -1,0 +1,15 @@
+description: >
+    This defines a Port to be exposed for system management.
+    It contains properties that describe a port of a switch, controller,
+    chassis, or any other device that could be connected to another entity.
+
+properties:
+    - name: TXBytes
+      type: size
+      description: >
+          The total number of bytes transmitted on a device.
+
+    - name: RXBytes
+      type: size
+      description: >
+          The total number of bytes received on a device.

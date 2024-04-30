@@ -6,6 +6,13 @@ properties:
       type: boolean
       description: >
             multiple-Instance GPU (MIG) mode is enabled for this processor.
+      errors:
+          # Indicate that timeout from the device response
+          - xyz.openbmc_project.Common.Error.Timeout
+          # Indicate that this property is temporarily unable to be changed.
+          - xyz.openbmc_project.Common.Error.Unavailable
+          # Indicate a failure to apply changes to the processor.
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure
 
     - name: PendingMIGState
       type: boolean
