@@ -4,7 +4,7 @@ description: >
     chassis, or any other device that could be connected to another entity.
 
 properties:
-    - name: ReplayCount
+    - name: ReplayErrorsCount
       type: uint32
       description: >
           Nvlink replay error count.
@@ -37,14 +37,3 @@ properties:
       description: >
           The protocol version being sent over this port.
           Example: "4.0" or "1.1"
-
-    - name: Width
-      type: size
-      description: >
-          The number of lanes, phys, or other physical transport links
-          that this port contains.
-
-    - name: ActiveWidth
-      type: size
-      description: >
-          The number of active lanes for this interface.

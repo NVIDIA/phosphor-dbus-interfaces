@@ -17,12 +17,12 @@ properties:
           The protocol being sent over this port.
 
     - name: CurrentSpeed
-      type: size
+      type: double
       description: >
           The current speed of this port in Gbps.
 
     - name: MaxSpeed
-      type: size
+      type: double
       description: >
           The maximum speed of this port in Gbps.
 
