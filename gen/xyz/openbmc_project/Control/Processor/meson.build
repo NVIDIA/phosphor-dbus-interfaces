@@ -29,3 +29,18 @@ generated_others += custom_target(
     ],
 )
 
+subdir('Reset')
+generated_others += custom_target(
+    'xyz/openbmc_project/Control/Processor/Reset__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Processor/Reset.interface.yaml',  ],
+    output: [ 'Reset.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Control/Processor/Reset',
+    ],
+)
+
