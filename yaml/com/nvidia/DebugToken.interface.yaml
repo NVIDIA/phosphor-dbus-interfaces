@@ -1,0 +1,140 @@
+description: >
+  Implement to provide debug token-related functionalities for NSM devices. Any
+  object implementing the DebugToken interface must implement the
+  xyz.openbmc_project.Common.Progress interface.
+
+properties:
+  - name: TokenDeviceID
+    type: string
+    description: >
+      Token-specific device identification property of the device.
+    default: ""
+  - name: RequestFd
+    type: unixfd
+    description: >
+      File descriptor pointing to file containing the last acquired debug token
+      request data. Populated after a successful execution of the GetRequest
+      method.
+  - name: TokenStatus
+    type: struct[enum[self.TokenTypes], enum[self.TokenStatus], enum[self.AdditionalInfo], uint32]
+    description: >
+      Debug session and token installation status data. Populated after
+      a successful execution of the GetStatus method.
+
+methods:
+  - name: DisableTokens
+    description: >
+      Disable installed tokens.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.Unavailable
+
+  - name: GetRequest
+    description: >
+      Generate debug token request. Output data is stored in a file, the file
+      descriptor of which is stored in the RequestFd property.
+    parameters:
+      - name: TokenOpcode
+        type: enum[self.TokenOpcodes]
+        description: >
+          Token opcode the request should be generated for.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+      - xyz.openbmc_project.Common.Error.Unavailable
+
+  - name: GetStatus
+    description: >
+      Get debug session and token installation status. Output data is stored in
+      the TokenStatus property.
+    parameters:
+      - name: TokenType
+        type: enum[self.TokenTypes]
+        description: >
+          Type of the token to get status of.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+      - xyz.openbmc_project.Common.Error.Unavailable
+
+  - name: InstallToken
+    description: >
+      Install signed token.
+    parameters:
+      - name: TokenData
+        type: array[byte]
+        description: >
+          Token binary data.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+      - xyz.openbmc_project.Common.Error.Unavailable
+
+enumerations:
+  - name: TokenOpcodes
+    description: >
+      Identifies the token type the token request is generated for.
+    values:
+      - name: CRCS
+        description: >
+          CRCS token.
+      - name: CRDT
+        description: >
+          CRDT token.
+
+  - name: TokenTypes
+    description: >
+      Identifies the token type the status is queried for.
+    values:
+      - name: FRC
+        description: >
+          FRC token.
+      - name: CRCS
+        description: >
+          CRCS token.
+      - name: CRDT
+        description: >
+          CRDT token.
+      - name: DebugFirmware
+        description: >
+          Currently running debug firmware.
+
+  - name: TokenStatus
+    description: >
+      Token status information
+    values:
+      - name: QueryFailure
+        description: >
+          Failed to execute the query operation.
+      - name: DebugSessionActive
+        description: >
+          Debug session is active.
+      - name: NoTokenApplied
+        description: >
+          No token is applied.
+      - name: ChallengeProvided
+        description: >
+          Challenge provided, token not installed yet.
+      - name: InstallationTimeout
+        description: >
+          Timeout occurred before token was installed.
+      - name: TokenTimeout
+        description: >
+          Timeout occurred for active token.
+
+  - name: AdditionalInfo
+    description: >
+      Additional information related to the token status.
+    values:
+      - name: None
+        description: >
+          No additional information available.
+      - name: NoDebugSession
+        description: >
+          There is no debug session in progress.
+      - name: DebugSessionQueryDisallowed
+        description: >
+          Device is not allowed to query debug session.
+      - name: DebugSessionActive
+        description: >
+          Debug firmware running.

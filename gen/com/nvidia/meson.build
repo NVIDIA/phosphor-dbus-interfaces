@@ -47,6 +47,21 @@ generated_others += custom_target(
     ],
 )
 
+subdir('DebugToken')
+generated_others += custom_target(
+    'com/nvidia/DebugToken__markdown'.underscorify(),
+    input: [ '../../../yaml/com/nvidia/DebugToken.interface.yaml',  ],
+    output: [ 'DebugToken.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/DebugToken',
+    ],
+)
+
 subdir('Edpp')
 generated_others += custom_target(
     'com/nvidia/Edpp__markdown'.underscorify(),
