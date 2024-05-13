@@ -1,0 +1,23 @@
+description: >
+    Implement to provide Power Limit reset support on the device.
+methods:
+    - name: ClearPowerCap
+      description: >
+        Clear power cap set by the client to the Default Power Cap
+      returns:
+          - name: RetValue
+            type: int32
+            description: >
+                Return value of Method 0/1 (Success/Failure).
+      errors:
+        - xyz.openbmc_project.Common.Device.Error.WriteFailure
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable
+
+properties:
+    - name: DefaultPowerCap
+      type: uint32
+      description: >
+            Default Power Cap setting for the device
+      flags:
+          - readonly
