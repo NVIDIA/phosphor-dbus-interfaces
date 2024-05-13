@@ -1,0 +1,24 @@
+description: >
+    Implement to Trigger the Golden Image Network Reprovisioning Flow.
+methods:
+    - name: StartGoldenImageReprovisioning
+      description: >
+          Trigger the Golden Image Network Reprovisioning.
+      parameters:
+       - name: GoldenImageTimeout
+         type: byte
+         description: >
+             Timeout value for pushing Golden Images
+       - name: BootFromNetworkTimeout
+         type: byte
+         description: >
+             Timeout value for Booting from the network
+       - name: VerbosityLevel
+         type: byte
+         description: >
+             Verbosity level defines the messages appear while running
+       - name: HaltHardReset
+         type: byte
+         description: >
+             1 would halt the Rerovisioning process after installation has finished. 
+             0 will proceed with a hard reset.
