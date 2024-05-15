@@ -11,7 +11,7 @@ properties:
     - name: PendingEnabled
       type: boolean
       description: >
-          A pending value enabling the boot option.
+          A future setting value that is pending to be applied to the enabling of the boot option.
 
     - name: Description
       type: string
