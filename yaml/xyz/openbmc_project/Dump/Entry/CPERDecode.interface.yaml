@@ -3,6 +3,9 @@
 description: Implement this to dump CPER Decoded information on the DBus
 
 properties:
+  - name: Notification_Type
+    type: string
+    description: Indicates the notification-type GUID for the error record
   - name: Section_Type
     type: string
     description: Indicates the type of section in which the error occured
