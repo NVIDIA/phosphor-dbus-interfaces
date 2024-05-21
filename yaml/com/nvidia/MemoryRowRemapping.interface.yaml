@@ -25,4 +25,34 @@ properties:
           Represents RowRemapping Pending state.
       flags:
           - readonly
+    - name: MaxRemappingAvailablityBankCount
+      type: uint16
+      description: >
+          This property shall contain the number of banks with the maximum remapping availability.
+      flags:
+          - readonly
+    - name: HighRemappingAvailablityBankCount
+      type: uint16
+      description: >
+          This property shall contain the number of banks with high remapping availability.
+      flags:
+          - readonly
+    - name: LowRemappingAvailablityBankCount
+      type: uint16
+      description: >
+          This property shall contain the number of banks with Low remapping availability.
+      flags:
+          - readonly
+    - name: PartialRemappingAvailablityBankCount
+      type: uint16
+      description: >
+          This property shall contain the number of banks with partial remapping availability.
+      flags:
+          - readonly
+    - name: NoRemappingAvailablityBankCount
+      type: uint16
+      description: >
+          This property shall contain the number of banks with no remapping availability.
+      flags:
+          - readonly
 
