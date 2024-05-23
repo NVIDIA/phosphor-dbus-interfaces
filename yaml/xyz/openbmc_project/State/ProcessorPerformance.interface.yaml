@@ -60,6 +60,35 @@ properties:
       description:  Total duration of the accumulated SM utilization of the processor since reset in nano seconds.
       flags:
         - readonly
+    - name: ThrottleReasonHWSlowdown
+      type: boolean
+      description: >
+          It will be true when "HWSlowdown" is present
+          in the array of strings of the property "ThrottleReason"
+      flags:
+        - readonly
+    - name: ThrottleReasonHWThermalSlowdown
+      type: boolean
+      description: >
+          It will be true when "HWThermalSlowdown" is present
+          in the array of strings of the property "ThrottleReason"
+      flags:
+        - readonly
+    - name: ThrottleReasonHWPowerBrakeSlowdown
+      type: boolean
+      description: >
+          It will be true when "HWPowerBrakeSlowdown" is present
+          in the array of strings of the property "ThrottleReason"
+      flags:
+        - readonly
+    - name: ThrottleReasonSyncBoost
+      type: boolean
+      description: >
+          It will be true when "SyncBoost" is present
+          in the array of strings of the property "ThrottleReason"
+      flags:
+        - readonly
+
 
 enumerations:
     - name: PerformanceStates
