@@ -104,6 +104,36 @@ generated_others += custom_target(
     ],
 )
 
+subdir('RsyslogActionsManager')
+generated_others += custom_target(
+    'xyz/openbmc_project/Logging/RsyslogActionsManager__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Logging/RsyslogActionsManager.interface.yaml',  ],
+    output: [ 'RsyslogActionsManager.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Logging/RsyslogActionsManager',
+    ],
+)
+
+subdir('RsyslogFwd')
+generated_others += custom_target(
+    'xyz/openbmc_project/Logging/RsyslogFwd__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Logging/RsyslogFwd.interface.yaml',  ],
+    output: [ 'RsyslogFwd.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Logging/RsyslogFwd',
+    ],
+)
+
 subdir('SEL')
 generated_others += custom_target(
     'xyz/openbmc_project/Logging/SEL__markdown'.underscorify(),

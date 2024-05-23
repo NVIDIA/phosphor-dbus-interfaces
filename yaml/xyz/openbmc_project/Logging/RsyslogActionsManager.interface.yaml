@@ -1,0 +1,93 @@
+description: >
+    Manages rsyslog actions. Creates up to 10 RsyslogFwd objects per LogType.
+    Each object is identified by its LogType and Index: fwd_<LogType>_<Index>.
+    Contains 2 methods of object creation: CreateRsyslogFwd, which returns the next
+    available index, and CreateRsyslogFwdIndex, which allows specifying the index if available.
+
+methods:
+    - name: CreateRsyslogFwd
+      description: >
+          Creates a new RsyslogFwd object fwd_<LogType>_<Index> representing an rsyslog fwd action.
+          Returns an index which is used as the object identifier within fwd_<LogType>.
+          Generates an error in cases of internal failure, operation not allowed (when the
+          number of objects reaches the limit), or invalid argument.
+      parameters:
+          - name: LogType
+            type: enum[xyz.openbmc_project.Logging.RsyslogFwd.LogType]
+            description: >
+                The log type of the new action.
+          - name: Enabled
+            type: boolean
+            default: false
+            description: >
+                The new fwd action is enabled/disabled.
+          - name: TransportProtocol
+            type: enum[xyz.openbmc_project.Logging.RsyslogFwd.TransportProtocol]
+            description: >
+                The transport protocol of the new fwd action.
+          - name: NetworkProtocol
+            type: enum[xyz.openbmc_project.Logging.RsyslogFwd.NetworkProtocol]
+            description: >
+                The network protocol of the new fwd action.
+          - name: Address
+            type: string
+            description: >
+                The IP address used by the new fwd action in IPv4 or IPv6 format.
+          - name: Port
+            type: uint16
+            description: >
+                The port number which is used for the transport.
+      returns:
+          - name: Index
+            type: size
+            description: >
+                The index of the new action which is used as the identifier of the action
+                in the fwd_<LogType> conf file.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+
+
+    - name: CreateRsyslogFwdIndex
+      description: >
+          Creates a new RsyslogFwd object fwd_<LogType>_<Index> representing an rsyslog fwd action.
+          The index, which is used as the object identifier within fwd_<LogType>, is received as an
+          argument and must be a legal value from 0 to 9.
+          Generates an error in cases of internal failure, operation not allowed (i.e., Index is illegal
+          or already in use), or invalid argument.
+      parameters:
+          - name: Index
+            type: size
+            description: >
+                The index of the new action, which is used as the identifier of the action
+                in the fwd_<LogType> conf file. Limited to 9.
+          - name: LogType
+            type: enum[xyz.openbmc_project.Logging.RsyslogFwd.LogType]
+            description: >
+                The log type of the new action.
+          - name: Enabled
+            type: boolean
+            default: true
+            description: >
+                The new fwd action is enabled/disabled.
+          - name: TransportProtocol
+            type: enum[xyz.openbmc_project.Logging.RsyslogFwd.TransportProtocol]
+            description: >
+                The transport protocol of the new fwd action.
+          - name: NetworkProtocol
+            type: enum[xyz.openbmc_project.Logging.RsyslogFwd.NetworkProtocol]
+            description: >
+                The network protocol of the new fwd action.
+          - name: Address
+            type: string
+            description: >
+                The IP address used by the new fwd action in IPv4 or IPv6 format.
+          - name: Port
+            type: uint16
+            description: >
+                The port number which is used for the transport.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed

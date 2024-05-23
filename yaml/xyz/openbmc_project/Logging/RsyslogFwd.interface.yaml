@@ -1,0 +1,64 @@
+description: >
+    Provides a rsyslog fwd action configuration.
+    Object which implements this interface should implement
+    xyz.openbmc_project.Object.Delete to allow the deletion of objects.
+    The properties setter methods and the Object.Delete method override
+    the conf files used by the rsyslog service, and restart the rsyslog service.
+    A conf file in generated for each LogType, fwd_<LogType>,
+    which contains all the actions with this log type, fwd_<LogType>_<Index>.
+
+properties:
+    - name: Index
+      type: size
+      description: >
+          The index of the fwd action. It is a read-only property.
+          Part of the object's name fwd_<LogType>_<Index>.
+      flags:
+          - readonly
+    - name: LogType
+      type: enum[self.LogType]
+      description: >
+          The log type of the fwd action. It is a read-only property.
+          Part of the object's name fwd_<Index>_<LogType>.
+    - name: Enabled
+      type: boolean
+      description: >
+          The fwd action is enabled/disabled.
+    - name: TransportProtocol
+      type: enum[self.TransportProtocol]
+      description: >
+          The transport protocol of the fwd action.
+    - name: NetworkProtocol
+      type: enum[self.NetworkProtocol]
+      description: >
+          The network protocol of the fwd action.
+    - name: Address
+      type: string
+      description: >
+          The IP address used by the fwd action in IPv4 or IPv6 format.
+    - name: Port
+      type: uint16
+      description: >
+          The port number which is used for the transport.
+
+enumerations:
+    - name: LogType
+      description: >
+          Possible log types.
+      values:
+          - name: AuditLog
+          - name: SEL
+          - name: Syslog
+          - name: SOL
+    - name: TransportProtocol
+      description: >
+          Possible transport layer protocols.
+      values:
+          - name: TCP
+          - name: UDP
+    - name: NetworkProtocol
+      description: >
+          Possible network layer protocols.
+      values:
+          - name: IPv4
+          - name: IPv6
