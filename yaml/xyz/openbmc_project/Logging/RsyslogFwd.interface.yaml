@@ -20,6 +20,8 @@ properties:
       description: >
           The log type of the fwd action. It is a read-only property.
           Part of the object's name fwd_<Index>_<LogType>.
+      flags:
+          - readonly
     - name: Enabled
       type: boolean
       description: >
