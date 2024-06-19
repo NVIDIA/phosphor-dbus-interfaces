@@ -1,0 +1,20 @@
+description: >
+    The Firmware build type information
+
+properties:
+    - name: BuildType
+      type: enum[self.FirmwareBuildType]
+      description: >
+        Build type of the firmware
+
+enumerations:
+  - name: FirmwareBuildType
+    description: >
+     Indicates the type of firmware with respect to behavior and instrumentation.
+    values:
+      - name: Development
+        description: >
+          Development firmware
+      - name: Release
+        description: >
+          Release firmware

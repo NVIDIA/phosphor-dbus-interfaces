@@ -1,0 +1,35 @@
+description: >
+    The Firmware state information
+
+properties:
+    - name: State
+      type: enum[self.FirmwareState]
+      description: > 
+        Indicates the current firmware state
+
+enumerations:
+  - name: FirmwareState
+    description: >
+      Indicates current firmware state
+    values:
+      - name: Unknown
+        description: >
+          Unknown firmware state
+      - name: Activated
+        descrition: >
+          Firmware is activated
+      - name: PendingActivation
+        descrition: >
+          Firmware activation in pending phase
+      - name: Staged
+        descrition: >
+          Firmware in staged state
+      - name: WriteInProgress
+        descrition: >
+          Firmware in write state
+      - name: Inactive
+        descrition: >
+          Firmware in inactive state
+      - name: FailedAuthentication
+        descrition: >
+          Firmware in failed authentication state
