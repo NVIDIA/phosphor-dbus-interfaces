@@ -61,7 +61,7 @@ properties:
       description:  NvOFA utilization as a percentage, which is calculated by dividing the active cycles by the total cycles.
       flags:
         - readonly
-    - name: IntergerActivityUtilizationPercent
+    - name: IntegerActivityUtilizationPercent
       type: double
       description:  Integer activity utilization as a percentage, which is calculated by dividing the active cycles by the total cycles.
       flags:
