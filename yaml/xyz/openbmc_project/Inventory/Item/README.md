@@ -6,7 +6,7 @@ Inventory refers to physical objects. Some of the objects can be physically
 accessed, such as a board, a chassis and a drive. Some objects are embedded in
 other objects, such as a BMC embedded in a board, or a core in a CPU. The DBus
 interfaces in this directory describe the DBus representation of those physical
-objects. A graph consisting of Inventory objects as vertexes and Association as
+objects. A graph consisting of Inventory objects as vertices and Association as
 edges can be constructed that represents the relationship between different
 parts (such as chassis, drive, sensors, etc) of the system.
 
@@ -26,4 +26,6 @@ Document ObjectMapper association forward and reverse names as follows:
 - PowerSupply and Item: `{powering, powered_by}`
 - FabricAdapter and Connector.Port: `{connecting, connected_to}`
 - Cpu and PCIeSlot: `{connecting, connected_to}`
+- PCIeSwitch and PCIeSlot: `{connecting, connected_to}`
 - Control.Throttle and Item: `{throttling, throttled_by}`
+- Cable and Item: `{connecting, connected_to}`
