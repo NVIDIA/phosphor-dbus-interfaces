@@ -61,6 +61,21 @@ generated_others += custom_target(
     ],
 )
 
+subdir('InbandReconfigPermissions')
+generated_others += custom_target(
+    'com/nvidia/InbandReconfigPermissions__markdown'.underscorify(),
+    input: [ '../../../yaml/com/nvidia/InbandReconfigPermissions.interface.yaml',  ],
+    output: [ 'InbandReconfigPermissions.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/InbandReconfigPermissions',
+    ],
+)
+
 subdir('MemoryPageRetirementCount')
 generated_others += custom_target(
     'com/nvidia/MemoryPageRetirementCount__markdown'.underscorify(),
