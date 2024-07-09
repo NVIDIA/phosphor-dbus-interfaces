@@ -1,0 +1,128 @@
+description: >
+   Implement to provide the reconfiguration permissions settings that restrict the users from configuring certain features from in-band (host software) interfaces.
+
+properties:
+    - name: AllowOneShotConfig
+      type: boolean
+      description: >
+            An indication if one-shot configuration of setting by host software is allowed.  If `true`, any change to the feature via in-band APIs will not persist across hot-resets or function level resets (FLR) resets.
+      errors:
+          # Indicate that timeout from the device response
+          - xyz.openbmc_project.Common.Error.Timeout
+          # Indicate that this property is temporarily unable to be changed.
+          - xyz.openbmc_project.Common.Error.Unavailable
+          # Indicate a failure to apply changes to the processor.
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure          
+
+    - name: AllowPersistentConfig
+      type: boolean
+      description: >
+            An indication if persistent configuration of setting by host software is allowed. If `true`, any change to the feature via in-band APIs will persist across device resets.
+      errors:
+          # Indicate that timeout from the device response
+          - xyz.openbmc_project.Common.Error.Timeout
+          # Indicate that this property is temporarily unable to be changed.
+          - xyz.openbmc_project.Common.Error.Unavailable
+          # Indicate a failure to apply changes to the processor.
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure
+
+    - name: AllowFLRPersistentConfig
+      type: boolean
+      description: >
+            An indication if FLR persistent configuration of setting by host software is allowed.  If `true`, any change to the feature via in-band APIs will persist across function level resets (FLR).
+      errors:
+          # Indicate that timeout from the device response
+          - xyz.openbmc_project.Common.Error.Timeout
+          # Indicate that this property is temporarily unable to be changed.
+          - xyz.openbmc_project.Common.Error.Unavailable
+          # Indicate a failure to apply changes to the processor.
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure
+
+    - name: Type
+      type: enum[self.FeatureType]
+      description: >
+          The reconfiguration permissions feature type
+      default: Unknown
+
+
+enumerations:
+    - name: FeatureType
+      description: >
+          The reconfiguration permissions feature type
+      values:
+          - name: "InSystemTest"
+            description: >
+                The in-band settings for In System Test.
+          - name: "FusingMode"
+            description: >
+                The in-band settings for fusing mode.
+          - name: "CCMode"
+            description: >
+                The in-band settings for confidential compute mode.
+          - name: "BAR0Firewall"
+            description: >
+                The in-band settings for BAR0 firewall.
+          - name: "CCDevMode"
+            description: >
+                The in-band settings for confidential compute development mode.
+          - name: "TGPCurrentLimit"
+            description: >
+                The in-band settings for Total GPU Power (TGP) current limit.
+          - name: "TGPRatedLimit"
+            description: >
+                The in-band settings for Total GPU Power (TGP) rated limit.
+          - name: "TGPMaxLimit"
+            description: >
+                he in-band settings for Total GPU Power (TGP) max limit.
+          - name: "TGPMinLimit"
+            description: >
+                The in-band settings for Total GPU Power (TGP) min limit.
+          - name: "ClockLimit"
+            description: >
+                The in-band settings for clock limit.
+          - name: "NVLinkDisable"
+            description: >
+                The in-band settings for disabling NVLink.
+          - name: "ECCEnable"
+            description: >
+                The in-band settings for enabling ECC mode.
+          - name: "PCIeVFConfiguration"
+            description: >
+                The in-band settings for PCIe VF configuration.
+          - name: "RowRemappingAllowed"
+            description: >
+                The in-band settings for allowing row-remapping.
+          - name: "RowRemappingFeature"
+            description: >
+                The in-band settings for row-remapping feature.
+          - name: "HBMFrequencyChange"
+            description: >
+                The in-band settings for HBM frequency change.
+          - name: "HULKLicenseUpdate"
+            description: >
+                The in-band settings for HULK license update.
+          - name: "ForceTestCoupling"
+            description: >
+                The in-band settings for force test coupling.
+          - name: "BAR0TypeConfig"
+            description: >
+                The in-band settings for BAR0 type configuration.
+          - name: "EDPpScalingFactor"
+            description: >
+                The in-band settings for EDPp scaling factor. 
+          - name: "PowerSmoothing"
+            description: >
+                The in-band settings for the power smoothing feature. 
+          - name: "PowerSmoothingPrivilegeLevel0"
+            description: >
+                The in-band settings for privilege level 0 of the power smoothing feature. 
+          - name: "PowerSmoothingPrivilegeLevel1"
+            description: >
+                The in-band settings for privilege level 1 of the power smoothing feature. 
+          - name: "PowerSmoothingPrivilegeLevel2"
+            description: >
+                The in-band settings for privilege level 2 of the power smoothing feature. 
+          - name: "Unknown"
+            description: >
+                The unvalid unknown feature type holder.
+                
