@@ -1,4 +1,46 @@
 description: >
+    Implement to indicate the state of the LeakDetector.
+
+properties:
+    - name: DetectorState
+      type: enum[self.DetectorStateEnum]
+      default: OK
+      description: >
+          The current state of the Leak Detector and is a read-only property.
+      flags:
+          - readonly
+    - name: LeakDetectorType
+      type: enum[self.LeakDetectorTypeEnum]
+      default: Moisture
+      description: >
+          This property shall contain the reading type of the leak detection sensor.
+      flags:
+          - readonly
+
+enumerations:
+  - name: DetectorStateEnum
+    description: >
+      The state of the Leak Detector enum.
+    values:
+      - name: OK
+        description: >
+         The state of the Leak Detector is OK.
+      - name: Warning
+        description: >
+         The state of the Leak Detector Warning and requires attention.
+      - name: Critical
+        description: >
+         The state of the Leak Detector is critical and requires immediate attention.
+  - name: LeakDetectorTypeEnum
+    description: >
+      The type of leak detection sensor enum.
+    values:
+      - name: FloatSwitch
+        description: >
+         A float switch sensor type.
+      - name: Moisture
+        description: >
+         A moisture sensor type.description: >
     Implement to indicate the state of the LeakDetector
 
 properties:
