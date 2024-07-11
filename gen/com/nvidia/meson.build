@@ -1,4 +1,5 @@
 # Generated file; do not modify.
+subdir('Async')
 subdir('BF')
 subdir('CCMode')
 generated_others += custom_target(

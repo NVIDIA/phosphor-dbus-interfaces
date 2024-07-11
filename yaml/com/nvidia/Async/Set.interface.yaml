@@ -1,0 +1,43 @@
+description: >
+    Do an asynchronous set property operation. If an Object has this Interface,
+    its Set Method can be used to perform an asynchronous set property
+    operation. The Set Method will return an Object Path. Interface
+    com.nvidia.Async.Status at this returned Object Path can be used to retrieve
+    the status of the set property operation.
+
+methods:
+    - name: Set
+      parameters:
+          - name: Interface
+            type: string
+            description: >
+                Interface name
+
+          - name: Property
+            type: string
+            description: >
+                Property name
+
+          - name: Value
+            type: variant[boolean,byte,uint64,int64,double,string]
+            description: >
+                Value to be set
+
+      returns:
+          - name: ObjectPath
+            type: object_path
+            description: >
+                DBus Object Path. Interface com.nvidia.Async.Status at this
+                returned Object Path can be used to retrieve the status of the
+                set property operation.
+
+      errors:
+          # Indicates that Set Operation on this Property is not supported.
+          - xyz.openbmc_project.Common.Error.UnsupportedRequest
+          # Indicates that type of Value property is invalid for this Operation.
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          # Indicates a failure due to an internal error.
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          # Indicates that a set property operation is already in progress for
+          # this property.
+          - xyz.openbmc_project.Common.Error.NotAllowed
