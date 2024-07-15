@@ -7,6 +7,19 @@ properties:
       description: The base clock speed of the processor in MHz.
       flags:
         - readonly
+    - name: DefaultBoostClockSpeedMHz
+      type: uint32
+      description: The default boost clock speed of the processor in MHz.
+      flags:
+        - readonly
+    - name: MaxBoostClockSpeedMHz
+      type: uint32
+      description: Maximum boost clock speed of the processor in MHz.
+      errors:
+        # Indicate that the value provided is not within the allowed limits
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+        # Indicate a failure to apply changes to the processor.
+        - xyz.openbmc_project.Common.Device.Error.WriteFailure
     - name: OperatingSpeed
       type: uint32
       description: The operating speed of the processor in MHz.
