@@ -17,5 +17,11 @@ properties:
           - readonly
       description: >
           List of profiles object paths, pending delete.
+    - name: AddPendingList
+      type: array[string]
+      flags:
+          - readonly
+      description: >
+          List of profiles object paths, pending adding.
 
 

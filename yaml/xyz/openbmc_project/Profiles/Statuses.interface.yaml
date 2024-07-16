@@ -37,12 +37,9 @@ enumerations:
           - name: "PendingBios"
             description: >
                 BMC pending Bios to start handing pending actions.
-          - name: "FinishVerification"
+          - name: "StartVerification"
             description: >
-                Finish authenticate and verification of the profile.
-          - name: "FinishVerificationBios"
-            description: >
-                Finish authenticate and verification of the profile, request done by Bios.
+                Start authenticate and verification of the profile.
           - name: "ProfileSaved"
             description: >
                 The profile has been saved to the BMC.
