@@ -1,5 +1,7 @@
 description: >
-    Implement to indicate the state of the LeakDetector.
+    The LeakDetection schema contains definitions for reporting leaks in liquid cooling systems or other equipment.
+    The LeakDetector schema describes a state-based or digital-value leak detector and its properties.
+    Implement LeakDetectorState interface to indicate the state of the LeakDetector.
 
 properties:
     - name: DetectorState
