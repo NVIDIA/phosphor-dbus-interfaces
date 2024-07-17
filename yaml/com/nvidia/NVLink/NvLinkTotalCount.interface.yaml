@@ -1,0 +1,9 @@
+description: >
+    Implement to provide total number of nvlinks present.
+properties:
+    - name: TotalNumberNVLinks
+      type: uint64
+      description: >
+          Contains total number of nvlinks present.
+      flags:
+          - readonly
