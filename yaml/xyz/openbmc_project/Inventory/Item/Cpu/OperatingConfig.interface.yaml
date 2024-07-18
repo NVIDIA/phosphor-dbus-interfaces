@@ -107,3 +107,21 @@ properties:
       errors:
         - xyz.openbmc_project.Common.Error.InvalidArgument
         - xyz.openbmc_project.Common.Device.Error.WriteFailure
+    - name: RequestedSpeedLimitMin
+      type: uint32
+      description: >
+        The requested minimum graphics clock limit of the processor in MHz.
+      errors:
+        # Indicate that the value provided is not within the allowed limits
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+        # Indicate a failure to apply changes to the processor.
+        - xyz.openbmc_project.Common.Device.Error.WriteFailure  
+    - name: RequestedSpeedLimitMax
+      type: uint32
+      description: >
+        The requested maximum graphics clock limit of the processor in MHz.
+      errors:
+        # Indicate that the value provided is not within the allowed limits
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+        # Indicate a failure to apply changes to the processor.
+        - xyz.openbmc_project.Common.Device.Error.WriteFailure
