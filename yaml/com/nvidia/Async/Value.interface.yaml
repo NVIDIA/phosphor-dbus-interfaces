@@ -1,0 +1,13 @@
+description: >
+    Resultant value of an asynchronous method call operation. The method call
+    will return an Object Path. This Interface at the returned Object Path can
+    be used to retrieve resultant value of the asynchronous method call
+    operation, once the operation completes successfully. Interface
+    com.nvidia.Async.Status at the return Object Path can be used to monitor
+    the status of the asynchronous method call operation.
+
+properties:
+    - name: Value
+      type: variant[boolean,byte,uint64,int64,double,string]
+      description: >
+          Resultant value of the asynchronous method call operation
