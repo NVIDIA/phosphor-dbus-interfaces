@@ -1,0 +1,8 @@
+description: >
+    Store current BMC Configuration.
+properties:
+    - name: BMCConfigEnabled
+      type: boolean
+      default: False
+      description: >
+           This property shall represent the BMC configuration status.
