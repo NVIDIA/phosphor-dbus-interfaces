@@ -194,6 +194,21 @@ generated_others += custom_target(
     ],
 )
 
+subdir('LocationContext')
+generated_others += custom_target(
+    'xyz/openbmc_project/Inventory/Decorator/LocationContext__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/LocationContext.interface.yaml',  ],
+    output: [ 'LocationContext.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Inventory/Decorator/LocationContext',
+    ],
+)
+
 subdir('ManufacturerExt')
 generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Decorator/ManufacturerExt__markdown'.underscorify(),
