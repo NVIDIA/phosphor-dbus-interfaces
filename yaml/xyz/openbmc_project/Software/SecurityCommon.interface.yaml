@@ -1,0 +1,36 @@
+description: >
+    This is used to define enumerations for Security config enumerations.
+
+enumerations:
+    - name: UpdateMethods
+      description: >
+          Activation methods required to complete the operation.
+      values:
+          - name: "Automatic"
+            description: >
+                Updated at completion of request.
+          - name: "SelfContained"
+            description: >
+                SelfContained.
+          - name: "MediumSpecificReset"
+            description: >
+                Medium-specific reset.
+          - name: "SystemReboot"
+            description: >
+                System reboot.
+          - name: "DCPowerCycle"
+            description: >
+                DC power cycle.
+          - name: "ACPowerCycle"
+            description: >
+                AC power cycle.
+          - name: "WarmReset"
+            description: >
+                Warm Reset.
+          - name: "HotReset"
+            description: >
+                Hot Reset.
+          - name: "FLR"
+            description: >
+                Function Level Reset.
+

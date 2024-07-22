@@ -1,0 +1,48 @@
+description: >
+    Implement this interface if device supports set and get of minimum security
+    version.
+properties:
+    - name: UpdateMethod
+      type: array[enum[xyz.openbmc_project.Software.SecurityCommon.UpdateMethods]]
+      description: >
+          Activation method required to complete the operation.
+      flags:
+          - readonly
+    - name: ErrorCode
+      type: struct[uint16, string]
+      description: >
+          This property indicates ErrorCode and message when async command fails.
+methods:
+    - name: UpdateMinSecVersion
+      description: >
+          This method shall update the Minimum Security Version for the device.
+      parameters:
+          - name: RequestType
+            type: enum[self.RequestTypes]
+            description: >
+                Request Type for Update Minimum Security Version
+          - name: Nonce
+            type: uint64
+            description: >
+                Nonce obtained from Enable Irreversible Configuration command.
+          - name: ReqMinSecVersion
+            type: uint16
+            description: >
+                Requested MinimumSecurity Version when Request Type is
+                RequestTypes.SpecifiedValue.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+
+enumerations:
+    - name: RequestTypes
+      description: >
+          Request Types for Update Minimum Security Version.
+      values:
+          - name: "MostRestrictiveValue"
+            description: >
+                Update Minimum Security Version to most restrictive permitted
+                value.
+          - name: "SpecifiedValue"
+            description: >
+                Update Minimum Security Version to specified value.

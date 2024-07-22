@@ -1,0 +1,30 @@
+description: >
+    Implement this interface if device supports Security Configuration.
+properties:
+    - name: IrreversibleConfigState
+      type: boolean
+      description: >
+          Indicates Irreversible Config is enabled or disabled.
+      flags:
+          - readonly
+    - name: Nonce
+      type: uint64
+      description: >
+          Contains Nonce received from Irreversible Configuration command.
+      flags:
+          - readonly
+methods:
+    - name: UpdateIrreversibleConfig
+      description: >
+          This method shall update the Irreversible Config for the device.
+          Using a method is favored over setting properties because of
+          asynchronous operations.
+      parameters:
+          - name: State
+            type: boolean
+            description: >
+                Set this parameter to true to enable Irreversible Config and
+                false to disable.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.InvalidArgument

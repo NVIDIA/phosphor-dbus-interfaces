@@ -1,0 +1,9 @@
+description: >
+    Implement this interface if device supports Security Version
+properties:
+    - name: Version
+      type: uint16
+      description: >
+          The security version identifier.
+      flags:
+          - readonly
