@@ -47,6 +47,7 @@ generated_others += custom_target(
     ],
 )
 
+subdir('ErrorInjection')
 subdir('GPMMetrics')
 generated_others += custom_target(
     'com/nvidia/GPMMetrics__markdown'.underscorify(),
