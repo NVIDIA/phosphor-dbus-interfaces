@@ -1,0 +1,9 @@
+description: >
+    Provides version stamp information for comparing software versions.
+properties:
+    - name: FirmwareComparisonNumber
+      type: uint32
+      description: >
+          A value that can be used to determine if a given component is a higher
+          or lower version than another value using an unsigned integer comparison.
+          The value of `FirmwareComparisonNumber` should default to 0 if it is not applicable.
