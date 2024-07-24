@@ -1,0 +1,23 @@
+description: >
+    Implement LeakDetector interface to provide item attributes of the LeakDetector.
+
+properties:
+    - name: LeakDetectorType
+      type: enum[self.LeakDetectorTypeEnum]
+      default: Moisture
+      description: >
+          This property shall contain the reading type of the leak detection sensor.
+      flags:
+          - readonly
+
+enumerations:
+    - name: LeakDetectorTypeEnum
+      description: >
+          The type of leak detection sensor enum.
+      values:
+          - name: FloatSwitch
+            description: >
+                A float switch sensor type.
+          - name: Moisture
+            description: >
+                A moisture sensor type.

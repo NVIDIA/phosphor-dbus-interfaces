@@ -11,13 +11,6 @@ properties:
           The current state of the Leak Detector and is a read-only property.
       flags:
           - readonly
-    - name: LeakDetectorType
-      type: enum[self.LeakDetectorTypeEnum]
-      default: Moisture
-      description: >
-          This property shall contain the reading type of the leak detection sensor.
-      flags:
-          - readonly
 
 enumerations:
   - name: DetectorStateEnum
@@ -33,13 +26,3 @@ enumerations:
       - name: Critical
         description: >
          The state of the Leak Detector is critical and requires immediate attention.
-  - name: LeakDetectorTypeEnum
-    description: >
-      The type of leak detection sensor enum.
-    values:
-      - name: FloatSwitch
-        description: >
-         A float switch sensor type.
-      - name: Moisture
-        description: >
-         A moisture sensor type.
