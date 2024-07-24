@@ -1,4 +1,19 @@
 # Generated file; do not modify.
+subdir('ClearPCIeCounters')
+generated_others += custom_target(
+    'xyz/openbmc_project/PCIe/ClearPCIeCounters__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/PCIe/ClearPCIeCounters.interface.yaml',  ],
+    output: [ 'ClearPCIeCounters.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/PCIe/ClearPCIeCounters',
+    ],
+)
+
 subdir('LTSSMState')
 generated_others += custom_target(
     'xyz/openbmc_project/PCIe/LTSSMState__markdown'.underscorify(),
