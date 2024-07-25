@@ -19,7 +19,8 @@ methods:
                 Property name
 
           - name: Value
-            type: variant[boolean,byte,uint64,int64,double,string]
+            type: variant[boolean,byte,uint16,int16,uint32,int32,uint64,int64,
+                  double,string,array[byte],struct[boolean,uint32]]
             description: >
                 Value to be set
 
