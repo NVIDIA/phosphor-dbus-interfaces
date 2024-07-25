@@ -115,6 +115,16 @@ paths:
                 Reboot statistic to track number of times device rebooted
                 because of a failure.
             value: reboot/count_with_failure
+          - name: EmmcLifetime
+            description: >
+                EMMC health statistics to track Type B device lifetime
+                estimation.
+            value: emmc/lifetime
+          - name: EmmcBlocks
+            description: >
+                EMMC health statistics to track the consumption state of
+                reserved blocks.
+            value: emmc/blocks
     - name: BMC
       description: >
           The BMC metrics.
