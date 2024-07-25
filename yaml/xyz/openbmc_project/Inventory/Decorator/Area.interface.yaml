@@ -35,6 +35,9 @@ enumerations:
         - name: GPUSubsystem
           description: >
             A Graphics Processor (GPU) subsystem.
+        - name: ProcessorModule
+          description: >
+            A processor module.
         - name: Memory
           description: >
             A memory device.
