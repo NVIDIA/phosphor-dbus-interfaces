@@ -335,6 +335,10 @@ enumerations:
           description: >
               PCIe v5.0 device
 
+        - name: 'Gen6'
+          description: >
+              PCIe v6.0 device
+
         - name: 'Unknown'
           description: >
               Version of the PCIe device is unknown

@@ -56,3 +56,6 @@ enumerations:
         - name: VoltageRegulator
           description: >
             A voltage regulator device.
+        - name: Board
+          description: >
+            A circuit board.
