@@ -1,46 +1,46 @@
 # Generated file; do not modify.
-subdir('ClearPCIeCounters')
+subdir('Set')
 generated_others += custom_target(
-    'xyz/openbmc_project/PCIe/ClearPCIeCounters__markdown'.underscorify(),
-    input: [ '../../../../yaml/xyz/openbmc_project/PCIe/ClearPCIeCounters.interface.yaml',  ],
-    output: [ 'ClearPCIeCounters.md' ],
+    'com/nvidia/Async/Set__markdown'.underscorify(),
+    input: [ '../../../../yaml/com/nvidia/Async/Set.interface.yaml',  ],
+    output: [ 'Set.md' ],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../yaml',
-        'xyz/openbmc_project/PCIe/ClearPCIeCounters',
+        'com/nvidia/Async/Set',
     ],
 )
 
-subdir('LTSSMState')
+subdir('Status')
 generated_others += custom_target(
-    'xyz/openbmc_project/PCIe/LTSSMState__markdown'.underscorify(),
-    input: [ '../../../../yaml/xyz/openbmc_project/PCIe/LTSSMState.interface.yaml',  ],
-    output: [ 'LTSSMState.md' ],
+    'com/nvidia/Async/Status__markdown'.underscorify(),
+    input: [ '../../../../yaml/com/nvidia/Async/Status.interface.yaml',  ],
+    output: [ 'Status.md' ],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../yaml',
-        'xyz/openbmc_project/PCIe/LTSSMState',
+        'com/nvidia/Async/Status',
     ],
 )
 
-subdir('PCIeECC')
+subdir('Value')
 generated_others += custom_target(
-    'xyz/openbmc_project/PCIe/PCIeECC__markdown'.underscorify(),
-    input: [ '../../../../yaml/xyz/openbmc_project/PCIe/PCIeECC.interface.yaml',  ],
-    output: [ 'PCIeECC.md' ],
+    'com/nvidia/Async/Value__markdown'.underscorify(),
+    input: [ '../../../../yaml/com/nvidia/Async/Value.interface.yaml',  ],
+    output: [ 'Value.md' ],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../yaml',
-        'xyz/openbmc_project/PCIe/PCIeECC',
+        'com/nvidia/Async/Value',
     ],
 )
 

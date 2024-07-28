@@ -1,0 +1,59 @@
+description: >
+    Implement to provide interface that will expose method to clear PCIe Counters and property that hold clearable counters bits.
+
+properties:
+    - name: ClearableCounters
+      type: array[enum[self.CounterType]]
+      description: >
+          Vector of bitfield, Holds data for collection of groups. Each bitfield is corresponding to one particular group. 
+          The bits of bitfield conveys if the particular counter of group is clearable or not.
+           
+methods:
+    - name: ClearCounter
+      description: >
+          Clears the counter.  
+      parameters:
+          - name: Counter
+            type: enum[self.CounterType]
+            description: >
+                The type of Counter that needs to be cleared.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.NotAllowed
+
+enumerations:
+    - name: CounterType
+      description: >
+          The type of Counter that needs to be cleared.
+      values:
+          - name: "CorrectableErrorCount"
+            description: >
+                The total number of the PCIe correctable errors on the device.
+          - name: "NonFatalErrorCount"
+            description: >
+                The total number of the PCIe non-fatal errors on the device.
+          - name: "FatalErrorCount"
+            description: >
+                The total number of the PCIe fatal errors on the device.
+          - name: "L0ToRecoveryCount"    
+            description: >
+                The total number of times the PCIe link transitioned from
+                L0 to the recovery state for the device.
+          - name: "ReplayCount"
+            description: >
+                The total number of the replays issued on the PCIe link on
+                the device.
+          - name: "ReplayRolloverCount"
+            description: >
+                The total number of replay rollovers issued on the PCIe link
+                on the device.
+          - name: "NAKSentCount" 
+            description: >
+              The total number of NAKs issued on the PCIe link on the device.
+          - name: "NAKReceivedCount"      
+            description: >
+              The total number of NAKs issued on the PCIe link by the receiver.
+          - name: "UnsupportedRequestCount"
+            description: >
+                The total number of the PCIe unsupported request count on the device.

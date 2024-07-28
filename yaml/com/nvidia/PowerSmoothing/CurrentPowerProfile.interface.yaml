@@ -1,0 +1,70 @@
+description: >
+    Processor power configuration settings.
+properties:
+    - name: AppliedProfilePath
+      type: object_path
+      description: Path to currently applied power profile config
+
+    - name: AdminProfilePath
+      type: object_path
+      description: Path to currently applied power profile config
+
+    - name: TMPFloorPercent
+      type: double
+      default: NaN
+      description: >
+          TmpFloor Setting in percentage
+    - name: RampUpRate
+      type: double
+      default: NaN
+      description: >
+          Ramp-up rate in milliwatts  per second. 
+    - name: RampDownRate
+      type: double
+      default: NaN
+      description: >
+          Ramp-down rate in milliwatts  per second.
+    - name: RampDownHysteresis
+      type: double
+      default: NaN
+      description: >
+          Ramp-down hysteresis value  in milliseconds
+
+    - name: RampUpRateApplied
+      type: boolean
+      description: >
+          Indicates active runtime admin override for RampUpRateApplied
+    - name: RampDownRateApplied
+      type: boolean
+      description: >
+          Indicates active runtime admin override for RampDownRate
+    - name: TMPFloorPercentApplied
+      type: boolean
+      description: >
+          Indicates active runtime admin override for TMPFloorPercent
+    - name: RampDownHysteresisApplied
+      type: boolean
+      description: >
+          Indicates active runtime admin override for RampDownHysteresis
+
+methods:
+    - name: ApplyAdminOverride
+      description: >
+          A method to apply cached admin override defined through AdminPowerProfile interface. AdminPowerProfile interface implemented settings will be overriden on the device
+      errors:
+        - xyz.openbmc_project.Common.Error.NotAllowed
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable
+
+    - name: ActivatePresetProfile
+      description: >
+          A method to activate preset profile. Preset profile setting are implemented through PowerProfile interface
+      parameters:
+       - name: ProfileId
+         type: uint16
+         description: >
+             Profile Id of the preset profile to to be activated
+      errors:
+        - xyz.openbmc_project.Common.Error.NotAllowed
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable

@@ -186,3 +186,11 @@ properties:
           The total number of times the transmission was waiting.
       flags:
           - readonly
+
+    - name: BitErrorRate
+      type: double
+      default: 0.0
+      description: >
+          The bit error rate on the link.
+      flags:
+          - readonly

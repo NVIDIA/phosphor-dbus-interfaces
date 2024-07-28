@@ -1,0 +1,28 @@
+description: >
+    The Firmware slot information
+
+properties:
+    - name: SlotId
+      type: byte
+      description: >
+        Indicates the slot number of the firmware
+    - name: IsActive
+      type: boolean
+      description: >
+        Indicates if the slot is active
+    - name: Type
+      type: enum[self.FirmwareType]
+      description:
+          Indicates the firmware type
+
+enumerations:
+    - name: FirmwareType
+      description: >
+        Indicates the firmware type
+      values:
+        - name: AP
+          description: >
+            AP firmware type
+        - name: EC
+          description: >
+            EC firmware type

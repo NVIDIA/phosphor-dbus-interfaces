@@ -74,6 +74,21 @@ generated_others += custom_target(
     ],
 )
 
+subdir('BuildType')
+generated_others += custom_target(
+    'xyz/openbmc_project/Software/BuildType__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Software/BuildType.interface.yaml',  ],
+    output: [ 'BuildType.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/BuildType',
+    ],
+)
+
 subdir('ExtendedVersion')
 generated_others += custom_target(
     'xyz/openbmc_project/Software/ExtendedVersion__markdown'.underscorify(),
@@ -176,6 +191,36 @@ generated_others += custom_target(
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/Software/Settings',
+    ],
+)
+
+subdir('Slot')
+generated_others += custom_target(
+    'xyz/openbmc_project/Software/Slot__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Software/Slot.interface.yaml',  ],
+    output: [ 'Slot.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/Slot',
+    ],
+)
+
+subdir('State')
+generated_others += custom_target(
+    'xyz/openbmc_project/Software/State__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/Software/State.interface.yaml',  ],
+    output: [ 'State.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/State',
     ],
 )
 

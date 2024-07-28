@@ -1,0 +1,41 @@
+description: >
+    Status of the asynchronous set property and method call operations
+
+properties:
+    - name: Status
+      type: enum[self.AsyncOperationStatus]
+      description: >
+          Indicates status of the asynchronous set property and method call
+          operations
+
+enumerations:
+    - name: AsyncOperationStatus
+      description: >
+          The status of the asynchronous set property and method call operations
+      values:
+          - name: "InProgress"
+            description: >
+                The Operation is in progress.
+          - name: "Success"
+            description: >
+                The Operation completed successfully.
+          - name: "Timeout"
+            description: >
+                The Operation timed out.
+          - name: "InternalFailure"
+            description: >
+                The Operation failed internally.
+          - name: "ResourceNotFound"
+            description: >
+                The Object on which the operation is being performed is not
+                found.
+          - name: "Unavailable"
+            description: >
+                The Object on which the operation is being performed is
+                temporarily unavailable.
+          - name: "UnsupportedRequest"
+            description: >
+                The Operation is not supported for the object.
+          - name: "WriteFailure"
+            description: >
+                The Operation failed while sending write request to the device.

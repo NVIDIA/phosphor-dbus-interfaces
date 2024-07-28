@@ -121,6 +121,21 @@ generated_others += custom_target(
     ],
 )
 
+subdir('LeakDetectorState')
+generated_others += custom_target(
+    'xyz/openbmc_project/State/LeakDetectorState__markdown'.underscorify(),
+    input: [ '../../../../yaml/xyz/openbmc_project/State/LeakDetectorState.interface.yaml',  ],
+    output: [ 'LeakDetectorState.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/State/LeakDetectorState',
+    ],
+)
+
 subdir('OperatingSystem')
 subdir('PowerChange')
 generated_others += custom_target(

@@ -1,0 +1,49 @@
+description: >
+   Implement this interface to provide the error injections capabilities.
+
+properties:
+    - name: Supported
+      type: boolean
+      description: >
+            This property shall indicate whether the error injection type is supported.
+
+    - name: Enabled
+      type: boolean
+      description: >
+            This property shall indicate whether the error injection type is enabled.
+      errors:
+          # Indicate that timeout from the device response
+          - xyz.openbmc_project.Common.Error.Timeout
+          # Indicate that this property is temporarily unable to be changed.
+          - xyz.openbmc_project.Common.Error.Unavailable
+          # Indicate a failure to apply changes to the processor.
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure
+
+    - name: Type
+      type: enum[self.Type]
+      description: >
+          The error injection capability type
+      default: Unknown
+
+
+enumerations:
+    - name: Type
+      description: >
+          The error injection capability type
+      values:
+          - name: "MemoryErrors"
+            description: >
+                The error injection type for support of the memory errors.
+          - name: "PCIeErrors"
+            description: >
+                The error injection type for support of the PCIe errors.
+          - name: "NVLinkErrors"
+            description: >
+                The error injection type for support of the NVLink errors.
+          - name: "ThermalErrors"
+            description: >
+                The error injection type for support of the thermal errors.
+          - name: "Unknown"
+            description: >
+                The unvalid unknown capability type holder.
+                

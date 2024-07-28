@@ -1,0 +1,49 @@
+description: >
+    Implement this interface to provide the power smoothing telemetry
+
+properties:
+    - name: FeatureSupported
+      type: boolean
+      description: >
+          An indication of power smoothing is enabled or not
+
+    - name: PowerSmoothingEnabled
+      type: boolean
+      description: >
+          An indication of power smoothing is enabled or not
+
+    - name: ImmediateRampDownEnabled
+      type: boolean
+      description: >
+          An indication of immediate ramp down is enabled or not
+
+    - name: CurrentTempSetting
+      type: double
+      default: NaN
+      description: >
+          Current TMP setting in milliwatts.
+
+    - name: CurrentTempFloorSetting
+      type: double
+      default: NaN
+      description: >
+          Current TMP Floor setting in milliwatts.
+
+    - name: MaxAllowedTmpFloorPercent
+      type: double
+      default: NaN
+      description: >
+          Max allowed TMP floor setting in percentage.
+
+    - name: MinAllowedTmpFloorPercent
+      type: double
+      default: NaN
+      description: >
+          Min allowed TMP floor setting in percentage.
+
+
+    - name: LifeTimeRemaining
+      type: double
+      default: NaN
+      description: >
+          Remaining lifetime count in percent.
