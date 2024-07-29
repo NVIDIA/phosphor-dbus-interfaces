@@ -343,6 +343,21 @@ generated_others += custom_target(
     ],
 )
 
+subdir('NvSwitch')
+generated_others += custom_target(
+    'xyz/openbmc_project/Inventory/Item/NvSwitch__markdown'.underscorify(),
+    input: [ '../../../../../yaml/xyz/openbmc_project/Inventory/Item/NvSwitch.interface.yaml',  ],
+    output: [ 'NvSwitch.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Inventory/Item/NvSwitch',
+    ],
+)
+
 subdir('PCIeDevice')
 generated_others += custom_target(
     'xyz/openbmc_project/Inventory/Item/PCIeDevice__markdown'.underscorify(),
