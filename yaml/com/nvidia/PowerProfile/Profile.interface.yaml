@@ -1,0 +1,23 @@
+description: >
+    Implement this special interface to provide current workload power profile of gpus
+
+properties:
+    - name: ProfileId
+      type: uint16
+      description: >
+          Profile Id of the preset profile
+
+    - name: ProfileName
+      type: string
+      description: >
+          Profile Name/ short description of the preset profile
+
+    - name: Priority
+      type: uint16
+      description: >
+          Priority for the pre-set profile.
+
+    - name: ConflictMask
+      type: array[byte]
+      description: >
+          Mask of conflicting pre-set profiles. Each set bit indicates if the pre-set profile at that index is conflicting with this pre-set profile.

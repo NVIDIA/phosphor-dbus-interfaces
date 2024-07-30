@@ -185,6 +185,7 @@ generated_others += custom_target(
     ],
 )
 
+subdir('PowerProfile')
 subdir('PowerSmoothing')
 subdir('PowerSupply')
 subdir('Protocol')
