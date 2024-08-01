@@ -1,0 +1,36 @@
+description: >
+    Provides key revocation functionality.
+
+properties:
+    - name: UpdateMethod
+      type: array[enum[xyz.openbmc_project.Software.SecurityCommon.UpdateMethods]]
+      description: >
+        Activation method required to complete the operation.
+      flags:
+        - readonly
+    - name: ErrorCode
+      type: struct[uint16, string]
+      description: >
+          This property indicates ErrorCode and message when async command fails.
+
+methods:
+    - name: RevokeKeys
+      description: >
+        This method shall update the key permissions.
+      parameters:
+        - name: RequestType
+          type: enum[xyz.openbmc_project.Software.SecurityCommon.RequestTypes]
+          description: >
+            Request type for key revocation method.
+        - name: Nonce
+          type: uint64
+          description: >
+            Nonce obtained from Enable Irreversible Configuration command.
+        - name: KeyIndices
+          type: array[byte]
+          description: >
+            Array containing indexes of keys that shall be revoked.
+      errors:
+        - xyz.openbmc_project.Common.Error.InternalFailure
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+        - xyz.openbmc_project.Common.Error.NotAllowed

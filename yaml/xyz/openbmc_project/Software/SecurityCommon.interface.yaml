@@ -1,7 +1,18 @@
 description: >
-    This is used to define enumerations for Security config enumerations.
+    This is used to define enumerations for Security configuration interfaces.
 
 enumerations:
+    - name: RequestTypes
+      description: >
+        Request Types for security configuration method.
+      values:
+        - name: MostRestrictiveValue
+          description: >
+            Update configuration to most restrictive permitted value.
+        - name: SpecifiedValue
+          description: >
+            Update configuration to specified value.
+
     - name: UpdateMethods
       description: >
           Activation methods required to complete the operation.
@@ -33,4 +44,3 @@ enumerations:
           - name: "FLR"
             description: >
                 Function Level Reset.
-

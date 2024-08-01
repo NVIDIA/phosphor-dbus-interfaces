@@ -1,0 +1,30 @@
+description: >
+    Firmware / software image signing type information.
+
+properties:
+    - name: SigningType
+      type: enum[self.SigningTypes]
+      description: >
+        Signing type of the firmware / software image.
+
+enumerations:
+  - name: SigningTypes
+    description: >
+      Indicates the type of signing.
+    values:
+      - name: Debug
+        description: >
+          Firmware / software is signed with a key designated for development
+          and debug use.
+      - name: Production
+        description: >
+          Firmware / software is signed with a key designated for production
+          use.
+      - name: External
+        description: >
+          Firmware / software is signed with a key valid only in presence of
+          a secure token.
+      - name: DOT
+        description: >
+          Firmware / software is signed with a key valid only when DOT is
+          enabled and DOT CAK is installed.

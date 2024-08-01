@@ -1,0 +1,24 @@
+description: >
+    Provides information about firmware / software image signing keys.
+
+properties:
+    - name: SigningKeyIndex
+      type: byte
+      description: >
+        Index of key used to sign the firmware / software image.
+      flags:
+        - readonly
+    - name: TrustedKeys
+      type: array[byte]
+      description: >
+        Array containing indexes of trusted keys. Images signed with those keys
+        are valid and can be used to perform firmware / software update.
+      flags:
+        - readonly
+    - name: RevokedKeys
+      type: array[byte]
+      description: >
+        Array containing indexes of revoked keys. Images signed with those keys
+        are no longer valid.
+      flags:
+        - readonly

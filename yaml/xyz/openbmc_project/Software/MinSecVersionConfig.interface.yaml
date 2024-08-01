@@ -18,7 +18,7 @@ methods:
           This method shall update the Minimum Security Version for the device.
       parameters:
           - name: RequestType
-            type: enum[self.RequestTypes]
+            type: enum[xyz.openbmc_project.Software.SecurityCommon.RequestTypes]
             description: >
                 Request Type for Update Minimum Security Version
           - name: Nonce
@@ -33,16 +33,3 @@ methods:
       errors:
           - xyz.openbmc_project.Common.Error.InternalFailure
           - xyz.openbmc_project.Common.Error.InvalidArgument
-
-enumerations:
-    - name: RequestTypes
-      description: >
-          Request Types for Update Minimum Security Version.
-      values:
-          - name: "MostRestrictiveValue"
-            description: >
-                Update Minimum Security Version to most restrictive permitted
-                value.
-          - name: "SpecifiedValue"
-            description: >
-                Update Minimum Security Version to specified value.

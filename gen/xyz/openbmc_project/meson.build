@@ -131,6 +131,7 @@ generated_others += custom_target(
     ],
 )
 
+subdir('Security')
 subdir('Sensor')
 subdir('Smbios')
 subdir('Software')
