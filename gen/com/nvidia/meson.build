@@ -157,6 +157,7 @@ subdir('NVLink')
 subdir('PowerSmoothing')
 subdir('PowerSupply')
 subdir('Protocol')
+subdir('RoT')
 subdir('Secureboot')
 subdir('StaticPowerHint')
 generated_others += custom_target(
