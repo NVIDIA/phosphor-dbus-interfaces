@@ -1,0 +1,9 @@
+description: >
+    Implement if service supports in memory logs which are flushed to journal on demand basis(to avoid flooding)
+methods:
+    - name: LogDump
+      description: >
+          Flush in memory logs to journal for critical failures
+      errors:
+          - xyz.openbmc_project.Common.Error.Timeout
+          - xyz.openbmc_project.Common.Error.NotAllowed
