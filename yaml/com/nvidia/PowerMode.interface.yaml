@@ -1,0 +1,38 @@
+description: >
+    Implement to provide power mode settings.
+
+properties:
+    - name: HWModeControl
+      type: boolean
+      description: >
+          An indication of hardware mode is enabled or not.
+
+    - name: HWThreshold
+      type: uint64
+      description: >
+          Contains maximum number of bytes in queue that is considered as empty queue.
+
+    - name: FWThrottlingMode
+      type: boolean
+      description: >
+          An indication of firmware throttling mode is enabled or not.
+
+    - name: PredictionMode
+      type: boolean
+      description: >
+          An indication of if prediction mechanism is enabled or not.
+
+    - name: HWActiveTime
+      type: uint64
+      description: >
+          Contains active time in state (in steps of 50 microsec)
+
+    - name: HWInactiveTime
+      type: uint64
+      description: >
+          Contains inactive time in state (in steps of 50 microsec)
+
+    - name: HWPredictionInactiveTime
+      type: uint64
+      description: >
+          Contains inactive time in state after wrong prediction (in steps of 50 microsec)
