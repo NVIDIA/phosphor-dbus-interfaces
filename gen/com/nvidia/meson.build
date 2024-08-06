@@ -169,6 +169,7 @@ generated_others += custom_target(
 )
 
 subdir('NVLink')
+subdir('PCIe')
 subdir('PowerMode')
 generated_others += custom_target(
     'com/nvidia/PowerMode__markdown'.underscorify(),

@@ -40,3 +40,7 @@ properties:
       type: uint32
       description: >
           The total number of the PCIe uncorrectable errors on the device.
+    - name: UnsupportedRequestCount
+      type: int64
+      description: >
+          The total number of unsupported request counts on the device.

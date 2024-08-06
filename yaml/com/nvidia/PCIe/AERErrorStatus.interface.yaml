@@ -1,0 +1,23 @@
+description: >
+   Implement to provide AER Error Status and expose method to clear it.
+
+properties:
+    - name: "AERUncorrectableErrorStatus"
+      type: string
+      description: >
+            Represents AER Uncorrectable Error Status.
+      flags:
+          - readonly
+    - name: "AERCorrectableErrorStatus"
+      type: string
+      description: >
+            Represents AER Correctable Error Status.
+      flags:
+          - readonly
+    - name : "RXErrorsPerLane"
+      type: array[uint32]
+      description: >
+            Array Representing RX Errors per Lane.
+      flags:
+          - readonly
+         
