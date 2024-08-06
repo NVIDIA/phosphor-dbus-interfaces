@@ -3,3 +3,11 @@ description: >
     represents a port of a device. There are additional properties which can
     be implemented by the objects to describe port of a switch, controller,
     chassis, or any other device that could be connected to another entity.
+
+properties:
+    - name: PortNumber
+      type: size
+      description: >
+          The port number.
+      flags:
+          - readonly
