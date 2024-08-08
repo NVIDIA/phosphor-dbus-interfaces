@@ -14,6 +14,21 @@ generated_others += custom_target(
     ],
 )
 
+subdir('ClearPowerCapAsync')
+generated_others += custom_target(
+    'com/nvidia/Common/ClearPowerCapAsync__markdown'.underscorify(),
+    input: [ '../../../../yaml/com/nvidia/Common/ClearPowerCapAsync.interface.yaml',  ],
+    output: [ 'ClearPowerCapAsync.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'com/nvidia/Common/ClearPowerCapAsync',
+    ],
+)
+
 subdir('CompleteReset')
 generated_others += custom_target(
     'com/nvidia/Common/CompleteReset__markdown'.underscorify(),
@@ -26,6 +41,21 @@ generated_others += custom_target(
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../yaml',
         'com/nvidia/Common/CompleteReset',
+    ],
+)
+
+subdir('LogDump')
+generated_others += custom_target(
+    'com/nvidia/Common/LogDump__markdown'.underscorify(),
+    input: [ '../../../../yaml/com/nvidia/Common/LogDump.interface.yaml',  ],
+    output: [ 'LogDump.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../../yaml',
+        'com/nvidia/Common/LogDump',
     ],
 )
 

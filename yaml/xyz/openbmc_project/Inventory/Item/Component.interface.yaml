@@ -1,0 +1,4 @@
+description: >
+    Implement to provide typical Component attributes. Examples of possible
+    hardware components include: CPUs, GPUs, FPGAs, and CPLDs.
+

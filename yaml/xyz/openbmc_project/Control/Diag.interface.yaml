@@ -1,0 +1,24 @@
+description: >
+    Implement to provide control for a  CPU Diag test. 
+properties:
+    - name: DiagMode
+      type: boolean
+      description: >
+          Whether the diagMode should be in disable or enable.
+    - name: DiagSystemConfig
+      type: string
+      description: >
+            System level Diag Configuration ConfigType,TestDuration,Param and dynamicData in JSON formate.
+    - name: DiagConfig
+      type: string
+      description: >
+            Test Configuration ConfigType,TID and testcases in JSON formate. 
+    - name: DiagResult
+      type: string
+      description: >
+            Diag Testcases execution result in JSON formate.
+    - name: DiagStatus
+      type: byte
+      description: >
+            Diag Testcases execution status.
+

@@ -1,7 +1,7 @@
 description: >
     The LeakDetection schema contains definitions for reporting leaks in liquid cooling systems or other equipment.
     The LeakDetector schema describes a state-based or digital-value leak detector and its properties.
-    Implement LeakDetectorState interface to indicate the state of the LeakDetector.
+    Implement LeakDetector interface to indicate the state of the LeakDetector.
 
 properties:
     - name: DetectorState
@@ -9,13 +9,6 @@ properties:
       default: OK
       description: >
           The current state of the Leak Detector and is a read-only property.
-      flags:
-          - readonly
-    - name: LeakDetectorType
-      type: enum[self.LeakDetectorTypeEnum]
-      default: Moisture
-      description: >
-          This property shall contain the reading type of the leak detection sensor.
       flags:
           - readonly
 
@@ -33,13 +26,3 @@ enumerations:
       - name: Critical
         description: >
          The state of the Leak Detector is critical and requires immediate attention.
-  - name: LeakDetectorTypeEnum
-    description: >
-      The type of leak detection sensor enum.
-    values:
-      - name: FloatSwitch
-        description: >
-         A float switch sensor type.
-      - name: Moisture
-        description: >
-         A moisture sensor type.

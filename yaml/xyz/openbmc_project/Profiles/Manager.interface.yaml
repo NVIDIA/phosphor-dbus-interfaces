@@ -41,12 +41,12 @@ properties:
         - readonly
       description: >
           The current active profile. 
-    - name: OemDefaultProfileNumber
+    - name: DefaultProfileNumber
       type: byte
       flags:
         - readonly
       default: 0xff
       description: >
-          The default OEM profile number. 
+          The default profile number. 
 
 

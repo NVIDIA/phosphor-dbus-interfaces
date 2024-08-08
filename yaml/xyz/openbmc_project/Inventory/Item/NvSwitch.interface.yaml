@@ -1,0 +1,4 @@
+description: >
+    xyz.openbmc_project.Inventory.Item.NvSwitch is implemented on objects
+    that represents a NVSwitch. There are additional properties which can
+    be implemented by the objects to describe switch device.

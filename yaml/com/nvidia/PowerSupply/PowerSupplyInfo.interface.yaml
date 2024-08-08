@@ -1,0 +1,30 @@
+description: >
+    Implement to provide PowerSupply info.
+
+properties:
+    - name: PowerSupplyType
+      type: enum[self.PowerSupplyTypes]
+      default: DCRegulator
+      description: >
+          The type of power supply
+
+enumerations:
+    - name: PowerSupplyTypes
+      description: >
+          Possible power supply type
+      values:
+          - name: Invalid
+            description: >
+                Represents invalid power supply type.
+          - name: AC
+            description: >
+                Represents AC power supply type.
+          - name: DC
+            description: >
+                Represents DC power supply type.
+          - name: ACorDC
+            description: >
+                Represents AC or DC power supply type.
+          - name: DCRegulator
+            description: >
+                Represents DC Regulator power supply type.
