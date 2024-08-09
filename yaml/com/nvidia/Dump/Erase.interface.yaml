@@ -1,0 +1,50 @@
+description: >
+  Implement if service supports clearing information from flash on device.
+
+methods:
+  - name: Erase
+    description: >
+      Send erase call to device to clear the contents from the flash.
+    parameters:
+      - name: DebugInfoType
+        type: enum[self.EraseInfoType]
+        description: >
+          The type of informatio to be erased from device.
+    returns:
+      - name: Status
+        type: struct[uint64, enum[self.EraseStatus]]
+        description: >
+          Method returns the reason code and the status of the erase method
+          call made to device. Until the status is EraseStatus.DataErased
+          requester can call the function iterativly to check status which
+          should be EraseStatus.DataEraseInProgress. Note if reason code indicates
+          failure (non zero value) then call the method again.
+
+enumerations:
+  - name: EraseStatus
+    description: >
+      Possible status values after erase method call.
+    values:
+      - name: NoDataErased
+        description: >
+          No data erased.
+      - name: DataErased
+        description: >
+          Data is erased.
+      - name: DataEraseInProgress
+        description: >
+          Data erase in progress.
+      - name: Unknown
+        description: >
+          Status is not known.
+
+  - name: EraseInfoType
+    description: >
+      Possible info type to be erased.
+    values:
+      - name: DeviceDebugInfo
+        description: >
+          Device debug information.
+      - name: Other
+        description: >
+          Others.

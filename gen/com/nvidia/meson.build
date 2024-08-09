@@ -62,6 +62,7 @@ generated_others += custom_target(
     ],
 )
 
+subdir('Dump')
 subdir('Edpp')
 generated_others += custom_target(
     'com/nvidia/Edpp__markdown'.underscorify(),
