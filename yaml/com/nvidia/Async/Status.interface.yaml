@@ -22,6 +22,10 @@ enumerations:
           - name: "Timeout"
             description: >
                 The Operation timed out.
+          - name: "InvalidArgument"
+            description: >
+                The value of one of more arguments is invalid for this
+                Operation.
           - name: "InternalFailure"
             description: >
                 The Operation failed internally.
