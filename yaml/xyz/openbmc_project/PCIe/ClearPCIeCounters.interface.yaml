@@ -14,13 +14,21 @@ methods:
           Clears the counter.  
       parameters:
           - name: Counter
-            type: enum[self.CounterType]
+            type: string
             description: >
                 The type of Counter that needs to be cleared.
       errors:
           - xyz.openbmc_project.Common.Error.InvalidArgument
           - xyz.openbmc_project.Common.Error.InternalFailure
           - xyz.openbmc_project.Common.Error.NotAllowed
+      returns:
+          - name: RetValue
+            type: object_path
+            description: >
+                DBus Object Path. Interfaces com.nvidia.Async.Status and
+                com.nvidia.Async.Value at this returned Object Path can be used
+                to retrieve the status and resultant value of the operation
+                respectively.
 
 enumerations:
     - name: CounterType
