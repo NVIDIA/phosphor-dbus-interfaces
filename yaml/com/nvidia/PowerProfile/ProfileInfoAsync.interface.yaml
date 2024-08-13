@@ -1,0 +1,47 @@
+description: >
+    Implement this to provide asynchrnous support for enabling/disabling preset profiles
+
+methods:
+    - name: EnablePresetProfile
+      description: >
+          A method to allow to engage/enable any supported pre-set profiles.
+      parameters:
+          - name: ProfileMask
+            type: array[byte]
+            description: >
+                Mask of pre-set profiles that client wants to enable/engage. Each set bit indicates that the pre-set profile at that index needs to be enabled/engaged.
+      errors:
+        - xyz.openbmc_project.Common.Error.NotAllowed
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+      returns:
+          - name: RetValue
+            type: object_path
+            description: >
+                DBus Object Path. Interfaces com.nvidia.Async.Status and
+                com.nvidia.Async.Value at this returned Object Path can be used
+                to retrieve the status and resultant value of the operation
+                respectively.
+
+    - name: DisablePresetProfile
+      description: >
+          allow to disengage/disable any supported pre-set profiles.
+      parameters:
+       - name: ProfileMask
+         type: array[byte]
+         description: >
+             Mask of pre-set profiles that client wants to disable/disengage. Each set bit indicates that the pre-set profile at that index needs to be disabled/disengaged.
+      errors:
+        - xyz.openbmc_project.Common.Error.NotAllowed
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+      returns:
+          - name: RetValue
+            type: object_path
+            description: >
+                DBus Object Path. Interfaces com.nvidia.Async.Status and
+                com.nvidia.Async.Value at this returned Object Path can be used
+                to retrieve the status and resultant value of the operation
+                respectively.
