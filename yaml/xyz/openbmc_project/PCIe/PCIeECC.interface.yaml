@@ -44,3 +44,55 @@ properties:
       type: int64
       description: >
           The total number of unsupported request counts on the device.
+          
+    - name: PCIeType
+      type: enum[self.PCIeTypes]
+      default: 'Unknown'
+      description: >
+          The PCIe interface generation in use by the device.
+    - name: MaxLanes
+      type: size
+      default: 0
+      description: >
+          The maximum number of PCIe lanes supported by the PCIe Device
+    - name: LanesInUse
+      type: size
+      default: maxint
+      description: >
+          The number of PCIe lanes in use by this device. Default value of
+          maxint is to accommodate the situation where the value of this
+          property is not known due to some unknown reason, like hardware
+          failure. The value of 0 indicates that the link is not active.
+       
+enumerations:
+    - name: PCIeTypes
+      description: >
+          Possible PCIe generations
+      values:
+        - name: 'Gen1'
+          description: >
+              PCIe v1.0 device
+
+        - name: 'Gen2'
+          description: >
+              PCIe v2.0 device
+
+        - name: 'Gen3'
+          description: >
+              PCIe v3.0 device
+
+        - name: 'Gen4'
+          description: >
+              PCIe v4.0 device
+
+        - name: 'Gen5'
+          description: >
+              PCIe v5.0 device
+
+        - name: 'Gen6'
+          description: >
+              PCIe v6.0 device
+
+        - name: 'Unknown'
+          description: >
+              Version of the PCIe device is unknown
