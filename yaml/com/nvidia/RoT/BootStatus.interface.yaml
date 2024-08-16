@@ -1,11 +1,11 @@
 description: >
-  Interface to provide the BootStatus property in the form of QueryBootStatus for ERoTs, and OCPDeviceStatus of GPUs
+  Interface to provide the BootStatus from a RoT
 
 properties:
     - name: BootStatus
       type: array[byte]
       description: >
-        QueryBootStatus output from an AP's ERoT or OCPDeviceStatus from a GPU
+        BootStatus of a Device
 
     - name: BootStatusType
       type: enum[self.BootStatusTypes]
@@ -19,7 +19,10 @@ enumerations:
     values:
       - name: ERoTBootStatus
         description: >
-          The BootStatus code represents ERoTBootStatus code
+          ERoTBootStatus code represents the BootStatus code fetched from an ERoT
+          and should be interpreted according to the MCTP VDM specification
+
       - name: OCPDeviceStatus
         description: >
-          The BootStatus code represents DeviceStatus from the OCP Recovery protocol
+          OCPDeviceStatus represents the DeviceStatus response from a Device implementing
+          OCP Recovery Protocol
