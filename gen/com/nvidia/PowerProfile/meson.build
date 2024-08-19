@@ -1,31 +1,31 @@
 # Generated file; do not modify.
-subdir('BMCConfigManager')
+subdir('Profile')
 generated_others += custom_target(
-    'com/nvidia/BF/BMCConfigManager__markdown'.underscorify(),
-    input: [ '../../../../yaml/com/nvidia/BF/BMCConfigManager.interface.yaml',  ],
-    output: [ 'BMCConfigManager.md' ],
+    'com/nvidia/PowerProfile/Profile__markdown'.underscorify(),
+    input: [ '../../../../yaml/com/nvidia/PowerProfile/Profile.interface.yaml',  ],
+    output: [ 'Profile.md' ],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../yaml',
-        'com/nvidia/BF/BMCConfigManager',
+        'com/nvidia/PowerProfile/Profile',
     ],
 )
 
-subdir('GoldenImageUpdater')
+subdir('ProfileInfo')
 generated_others += custom_target(
-    'com/nvidia/BF/GoldenImageUpdater__markdown'.underscorify(),
-    input: [ '../../../../yaml/com/nvidia/BF/GoldenImageUpdater.interface.yaml',  ],
-    output: [ 'GoldenImageUpdater.md' ],
+    'com/nvidia/PowerProfile/ProfileInfo__markdown'.underscorify(),
+    input: [ '../../../../yaml/com/nvidia/PowerProfile/ProfileInfo.interface.yaml',  ],
+    output: [ 'ProfileInfo.md' ],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog, '--command', 'markdown',
         '--output', meson.current_build_dir(),
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../yaml',
-        'com/nvidia/BF/GoldenImageUpdater',
+        'com/nvidia/PowerProfile/ProfileInfo',
     ],
 )
 

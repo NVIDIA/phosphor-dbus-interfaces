@@ -1,0 +1,45 @@
+description: >
+    Implement this special interface to provide current workload power profile of gpus
+
+properties:
+    - name: SupportedProfileMask
+      type: array[byte]
+      description: >
+          Mask of supported pre-set profiles. Each set bit indicates if the pre-set profile at that index is supported.
+
+    - name: RequestedProfileMask
+      type: array[byte]
+      description: >
+          Mask of requested pre-set profiles. Each set bit indicates if the pre-set profile at that index is requested/enabled by the client.
+
+    - name: EnforcedProfileMask
+      type: array[byte]
+      description: >
+          Mask of enforced pre-set profiles. Each set bit indicates if the pre-set profile at that index is actively enforced.
+
+methods:
+    - name: EnablePresetProfile
+      description: >
+          A method to allow to engage/enable any supported pre-set profiles.
+      parameters:
+          - name: ProfileMask
+            type: array[byte]
+            description: >
+                Mask of pre-set profiles that client wants to enable/engage. Each set bit indicates that the pre-set profile at that index needs to be enabled/engaged.
+      errors:
+        - xyz.openbmc_project.Common.Error.NotAllowed
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable
+
+    - name: DisablePresetProfile
+      description: >
+          allow to disengage/disable any supported pre-set profiles.
+      parameters:
+       - name: ProfileMask
+         type: array[byte]
+         description: >
+             Mask of pre-set profiles that client wants to disable/disengage. Each set bit indicates that the pre-set profile at that index needs to be disabled/disengaged.
+      errors:
+        - xyz.openbmc_project.Common.Error.NotAllowed
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable

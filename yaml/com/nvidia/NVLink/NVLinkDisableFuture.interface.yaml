@@ -1,0 +1,7 @@
+description: >
+    Implement to provide nvlink status for future disable.
+properties:
+    - name: PortDisableFuture
+      type: array[byte]
+      description: >
+          Contains NVLink port numbers which are set to disable in future.

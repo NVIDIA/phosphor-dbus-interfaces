@@ -47,6 +47,21 @@ generated_others += custom_target(
     ],
 )
 
+subdir('DebugToken')
+generated_others += custom_target(
+    'com/nvidia/DebugToken__markdown'.underscorify(),
+    input: [ '../../../yaml/com/nvidia/DebugToken.interface.yaml',  ],
+    output: [ 'DebugToken.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/DebugToken',
+    ],
+)
+
 subdir('Edpp')
 generated_others += custom_target(
     'com/nvidia/Edpp__markdown'.underscorify(),
@@ -154,9 +169,42 @@ generated_others += custom_target(
 )
 
 subdir('NVLink')
+subdir('PCIe')
+subdir('PowerMode')
+generated_others += custom_target(
+    'com/nvidia/PowerMode__markdown'.underscorify(),
+    input: [ '../../../yaml/com/nvidia/PowerMode.interface.yaml',  ],
+    output: [ 'PowerMode.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/PowerMode',
+    ],
+)
+
+subdir('PowerProfile')
 subdir('PowerSmoothing')
 subdir('PowerSupply')
 subdir('Protocol')
+subdir('RoT')
+subdir('SMUtilization')
+generated_others += custom_target(
+    'com/nvidia/SMUtilization__markdown'.underscorify(),
+    input: [ '../../../yaml/com/nvidia/SMUtilization.interface.yaml',  ],
+    output: [ 'SMUtilization.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/SMUtilization',
+    ],
+)
+
 subdir('Secureboot')
 subdir('StaticPowerHint')
 generated_others += custom_target(

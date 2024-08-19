@@ -1,0 +1,40 @@
+description: >
+   Implement to provide AER Error Status and expose method to clear it.
+
+properties:
+    - name: "AERUncorrectableErrorStatus"
+      type: string
+      description: >
+            Represents AER Uncorrectable Error Status.
+      flags:
+          - readonly
+    - name: "AERCorrectableErrorStatus"
+      type: string
+      description: >
+            Represents AER Correctable Error Status.
+      flags:
+          - readonly
+    - name : "RXErrorsPerLane"
+      type: array[uint32]
+      description: >
+            Array Representing RX Errors per Lane.
+      flags:
+          - readonly
+methods:
+    - name: ClearAERStatus
+      description: >
+        Clear AERUncorrectableErrorStatus and AERCorrectableErrorStatus to the Default value
+      returns:
+          - name: RetValue
+            type: object_path
+            description: >
+                DBus Object Path. Interfaces com.nvidia.Async.Status and
+                com.nvidia.Async.Value at this returned Object Path can be used
+                to retrieve the status and resultant value of the operation
+                respectively.
+      errors:
+        - xyz.openbmc_project.Common.Device.Error.WriteFailure
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable
+     
+         

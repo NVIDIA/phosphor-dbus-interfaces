@@ -1,0 +1,8 @@
+description: >
+    Implement to advertise SM Utilization of an accelerator.
+properties:
+    - name: SMUtilization
+      type: double
+      description: The SM Utilization of the accelerator as a percentage.
+      flags:
+        - readonly
