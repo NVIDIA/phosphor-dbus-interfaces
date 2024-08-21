@@ -20,6 +20,10 @@ properties:
     description: >
       Debug session and token installation status data. Populated after
       a successful execution of the GetStatus method.
+  - name: ErrorCode
+    type: struct[uint16, string]
+    description: >
+      This property indicates ErrorCode and message when Debug Token command fails.
 
 methods:
   - name: DisableTokens
