@@ -75,6 +75,13 @@ properties:
       description: >
           Management application Statistics Sampling period in microseconds.
 
+    - name: Persistency
+      type: boolean
+      flags:
+          - readonly
+      default: null
+      description: This is the property showing power cap is persistent or not.
+
 enumerations:
     - name: ExceptionActions
       description: >
