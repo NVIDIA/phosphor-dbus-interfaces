@@ -56,3 +56,6 @@ enumerations:
         - name: MC
           description: >
               This resource indicates about Management Controller status
+        - name: MCTP
+          description: >
+              This resource indicates about MCTP status
