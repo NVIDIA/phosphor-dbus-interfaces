@@ -14,12 +14,6 @@ properties:
             Represents AER Correctable Error Status.
       flags:
           - readonly
-    - name : "RXErrorsPerLane"
-      type: array[uint32]
-      description: >
-            Array Representing RX Errors per Lane.
-      flags:
-          - readonly
 methods:
     - name: ClearAERStatus
       description: >

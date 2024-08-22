@@ -1,0 +1,10 @@
+description: >
+   Implement to provide PCIe Errors.
+
+properties:
+    - name : "RXErrorsPerLane"
+      type: array[uint32]
+      description: >
+            Array Representing RX Errors per Lane.
+      flags:
+          - readonly
