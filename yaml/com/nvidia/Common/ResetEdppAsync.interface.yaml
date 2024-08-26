@@ -1,0 +1,19 @@
+description: >
+    Implement to provide reset of Edpp scaling factor.
+methods:
+    - name: Reset
+      description: >
+        Reset Edpp scaling factor.
+      returns:
+          - name: RetValue
+            type: object_path
+            description: >
+                DBus Object Path. Interfaces com.nvidia.Async.Status and
+                com.nvidia.Async.Value at this returned Object Path can be used
+                to retrieve the status and resultant value of the operation
+                respectively.
+      errors:
+        - xyz.openbmc_project.Common.Device.Error.WriteFailure
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable
+        - xyz.openbmc_project.Common.Error.NotAllowed
