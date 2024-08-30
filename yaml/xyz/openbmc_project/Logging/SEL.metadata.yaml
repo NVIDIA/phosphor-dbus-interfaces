@@ -11,3 +11,7 @@
         type: uint8
       - str: "SENSOR_PATH=%s"
         type: string
+      - str: "SENSOR_TYPE=%s"
+        type: string
+      - str: "SENSOR_NUMBER=%u"
+        type: uint8
