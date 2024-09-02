@@ -1,0 +1,11 @@
+description: >
+    Implement to specify the power limit persistency
+
+properties:
+
+    - name: Persistency
+      type: boolean
+      flags:
+          - readonly
+      default: null
+      description: This is the property showing power cap is persistent or not.
