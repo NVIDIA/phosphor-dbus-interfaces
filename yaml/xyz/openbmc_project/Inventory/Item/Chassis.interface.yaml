@@ -34,6 +34,11 @@ enumerations:
             description: >
                 A single-system chassis designed specifically for mounting in an
                 equipment rack.
+          - name: Shelf
+            description: >
+                An enclosed or semi-enclosed, typically horizontally-oriented,
+                system chassis that must be plugged into a multi-system chassis
+                to function normally.
           - name: StandAlone
             description: >
                 A single, free-standing system, commonly called a tower or
