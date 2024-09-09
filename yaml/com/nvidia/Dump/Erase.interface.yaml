@@ -5,11 +5,6 @@ methods:
   - name: Erase
     description: >
       Send erase call to device to clear the contents from the flash.
-    parameters:
-      - name: DebugInfoType
-        type: enum[self.EraseInfoType]
-        description: >
-          The type of informatio to be erased from device.
     returns:
       - name: Status
         type: struct[uint64, enum[self.EraseStatus]]
