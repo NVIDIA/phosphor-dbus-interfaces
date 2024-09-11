@@ -1,0 +1,8 @@
+description: >
+    Implement to provide GPU system GUID 
+properties:
+    - name: SysGUID
+      type: string
+      description: >
+          System GUID of GPU to which the interface is bound. It is a randomly
+          generated 8 bytes used to identify a specific chassis to the switch.
