@@ -1,0 +1,31 @@
+description: >
+    Implement to specify the switch Isolation mode
+
+properties:
+    - name: IsolationMode
+      type: enum[self.CommunicationMode]
+      description: >
+          The communication mode of the switch.
+      default: SwitchCommunicationUnknown
+      errors:
+          # Indicate that timeout from the device response
+          - xyz.openbmc_project.Common.Error.Timeout
+          # Indicate that this property is temporarily unable to be changed.
+          - xyz.openbmc_project.Common.Error.Unavailable
+          # Indicate a failure to apply changes to the processor.
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure
+
+enumerations:
+    - name: CommunicationMode
+      description: >
+          Isolation Mode of Switches.
+      values:
+          - name: SwitchCommunicationEnabled
+            description: >
+                This mode indicates that communication between switches is enabled.
+          - name: SwitchCommunicationDisabled
+            description: >
+                This mode indicates that communication between switches is not enabled.
+          - name: SwitchCommunicationUnknown
+            description: >
+                This mode indicates that status of communication between switches is not known.
