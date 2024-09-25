@@ -1,0 +1,64 @@
+description: >
+   Implement to provide Fabric Manager details.
+
+properties:
+    - name: FMState
+      type: enum[self.FabricManagerState]
+      description: >
+            Fabric manager state.
+    - name: ReportStatus
+      type: enum[self.FabricManagerReportStatus]
+      description: >
+            Fabric manager report status.
+    - name: LastRestartTime
+      type: uint64
+      description: >
+            The Epoch timestamp in seconds from when the FM was initialization is done.
+    - name: LastRestartDuration
+      type: uint64
+      description: >
+            The time in seconds since last FM restart.
+
+enumerations:
+    - name: FabricManagerState
+      description: >
+          Fabric manager state.
+      values:
+        - name: Offline
+          description: >
+              At init stage, before the FM can start sending telemetry.
+        - name: Standby
+          description: >
+              FM init is done, waiting for other dependencies to finish.
+        - name: Configured
+          description: >
+              FM init is complete along with dependencies.
+        - name: Timeout
+          description: >
+              FM is in timeout state due to some reason.
+        - name: Error
+          description: >
+              FM is in error state.
+        - name: Unknown
+          description: >
+              FM state is unknown or does not fall in above category.
+
+    - name: FabricManagerReportStatus
+      description: >
+          Fabric manager report status.
+      values:
+        - name: NotReceived
+          description: >
+              Report not yet received.
+        - name: Received
+          description: >
+              Report is received.
+        - name: Timeout
+          description: >
+              Timeout occured and receiving report.
+        - name: Error
+          description: >
+              Error occured and receiving report.
+        - name: Unknown
+          description: >
+              Status is unknown or does not fall in above category.

@@ -207,6 +207,7 @@ generated_others += custom_target(
 )
 
 subdir('Secureboot')
+subdir('State')
 subdir('StaticPowerHint')
 generated_others += custom_target(
     'com/nvidia/StaticPowerHint__markdown'.underscorify(),
