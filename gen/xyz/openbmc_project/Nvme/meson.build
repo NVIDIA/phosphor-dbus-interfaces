@@ -32,7 +32,7 @@ generated_others += custom_target(
 subdir('Status')
 generated_others += custom_target(
     'xyz/openbmc_project/Nvme/Status__markdown'.underscorify(),
-    input: [ '../../../../yaml/xyz/openbmc_project/Nvme/Status.interface.yaml',  ],
+    input: [ '../../../../yaml/xyz/openbmc_project/Nvme/Status.errors.yaml', '../../../../yaml/xyz/openbmc_project/Nvme/Status.interface.yaml',  ],
     output: [ 'Status.md' ],
     depend_files: sdbusplusplus_depfiles,
     command: [
