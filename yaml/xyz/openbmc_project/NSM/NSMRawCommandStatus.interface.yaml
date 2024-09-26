@@ -1,0 +1,40 @@
+description: >
+    Status of the NSM Raw Command
+
+properties:
+    - name: Status
+      type: enum[self.SetOperationStatus]
+      description: >
+          This parameter indicates the status of the NSM command in progress
+
+enumerations:
+    - name: SetOperationStatus
+      description: >
+          The status of the NSM Raw Command
+      values:
+          - name: "NoCommandInProgress"
+            description: >
+                There is not NSM command in progress
+          - name: "CommandInProgress"
+            description: >
+                NSM Raw command is in progress
+          - name: "CommandExecutionComplete"
+            description: >
+                NSM Raw command Execution complete.
+          - name: "Timeout"
+            description: >
+                The Operation timed out.
+          - name: "InternalFailure"
+            description: >
+                The Operation failed internally.
+          - name: "ResourceNotFound"
+            description: >
+                The NSM device on which the NSM raw command is being performed is not
+                found.
+          - name: "Unavailable"
+            description: >
+                The NSM device on which NSM raw command is being performed is
+                temporarily unavailable.
+          - name: "UnsupportedRequest"
+            description: >
+                The Operation is not supported for the NSM Device.

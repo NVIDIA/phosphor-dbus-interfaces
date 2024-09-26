@@ -169,7 +169,6 @@ generated_others += custom_target(
     ],
 )
 
-subdir('NSM')
 subdir('NVLink')
 subdir('PCIe')
 subdir('PowerMode')
