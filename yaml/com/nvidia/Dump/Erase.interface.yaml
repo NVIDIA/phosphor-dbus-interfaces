@@ -1,20 +1,18 @@
 description: >
   Implement if service supports clearing information from flash on device.
-
+properties:
+  - name: EraseInfo
+    type: struct[enum[self.OperationStatus], enum[self.EraseStatus]]
+    description: >
+      Contains operation status and erase status after Erase method call.
 methods:
   - name: Erase
     description: >
       Send erase call to device to clear the contents from the flash.
-    returns:
-      - name: Status
-        type: struct[uint64, enum[self.EraseStatus]]
-        description: >
-          Method returns the reason code and the status of the erase method
-          call made to device. Until the status is EraseStatus.DataErased
-          requester can call the function iterativly to check status which
-          should be EraseStatus.DataEraseInProgress. Note if reason code indicates
-          failure (non zero value) then call the method again.
-
+    errors:
+        # Indicate that mathod call can't be made due to previous inprogess call.
+        - xyz.openbmc_project.Common.Error.Unavailable
+        
 enumerations:
   - name: EraseStatus
     description: >
@@ -43,3 +41,27 @@ enumerations:
       - name: Other
         description: >
           Others.
+  
+  - name: OperationStatus
+    description: >
+      The status of the asynchronous method call operations
+    values:
+      - name: "InProgress"
+        description: >
+          The Operation is in progress.
+      - name: "Success"
+        description: >
+          The Operation completed successfully.
+      - name: "Timeout"
+        description: >
+          The Operation timed out.
+      - name: "InternalFailure"
+        description: >
+          The Operation failed internally.
+      - name: "Unavailable"
+        description: >
+          The Object on which the operation is being performed is
+          temporarily unavailable.
+      - name: "UnsupportedRequest"
+        description: >
+          The Operation is not supported for the object.
