@@ -47,24 +47,3 @@ properties:
       description: >
           Indicates active runtime admin override for RampDownHysteresis
 
-methods:
-    - name: ApplyAdminOverride
-      description: >
-          A method to apply cached admin override defined through AdminPowerProfile interface. AdminPowerProfile interface implemented settings will be overriden on the device
-      errors:
-        - xyz.openbmc_project.Common.Error.NotAllowed
-        - xyz.openbmc_project.Common.Error.Timeout
-        - xyz.openbmc_project.Common.Error.Unavailable
-
-    - name: ActivatePresetProfile
-      description: >
-          A method to activate preset profile. Preset profile setting are implemented through PowerProfile interface
-      parameters:
-       - name: ProfileId
-         type: uint16
-         description: >
-             Profile Id of the preset profile to to be activated
-      errors:
-        - xyz.openbmc_project.Common.Error.NotAllowed
-        - xyz.openbmc_project.Common.Error.Timeout
-        - xyz.openbmc_project.Common.Error.Unavailable
