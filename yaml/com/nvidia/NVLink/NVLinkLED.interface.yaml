@@ -1,0 +1,40 @@
+description: >
+    Interface to read NV Link LED status
+properties:
+    - name: LED_State
+      type: enum[self.LedState]
+      description: >
+        Set to the state of the NV Link LED
+        Valid States
+          Off - No link
+          On Amber - Physical link state on any NVLink
+          Flashing Amber - Beacon
+          On Green - Link connected
+          Flashing Green - Traffic
+
+enumerations:
+    - name: LedState
+      description: >
+        Possible states for the front panel NVLink staus LED's
+      values:
+        - name: "Off"
+          description: >
+            Front panel LED is off, no NVLink
+        - name: Steady_Green
+          description: >
+            Front panel LED is on and Green, NVLink connected
+        - name: Blinking_Green
+          description: >
+            Front panel LED is on and blinking Green, NVLink traffic
+        - name: Steady_Amber
+          description: >
+            Front panel LED is on and Amber, Physical link state
+        - name: Blinking_Amber
+          description: >
+            Front panel LED is on and blinking Amber, beacon
+        - name: Read_Error
+          description: >
+            An error occured reading the front panel LED state
+
+
+

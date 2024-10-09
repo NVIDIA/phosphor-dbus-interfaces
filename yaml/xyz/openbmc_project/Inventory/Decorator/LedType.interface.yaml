@@ -1,0 +1,21 @@
+description: >
+    Implement to provide LED type.
+
+properties:
+    - name: LedType
+      type: enum[self.LEDType]
+      default: "Unknown"
+      description: >
+          The type of LED.
+
+enumerations:
+    - name: LEDType
+      description: >
+          Possible LED types
+      values:
+          - name: "NVLinkStatus"
+            description: >
+                The front panel NVLinkStatus LED's.
+          - name: "Unknown"
+            description: >
+                Type unknown/undefined
