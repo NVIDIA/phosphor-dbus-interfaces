@@ -107,9 +107,12 @@ enumerations:
     description: >
       Token status information
     values:
-      - name: QueryFailure
+      - name: DebugSessionEnded
         description: >
-          Failed to execute the query operation.
+          Debug session ended successfully.
+      - name: OperationFailure
+        description: >
+          Failed to execute the operation.
       - name: DebugSessionActive
         description: >
           Debug session is active.
@@ -136,6 +139,12 @@ enumerations:
       - name: NoDebugSession
         description: >
           There is no debug session in progress.
+      - name: FirmwareNotSecured
+        description: >
+          Firmware is not secured.
+      - name: DebugSessionEndRequestNotAccepted
+        description: >
+          Debug end request cannot be accepted.
       - name: DebugSessionQueryDisallowed
         description: >
           Device is not allowed to query debug session.
