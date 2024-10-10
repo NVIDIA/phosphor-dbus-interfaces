@@ -12,6 +12,9 @@ methods:
             type: size
             description: >
                 Capacity of SEL info event.
+      errors:
+          - xyz.openbmc_project.Common.File.Error.Open
+          - xyz.openbmc_project.Common.Error.InvalidArgument
 
 properties:
     - name: InfoLogCapacity
