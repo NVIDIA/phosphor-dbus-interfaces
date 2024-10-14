@@ -24,6 +24,10 @@ properties:
       type: boolean
       description: >
             If the profile is the default one. 
+    - name: Name 
+      type: string
+      description: >
+            This is the profile name. 
 
 enumerations:
     - name: Owner
