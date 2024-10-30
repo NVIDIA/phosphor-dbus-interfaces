@@ -1,0 +1,20 @@
+description: >
+   Implement to provide GPU EGMMode details. Extended GPU Memory (EGM) is a technology introduced in Grace CPU to allow CPU memory to be accessible between GPUs through the Fabric Address Space (FAS).
+
+properties:
+    - name: EGMModeEnabled
+      type: boolean
+      description: >
+            Extended GPU memory (EGM) mode for this processor.
+      errors:
+          # Indicate that timeout from the device response
+          - xyz.openbmc_project.Common.Error.Timeout
+          # Indicate that this property is temporarily unable to be changed.
+          - xyz.openbmc_project.Common.Error.Unavailable
+          # Indicate a failure to apply changes to the processor.
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure
+
+    - name: PendingEGMModeState
+      type: boolean
+      description: >
+            Pending extended GPU memory (EGM) mode for this processor.

@@ -78,6 +78,21 @@ generated_others += custom_target(
     ],
 )
 
+subdir('EgmMode')
+generated_others += custom_target(
+    'com/nvidia/EgmMode__markdown'.underscorify(),
+    input: [ '../../../yaml/com/nvidia/EgmMode.interface.yaml',  ],
+    output: [ 'EgmMode.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/EgmMode',
+    ],
+)
+
 subdir('ErrorInjection')
 subdir('GPMMetrics')
 generated_others += custom_target(
