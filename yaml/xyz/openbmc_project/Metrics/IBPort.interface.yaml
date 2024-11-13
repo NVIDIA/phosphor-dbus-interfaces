@@ -132,14 +132,6 @@ properties:
       flags:
           - readonly
 
-    - name: SymbolError
-      type: uint64
-      default: 0
-      description: >
-          The total number of minor link errors detected.
-      flags:
-          - readonly
-
     - name: LinkErrorRecoveryCounter
       type: uint64
       description: >
@@ -192,5 +184,21 @@ properties:
       default: 0.0
       description: >
           The bit error rate on the link.
+      flags:
+          - readonly
+
+    - name: EffectiveBER
+      type: double
+      default: 0.0
+      description: >
+          The effective BER on the link.
+      flags:
+          - readonly
+
+    - name: EstimatedEffectiveBER
+      type: double
+      default: 0.0
+      description: >
+          The estimated effective BER on the link.
       flags:
           - readonly
