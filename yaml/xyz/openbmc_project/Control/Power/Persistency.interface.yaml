@@ -9,16 +9,16 @@ properties:
       description: This is the property showing power cap is persistent or not.
 
     - name: PersistentPowerLimit
-      type: uint64
-      default: maxint
+      type: double
+      default: NaN
       description:
           This is the property showing persistent power limit requested/specified by
           user. This value is in Watts. This power usage limit of system is persistent
           and is active after device reset.
 
     - name: OneShotPowerLimit
-      type: uint64
-      default: maxint
+      type: double
+      default: NaN
       description:
           This is the property showing one-shot power limit requested/specified by user.
           This value is in Watts. This power usage limit of system is non-persistent and
