@@ -1,0 +1,43 @@
+description: >
+    This interface provides methods for sending and receiving raw NSM commands.
+
+methods:
+  - name: SendRequest
+    description: >
+        Send NSM Raw passthrough Command
+    parameters:
+      - name: DeviceType
+        type: byte
+        description: >
+            NSM device type according to the NSM base specification
+      - name: InstanceId
+        type: byte
+        description: >
+            NSM device instance id according to the NSM base specification
+      - name: IsLongRunning
+        type: boolean
+        description: >
+            If the command is long running, set this to true
+      - name: MessageType
+        type: byte
+        description: >
+            NSM message type according to the NSM base specification
+      - name: CommandCode
+        type: byte
+        description: >
+            Command code for the NSM command to be sent
+      - name: Payload
+        type: unixfd
+        description: >
+            Memory file descriptor containing the payload to be sent
+    returns:
+      - name: AsyncHandle
+        type: object_path
+        description: >
+            DBus Object Path. Interfaces com.nvidia.Async.Status and
+            com.nvidia.Async.Value at this returned Object Path can be used
+            to retrieve the status and resultant value of the operation
+            respectively.
+    errors:
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+      - xyz.openbmc_project.Common.Error.Unavailable
