@@ -17,7 +17,8 @@ properties:
       description: >
           The total number of the PCIe fatal errors on the device.
     - name: L0ToRecoveryCount
-      type: int64
+      type: double
+      default: NaN
       description: >
           The total number of times the PCIe link transitioned from
           L0 to the recovery state for the device.
