@@ -1,12 +1,53 @@
 description: >
     Provides a rsyslog client configuration
-
+ 
 properties:
     - name: Enabled
-    type: boolean
-    description: >
-        The rsyslog client is enabled/disabled.
+      type: boolean
+      description: >
+        This property is used to configure the 
+        status of the rsyslog client. Set to `true` 
+        to enable the client, and `false` to disable it.
     - name: Tls
-    type: boolean
+      type: boolean
+      description: >
+        The tls status of the transport protocol.  
+    - name: Severity
+      type: enum[self.SeverityType]
+      description: >
+        The rsyslog client Severity Type.
+    - name: Facility
+      type: array[enum[self.FacilityType]]
+      description: >
+        The rsyslog client Facility Type.
+ 
+enumerations:
+  - name: FacilityType
     description: >
-        The tls status of the transport protocol.                      
+      Possible log facilities.
+    values:
+      - name: 'Daemon'
+        description: >
+          Logging related to the system daemon.
+      - name: 'Kern'
+        description: >
+          Logging related to kernel messages.
+      - name: 'All'
+        description: >
+          Catch-all logging for all facilities.
+  - name: SeverityType
+    description: >
+      Possible log severities.
+    values:
+      - name: 'Error'
+        description: >
+          Error level severity indicating a failure.
+      - name: 'Warning'
+        description: >
+          Warning level severity indicating potential issues.
+      - name: 'Info'
+        description: >
+          Informational messages providing status updates.
+      - name: 'All'
+        description: >
+          Catch-all severity for all log levels.
