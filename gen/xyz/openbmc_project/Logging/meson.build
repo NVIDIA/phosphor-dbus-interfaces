@@ -121,7 +121,7 @@ generated_others += custom_target(
 
 subdir('RsyslogClient')
 generated_others += custom_target(
-    'xyz/openbmc_project/Logging/RsyslogFwd__markdown'.underscorify(),
+    'xyz/openbmc_project/Logging/RsyslogClient__markdown'.underscorify(),
     input: [ '../../../../yaml/xyz/openbmc_project/Logging/RsyslogClient.interface.yaml',  ],
     output: [ 'RsyslogClient.md' ],
     depend_files: sdbusplusplus_depfiles,
