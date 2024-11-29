@@ -1,0 +1,12 @@
+description: >
+    Provides a rsyslog client configuration
+
+properties:
+    - name: Enabled
+    type: boolean
+    description: >
+        The rsyslog client is enabled/disabled.
+    - name: Tls
+    type: boolean
+    description: >
+        The tls status of the transport protocol.                      
