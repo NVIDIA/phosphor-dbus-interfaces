@@ -205,6 +205,7 @@ subdir('PowerProfile')
 subdir('PowerSmoothing')
 subdir('PowerSupply')
 subdir('Protocol')
+subdir('ResetCounters')
 subdir('RoT')
 subdir('SMUtilization')
 generated_others += custom_target(

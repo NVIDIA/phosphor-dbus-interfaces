@@ -1,0 +1,68 @@
+description: >
+    Implement this special interface to provide count of how many times the GPU has entered and exited specific reset states.
+
+properties:
+    - name: LastResetType
+      type: enum[self.ResetTypes]
+      description: >
+          Type of the last reset GPU enetered, e.g. PF-FLR, Conventional, Fundamental, IRoT.
+    
+    - name: PF_FLR_ResetEntryCount
+      type: double
+      default: NaN
+      description: >
+          PF-FLR reset entry count, count of how many times the GPU has entered reset state, Power Loss and Factory Programming Reset
+
+    - name: PF_FLR_ResetExitCount
+      type: double
+      default: NaN
+      description: >
+          PF-FLR reset exit count, count of how many times the GPU has exited reset state , Power Loss and Factory Programming Reset
+
+    - name: ConventionalResetEntryCount
+      type: double
+      default: NaN
+      description: >
+          Conventional, non-fundamental reset entry count, count of how many times the GPU has entered reset state
+    
+    - name: ConventionalResetExitCount
+      type: double
+      default: NaN
+      description: >
+          Conventional, non-fundamental reset exit count, count of how many times the GPU has exited reset state
+
+    - name: FundamentalResetEntryCount
+      type: double
+      default: NaN
+      description: >
+          Fundamental (PERST#) reset entry count, count of how many times the GPU has entered reset state
+    
+    - name: FundamentalResetExitCount
+      type: double
+      default: NaN
+      description: >
+          Fundamental (PERST#) reset exit count, count of how many times the GPU has exited reset state
+    
+    - name: IRoTResetExitCount
+      type: double
+      default: NaN
+      description: >
+          Internal Root of Trust (IRoT) reset exit count
+
+enumerations:
+    - name: ResetTypes
+      description: >
+        Reset types.
+      values:
+          - name: "PFFLR"
+            description: >
+              PF-FLR reset type, Power Loss and Factory Programming Reset
+          - name: "Conventional"
+            description: >
+              Conventional, non fundamental reset type
+          - name: "Fundamental"
+            description: >
+              Fundamental reset type
+          - name: "IRoTReset"
+            description: >
+              IRoT Reset Type
