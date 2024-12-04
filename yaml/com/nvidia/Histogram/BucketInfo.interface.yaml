@@ -1,0 +1,23 @@
+description: >
+  Implement to hold histogram bucket data.
+
+properties:
+  - name: Start
+    type: double
+    default: 0.0
+    description: >
+      This is to hold starting/minimum value for the bucket of the histogram.
+  - name: End
+    type: double
+    default: 0.0
+    description: >
+      This is to hold ending/maximum value for the bucket of the histogram.
+  - name: Value
+    type: double
+    default: 0.0
+    description: >
+      This is to hold value for the bucket of the histogram.
+  - name: Unit
+    type: enum[com.nvidia.Histogram.Decorator.Format.BucketUnits]
+    description: >
+      This represents the unit of data/value stored in the bucket of the histogram.

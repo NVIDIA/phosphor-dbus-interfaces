@@ -1,0 +1,23 @@
+description: >
+  Implement to describe the supported histogram types by a device.
+
+properties:
+  - name: SupportedHistogramId
+    type: array[uint32]
+    description: >
+      This represents the list of supported histograms by the device.
+
+enumerations:
+  - name: HistogramIds
+    description: >
+      Possible types of histograms
+    values:
+      - name: PowerConsumption
+        description: >
+          To indicate power consumption histogram type.
+      - name: LinkSpeedCapping
+        description: >
+          To indicate link speed capping histogram type.
+      - name: ErrorCount
+        description: >
+          To indicate error counts histogram type.
