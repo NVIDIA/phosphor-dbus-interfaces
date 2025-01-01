@@ -202,3 +202,11 @@ properties:
           The estimated effective BER on the link.
       flags:
           - readonly
+
+    - name: EffectiveError
+      type: uint64
+      default: 0
+      description: >
+          The effective error counter on the link.
+      flags:
+          - readonly
