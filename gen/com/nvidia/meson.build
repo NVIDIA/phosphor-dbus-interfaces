@@ -139,6 +139,21 @@ generated_others += custom_target(
     ],
 )
 
+subdir('MemoryPerformance')
+generated_others += custom_target(
+    'com/nvidia/MemoryPerformance__markdown'.underscorify(),
+    input: [ '../../../yaml/com/nvidia/MemoryPerformance.interface.yaml',  ],
+    output: [ 'MemoryPerformance.md' ],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog, '--command', 'markdown',
+        '--output', meson.current_build_dir(),
+        '--tool', sdbusplusplus_prog,
+        '--directory', meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/MemoryPerformance',
+    ],
+)
+
 subdir('MemoryRowRemapping')
 generated_others += custom_target(
     'com/nvidia/MemoryRowRemapping__markdown'.underscorify(),
