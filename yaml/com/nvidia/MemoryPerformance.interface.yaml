@@ -1,0 +1,27 @@
+description: >
+    Implement to provide value of performance state of a Processor Memory.
+
+properties:
+    - name: Value
+      type: enum[self.PerformanceStates]
+      description: >
+          This is current discrete value of sensor.
+
+enumerations:
+    - name: PerformanceStates
+      description: >
+          Different value types for performance discreate sensor.
+      values:
+          - name: Normal
+            description: >
+                To represent the performance state is normal.
+          - name: Throttled
+            description: >
+                To represent the performance state is throttled.
+          - name: Degraded
+            description: >
+                To represent the performance state is degraded.
+          - name: Unknown
+            description: >
+                To represent the performance state as unknown.
+
