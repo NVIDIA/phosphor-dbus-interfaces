@@ -1,0 +1,51 @@
+description: >
+  Implement to describe the format of histogram supported by the object.
+
+properties:
+  - name: NumOfBuckets
+    type: uint64
+    default: 0
+    description: >
+      This represents number of buckets/bins availble in the histogram.
+  - name: MinSamplingTime
+    type: uint64
+    default: 0
+    description: >
+      This represents the shortest time of sampling this histogram in millisec.
+  - name: AccumulationCycle
+    type: uint64
+    default: 0
+    description: >
+      This represents the accumulation cycle of this histogram.
+  - name: IncrementDuration
+    type: uint64
+    default: 0
+    description: >
+      This represents the time duration of an increment in the buckets in µsec (0 = runtime value).
+  - name: UnitOfMeasure
+    type: enum[self.BucketUnits]
+    description: >
+      This represents the unit of data/value stored in the buckets of histogram.
+  - name: BucketDataType
+    type: byte
+    default: 0
+    description: >
+      This represents the data type of bucket information.
+
+enumerations:
+  - name: BucketUnits
+    description: >
+      Possible units supported for data/value present in buckets.
+    values:
+      - name: Watts
+        description: >
+          When data in buckets is represented in Watts.
+      - name: Percent
+        description: >
+          When data in buckets is represented in percentage.
+      - name: Count
+        description: >
+          When data in buckets is represented in counts.
+      - name: Others
+        description: >
+          Others.

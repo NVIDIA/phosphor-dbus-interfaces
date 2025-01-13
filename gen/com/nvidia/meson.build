@@ -109,6 +109,7 @@ generated_others += custom_target(
     ],
 )
 
+subdir('Histogram')
 subdir('InbandReconfigSettings')
 generated_others += custom_target(
     'com/nvidia/InbandReconfigSettings__markdown'.underscorify(),
