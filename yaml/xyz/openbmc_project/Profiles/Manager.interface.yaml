@@ -13,6 +13,11 @@ methods:
             type: boolean
             description: >
                 Is command was trigger by Bios.
+          - name: profileFd
+            type: unixfd
+            description: >
+                This property indicates the file descriptor of the profile
+                file.
       returns:
           - name: profileIndex
             type: uint16
