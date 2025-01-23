@@ -26,6 +26,9 @@ enumerations:
           description: >
               The element does not process any commands but queues new
               requests.
+        - name: Degraded
+          description: >
+              This function or resource is degraded.
         - name: Disabled
           description: >
               This function or resource is disabled.

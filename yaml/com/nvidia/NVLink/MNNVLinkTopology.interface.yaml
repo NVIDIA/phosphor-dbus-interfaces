@@ -8,11 +8,11 @@ properties:
       description: >
           Represents tray serial number in the rack mount compute node.
     - name: TraySlotNumber
-      type: string
+      type: uint32
       description: >
           Represents tray slot number in the rack mount compute node.
     - name: TraySlotIndex
-      type: string
+      type: uint32
       description: >
           The index within the compute slots in the rack mount compute node.
     - name: ChassisSerialNumber
@@ -20,15 +20,15 @@ properties:
       description: >
           Represents chassis serial number in the entire rack full of trays and switches.
     - name: Node
-      type: uint64
+      type: uint32
       description: >
           The index of the node within the slot.
     - name: PeerType
-      type: string
+      type: uint32
       description: >
           Platform indicated NVLink-peer type.
     - name: ModuleID
-      type: uint64
+      type: uint32
       description: >
           The ID of this GPU within the node.
     - name: SystemGUID

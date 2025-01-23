@@ -1,14 +1,33 @@
 description: >
   Implement if service supports clearing information from flash on device.
+
 properties:
-  - name: EraseInfo
+  - name: EraseTraceStatus
     type: struct[enum[self.OperationStatus], enum[self.EraseStatus]]
     description: >
-      Contains operation status and erase status after Erase method call.
+      Contains operation status and erase status after EraseTrace method call.
+  - name: EraseDebugInfoStatus
+    type: struct[enum[self.OperationStatus], enum[self.EraseStatus]]
+    description: >
+      Contains operation status and erase status after EraseDebugInfo method call.
+
 methods:
-  - name: Erase
+  - name: EraseTrace
     description: >
       Send erase call to device to clear the contents from the flash.
+      Expects no input parameter.
+    errors:
+        # Indicate that mathod call can't be made due to previous inprogess call.
+        - xyz.openbmc_project.Common.Error.Unavailable
+  - name: EraseDebugInfo
+    description: >
+      Send erase call to device to clear the debug content from the flash.
+      Expects one input parameter.
+    parameters:
+      - name: InfoType
+        type: enum[self.EraseInfoType]
+        description: >
+          The type of debug informatio to be erased from device flash.
     errors:
         # Indicate that mathod call can't be made due to previous inprogess call.
         - xyz.openbmc_project.Common.Error.Unavailable
@@ -35,9 +54,9 @@ enumerations:
     description: >
       Possible info type to be erased.
     values:
-      - name: DeviceDebugInfo
+      - name: FWSavedDumpInfo
         description: >
-          Device debug information.
+          Device FW saved dump information.
       - name: Other
         description: >
           Others.
