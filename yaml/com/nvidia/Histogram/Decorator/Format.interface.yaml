@@ -27,8 +27,7 @@ properties:
     description: >
       This represents the unit of data/value stored in the buckets of histogram.
   - name: BucketDataType
-    type: byte
-    default: 0
+    type: enum[self.BucketDataTypes]
     description: >
       This represents the data type of bucket information.
 
@@ -49,3 +48,38 @@ enumerations:
       - name: Others
         description: >
           Others.
+  - name: BucketDataTypes
+    description: >
+      Data Type of Bucket Value.
+    values:
+      - name: NvU8
+        description: >
+          Data types of Bucket Value is NvU8.
+      - name: NvS8
+        description: >
+          Data types of Bucket Value is NvS8.
+      - name: NvU16
+        description: >
+          Data types of Bucket Value is NvU16.
+      - name: NvS16
+        description: >
+          Data types of Bucket Value is NvS16.
+      - name: NvU32
+        description: >
+          Data types of Bucket Value is NvU32.
+      - name: NvS32
+        description: >
+          Data types of Bucket Value is NvS32.
+      - name: NvU64
+        description: >
+          Data types of Bucket Value is NvU64.
+      - name: NvS64
+        description: >
+          Data types of Bucket Value is NvS64. 
+      - name: NvS24_8
+        description: >
+          Data types of Bucket Value is NvS24_8.
+      - name: Unknown
+        description: >
+          Data types of Bucket Value is not unknown. 
+      
