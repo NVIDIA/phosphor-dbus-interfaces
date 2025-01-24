@@ -2,21 +2,10 @@ description: >
   Implement to hold histogram bucket data.
 
 properties:
-  - name: Start
-    type: double
-    default: 0.0
+  - name: BucketData
+    type: array[struct[uint16, struct[double, double, double]]]
     description: >
-      This is to hold starting/minimum value for the bucket of the histogram.
-  - name: End
-    type: double
-    default: 0.0
-    description: >
-      This is to hold ending/maximum value for the bucket of the histogram.
-  - name: Value
-    type: double
-    default: 0.0
-    description: >
-      This is to hold value for the bucket of the histogram.
+      Array to hold buckets' index, range and value for available buckets on histogram. structure can be interpreted as array[struct[BucketIndex, struct[BucketMin, BucketMax, BucketValue]]]
   - name: Unit
     type: enum[com.nvidia.Histogram.Decorator.Format.BucketUnits]
     description: >
