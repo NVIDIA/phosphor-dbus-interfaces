@@ -1,0 +1,142 @@
+description: >
+   Provide Software Error Injection on a single ErrorId or on all ErrorIds
+   defined by Eventing in the current platform, usually Eventing starts
+   by reading a json file such as "event_info.json" which has all ErrorIds.
+
+properties:
+    - name: BeginTimestamp
+      type: string
+      description: >
+            Start timestamp of the latest Request action,
+            it uses the format defined in RFC 3339 UTC as "%FT%T%H:%M+%S:00",
+            example: "2025-01-29T14:26:01:00".
+    - name: ErrorMessage
+      type: string
+      description: >
+            A error message (if any error) of the latest Request action.
+    - name: FinishTimestamp
+      type: string
+      description: >
+            Finish timestamp of the latest Request action,
+            it uses the format defined in RFC 3339 UTC as "%FT%T%H:%M+%S:00",
+            example: "2025-01-29T14:26:01:00".
+    - name: State
+      type: enum[self.RequestStates]
+      description: >
+            Indicates the state of the latest Request action.
+
+methods:
+    - name: CreateRequest
+      description: >
+            Creates a Request Action to be performed,
+            all boolean parameters define a cleaar behaviour and
+            do not depend on other parameters.
+      parameters:
+        - name: RequestType
+          type: enum[self.AllowedRequests]
+          description: >
+                An indication of the action to be performed.
+        - name: ErrorId
+          type: string
+          description: >
+                Indicates which error should be injected, used only
+                for "Injection" RequestType.
+        - name: DeviceIndex
+          type: string
+          description: >
+                Indicates which 'device' the injection will be performed,
+                usually it is a numeric string such as "1" to indicate
+                GPU_1 when the ErrorId refers to a GPU error, a string
+                such as "1,3" may indicate a double index for a device
+                for example GPU_1 and NVLink_3, used only
+                for "Injection" RequestType.
+        - name: ClearData
+          type: boolean
+          description: >
+                When "true" indicates that all Eventing telemetries should
+                be set a non-failure state before the action be performed,
+                it can used either on "Setup" RequestType or on "Injection"
+                RequestType.
+        - name: ClearHealth
+          type: boolean
+          description: >
+                When "true" indicates that "Health" property from all DBus
+                objects should be set to "OK" before the action be performed,
+                It can used either on "Setup" RequestType or on "Injection"
+                RequestType.
+        - name: RestartEventing
+          type: boolean
+          description: >
+                When "true" indicates the Eventing service should restarted
+                before the "Injection" action, it can be necessary on some
+                platforms because Eventing keeps "Health" relationship among
+                devices on the memory, and, by design there is no "Health"
+                status regression meaning a single injection Health status
+                depends on previous injections performed before, used only
+                for "Injection" RequestType.
+        - name: CompleteCycle
+          type: boolean
+          description: >
+                When "true" indicates that the "Injection" RequestType will be
+                performed onstandalone mode, it means a single "Injection" request
+                will be complete as "Setup" + "Injection" + "Cleanup" together,
+                used only for "Injection" RequestType.
+        - name: KeepLogs
+          type: boolean
+          description: >
+                When "true" indicates that the Redfish Log Entries are not
+                removed before "Injection" actions, used only
+                for "Injection" RequestType.
+        - name: Recovery
+          type: boolean
+          description: >
+                When "true" indicates a "Recovery" process should be performed
+                after a "Injection" action, "Recovery" process may exist
+                or not for some ErrorIds on the Eventing List, when
+                a "Recovery" process does not exist for a such ErrorId the
+                Eventing service is restarted as an attempt to "resolve"
+                existing Redfish Log Entries, used only
+                for "Injection" RequestType.
+      errors:
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+
+enumerations:
+    - name: AllowedRequests
+      description: >
+          Defines the list of actions
+      values:
+          - name: "Setup"
+            description: >
+                Starts the Software Error Injection environment and creates a
+                bash script that will be used for Injections according to the
+                current Eventing List in the platform.
+          - name: "Injection"
+            description: >
+                This the action used for Injections, some parameters are only
+                required for that action.
+          - name: "Cleanup"
+            description: >
+                This the action which finishes the Software Error Injection
+                environment and restores the HMC back to the original state.
+    - name: RequestStates
+      description: >
+          Defines the list of valid Request Types
+      values:
+          - name: "NoRequest"
+            description: >
+                This is the initial state of the service indication no Request
+                has been created yet.
+          - name: "Running"
+            description: >
+                Indicates that there is a request running, the "BeginTimestamp"
+                property should be set and the "FinishTimestamp" property
+                should be empty.
+          - name: "Completed"
+            description: >
+                Indicates that the latest request has been completed without
+                any error.
+          - name: "Failed"
+            description: >
+                Indicates that the latest request has failed, the property
+                "ErrorMessage" should give some information about the error.
+
