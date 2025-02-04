@@ -238,6 +238,7 @@ generated_others += custom_target(
     ],
 )
 
+subdir('SPI')
 subdir('Secureboot')
 subdir('State')
 subdir('StaticPowerHint')
