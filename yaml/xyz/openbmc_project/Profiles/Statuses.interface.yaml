@@ -19,6 +19,21 @@ properties:
       default: None
       description: >
           Track the status deleting a profile.
+    - name: AddProgress
+      type: uint16
+      default: 0
+      description: >
+          Track the progress of adding a new profile.
+    - name: ActivateProgress
+      type: uint16
+      default: 0
+      description: >
+          Track the progress of activating a profile.
+    - name: DeleteProgress
+      type: uint16
+      default: 0
+      description: >
+          Track the progress of deleting a profile.
 
 enumerations:
     - name: Status
