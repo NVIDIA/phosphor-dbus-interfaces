@@ -4,6 +4,7 @@ subdir('Cap')
 subdir('CapLimits')
 subdir('IdlePowerSaver')
 subdir('Mode')
+subdir('Persistency')
 subdir('RestorePolicy')
 subdir('Throttle')
 
@@ -14,7 +15,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../../yaml/xyz/openbmc_project/Control/Power/ACPIPowerState.interface.yaml',
     ],
-    output: [ 'ACPIPowerState.md' ],
+    output: ['ACPIPowerState.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -38,7 +39,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../../yaml/xyz/openbmc_project/Control/Power/Cap.interface.yaml',
     ],
-    output: [ 'Cap.md' ],
+    output: ['Cap.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -62,7 +63,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../../yaml/xyz/openbmc_project/Control/Power/CapLimits.interface.yaml',
     ],
-    output: [ 'CapLimits.md' ],
+    output: ['CapLimits.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -86,7 +87,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../../yaml/xyz/openbmc_project/Control/Power/IdlePowerSaver.interface.yaml',
     ],
-    output: [ 'IdlePowerSaver.md' ],
+    output: ['IdlePowerSaver.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -110,7 +111,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../../yaml/xyz/openbmc_project/Control/Power/Mode.interface.yaml',
     ],
-    output: [ 'Mode.md' ],
+    output: ['Mode.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -130,11 +131,35 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Control/Power/Persistency__markdown'.underscorify(),
+    input: [
+        '../../../../../yaml/xyz/openbmc_project/Control/Power/Persistency.interface.yaml',
+    ],
+    output: ['Persistency.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Control/Power/Persistency',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Control/Power/RestorePolicy__markdown'.underscorify(),
     input: [
         '../../../../../yaml/xyz/openbmc_project/Control/Power/RestorePolicy.interface.yaml',
     ],
-    output: [ 'RestorePolicy.md' ],
+    output: ['RestorePolicy.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -158,7 +183,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../../yaml/xyz/openbmc_project/Control/Power/Throttle.interface.yaml',
     ],
-    output: [ 'Throttle.md' ],
+    output: ['Throttle.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,

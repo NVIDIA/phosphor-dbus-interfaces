@@ -4,6 +4,7 @@ subdir('DHCPConfiguration')
 subdir('EthernetInterface')
 subdir('Experimental')
 subdir('IP')
+subdir('LinkType')
 subdir('MACAddress')
 subdir('Neighbor')
 subdir('StaticGateway')
@@ -17,7 +18,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Network/Client.interface.yaml',
     ],
-    output: [ 'Client.md' ],
+    output: ['Client.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -41,7 +42,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Network/DHCPConfiguration.interface.yaml',
     ],
-    output: [ 'DHCPConfiguration.md' ],
+    output: ['DHCPConfiguration.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -65,7 +66,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Network/EthernetInterface.interface.yaml',
     ],
-    output: [ 'EthernetInterface.md' ],
+    output: ['EthernetInterface.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -87,7 +88,7 @@ generated_markdown += custom_target(
 generated_markdown += custom_target(
     'xyz/openbmc_project/Network/IP__markdown'.underscorify(),
     input: ['../../../../yaml/xyz/openbmc_project/Network/IP.interface.yaml'],
-    output: [ 'IP.md' ],
+    output: ['IP.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -107,11 +108,35 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Network/LinkType__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Network/LinkType.interface.yaml',
+    ],
+    output: ['LinkType.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Network/LinkType',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Network/MACAddress__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Network/MACAddress.interface.yaml',
     ],
-    output: [ 'MACAddress.md' ],
+    output: ['MACAddress.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -135,7 +160,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Network/Neighbor.interface.yaml',
     ],
-    output: [ 'Neighbor.md' ],
+    output: ['Neighbor.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -159,7 +184,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Network/StaticGateway.interface.yaml',
     ],
-    output: [ 'StaticGateway.md' ],
+    output: ['StaticGateway.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -183,7 +208,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Network/SystemConfiguration.interface.yaml',
     ],
-    output: [ 'SystemConfiguration.md' ],
+    output: ['SystemConfiguration.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -205,7 +230,7 @@ generated_markdown += custom_target(
 generated_markdown += custom_target(
     'xyz/openbmc_project/Network/VLAN__markdown'.underscorify(),
     input: ['../../../../yaml/xyz/openbmc_project/Network/VLAN.interface.yaml'],
-    output: [ 'VLAN.md' ],
+    output: ['VLAN.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,

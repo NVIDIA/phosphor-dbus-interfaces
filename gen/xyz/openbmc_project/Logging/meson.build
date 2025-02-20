@@ -1,9 +1,13 @@
 # Generated file; do not modify.
+subdir('Capacity')
 subdir('Create')
 subdir('Entry')
 subdir('ErrorBlocksTransition')
 subdir('Event')
 subdir('IPMI')
+subdir('Namespace')
+subdir('RsyslogActionsManager')
+subdir('RsyslogFwd')
 subdir('SEL')
 subdir('Settings')
 subdir('Syslog')
@@ -33,11 +37,35 @@ generated_sources += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Logging/Capacity__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Logging/Capacity.interface.yaml',
+    ],
+    output: ['Capacity.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Logging/Capacity',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Logging/Create__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Logging/Create.interface.yaml',
     ],
-    output: [ 'Create.md' ],
+    output: ['Create.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -59,7 +87,7 @@ generated_markdown += custom_target(
 generated_markdown += custom_target(
     'xyz/openbmc_project/Logging/Entry__markdown'.underscorify(),
     input: ['../../../../yaml/xyz/openbmc_project/Logging/Entry.interface.yaml'],
-    output: [ 'Entry.md' ],
+    output: ['Entry.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -83,7 +111,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Logging/ErrorBlocksTransition.interface.yaml',
     ],
-    output: [ 'ErrorBlocksTransition.md' ],
+    output: ['ErrorBlocksTransition.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -105,7 +133,7 @@ generated_markdown += custom_target(
 generated_markdown += custom_target(
     'xyz/openbmc_project/Logging/Event__markdown'.underscorify(),
     input: ['../../../../yaml/xyz/openbmc_project/Logging/Event.interface.yaml'],
-    output: [ 'Event.md' ],
+    output: ['Event.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -127,7 +155,7 @@ generated_markdown += custom_target(
 generated_markdown += custom_target(
     'xyz/openbmc_project/Logging/IPMI__markdown'.underscorify(),
     input: ['../../../../yaml/xyz/openbmc_project/Logging/IPMI.interface.yaml'],
-    output: [ 'IPMI.md' ],
+    output: ['IPMI.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -147,9 +175,81 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Logging/Namespace__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Logging/Namespace.interface.yaml',
+    ],
+    output: ['Namespace.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Logging/Namespace',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Logging/RsyslogActionsManager__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Logging/RsyslogActionsManager.interface.yaml',
+    ],
+    output: ['RsyslogActionsManager.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Logging/RsyslogActionsManager',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Logging/RsyslogFwd__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Logging/RsyslogFwd.interface.yaml',
+    ],
+    output: ['RsyslogFwd.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Logging/RsyslogFwd',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Logging/SEL__markdown'.underscorify(),
     input: ['../../../../yaml/xyz/openbmc_project/Logging/SEL.errors.yaml'],
-    output: [ 'SEL.md' ],
+    output: ['SEL.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -173,7 +273,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Logging/Settings.interface.yaml',
     ],
-    output: [ 'Settings.md' ],
+    output: ['Settings.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,

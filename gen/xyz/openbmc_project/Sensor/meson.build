@@ -1,8 +1,14 @@
 # Generated file; do not modify.
 subdir('Accuracy')
+subdir('Aggregation')
+subdir('AggregationMetric')
+subdir('Description')
 subdir('Device')
+subdir('PeakValue')
 subdir('Purpose')
+subdir('ReadingBasis')
 subdir('Threshold')
+subdir('Type')
 subdir('Value')
 subdir('ValueMutability')
 
@@ -13,7 +19,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Sensor/Accuracy.interface.yaml',
     ],
-    output: [ 'Accuracy.md' ],
+    output: ['Accuracy.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -33,9 +39,81 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Sensor/Aggregation__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Sensor/Aggregation.interface.yaml',
+    ],
+    output: ['Aggregation.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Sensor/Aggregation',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Sensor/AggregationMetric__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Sensor/AggregationMetric.interface.yaml',
+    ],
+    output: ['AggregationMetric.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Sensor/AggregationMetric',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Sensor/Description__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Sensor/Description.interface.yaml',
+    ],
+    output: ['Description.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Sensor/Description',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Sensor/Device__markdown'.underscorify(),
     input: ['../../../../yaml/xyz/openbmc_project/Sensor/Device.errors.yaml'],
-    output: [ 'Device.md' ],
+    output: ['Device.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -48,6 +126,30 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/Sensor/Device',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Sensor/PeakValue__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Sensor/PeakValue.interface.yaml',
+    ],
+    output: ['PeakValue.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Sensor/PeakValue',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],
@@ -79,12 +181,36 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Sensor/ReadingBasis__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Sensor/ReadingBasis.interface.yaml',
+    ],
+    output: ['ReadingBasis.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Sensor/ReadingBasis',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Sensor/Threshold__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Sensor/Threshold.errors.yaml',
         '../../../../yaml/xyz/openbmc_project/Sensor/Threshold.events.yaml',
     ],
-    output: [ 'Threshold.md' ],
+    output: ['Threshold.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -126,9 +252,31 @@ generated_registry += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Sensor/Type__markdown'.underscorify(),
+    input: ['../../../../yaml/xyz/openbmc_project/Sensor/Type.interface.yaml'],
+    output: ['Type.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Sensor/Type',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Sensor/Value__markdown'.underscorify(),
     input: ['../../../../yaml/xyz/openbmc_project/Sensor/Value.interface.yaml'],
-    output: [ 'Value.md' ],
+    output: ['Value.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -152,7 +300,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Sensor/ValueMutability.interface.yaml',
     ],
-    output: [ 'ValueMutability.md' ],
+    output: ['ValueMutability.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,

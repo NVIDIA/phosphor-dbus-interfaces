@@ -1,5 +1,6 @@
 # Generated file; do not modify.
 subdir('MemoryLocation')
+subdir('MemoryMetrics')
 
 sdbusplus_current_path = 'xyz/openbmc_project/Inventory/Item/Dimm'
 
@@ -44,7 +45,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../../../yaml/xyz/openbmc_project/Inventory/Item/Dimm/MemoryLocation.interface.yaml',
     ],
-    output: [ 'MemoryLocation.md' ],
+    output: ['MemoryLocation.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -63,18 +64,27 @@ generated_markdown += custom_target(
     build_by_default: should_generate_markdown,
 )
 
-subdir('MemoryMetrics')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'xyz/openbmc_project/Inventory/Item/Dimm/MemoryMetrics__markdown'.underscorify(),
-    input: [ '../../../../../../yaml/xyz/openbmc_project/Inventory/Item/Dimm/MemoryMetrics.interface.yaml',  ],
-    output: [ 'MemoryMetrics.md' ],
+    input: [
+        '../../../../../../yaml/xyz/openbmc_project/Inventory/Item/Dimm/MemoryMetrics.interface.yaml',
+    ],
+    output: ['MemoryMetrics.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../../../yaml',
         'xyz/openbmc_project/Inventory/Item/Dimm/MemoryMetrics',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 

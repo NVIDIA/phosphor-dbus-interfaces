@@ -4,14 +4,25 @@ subdir('ActivationBlocksTransition')
 subdir('ActivationProgress')
 subdir('ApplyOptions')
 subdir('ApplyTime')
+subdir('BuildType')
 subdir('ExtendedVersion')
 subdir('Image')
+subdir('MinSecVersionConfig')
 subdir('MinimumVersion')
+subdir('PackageInformation')
 subdir('RedundancyPriority')
 subdir('RequestedRedundancyPriority')
+subdir('SecurityCommon')
+subdir('SecurityConfig')
+subdir('SecurityVersion')
 subdir('Settings')
+subdir('Signing')
+subdir('Slot')
+subdir('State')
 subdir('Update')
+subdir('UpdatePolicy')
 subdir('Version')
+subdir('VersionComparison')
 
 sdbusplus_current_path = 'xyz/openbmc_project/Software'
 
@@ -20,7 +31,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/Activation.interface.yaml',
     ],
-    output: [ 'Activation.md' ],
+    output: ['Activation.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -44,7 +55,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/ActivationBlocksTransition.interface.yaml',
     ],
-    output: [ 'ActivationBlocksTransition.md' ],
+    output: ['ActivationBlocksTransition.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -68,7 +79,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/ActivationProgress.interface.yaml',
     ],
-    output: [ 'ActivationProgress.md' ],
+    output: ['ActivationProgress.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -92,7 +103,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/ApplyOptions.interface.yaml',
     ],
-    output: [ 'ApplyOptions.md' ],
+    output: ['ApplyOptions.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -116,7 +127,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/ApplyTime.interface.yaml',
     ],
-    output: [ 'ApplyTime.md' ],
+    output: ['ApplyTime.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -136,11 +147,35 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Software/BuildType__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Software/BuildType.interface.yaml',
+    ],
+    output: ['BuildType.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/BuildType',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Software/ExtendedVersion__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/ExtendedVersion.interface.yaml',
     ],
-    output: [ 'ExtendedVersion.md' ],
+    output: ['ExtendedVersion.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -162,7 +197,7 @@ generated_markdown += custom_target(
 generated_markdown += custom_target(
     'xyz/openbmc_project/Software/Image__markdown'.underscorify(),
     input: ['../../../../yaml/xyz/openbmc_project/Software/Image.errors.yaml'],
-    output: [ 'Image.md' ],
+    output: ['Image.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -182,11 +217,35 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Software/MinSecVersionConfig__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Software/MinSecVersionConfig.interface.yaml',
+    ],
+    output: ['MinSecVersionConfig.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/MinSecVersionConfig',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Software/MinimumVersion__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/MinimumVersion.interface.yaml',
     ],
-    output: [ 'MinimumVersion.md' ],
+    output: ['MinimumVersion.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -206,11 +265,35 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Software/PackageInformation__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Software/PackageInformation.interface.yaml',
+    ],
+    output: ['PackageInformation.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/PackageInformation',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Software/RedundancyPriority__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/RedundancyPriority.interface.yaml',
     ],
-    output: [ 'RedundancyPriority.md' ],
+    output: ['RedundancyPriority.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -234,7 +317,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/RequestedRedundancyPriority.interface.yaml',
     ],
-    output: [ 'RequestedRedundancyPriority.md' ],
+    output: ['RequestedRedundancyPriority.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -254,11 +337,83 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Software/SecurityCommon__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Software/SecurityCommon.interface.yaml',
+    ],
+    output: ['SecurityCommon.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/SecurityCommon',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Software/SecurityConfig__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Software/SecurityConfig.interface.yaml',
+    ],
+    output: ['SecurityConfig.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/SecurityConfig',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Software/SecurityVersion__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Software/SecurityVersion.interface.yaml',
+    ],
+    output: ['SecurityVersion.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/SecurityVersion',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Software/Settings__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/Settings.interface.yaml',
     ],
-    output: [ 'Settings.md' ],
+    output: ['Settings.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -278,12 +433,82 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Software/Signing__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Software/Signing.interface.yaml',
+    ],
+    output: ['Signing.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/Signing',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Software/Slot__markdown'.underscorify(),
+    input: ['../../../../yaml/xyz/openbmc_project/Software/Slot.interface.yaml'],
+    output: ['Slot.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/Slot',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Software/State__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Software/State.interface.yaml',
+    ],
+    output: ['State.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/State',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Software/Update__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/Update.errors.yaml',
         '../../../../yaml/xyz/openbmc_project/Software/Update.interface.yaml',
     ],
-    output: [ 'Update.md' ],
+    output: ['Update.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -303,12 +528,36 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Software/UpdatePolicy__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Software/UpdatePolicy.interface.yaml',
+    ],
+    output: ['UpdatePolicy.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Software/UpdatePolicy',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Software/Version__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Software/Version.errors.yaml',
         '../../../../yaml/xyz/openbmc_project/Software/Version.interface.yaml',
     ],
-    output: [ 'Version.md' ],
+    output: ['Version.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -327,18 +576,27 @@ generated_markdown += custom_target(
     build_by_default: should_generate_markdown,
 )
 
-subdir('VersionComparison')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'xyz/openbmc_project/Software/VersionComparison__markdown'.underscorify(),
-    input: [ '../../../../yaml/xyz/openbmc_project/Software/VersionComparison.interface.yaml',  ],
-    output: [ 'VersionComparison.md' ],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Software/VersionComparison.interface.yaml',
+    ],
+    output: ['VersionComparison.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/Software/VersionComparison',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 

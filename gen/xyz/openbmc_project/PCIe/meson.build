@@ -1,46 +1,77 @@
 # Generated file; do not modify.
 subdir('ClearPCIeCounters')
-generated_others += custom_target(
+subdir('LTSSMState')
+subdir('PCIeECC')
+
+sdbusplus_current_path = 'xyz/openbmc_project/PCIe'
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/PCIe/ClearPCIeCounters__markdown'.underscorify(),
-    input: [ '../../../../yaml/xyz/openbmc_project/PCIe/ClearPCIeCounters.interface.yaml',  ],
-    output: [ 'ClearPCIeCounters.md' ],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/PCIe/ClearPCIeCounters.interface.yaml',
+    ],
+    output: ['ClearPCIeCounters.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/PCIe/ClearPCIeCounters',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
-subdir('LTSSMState')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'xyz/openbmc_project/PCIe/LTSSMState__markdown'.underscorify(),
-    input: [ '../../../../yaml/xyz/openbmc_project/PCIe/LTSSMState.interface.yaml',  ],
-    output: [ 'LTSSMState.md' ],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/PCIe/LTSSMState.interface.yaml',
+    ],
+    output: ['LTSSMState.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/PCIe/LTSSMState',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
-subdir('PCIeECC')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'xyz/openbmc_project/PCIe/PCIeECC__markdown'.underscorify(),
-    input: [ '../../../../yaml/xyz/openbmc_project/PCIe/PCIeECC.interface.yaml',  ],
-    output: [ 'PCIeECC.md' ],
+    input: ['../../../../yaml/xyz/openbmc_project/PCIe/PCIeECC.interface.yaml'],
+    output: ['PCIeECC.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/PCIe/PCIeECC',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 

@@ -27,11 +27,13 @@ subdir('Network')
 subdir('Nvme')
 subdir('Object')
 subdir('ObjectMapper')
+subdir('PCIe')
 subdir('PFR')
 subdir('PLDM')
 subdir('Profiles')
 subdir('SPDM')
 subdir('ScheduledTime')
+subdir('Security')
 subdir('Sensor')
 subdir('Smbios')
 subdir('Software')
@@ -244,7 +246,7 @@ generated_markdown += custom_target(
 generated_markdown += custom_target(
     'xyz/openbmc_project/Time__markdown'.underscorify(),
     input: ['../../../yaml/xyz/openbmc_project/Time.errors.yaml'],
-    output: [ 'Time.md' ],
+    output: ['Time.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,

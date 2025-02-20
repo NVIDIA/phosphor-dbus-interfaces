@@ -3,6 +3,7 @@ subdir('Boot')
 subdir('CFMLimit')
 subdir('ChassisCapabilities')
 subdir('Device')
+subdir('Diag')
 subdir('FanPwm')
 subdir('FanRedundancy')
 subdir('FanSpeed')
@@ -10,44 +11,19 @@ subdir('FieldMode')
 subdir('Host')
 subdir('MinimumShipLevel')
 subdir('Mode')
+subdir('NcSi')
 subdir('Power')
 subdir('PowerSupplyAttributes')
 subdir('PowerSupplyRedundancy')
 subdir('Processor')
 subdir('Reset')
-generated_others += custom_target(
-    'xyz/openbmc_project/Control/Reset__markdown'.underscorify(),
-    input: [ '../../../../yaml/xyz/openbmc_project/Control/Reset.interface.yaml',  ],
-    output: [ 'Reset.md' ],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
-        'xyz/openbmc_project/Control/Reset',
-    ],
-)
-
 subdir('ResetAsync')
-generated_others += custom_target(
-    'xyz/openbmc_project/Control/ResetAsync__markdown'.underscorify(),
-    input: [ '../../../../yaml/xyz/openbmc_project/Control/ResetAsync.interface.yaml',  ],
-    output: [ 'ResetAsync.md' ],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
-        'xyz/openbmc_project/Control/ResetAsync',
-    ],
-)
-
 subdir('Security')
 subdir('Service')
 subdir('TPM')
 subdir('ThermalMode')
+subdir('TorSwitchPortsMode')
+subdir('TransportRedundancy')
 subdir('VoltageRegulatorControl')
 subdir('VoltageRegulatorMode')
 
@@ -117,6 +93,28 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/Control/Device',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Control/Diag__markdown'.underscorify(),
+    input: ['../../../../yaml/xyz/openbmc_project/Control/Diag.interface.yaml'],
+    output: ['Diag.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Control/Diag',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],
@@ -339,11 +337,57 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Control/Reset__markdown'.underscorify(),
+    input: ['../../../../yaml/xyz/openbmc_project/Control/Reset.interface.yaml'],
+    output: ['Reset.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Control/Reset',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Control/ResetAsync__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Control/ResetAsync.interface.yaml',
+    ],
+    output: ['ResetAsync.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Control/ResetAsync',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Control/ThermalMode__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Control/ThermalMode.interface.yaml',
     ],
-    output: [ 'ThermalMode.md' ],
+    output: ['ThermalMode.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -363,11 +407,59 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'xyz/openbmc_project/Control/TorSwitchPortsMode__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Control/TorSwitchPortsMode.interface.yaml',
+    ],
+    output: ['TorSwitchPortsMode.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Control/TorSwitchPortsMode',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Control/TransportRedundancy__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Control/TransportRedundancy.interface.yaml',
+    ],
+    output: ['TransportRedundancy.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Control/TransportRedundancy',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Control/VoltageRegulatorControl__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Control/VoltageRegulatorControl.interface.yaml',
     ],
-    output: [ 'VoltageRegulatorControl.md' ],
+    output: ['VoltageRegulatorControl.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -391,7 +483,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Control/VoltageRegulatorMode.interface.yaml',
     ],
-    output: [ 'VoltageRegulatorMode.md' ],
+    output: ['VoltageRegulatorMode.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,

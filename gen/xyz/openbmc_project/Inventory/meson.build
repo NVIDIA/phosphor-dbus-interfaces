@@ -35,7 +35,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Inventory/Item.interface.yaml',
     ],
-    output: [ 'Item.md' ],
+    output: ['Item.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -59,7 +59,7 @@ generated_markdown += custom_target(
     input: [
         '../../../../yaml/xyz/openbmc_project/Inventory/Manager.interface.yaml',
     ],
-    output: [ 'Manager.md' ],
+    output: ['Manager.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,

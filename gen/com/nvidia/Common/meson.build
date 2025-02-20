@@ -1,91 +1,146 @@
 # Generated file; do not modify.
 subdir('ClearClockLimAsync')
-generated_others += custom_target(
+subdir('ClearPowerCap')
+subdir('ClearPowerCapAsync')
+subdir('CompleteReset')
+subdir('LogDump')
+subdir('ResetEdppAsync')
+
+sdbusplus_current_path = 'com/nvidia/Common'
+
+generated_markdown += custom_target(
     'com/nvidia/Common/ClearClockLimAsync__markdown'.underscorify(),
-    input: [ '../../../../yaml/com/nvidia/Common/ClearClockLimAsync.interface.yaml',  ],
-    output: [ 'ClearClockLimAsync.md' ],
+    input: [
+        '../../../../yaml/com/nvidia/Common/ClearClockLimAsync.interface.yaml',
+    ],
+    output: ['ClearClockLimAsync.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
         'com/nvidia/Common/ClearClockLimAsync',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
-subdir('ClearPowerCap')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'com/nvidia/Common/ClearPowerCap__markdown'.underscorify(),
-    input: [ '../../../../yaml/com/nvidia/Common/ClearPowerCap.interface.yaml',  ],
-    output: [ 'ClearPowerCap.md' ],
+    input: ['../../../../yaml/com/nvidia/Common/ClearPowerCap.interface.yaml'],
+    output: ['ClearPowerCap.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
         'com/nvidia/Common/ClearPowerCap',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
-subdir('ClearPowerCapAsync')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'com/nvidia/Common/ClearPowerCapAsync__markdown'.underscorify(),
-    input: [ '../../../../yaml/com/nvidia/Common/ClearPowerCapAsync.interface.yaml',  ],
-    output: [ 'ClearPowerCapAsync.md' ],
+    input: [
+        '../../../../yaml/com/nvidia/Common/ClearPowerCapAsync.interface.yaml',
+    ],
+    output: ['ClearPowerCapAsync.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
         'com/nvidia/Common/ClearPowerCapAsync',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
-subdir('CompleteReset')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'com/nvidia/Common/CompleteReset__markdown'.underscorify(),
-    input: [ '../../../../yaml/com/nvidia/Common/CompleteReset.interface.yaml',  ],
-    output: [ 'CompleteReset.md' ],
+    input: ['../../../../yaml/com/nvidia/Common/CompleteReset.interface.yaml'],
+    output: ['CompleteReset.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
         'com/nvidia/Common/CompleteReset',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
-subdir('LogDump')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'com/nvidia/Common/LogDump__markdown'.underscorify(),
-    input: [ '../../../../yaml/com/nvidia/Common/LogDump.interface.yaml',  ],
-    output: [ 'LogDump.md' ],
+    input: ['../../../../yaml/com/nvidia/Common/LogDump.interface.yaml'],
+    output: ['LogDump.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
         'com/nvidia/Common/LogDump',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
-subdir('ResetEdppAsync')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'com/nvidia/Common/ResetEdppAsync__markdown'.underscorify(),
-    input: [ '../../../../yaml/com/nvidia/Common/ResetEdppAsync.interface.yaml',  ],
-    output: [ 'ResetEdppAsync.md' ],
+    input: ['../../../../yaml/com/nvidia/Common/ResetEdppAsync.interface.yaml'],
+    output: ['ResetEdppAsync.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
         'com/nvidia/Common/ResetEdppAsync',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
