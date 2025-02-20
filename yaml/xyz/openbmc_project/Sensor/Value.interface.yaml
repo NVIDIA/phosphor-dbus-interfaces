@@ -9,6 +9,7 @@ description: >
       fan_tach
       frequency
       humidity
+      liquidflow
       power
       pressure
       temperature
@@ -59,8 +60,8 @@ properties:
           be "Watts". For objects in the pressure namespace, Unit must be
           "Pascals" For objects in the temperature namespace, Unit must be
           "DegreesC". For objects in the utilization namespace, Unit must be
-          "Percent" For objects in the voltage namespace, Unit must be "Volts".
-          For objects in the counter namespace, Unit must be "Counts".
+          "Percent" For objects in the voltage namespace, Unit must be "Volts",
+          For objects in the liquidflow namespace, Unit must be "LPM".
 
 enumerations:
     - name: Unit
@@ -82,6 +83,9 @@ enumerations:
           - name: Joules
             description: >
                 Energy transfer as Joules.
+          - name: LPM
+            description: >
+                To calculate the liquid flow in Liters Per Minute.
           - name: Meters
             description: >
                 Length as meters.
@@ -140,6 +144,8 @@ paths:
             value: fan_tach
           - name: Humidity
             value: humidity
+          - name: Liquidflow
+            value: liquidflow
           - name: Power
             value: power
           - name: Pressure

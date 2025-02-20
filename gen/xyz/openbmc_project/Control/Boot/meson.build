@@ -90,93 +90,131 @@ generated_others += custom_target(
 )
 
 subdir('Mode')
-generated_others += custom_target(
+subdir('RebootAttempts')
+subdir('RebootPolicy')
+subdir('Source')
+subdir('Type')
+
+sdbusplus_current_path = 'xyz/openbmc_project/Control/Boot'
+
+generated_markdown += custom_target(
     'xyz/openbmc_project/Control/Boot/Mode__markdown'.underscorify(),
-    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/Mode.interface.yaml',  ],
+    input: [
+        '../../../../../yaml/xyz/openbmc_project/Control/Boot/Mode.interface.yaml',
+    ],
     output: [ 'Mode.md' ],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../../yaml',
         'xyz/openbmc_project/Control/Boot/Mode',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
-subdir('MuxOverride')
-generated_others += custom_target(
-    'xyz/openbmc_project/Control/Boot/MuxOverride__markdown'.underscorify(),
-    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/MuxOverride.interface.yaml',  ],
-    output: [ 'MuxOverride.md' ],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Control/Boot/MuxOverride',
-    ],
-)
-
-subdir('RebootAttempts')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'xyz/openbmc_project/Control/Boot/RebootAttempts__markdown'.underscorify(),
-    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/RebootAttempts.interface.yaml',  ],
+    input: [
+        '../../../../../yaml/xyz/openbmc_project/Control/Boot/RebootAttempts.interface.yaml',
+    ],
     output: [ 'RebootAttempts.md' ],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../../yaml',
         'xyz/openbmc_project/Control/Boot/RebootAttempts',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
-subdir('RebootPolicy')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'xyz/openbmc_project/Control/Boot/RebootPolicy__markdown'.underscorify(),
-    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/RebootPolicy.interface.yaml',  ],
+    input: [
+        '../../../../../yaml/xyz/openbmc_project/Control/Boot/RebootPolicy.interface.yaml',
+    ],
     output: [ 'RebootPolicy.md' ],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../../yaml',
         'xyz/openbmc_project/Control/Boot/RebootPolicy',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
-subdir('Source')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'xyz/openbmc_project/Control/Boot/Source__markdown'.underscorify(),
-    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/Source.interface.yaml',  ],
+    input: [
+        '../../../../../yaml/xyz/openbmc_project/Control/Boot/Source.interface.yaml',
+    ],
     output: [ 'Source.md' ],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../../yaml',
         'xyz/openbmc_project/Control/Boot/Source',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
-subdir('Type')
-generated_others += custom_target(
+generated_markdown += custom_target(
     'xyz/openbmc_project/Control/Boot/Type__markdown'.underscorify(),
-    input: [ '../../../../../yaml/xyz/openbmc_project/Control/Boot/Type.interface.yaml',  ],
+    input: [
+        '../../../../../yaml/xyz/openbmc_project/Control/Boot/Type.interface.yaml',
+    ],
     output: [ 'Type.md' ],
     depend_files: sdbusplusplus_depfiles,
     command: [
-        sdbuspp_gen_meson_prog, '--command', 'markdown',
-        '--output', meson.current_build_dir(),
-        '--tool', sdbusplusplus_prog,
-        '--directory', meson.current_source_dir() / '../../../../../yaml',
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../../yaml',
         'xyz/openbmc_project/Control/Boot/Type',
     ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
 subdir('UEFI')
