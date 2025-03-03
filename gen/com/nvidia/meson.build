@@ -201,6 +201,7 @@ generated_others += custom_target(
 )
 
 subdir('NVLink')
+subdir('Network')
 subdir('PCIe')
 subdir('PowerMode')
 generated_others += custom_target(
