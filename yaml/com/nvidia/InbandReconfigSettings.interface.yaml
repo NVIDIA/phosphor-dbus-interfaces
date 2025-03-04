@@ -125,6 +125,9 @@ enumerations:
           - name: "EGMMode"
             description: >
                 The in-band settings for Extended GPU Memory (EGM) mode.
+          - name: "InfoROMFileSystemRecreate"
+            description: >
+                The in-band settings for InfoROM file system recreate.
           - name: "Unknown"
             description: >
                 The unvalid unknown feature type holder.
