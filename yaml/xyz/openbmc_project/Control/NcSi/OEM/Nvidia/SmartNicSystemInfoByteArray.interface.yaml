@@ -1,0 +1,12 @@
+description: >
+    Implement command to get a single byte array property of smart NIC system info
+    from NIC, over NC-SI.
+
+properties:
+    - name: SmartNicSystemInfo
+      type: array[byte]
+      description: >
+          The host system byte array property received from NIC.
+          This is a read-only property.
+      flags:
+          - readonly
