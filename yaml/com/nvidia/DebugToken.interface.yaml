@@ -9,21 +9,6 @@ properties:
     description: >
       Token-specific device identification property of the device.
     default: ""
-  - name: RequestFd
-    type: unixfd
-    description: >
-      File descriptor pointing to file containing the last acquired debug token
-      request data. Populated after a successful execution of the GetRequest
-      method.
-  - name: TokenStatus
-    type: struct[enum[self.TokenTypes], enum[self.TokenStatus], enum[self.AdditionalInfo], uint32]
-    description: >
-      Debug session and token installation status data. Populated after
-      a successful execution of the GetStatus method.
-  - name: ErrorCode
-    type: struct[uint16, string]
-    description: >
-      This property indicates ErrorCode and message when Debug Token command fails.
 
 methods:
   - name: DisableTokens
@@ -32,6 +17,13 @@ methods:
     errors:
       - xyz.openbmc_project.Common.Error.InternalFailure
       - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+            DBus Object Path. Interface com.nvidia.Async.Status at this
+            returned Object Path can be used to retrieve the status of the
+            set property operation.
 
   - name: GetRequest
     description: >
@@ -46,6 +38,13 @@ methods:
       - xyz.openbmc_project.Common.Error.InternalFailure
       - xyz.openbmc_project.Common.Error.InvalidArgument
       - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+            DBus Object Path. Interface com.nvidia.Async.Status at this
+            returned Object Path can be used to retrieve the status of the
+            set property operation.
 
   - name: GetStatus
     description: >
@@ -60,6 +59,13 @@ methods:
       - xyz.openbmc_project.Common.Error.InternalFailure
       - xyz.openbmc_project.Common.Error.InvalidArgument
       - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+            DBus Object Path. Interface com.nvidia.Async.Status at this
+            returned Object Path can be used to retrieve the status of the
+            set property operation.
 
   - name: InstallToken
     description: >
@@ -73,6 +79,13 @@ methods:
       - xyz.openbmc_project.Common.Error.InternalFailure
       - xyz.openbmc_project.Common.Error.InvalidArgument
       - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+            DBus Object Path. Interface com.nvidia.Async.Status at this
+            returned Object Path can be used to retrieve the status of the
+            set property operation.
 
 enumerations:
   - name: TokenOpcodes
