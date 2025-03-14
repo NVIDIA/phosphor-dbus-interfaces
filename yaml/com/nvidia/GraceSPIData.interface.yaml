@@ -1,0 +1,6 @@
+properties:
+  - name: SpiReadFd
+    type: unixfd
+    description: >
+      File descriptor pointing to file containing the last acquired spi contents.
+      Populated after a successful execution of the ReadSpi method.
