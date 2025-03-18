@@ -31,12 +31,12 @@ properties:
       flags:
         - readonly
     - name: PCIeTXBytes
-      type: uint32
+      type: uint64
       description: Total number of bytes sent by the PCIe transmitter.
       flags:
         - readonly
     - name: PCIeRXBytes
-      type: uint32
+      type: uint64
       description: Total number of bytes received by the PCIe receiver.
       flags:
         - readonly
