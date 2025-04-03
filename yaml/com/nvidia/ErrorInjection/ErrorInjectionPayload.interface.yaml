@@ -1,0 +1,8 @@
+description: >
+   Implement this interface to provide the error injections capabilities.
+
+properties:
+    - name: Payload
+      type: uint32
+      description: >
+            This property shall indicate whether the error injection payload is triggred or cleared.

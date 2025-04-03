@@ -43,6 +43,9 @@ enumerations:
           - name: "ThermalErrors"
             description: >
                 The error injection type for support of the thermal errors.
+          - name: "FatalErrors"
+            description: >
+                The error injection type for support of the Fatal errors.
           - name: "Unknown"
             description: >
                 The unvalid unknown capability type holder.
