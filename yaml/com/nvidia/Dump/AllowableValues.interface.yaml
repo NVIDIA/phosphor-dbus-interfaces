@@ -1,0 +1,39 @@
+description: >
+    This interface provides a flexible way to define and manage allowable values
+    for various dump operations.
+
+properties:
+    - name: OEMDataTypeAllowableValues
+      type: dict[enum[self.DumpType], array[string]]
+      description: >
+          Dictionary of OEM-specific allowable values for different dump types.
+          The key represents the dump category using the DumpType enumeration values,
+          and the value is an array of allowable dump configurations.
+          (Note: On the D-Bus interface, enum values are serialized as strings)
+
+          Example:
+            DumpType::System : [
+                    "DiagnosticType=ROT",
+                    "DiagnosticType=NetIR;DeviceType=GPU_0",
+                    "DiagnosticType=GPUDeviceDiagnostics;DeviceType=GPU_0"
+            ],
+            DumpType::FDR : [
+                    "DiagnosticType=FDR;TimeRangeStart=<yyyy>-<MM>-<dd> <HH>:<mm>:<ss>;TimeRangeEnd=<yyyy>-<MM>-<dd> <HH>:<mm>:<ss>;ExtendedSource=<source-info>"
+            ]
+      flags:
+          - readonly
+
+enumerations:
+    - name: DumpType
+      description: >
+          This indicates the dump type.
+      values:
+          - name: "Manager"
+            description: >
+              BMC Manager dump.
+          - name: "System"
+            description: >
+              System OEM dump.
+          - name: "FDR"
+            description: >
+              FDR OEM dump.
