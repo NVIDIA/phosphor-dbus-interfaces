@@ -1,0 +1,48 @@
+description: >
+    Implement to provide PCIe channel transaction counters.
+properties:
+    - name: OutboundReadPktCount
+      type: uint64
+      default: 0
+      description: >
+          The total number of Outbound read Transaction Layer Packets count.
+    - name: OutboundWritePktCount
+      type: uint64
+      default: 0
+      description: >
+          The total number of Outbound write Transaction Layer Packets count.
+    - name: OutboundTLPCount
+      type: uint64
+      default: 0
+      description: >
+          The total number of Outbound completion TLP count.
+    - name: OutboundReadTransfer
+      type: uint64
+      default: 0
+      description: >
+          The DWORDs transferred in outbound read transactions.
+    - name: OutboundWriteTransfer
+      type: uint64
+      default: 0
+      description: >
+          The DWORDs transferred in outbound write transactions.
+    - name: OutboundTLPsTransfer
+      type: uint64
+      default: 0
+      description: >
+          The DWORDs transferred in outbound completion TLPs.
+    - name: ReqDroppedTag
+      type: uint64
+      default: 0
+      description: >
+          The total number of Read requests dropped due to tag unavailability.
+    - name: ReqDroppedCreditCompletion
+      type: uint64
+      default: 0
+      description: >
+          The total number of Read requests dropped due to completion credit exhaustion.
+    - name: ReqDroppedNonPostCredit
+      type: uint64
+      default: 0
+      description: >
+          The total number of Read requests dropped due to non-posted credit exhaustion.
