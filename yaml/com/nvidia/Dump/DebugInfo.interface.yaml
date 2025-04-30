@@ -44,6 +44,7 @@ properties:
     type: enum[self.DumpType]
     description: >
       Type of dump to be fetched from device.
+    default: "Other"
 
 enumerations:
   - name: DebugInformationType
