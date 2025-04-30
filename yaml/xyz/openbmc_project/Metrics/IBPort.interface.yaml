@@ -264,6 +264,14 @@ properties:
       flags:
         - readonly
 
+    - name: TotalRawError
+      type: uint64
+      default: 0
+      description: >
+          The total raw error count on the link, this counter is computed before any error correction is applied.
+      flags:
+        - readonly
+
 enumerations:
     - name: LinkDownReasonCodes
       description: >
