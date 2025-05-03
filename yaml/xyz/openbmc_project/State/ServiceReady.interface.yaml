@@ -50,15 +50,6 @@ enumerations:
         - name: SMBPBI
           description: >
               This resource indicates about SMBPBI service
-        - name: Logging
-          description: >
-              This resource indicates about logging service
-        - name: Rwfs
-          description: >
-              This resource indicates about rwfs mountpoint status
-        - name: Bmcweb
-          description: >
-              This resource indicates about Bmcweb service
         - name: HmcReadyGpio
           description: >
               This resource indicates about HMC ready GPIO
