@@ -1,7 +1,7 @@
 # Generated file; do not modify.
 generated_sources += custom_target(
-    'com/nvidia/Network/LLDP/TLVs__cpp'.underscorify(),
-    input: [ '../../../../../../yaml/com/nvidia/Network/LLDP/TLVs.interface.yaml',  ],
+    'xyz/openbmc_project/Network/LLDP/Settings__cpp'.underscorify(),
+    input: [ '../../../../../../yaml/xyz/openbmc_project/Network/LLDP/Settings.interface.yaml',  ],
     output: [ 'common.hpp', 'server.cpp', 'server.hpp', 'aserver.hpp', 'client.hpp',  ],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -9,7 +9,7 @@ generated_sources += custom_target(
         '--output', meson.current_build_dir(),
         '--tool', sdbusplusplus_prog,
         '--directory', meson.current_source_dir() / '../../../../../../yaml',
-        'com/nvidia/Network/LLDP/TLVs',
+        'xyz/openbmc_project/Network/LLDP/Settings',
     ],
 )
 

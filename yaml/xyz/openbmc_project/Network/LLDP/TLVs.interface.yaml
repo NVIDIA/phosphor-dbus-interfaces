@@ -71,7 +71,6 @@ properties:
     - name: ManagementVlanId
       type: uint16
       default: 0
-      default: 
       description: >
           VLAN ID used for management traffic. This is the VLAN ID used for managing the device.
 

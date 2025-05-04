@@ -60,6 +60,7 @@ generated_others += custom_target(
     ],
 )
 
+subdir('LLDP')
 subdir('LinkType')
 generated_others += custom_target(
     'xyz/openbmc_project/Network/LinkType__markdown'.underscorify(),
