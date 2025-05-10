@@ -48,6 +48,11 @@ properties:
       default: NaN
       description: >
           Internal Root of Trust (IRoT) reset exit count
+    
+    - name: BootReason
+      type: array[enum[self.BootReasonTypes]]
+      description: >
+          Boot raseon for device.
 
 enumerations:
     - name: ResetTypes
@@ -66,3 +71,71 @@ enumerations:
           - name: "IRoTReset"
             description: >
               IRoT Reset Type
+
+    - name: BootReasonTypes
+      description: >
+        Enum to provide the reason/cause for reset.
+      values:
+          - name: "WakeUp"
+            description: >
+              Boot reason is device wake up.
+          - name: "PowerOn"
+            description: >
+              Device is powered on.
+          - name: "VoltageDetect"
+            description: >
+              Boot is due to voltage detect.
+          - name: "WarmReset"
+            description: >
+              Warm reset is done on device.
+          - name: "FatalError"
+            description: >
+              Device booted due to some fatal error.
+          - name: "Pin"
+            description: >
+              Device boot due to pin change.
+          - name: "DebugAccessPort"
+            description: >
+              Boot reason is debug access port.
+          - name: "ResetTimeout"
+            description: >
+              Device reset timed out.
+          - name: "LowPowerAcknowledgeTimeout"
+            description: >
+              Device low power acknowledge timed out.
+          - name: "SystemClockGenerator"
+            description: >
+              Boot happened due to system clock generator.
+          - name: "WindowedWatchdog0"
+            description: >
+              Boot reason is windowed watchdog type 0.
+          - name: "WindowedWatchdog1"
+            description: >
+              Boot reason is windowed watchdog type 1.
+          - name: "Software"
+            description: >
+              Device booted due to some software reson.
+          - name: "LockupReset"
+            description: >
+              Device lockup reset.
+          - name: "CPU1"
+            description: >
+              Device booted due to CPU1.
+          - name: "VBAT"
+            description: >
+              Device booted due to VBAT.
+          - name: "CodeWatchdog0"
+            description: >
+              Boot reason is code watchdog type 0.
+          - name: "CodeWatchdog1"
+            description: >
+              Boot reason is code watchdog type 1.
+          - name: "JTAG"
+            description: >
+              Device booted due to JTAG.
+          - name: "SecurityViolation"
+            description: >
+              Device booted due to security violation
+          - name: "Tamper"
+            description: >
+              Device booted due to tamper.
