@@ -202,13 +202,6 @@ properties:
           The symbol error counter on the link.
       flags:
         - readonly
-    
-    - name: PerLaneRawErrors
-      type: array[uint64]
-      description: >
-          The total number of raw bit errors detected on the link before error correction for each lane.
-      flags:
-        - readonly
 
     - name: PerLaneRawBER
       type: array[double]
