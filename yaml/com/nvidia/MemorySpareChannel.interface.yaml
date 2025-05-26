@@ -3,23 +3,9 @@ description: >
 
 properties:
     - name: MemorySpareChannelPresence
-      type: enum[self.Presence]
+      type: boolean
       description: >
-            Memory Spare Channel presence for this processor.
+            Memory Spare Channel is presence for this processor.
       flags:
           - readonly
 
-enumerations:
-    - name: Presence
-      description: >
-        Possible states for memory spare channel presence
-      values:
-        - name: "Present"
-          description: >
-            Memory Spare Channel is present for this processor.
-        - name: "NotPresent"
-          description: >
-            Memory Spare Channel is not present for this processor.
-        - name: "Unavailable"
-          description: >
-            Memory Spare Channel information is not available for this processor.
