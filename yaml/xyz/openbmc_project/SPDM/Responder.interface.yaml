@@ -174,7 +174,7 @@ properties:
           - readonly
 
     - name: Status
-      default: 'Initializing'
+      default: 'GettingVersion'
       type: enum[self.SPDMStatus]
       description: >
           Status of the SPDM communication between the SPDM daemon requester and the responder.
@@ -362,10 +362,22 @@ enumerations:
             The communication is proper, all certificates and measurements for this responder
             are properly gathered and ready.
 
-        - name: 'Initializing'
+        - name: 'GettingVersion'
           description: >
-            The SPDM requester has just started communication with the responder.
+            The SPDM requester is in the stage of getting version information from the responder.
             This status is set by default after system restart.
+
+        - name: 'GettingCapabilities'
+          description: >
+            The SPDM requester is in the stage of getting capabilities from the responder.
+
+        - name: 'GettingAlgorithms'
+          description: >
+            The SPDM requester is in the stage of negotiating algorithms with the responder.
+
+        - name: 'GettingDigest'
+          description: >
+            The SPDM requester is in the stage of getting certificate chain digest from the responder.
 
         - name: 'GettingCertificates'
           description: >
