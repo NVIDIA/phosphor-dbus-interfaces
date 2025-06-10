@@ -68,4 +68,7 @@ enumerations:
               An OEM-specific.
         - name: PCIe
           description: >
-              An PCIe.
+              A PCIe.
+        - name: InfiniBand
+          description: >
+              An InfiniBand.
