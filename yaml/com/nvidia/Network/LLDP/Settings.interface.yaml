@@ -1,0 +1,27 @@
+description: >
+    Interface to manage LLDP settings, manage the extended TLVS in the lldp packet, and control the LLDP tool.
+
+properties:
+    - name: EnableLLDP
+      type: boolean
+      default: false
+      description: >
+          Enables or disables LLDP packet transmission on this interface.
+      
+
+    - name: EnableExtendedTLVs
+      type: boolean
+      default: false
+      description: >
+          Extended information from different sources (BMC FRU, Netwrok interface, etc..) will be added as extended TLVs 
+          to the LLDP packet.
+
+
+    - name: EnableServerHostTLVs
+      type: boolean
+      default: false
+      description: >
+          Extended information from the host server will be added as extended TLVs 
+          to the LLDP packet.
+      
+    

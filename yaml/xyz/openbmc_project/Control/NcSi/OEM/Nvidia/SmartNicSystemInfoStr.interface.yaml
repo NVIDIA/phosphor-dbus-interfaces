@@ -1,0 +1,12 @@
+description: >
+    Implement command to get a single string property of smart NIC system info
+    from NIC, over NC-SI.
+
+properties:
+    - name: SmartNicSystemInfo
+      type: string
+      description: >
+          The host system string property received from NIC.
+          This is a read-only property.
+      flags:
+          - readonly

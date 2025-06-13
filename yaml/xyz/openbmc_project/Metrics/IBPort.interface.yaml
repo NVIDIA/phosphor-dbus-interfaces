@@ -146,6 +146,30 @@ properties:
           The total number of times link was downed.
       flags:
           - readonly
+    
+    - name: UnintentionalLinkDownCount
+      type: uint64
+      default: 0
+      description: >
+          The total number of times the link went down unexpectedly or unintentionally.
+      flags:
+          - readonly
+
+    - name: IntentionalLinkDownCount
+      type: uint64
+      default: 0
+      description: >
+          The total number of times the link was deliberately brought down.
+      flags:
+          - readonly
+    
+    - name: LinkDownReasonCode
+      type: enum[self.LinkDownReasonCodes]
+      default: NoLinkDown
+      description: >
+          Indicates the reason code for link being down.
+      flags:
+          - readonly
 
     - name: RXRemotePhysicalErrorPkts
       type: uint64
@@ -202,3 +226,168 @@ properties:
           The estimated effective BER on the link.
       flags:
           - readonly
+
+    - name: EffectiveError
+      type: uint64
+      default: 0
+      description: >
+          The effective error counter on the link.
+      flags:
+          - readonly
+
+    - name: SymbolErrors
+      type: uint64
+      default: 0
+      description: >
+          The symbol error counter on the link.
+      flags:
+        - readonly
+    
+    - name: PerLaneRawErrors
+      type: array[uint64]
+      description: >
+          The total number of raw bit errors detected on the link before error correction for each lane.
+      flags:
+        - readonly
+
+    - name: PerLaneRawBER
+      type: array[double]
+      description: >
+          The raw bit error rate (BER) on the link, measured as the ratio of error bits to total bits transmitted before any error correction is applied for each lane.
+      flags:
+          - readonly
+
+    - name: TotalRawBER
+      type: double
+      description: >
+          The total raw bit error rate (BER) on the link, measured as the ratio of error bits to total bits transmitted before any error correction is applied.
+      flags:
+        - readonly
+
+    - name: TotalRawError
+      type: uint64
+      default: 0
+      description: >
+          The total raw error count on the link, this counter is computed before any error correction is applied.
+      flags:
+        - readonly
+
+enumerations:
+    - name: LinkDownReasonCodes
+      description: >
+          Enumeration of possible reasons for a port entering down state.
+      values:
+          - name: NoLinkDown
+            description: >
+              Port is operating normally with no link down condition.
+          - name: Unknown
+            description: >
+              Port down reason cannot be determined.
+          - name: HighBitErrorRate
+            description: >
+              Port disabled due to high bit error rate detected.
+          - name: BlockLockLost
+            description: >
+              Port down due to loss of block alignment in the physical layer.
+          - name: AlignmentLost
+            description: >
+              Port down due to loss of data alignment in the communication stream.
+          - name: FECSyncLost
+            description: >
+              Forward Error Correction synchronization has been lost.
+          - name: PllLockLost
+            description: >
+               Port down due to loss of Phase-Locked Loop (PLL) synchronization.
+          - name: FIFOOverflow
+            description: >
+              First-In-First-Out buffer overflow condition detected.
+          - name: FalseSkipDetected
+            description: >
+              Invalid skip condition detected in the data stream.
+          - name: MinorErrorThresholdExceeded
+            description: >
+              Accumulated minor errors exceeded the configured threshold.
+          - name: PhyRetransmitTimeout
+            description: >
+              Physical layer retransmission timeout occurred.
+          - name: HeartbeatErrors
+            description: >
+              Port down due to missing heartbeat signals.
+          - name: CreditMonitorWatchdogTimeout
+            description: >
+              Link layer credit monitoring watchdog timeout occurred.
+          - name: LinkLayerIntegrityThresholdExceeded
+            description: >
+              Link layer integrity errors exceeded threshold.
+          - name: LinkLayerBufferOverrun
+            description: >
+              Link layer buffer overrun condition detected.
+          - name: OOBCommandLinkHealthy
+            description: >
+              Out-of-band command link reports healthy status.
+          - name: OOBCommandLinkHighBER
+            description: >
+              Out-of-band command link reports high bit error rate.
+          - name: InbandCommandLinkHealthy
+            description: >
+              In-band command link reports healthy status.
+          - name: InbandCommandLinkHighBER
+            description: >
+              In-band command link reports high bit error rate.
+          - name: VerificationGatewayDown
+            description: >
+              Port disabled by verification gateway.
+          - name: RemoteFaultReceived
+            description: >
+              Remote fault signal received from link partner.
+          - name: TrainingSequenceReceived
+            description: >
+              Training sequence received from link partner.
+          - name: ManagementCommandDown
+            description: >
+              Port disabled by management command.
+          - name: CableDisconnected
+            description: >
+              Physical cable disconnection detected.
+          - name: CableAccessFault
+            description: >
+              Unable to properly access or communicate with the cable.
+          - name: ThermalShutdown
+            description: >
+              Port disabled due to thermal protection threshold.
+          - name: CurrentIssue
+            description: >
+              Port disabled due to current-related issues.
+          - name: PowerBudgetExceeded
+            description: >
+              Port disabled due to power budget constraints.
+          - name: FastRawBERRecovery
+            description: >
+              Port in recovery mode due to raw bit error rate issues.
+          - name: FastEffectiveBERRecovery
+            description: >
+              Port in recovery mode due to effective bit error rate issues.
+          - name: FastSymbolBERRecovery
+            description: >
+              Port in recovery mode due to symbol error rate issues.
+          - name: FastCreditWatchdogRecovery
+            description: >
+              Port in recovery mode due to credit watchdog timeout.
+          - name: PeerSleep
+            description: >
+              Port down due to peer device entering sleep mode.
+          - name: PeerDisabled
+            description: >
+              Port down due to peer device being disabled.
+          - name: PeerDisableLocked
+            description: >
+              Port down due to peer device being locked in disabled state.
+          - name: PeerThermalEvent
+            description: >
+              Port down due to thermal event on peer device.
+          - name: PeerForcedEvent
+            description: >
+              Port down due to forced shutdown of peer device.
+          - name: PeerResetEvent
+            description: >
+              Port down due to peer device reset.

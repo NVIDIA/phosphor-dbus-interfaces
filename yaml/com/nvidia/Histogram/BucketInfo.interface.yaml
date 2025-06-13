@@ -1,0 +1,12 @@
+description: >
+  Implement to hold histogram bucket data.
+
+properties:
+  - name: BucketData
+    type: array[struct[uint16, struct[double, double, double]]]
+    description: >
+      Array to hold buckets' index, range and value for available buckets on histogram. structure can be interpreted as array[struct[BucketIndex, struct[BucketMin, BucketMax, BucketValue]]]
+  - name: Unit
+    type: enum[com.nvidia.Histogram.Decorator.Format.BucketUnits]
+    description: >
+      This represents the unit of data/value stored in the bucket of the histogram.

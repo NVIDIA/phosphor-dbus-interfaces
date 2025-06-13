@@ -10,6 +10,10 @@ methods:
         type: byte
         description: >
             NSM device type according to the NSM base specification
+      - name: DeviceRole
+        type: byte
+        description: >
+            NSM device role in a specific device type
       - name: InstanceId
         type: byte
         description: >

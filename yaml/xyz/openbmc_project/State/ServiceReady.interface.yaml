@@ -49,4 +49,7 @@ enumerations:
               This resource indicates about SSIFBridge service
         - name: SMBPBI
           description: >
-              This resource indicates about SMBPBI service      
+              This resource indicates about SMBPBI service
+        - name: HmcReadyGpio
+          description: >
+              This resource indicates about HMC ready GPIO

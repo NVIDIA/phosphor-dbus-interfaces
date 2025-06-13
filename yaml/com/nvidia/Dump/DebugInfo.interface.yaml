@@ -40,6 +40,11 @@ properties:
       File descriptor pointing to file containing the last acquired debug information
       request data. Populated after a successful execution of the GetDebugInfo
       method.
+  - name: SupportedDumpType
+    type: enum[self.DumpType]
+    description: >
+      Type of dump to be fetched from device.
+    default: "Other"
 
 enumerations:
   - name: DebugInformationType
@@ -92,3 +97,17 @@ enumerations:
       - name: "WriteFailure"
         description: >
           The Operation failed while sending write request to the device.
+
+  - name: DumpType
+    description: >
+      Type of dump to be fetched from device. 
+    values:
+      - name: "Network"
+        description: >
+          Network dump.
+      - name: "Diagnostics"
+        description: >
+          Diagnostics dump.
+      - name: "Other"
+        description: >
+          Unknown dump.

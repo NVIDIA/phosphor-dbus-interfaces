@@ -1,0 +1,19 @@
+description: >
+    The Boot Valid Flag is a Boolean indicator that determines whether the boot
+    settings under this path are valid for the next host boot.
+    This flag is represented by the "xyz.openbmc_project.Object.Enable"
+    interface within this path. 
+    The "BootSettingsExpiryOverride" interface determines whether 
+    to ignore an implementation defined timeout post which the boot 
+    settings become invalid
+
+
+properties:
+    - name: BootValidTimeoutOverride 
+      type: boolean
+      description: >
+        If this property is set to "true",
+        the BMC will disregard an implementation-defined timeout,
+        after which the boot settings become invalid.
+      default: false
+#TODO add support in PEF Override,Watchdog timeot override, soft reset override, power pushbutton override 

@@ -5,11 +5,11 @@ description: >
 
 properties:
     - name: TXBytes
-      type: size
+      type: uint64
       description: >
           The total number of bytes transmitted on a device.
 
     - name: RXBytes
-      type: size
+      type: uint64
       description: >
           The total number of bytes received on a device.

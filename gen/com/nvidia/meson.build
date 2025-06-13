@@ -11,18 +11,24 @@ subdir('Edpp')
 subdir('EgmMode')
 subdir('ErrorInjection')
 subdir('GPMMetrics')
+subdir('GraceSPI')
+subdir('GraceSPIData')
+subdir('Histogram')
 subdir('InbandReconfigSettings')
 subdir('MemoryPageRetirementCount')
+subdir('MemoryPerformance')
 subdir('MemoryRowRemapping')
 subdir('MemorySpareChannel')
 subdir('MigMode')
 subdir('NVLink')
+subdir('Network')
 subdir('PCIe')
 subdir('PowerMode')
 subdir('PowerProfile')
 subdir('PowerSmoothing')
 subdir('PowerSupply')
 subdir('Protocol')
+subdir('ResetCounters')
 subdir('RoT')
 subdir('SMUtilization')
 subdir('Secureboot')
@@ -188,6 +194,50 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'com/nvidia/GraceSPI__markdown'.underscorify(),
+    input: ['../../../yaml/com/nvidia/GraceSPI.interface.yaml'],
+    output: ['GraceSPI.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/GraceSPI',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'com/nvidia/GraceSPIData__markdown'.underscorify(),
+    input: ['../../../yaml/com/nvidia/GraceSPIData.interface.yaml'],
+    output: ['GraceSPIData.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/GraceSPIData',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'com/nvidia/InbandReconfigSettings__markdown'.underscorify(),
     input: ['../../../yaml/com/nvidia/InbandReconfigSettings.interface.yaml'],
     output: ['InbandReconfigSettings.md'],
@@ -225,6 +275,28 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../yaml',
         'com/nvidia/MemoryPageRetirementCount',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'com/nvidia/MemoryPerformance__markdown'.underscorify(),
+    input: ['../../../yaml/com/nvidia/MemoryPerformance.interface.yaml'],
+    output: ['MemoryPerformance.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/MemoryPerformance',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],

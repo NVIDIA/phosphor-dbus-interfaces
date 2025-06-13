@@ -1,0 +1,34 @@
+description: >
+    Interface for performing SPI operations on Grace SPI part
+
+methods:
+    - name: EraseSpi 
+      description: >
+          Start an async erase of the Grace RW SPI part.
+
+      returns:
+          - name: ObjectPath
+            type: object_path
+            description: >
+                The object path for the progress interface
+
+      errors:
+        - xyz.openbmc_project.Common.Error.InternalFailure
+        - xyz.openbmc_project.Common.Error.Unavailable
+
+    - name: ReadSpi 
+      description: >
+          Start a read of the Grace RW SPI part.
+
+      returns:
+          - name: ObjectPath
+            type: object_path
+            description: >
+                The object path for the progress interface
+
+      errors:
+        - xyz.openbmc_project.Common.Error.InternalFailure
+        - xyz.openbmc_project.Common.Error.Unavailable
+
+
+      

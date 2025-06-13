@@ -19,12 +19,12 @@ properties:
       type: string
       description: >
           Represents chassis serial number in the entire rack full of trays and switches.
-    - name: Node
+    - name: HostID
       type: uint32
       description: >
           The index of the node within the slot.
     - name: PeerType
-      type: uint32
+      type: string
       description: >
           Platform indicated NVLink-peer type.
     - name: ModuleID
