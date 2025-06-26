@@ -1,0 +1,35 @@
+description: >
+    This defines a Port Metric to be exposed for system management.
+    It contains properties that describe counters common to all ports
+    of a device.
+
+properties:
+    - name: RXUnicastPkts
+      type: uint64
+      description: >
+          Number of unicast packets received
+    
+    - name: RXMulticastPkts
+      type: uint64
+      description: >
+          Number of multicast packets received
+    
+    - name: RXBroadcastPkts
+      type: uint64
+      description: >
+          Number of broadcast packets received
+    
+    - name: TXUnicastPkts
+      type: uint64
+      description: >
+          Number of unicast packets transmitted
+    
+    - name: TXMulticastPkts
+      type: uint64
+      description: >
+          Number of multicast packets transmitted
+
+    - name: TXBroadcastPkts
+      type: uint64
+      description: >
+          Number of broadcast packets transmitted

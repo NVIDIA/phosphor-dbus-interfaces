@@ -20,22 +20,6 @@ properties:
       flags:
           - readonly
 
-    - name: RXMulticastPkts
-      type: uint64
-      default: 0
-      description: >
-          The total number of multicast packets received on a device.
-      flags:
-          - readonly
-
-    - name: RXUnicastPkts
-      type: uint64
-      default: 0
-      description: >
-          The total number of unicast packets received on a device.
-      flags:
-          - readonly
-
     - name: MalformedPkts
       type: uint64
       default: 0
@@ -73,30 +57,6 @@ properties:
       default: 0
       description: >
           Transmitted data from the port [VL15].
-      flags:
-          - readonly
-
-    - name: TXUnicastPkts
-      type: uint64
-      default: 0
-      description: >
-          The total number of unicast packets transmitted on a device.
-      flags:
-          - readonly
-
-    - name: TXMulticastPkts
-      type: uint64
-      default: 0
-      description: >
-          The total number of multicast packets transmitted on a device.
-      flags:
-          - readonly
-
-    - name: TXBroadcastPkts
-      type: uint64
-      default: 0
-      description: >
-          The total number of broadcast packets transmitted on a device.
       flags:
           - readonly
 

@@ -1,0 +1,107 @@
+description: >
+    Implement to provide Ethernet-specific port metrics.
+
+properties:
+    - name: RXFCSErrors
+      type: uint64
+      default: 0
+      description: >
+          Number of frames received with FCS errors
+      flags:
+          - readonly
+    
+    - name: RXAlignmentErrors
+      type: uint64
+      default: 0
+      description: >
+          Number of frames received with alignment errors
+      flags:
+          - readonly
+    
+    - name: RXFalseCarrierDetections
+      type: uint64
+      default: 0
+      description: >
+          Number of false carrier detections
+      flags:
+          - readonly
+    
+    - name: RXRuntPkts
+      type: uint64
+      default: 0
+      description: >
+          Number of runt packets received
+      flags:
+          - readonly
+    
+    - name: RXJabberPkts
+      type: uint64
+      default: 0
+      description: >
+          Number of jabber packets received
+      flags:
+          - readonly
+    
+    - name: RXXONFrames
+      type: uint64
+      default: 0
+      description: >
+          Number of XON frames received
+      flags:
+          - readonly
+    
+    - name: RXXOFFFrames
+      type: uint64
+      default: 0
+      description: >
+          Number of XOFF frames received
+      flags:
+          - readonly
+    
+    - name: TXXONFrames
+      type: uint64
+      default: 0
+      description: >
+          Number of XON frames transmitted
+      flags:
+          - readonly
+    
+    - name: TXXOFFFrames
+      type: uint64
+      default: 0
+      description: >
+          Number of XOFF frames transmitted
+      flags:
+          - readonly
+    
+    - name: TXSingleCollisionFrames
+      type: uint64
+      default: 0
+      description: >
+          Number of frames transmitted with a single collision
+      flags:
+          - readonly
+    
+    - name: TXMultipleCollisionFrames
+      type: uint64
+      default: 0
+      description: >
+          Number of frames transmitted with multiple collisions
+      flags:
+          - readonly
+    
+    - name: TXLateCollisionFrames
+      type: uint64
+      default: 0
+      description: >
+          Number of frames transmitted with late collisions
+      flags:
+          - readonly
+    
+    - name: TXExcessCollisionFrames
+      type: uint64
+      default: 0
+      description: >
+          Number of frames not transmitted due to excessive collisions 
+      flags:
+          - readonly
