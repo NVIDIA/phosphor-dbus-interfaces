@@ -139,3 +139,87 @@ enumerations:
           - name: "Tamper"
             description: >
               Device booted due to tamper.
+          - name: "IAccViol"
+            description: >
+              Instruction access violation.
+          - name: "DAccViol"
+            description: >
+              Data access violation.
+          - name: "Munstkerr"
+            description: >
+              MemManage fault on unstacking.
+          - name: "Mstkerr"
+            description: >
+              MemManage fault on stacking.
+          - name: "MMFarValid"
+            description: >
+              MMFar valid flag.
+          - name: "BFarValid"
+            description: >
+              BFar valid flag.
+          - name: "Stkerr"
+            description: >
+              Bus Fault on Stacking.
+          - name: "Unstkerr"
+            description: >
+              Bus Fault on Unstacking.
+          - name: "ImpreciseError"
+            description: >
+              Imprecise data bus error.
+          - name: "PreciseError"
+            description: >
+              Precise data bus error.
+          - name: "IBusErr"
+            description: >
+              Instruction bus error.
+          - name: "UndefInstr"
+            description: >
+              Undefined instruction usage fault.
+          - name: "InvState"
+            description: >
+              Invalid state usage fault.
+          - name: "InvPC"
+            description: >
+              Invalid PC Load usage fault.
+          - name: "NoCP"
+            description: >
+              No Coprocessor usage fault.
+          - name: "Unaligned"
+            description: >
+              Unaligned access usage fault.
+          - name: "DevByZero"
+            description: >
+              Divide by zero usage fault.
+          - name: "VectTbl"
+            description: >
+              Bus Fault on Vector Table read.
+          - name: "Forced"
+            description: >
+              Forced hardfault.  
+          - name: "DebugEvt"
+            description: >
+              Debug event (Debug Usage Fault).  
+          - name: "MCTP"
+            description: >
+              MCTP fault.
+          - name: "I2C"
+            description: >
+              I2C fault.
+          - name: "I3C"
+            description: >
+              I3C fault.
+          - name: "PLDM"
+            description: >
+              PLDM fault.
+          - name: "USB"
+            description: >
+              USB fault.
+          - name: "Flash"
+            description: >
+              Flash fault.
+          - name: "Logger"
+            description: >
+              Logger fault.
+          - name: "SPDM"
+            description: >
+              SPMD fault.
