@@ -45,6 +45,9 @@ enumerations:
           - name: "Off"
             description: >
                 Host firmware should be off
+          - name: "ForceOff"
+            description: >
+                Host firmware should be force off
           - name: "On"
             description: >
                 Host firmware should be on
