@@ -15,5 +15,5 @@ properties:
         If this property is set to "true",
         the BMC will disregard an implementation-defined timeout,
         after which the boot settings become invalid.
-      default: false
+      default: true
 #TODO add support in PEF Override,Watchdog timeot override, soft reset override, power pushbutton override 
