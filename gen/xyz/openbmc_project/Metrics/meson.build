@@ -1,11 +1,38 @@
 # Generated file; do not modify.
+subdir('EthPort')
 subdir('IBPort')
 subdir('LanError')
+subdir('PortECC')
 subdir('PortMetricsOem1')
 subdir('PortMetricsOem2')
 subdir('PortMetricsOem3')
+subdir('PortPacketCounters')
 
 sdbusplus_current_path = 'xyz/openbmc_project/Metrics'
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Metrics/EthPort__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Metrics/EthPort.interface.yaml',
+    ],
+    output: ['EthPort.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Metrics/EthPort',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Metrics/IBPort__markdown'.underscorify(),
@@ -49,6 +76,30 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/Metrics/LanError',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Metrics/PortECC__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Metrics/PortECC.interface.yaml',
+    ],
+    output: ['PortECC.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Metrics/PortECC',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],
@@ -121,6 +172,30 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/Metrics/PortMetricsOem3',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Metrics/PortPacketCounters__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Metrics/PortPacketCounters.interface.yaml',
+    ],
+    output: ['PortPacketCounters.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Metrics/PortPacketCounters',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],

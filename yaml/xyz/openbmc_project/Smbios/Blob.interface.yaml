@@ -1,0 +1,22 @@
+description: >
+    Interface for uploading a SMBIOS blob to the BMC.
+
+methods:
+    - name: Upload
+      description: >
+          Upload a new SMBIOS blob to the BMC.
+      parameters:
+        - name: BlobFd
+          type: unixfd
+          description: >
+              The file descriptor of the SMBIOS blob.
+      returns:
+        - name: status
+          type: boolean
+          description: >
+              Whether the blob was uploaded successfully.
+      errors:
+        - xyz.openbmc_project.Common.File.Error.Read
+        - xyz.openbmc_project.Common.File.Error.Write
+        - xyz.openbmc_project.Common.File.Error.Seek
+        - xyz.openbmc_project.Common.File.Error.Open

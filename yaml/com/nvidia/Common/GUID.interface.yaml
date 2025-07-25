@@ -1,0 +1,8 @@
+description: >
+    Implement to provide Global Unique Identifier (GUID)
+properties:
+    - name: GUID
+      type: string
+      description: >
+          64-bit GUID of object to which the interface is bound. It is in
+          4-4-4-4 format

@@ -1,0 +1,29 @@
+description: >
+    This defines Error Correction Codes (ECC) for Port to be exposed for 
+    system management. It contains properties that describe different ECC
+    counters of ports of device.
+
+properties:
+    - name: SymbolErrorRXBytes
+      type: uint64
+      default: 0
+      description: >
+          count of number of symbol errors not corrected by FEC.
+      flags:
+        - readonly
+
+    - name: RawErrorsPerLane
+      type: array[uint64]
+      description: >
+          The total number of raw bit errors detected on the link before
+          error correction for each lane.
+      flags:
+        - readonly
+
+    - name: CorrectedBits
+      type: uint64
+      default: 0
+      description: >
+          The total number of corrected bits as per active FEC (RS/FC)
+      flags:
+        - readonly
