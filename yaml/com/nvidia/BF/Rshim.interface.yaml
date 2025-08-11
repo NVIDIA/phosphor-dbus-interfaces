@@ -1,0 +1,28 @@
+description: >
+    Implement to manage the Rshim.
+properties:
+    - name: State
+      type: enum[self.State]
+      description: >
+          The Rshim state.
+      default: Disabled
+    - name: LfwpEnabled
+      type: boolean
+      description: >
+          The LFWP is enabled or not.
+      default: false
+
+enumerations:
+    - name: State
+      description: >
+          Possible Rshim State settings
+      values:
+          - name: Enabled
+            decription: >
+                The Rshim is enabled.
+          - name: Disabled
+            decription: >
+                The Rshim is disabled.
+          - name: Forced
+            decription: >
+                The Rshim is forced to be enabled.
