@@ -1,0 +1,23 @@
+description: >
+  Implement to provide debug token status data for NSM devices.
+
+properties:
+  - name: TokenDeviceID
+    type: string
+    description: >
+      Token-specific device identification property of the device.
+    default: ""
+  - name: TokenType
+    type: array[struct[uint32,uint32]]
+    description: >
+      Array containing types and subtypes of the installed tokens.
+  - name: InstallationStatus
+    type: boolean
+    description: >
+      Token installation status.
+    default: false
+  - name: ProcessingStatus
+    type: boolean
+    description: >
+      Token processing status.
+    default: false

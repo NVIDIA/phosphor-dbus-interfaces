@@ -1,0 +1,46 @@
+description: >
+  Implement to provide install and erase debug token functionalities for NSM
+  devices.
+
+methods:
+  - name: EraseToken
+    description: >
+      Erase installed token.
+    parameters:
+      - name: TokenType
+        type: uint32
+        description: >
+          Type of the token to erase. Setting the argument to 0xFFFFFFFF results
+          in all tokens getting erased, 0xFFFFFFFE results in all tokens getting
+          erased and the ratchet counter being incremented; other values specify
+          a specific token type to erase, bitmasks are not supported.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+            DBus object path of the async operation status object.
+            Interface com.nvidia.Async.Status at this returned object path
+            can be used to retrieve the status of the operation.
+
+  - name: InstallToken
+    description: >
+      Install signed token.
+    parameters:
+      - name: TokenData
+        type: unixfd
+        description: >
+          Memory file descriptor containing the TLV encoded token data.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+      - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+            DBus object path of the async operation status object.
+            Interface com.nvidia.Async.Status at this returned object path
+            can be used to retrieve the status of the operation.
