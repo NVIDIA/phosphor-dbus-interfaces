@@ -34,6 +34,11 @@ methods:
         type: unixfd
         description: >
             Memory file descriptor containing the payload to be sent
+      - name: MsgFormatVersion
+        type: byte
+        description: >
+            NSM request message format version according to the NSM base specification
+        default: 1
     returns:
       - name: AsyncHandle
         type: object_path
