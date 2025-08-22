@@ -1,0 +1,24 @@
+description: >
+    Implement to provide value of power break state of a Processor.
+
+properties:
+    - name: Value
+      type: enum[self.PowerBreakStates]
+      description: >
+          This is current discrete value of sensor.
+
+enumerations:
+    - name: PowerBreakStates
+      description: >
+          Different value types for Processor power break discrete sensor.
+      values:
+          - name: Normal
+            description: >
+                To represent the power break state is normal.
+          - name: Throttled
+            description: >
+                To represent the power break state is throttled.
+          - name: Unknown
+            description: >
+                To represent the power break state as unknown.
+
