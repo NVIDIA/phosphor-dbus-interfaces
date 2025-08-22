@@ -1,0 +1,33 @@
+description: >
+    Implement to provide the state of the POWER_BREAK signal, an external input
+    to the Processor that requests it to start throttling. This interface provides
+    a feedback path indicating that the Processor is being throttled by an external entity.
+
+properties:
+    - name: Value
+      type: enum[self.PowerBreakStates]
+      description: >
+          Current state of the POWER_BREAK input signal to the Processor.
+      flags:
+        - readonly
+
+enumerations:
+    - name: PowerBreakStates
+      description: >
+          Possible states of the POWER_BREAK input signal to the Processor.
+      values:
+          - name: Normal
+            description: >
+                POWER_BREAK signal is inactive. Processor is not being requested to throttle.
+          - name: Throttled
+            description: >
+                POWER_BREAK signal is active. An external entity is requesting the Processor to throttle.
+          - name: Unknown
+            description: >
+                POWER_BREAK signal state cannot be determined.
+
+service_names:
+    - default: xyz.openbmc_project.PLDM
+
+paths:
+    - namespace: /xyz/openbmc_project/state
