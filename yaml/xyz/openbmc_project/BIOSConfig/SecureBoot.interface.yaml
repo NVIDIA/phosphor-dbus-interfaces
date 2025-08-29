@@ -9,10 +9,11 @@ properties:
           The UEFI Secure Boot state during the current boot cycle.
       default: Unknown
 
-    - name: Enable
+    - name: PendingEnable
       type: boolean
       description: >
-          An indication of whether UEFI Secure Boot is enabled.
+          An indication of whether the UEFI Secure Boot takes effect on next
+          boot.
 
     - name: Mode
       type: enum[self.ModeType]
@@ -37,20 +38,22 @@ enumerations:
 
     - name: ModeType
       description: >
-          Secure Boot Mode Type.
+          Secure Boot Mode Type. UEFI Secure Boot Modes are defined in UEFI
+          Specification -
+          https://uefi.org/specs/UEFI/2.10/32_Secure_Boot_and_Driver_Signing.html#secure-boot-modes
       values:
           - name: Unknown
             description: >
                 UEFI Secure Boot is currently unknown.
-          - name: SetupMode
+          - name: Setup
             description: >
                 UEFI Secure Boot is currently in Setup Mode.
-          - name: UserMode
+          - name: User
             description: >
                 UEFI Secure Boot is currently in User Mode.
-          - name: AuditMode
+          - name: Audit
             description: >
                 UEFI Secure Boot is currently in Audit Mode.
-          - name: DeployedMode
+          - name: Deployed
             description: >
                 UEFI Secure Boot is currently in Deployed Mode.

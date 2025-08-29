@@ -99,7 +99,7 @@ import('pkgconfig').generate(
 )
 
 phosphor_dbus_interfaces_dep = declare_dependency(
-    sources: generated_headers,
+    sources: [generated_headers, registry_target],
     include_directories: include_directories('gen'),
     link_with: libphosphor_dbus,
     dependencies: sdbusplus_dep,
@@ -108,6 +108,10 @@ phosphor_dbus_interfaces_dep = declare_dependency(
         'registry_dir=' + registry_copy_dir,
     ],
 )
+
+if meson.is_subproject()
+    phosphor_dbus_interfaces_dep = phosphor_dbus_interfaces_dep.as_system()
+endif
 
 meson.override_dependency(
     'phosphor-dbus-interfaces',

@@ -8,12 +8,15 @@ enumerations:
           Possible BMC types used for compatible strings.
       values:
           - name: Bletchley
+          - name: Bletchley15
           - name: Catalina
-          - name: GreatLakes
+          - name: Clemente
+          - name: Darwin
           - name: Harma
           - name: Minerva
+          - name: Santabarbara
           - name: TiogaPass
           - name: Ventura
           - name: Yosemite4
-          - name: YosemiteV2
           - name: Yosemite4N
+          - name: Yosemite5

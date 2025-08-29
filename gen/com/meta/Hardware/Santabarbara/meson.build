@@ -1,12 +1,10 @@
 # Generated file; do not modify.
 
-sdbusplus_current_path = 'xyz/openbmc_project/PLDM/Requester'
+sdbusplus_current_path = 'com/meta/Hardware/Santabarbara'
 
 generated_sources += custom_target(
-    'xyz/openbmc_project/PLDM/Requester__cpp'.underscorify(),
-    input: [
-        '../../../../../yaml/xyz/openbmc_project/PLDM/Requester.interface.yaml',
-    ],
+    'com/meta/Hardware/Santabarbara__cpp'.underscorify(),
+    input: ['../../../../../yaml/com/meta/Hardware/Santabarbara.interface.yaml'],
     output: [
         'common.hpp',
         'server.hpp',
@@ -25,7 +23,7 @@ generated_sources += custom_target(
         sdbusplusplus_prog,
         '--directory',
         meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/PLDM/Requester',
+        'com/meta/Hardware/Santabarbara',
     ],
     install: should_generate_cpp,
     install_dir: [
