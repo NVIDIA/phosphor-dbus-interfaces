@@ -20,6 +20,12 @@ properties:
       type: array[enum[self.FacilityType]]
       description: >
         The rsyslog client Facility Type.
+    - name: Rfcformat
+      type: enum[self.RfcFormatType]
+      description: >
+        Syslog message format version.
+      default: RFC3164
+
  
 enumerations:
   - name: FacilityType
@@ -51,3 +57,13 @@ enumerations:
       - name: 'All'
         description: >
           Catch-all severity for all log levels.
+  - name: RfcFormatType
+    description: >
+      Possible syslog message formats.
+    values:
+      - name: 'RFC5424'
+        description: >
+          Syslog message format defined by RFC 5424.
+      - name: 'RFC3164'
+        description: >
+          Syslog message format defined by RFC 3164.
