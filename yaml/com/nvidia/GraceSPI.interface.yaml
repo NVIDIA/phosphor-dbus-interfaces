@@ -30,5 +30,22 @@ methods:
         - xyz.openbmc_project.Common.Error.InternalFailure
         - xyz.openbmc_project.Common.Error.Unavailable
 
+    - name: WriteSpi
+      description: >
+          Start a write of the Grace RW SPI part.
+      parameters:
+        - name: filePath
+          type: string
+          description: >
+              The file path to write to SPI
 
+      returns:
+          - name: ObjectPath
+            type: object_path
+            description: >
+                The object path for the progress interface
+
+      errors:
+        - xyz.openbmc_project.Common.Error.InternalFailure
+        - xyz.openbmc_project.Common.Error.Unavailable
       
