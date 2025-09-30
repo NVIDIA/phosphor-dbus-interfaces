@@ -1,0 +1,31 @@
+description: >
+    Implement this interface to provide GPIO (General Purpose Input/Output)
+    state monitoring and notification capabilities for devices. This interface
+    allows callers to query the current state of multiple GPIO pins and receive
+    real-time notifications when GPIO states change. It is intended for use by
+    services that need to monitor hardware GPIO signals for status indicators,
+    control signals, or interrupt detection.
+
+properties:
+  - name: LineStates
+    type: dict[uint16, boolean]
+    description: >
+        This means the index of the GPIO with the corresponding
+        GPIO state value (true or false).
+
+  - name: LastChangeTime
+    type: uint64
+    description: >
+      Time since boot indicating the last change event, measured
+      in nanoseconds since boot.
+
+signals:
+    - name: GPIOChanged
+      description: >
+          Signal emitted when the GPIO state changes for the
+          below specified indexes.
+      properties:
+          - name: GPIOIndexes
+            type: array[uint16]
+            description: >
+                The indexes of the GPIO whose state has changed.
