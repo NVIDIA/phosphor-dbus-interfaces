@@ -1,0 +1,12 @@
+description: >
+    Implement to provide memory counters information for dump operations.
+
+methods:
+    - name: GetFd
+      description: >
+          Returns a file descriptor to a Counters data file.
+      returns:
+          - name: data
+            type: unixfd
+            description: >
+                A file descriptor for a file that contains the Counters data.
