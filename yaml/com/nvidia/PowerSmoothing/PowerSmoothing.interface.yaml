@@ -16,6 +16,11 @@ properties:
       type: boolean
       description: >
           An indication of immediate ramp down is enabled or not
+    
+    - name: DelayedPowerSmoothingSupported
+      type: boolean
+      description: >
+          An indiacation of delayed power smoothing is enabled or not 
 
     - name: CurrentTempSetting
       type: double
