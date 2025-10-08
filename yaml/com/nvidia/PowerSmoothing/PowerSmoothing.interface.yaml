@@ -16,6 +16,11 @@ properties:
       type: boolean
       description: >
           An indication of immediate ramp down is enabled or not
+    
+    - name: DelayedPowerSmoothingSupported
+      type: boolean
+      description: >
+          An indiacation of delayed power smoothing is enabled or not 
 
     - name: CurrentTempSetting
       type: double
@@ -40,7 +45,23 @@ properties:
       default: NaN
       description: >
           Min allowed TMP floor setting in percentage.
+    - name: FloorWindowMultiplier
+      type: double
+      default: NaN
+      description: >
+          Floor window multiplier in milliseconds.
 
+    - name: MinPrimaryFloorActivationOffset
+      type: double
+      default: NaN
+      description: >
+          Minimum primary floor activation offset in milliseconds.
+
+    - name: MinPrimaryFloorActivationPoint
+      type: double
+      default: NaN
+      description: >
+          Minimum primary floor activation point in milliseconds.
 
     - name: LifeTimeRemaining
       type: double

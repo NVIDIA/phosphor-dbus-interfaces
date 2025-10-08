@@ -29,7 +29,47 @@ properties:
       default: NaN
       description: >
           Ramp-down hysteresis value  in milliseconds
-
+    - name: SecondaryPowerFloorSetting
+      type: double
+      default: NaN
+      description: >
+          Secondary power floor setting configured during active workload 
+          when primaryFloorActivationWindowMultiplier  is set to a 
+          non-zero value. It is in milliwatts.
+    - name: SecondaryPowerFloorSettingApplied
+      type: boolean
+      description: >
+          Indicates active runtime for SecondaryPowerFloorSetting
+    - name: PrimaryFloorActivationWindowMultiplier
+      type: double
+      default: NaN
+      description: >
+          Primary floor activation window multiplier.
+    - name: PrimaryFloorActivationWindowMultiplierApplied
+      type: boolean
+      description: >
+          Indicates active runtime for PrimaryFloorActivationWindowMultiplier
+    - name: PrimaryFloorTargetWindowMultiplier
+      type: double
+      default: NaN
+      description: >
+          Primary floor target window multiplier.
+    - name: PrimaryFloorTargetWindowMultiplierApplied
+      type: boolean
+      description: >
+          Indicates active runtime for PrimaryFloorTargetWindowMultiplier
+    - name: PrimaryFloorActivationOffset
+      type: double
+      default: NaN
+      description: >
+          Primary Floor Activation Offset in mW. 
+          If the target moving average falls below the 
+          secondary floor plus this offset, the primary 
+          floor will be activated.
+    - name: PrimaryFloorActivationOffsetApplied
+      type: boolean
+      description: >
+          Indicates active runtime for PrimaryFloorActivationOffset
     - name: RampUpRateApplied
       type: boolean
       description: >

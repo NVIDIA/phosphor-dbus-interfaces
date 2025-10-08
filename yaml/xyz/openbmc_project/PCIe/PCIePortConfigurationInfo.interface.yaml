@@ -1,0 +1,73 @@
+description: >
+   Implement to provide PCIe Amplitude and preset configuration.
+   Preset is a predefined set of transmitter signal characteristics 
+   (mainly emphasis and de-emphasis levels) defined by the PCIe spec. 
+   These presets are indexed (0 to 9 for each Gen3-Gen6) and are used 
+   during the equalization phase of link training.
+
+properties:
+    - name: TxAmplitude
+      type: uint64
+      description: >
+            This property contains the PCIe transmit margin. 
+            It controls the value of the non-deemphasized 
+            voltage level at the transmitter pins.
+
+    - name: Preset0
+      type: array[enum[self.PCIePresetIndex]]
+      description: >
+          PCIe Preset 0 configuration.
+
+    - name: Preset1
+      type: array[enum[self.PCIePresetIndex]]
+      description: >
+          PCIe Preset 1 configuration.
+
+enumerations:
+    - name: PCIePresetIndex
+      description: >
+          Possible PCIe preset indices
+      values:
+        - name: 'DeviceDefault'
+          description: >
+              Device default represent value 0.
+
+        - name: 'Preset0'
+          description: >
+              Preset0 represent value 1.
+
+        - name: 'Preset1'
+          description: >
+              Preset1 represent value 2.
+
+        - name: 'Preset2'     
+          description: >
+              Preset2 represent value 3.
+
+        - name: 'Preset3'
+          description: >
+              Preset3 represent value 4.
+
+        - name: 'Preset4'
+          description: >
+              Preset4 represent value 5.
+
+        - name: 'Preset5'
+          description: >
+              Preset5 represent value 6.
+
+        - name: 'Preset6' 
+          description: >
+              Preset6 represent value 7.
+
+        - name: 'Preset7'
+          description: >
+              Preset7 represent value 8.
+
+        - name: 'Preset8'
+          description: >
+              Preset8 represent value 9.
+
+        - name: 'Preset9'
+          description: >
+              Preset9 represent value 10.
