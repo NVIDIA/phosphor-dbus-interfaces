@@ -24,6 +24,7 @@ properties:
       This represents the time duration of an increment in the buckets in µsec (0 = runtime value).
   - name: UnitOfMeasure
     type: enum[self.BucketUnits]
+    default: Count
     description: >
       This represents the unit of data/value stored in the buckets of histogram.
   - name: BucketDataType
