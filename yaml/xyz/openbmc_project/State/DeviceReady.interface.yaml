@@ -44,4 +44,7 @@ enumerations:
         - name: FPGA
           description: >
               This resource indicates about FPGA state
+        - name: HostManagementNIC
+          description: >
+              This resource indicates about HostManagementNIC state
         
