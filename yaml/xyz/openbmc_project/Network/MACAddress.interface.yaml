@@ -4,6 +4,7 @@ description: >
 properties:
     - name: MACAddress
       type: string
+      default: 00:00:00:00:00:00
       description: >
           MAC address of the ethernet interface in six groups of two hexadecimal
           digits separated by colons. Example: 01:23:45:67:89:AB

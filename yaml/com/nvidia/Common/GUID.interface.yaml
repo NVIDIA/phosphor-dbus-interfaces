@@ -2,6 +2,7 @@ description: >
     Implement to provide Global Unique Identifier (GUID)
 properties:
     - name: GUID
+      default: 0000-0000-0000-0000
       type: string
       description: >
           64-bit GUID of object to which the interface is bound. It is in
