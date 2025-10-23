@@ -1,0 +1,6 @@
+description: >
+    Implement this interface only if the device supports updating the SKU.
+    The SKU property update operation is handled asynchronously via the
+    com.nvidia.Async.Set interface.
+    The Set method will return an Object Path where com.nvidia.Async.Status
+    interface can be used to retrieve the status of the SKU update operation.
