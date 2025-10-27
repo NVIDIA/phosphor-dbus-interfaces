@@ -1,0 +1,9 @@
+description: >
+    Implement to provide SKU details for the device.
+
+properties:
+    - name: SKU
+      type: string
+      description: >
+          The Stock-keeping unit code assigned to an inventory item.
+
