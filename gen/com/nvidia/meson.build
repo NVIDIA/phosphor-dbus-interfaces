@@ -6,6 +6,7 @@ subdir('ClockMode')
 subdir('Common')
 subdir('ComputeHash')
 subdir('DebugToken')
+subdir('DeviceProtection')
 subdir('Dump')
 subdir('Edpp')
 subdir('EgmMode')
@@ -122,6 +123,28 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../yaml',
         'com/nvidia/DebugToken',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'com/nvidia/DeviceProtection__markdown'.underscorify(),
+    input: ['../../../yaml/com/nvidia/DeviceProtection.interface.yaml'],
+    output: ['DeviceProtection.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/DeviceProtection',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],

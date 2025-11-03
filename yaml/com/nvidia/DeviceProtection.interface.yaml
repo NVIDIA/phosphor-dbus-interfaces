@@ -1,0 +1,36 @@
+description: >
+   Implement to manage device protection settings. This interface provides
+   controls to prevent unauthorized firmware updates and configuration
+   changes on devices.
+
+properties:
+    - name: ProtectionLevel
+      type: enum[self.ProtectionOption]
+      description: >
+            The level of protection applied to the device to prevent
+            unauthorized firmware updates and configuration changes.
+      default: Unknown
+
+enumerations:
+    - name: ProtectionOption
+      description: >
+          Protection options for device security.
+      values:
+          - name: NoProtection
+            description: >
+                No protection is enabled. The device allows all firmware updates
+                and configuration changes without any restrictions. This is the
+                default setting where full access is granted.
+          - name: PreventAll
+            description: >
+                Prevents host firmware update and configuration changes.
+          - name: PreventHostFirmwareUpdates
+            description: >
+                Prevents only host firmware updates.
+          - name: PreventHostConfigurations
+            description: >
+                Prevents only host configuration changes.
+          - name: Unknown
+            description: >
+                The protection level is unknown or cannot be determined.
+
