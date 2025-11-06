@@ -26,6 +26,12 @@ properties:
       description: >
           The maximum speed of this port in Gbps.
 
+    - name: TargetSpeed
+      type: double
+      default: NaN
+      description: >
+          The requested link speed configured in Gbps.
+
 enumerations:
     - name: PortType
       description: >

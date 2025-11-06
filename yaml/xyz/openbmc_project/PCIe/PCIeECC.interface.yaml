@@ -44,6 +44,16 @@ properties:
       default: NaN
       description: >
           The total number of NAKs issued on the PCIe link by the receiver.
+    - name: BadTLPCount
+      type: double
+      default: NaN
+      description: >
+          The total number of Bad TLPs issued on the PCIe link by the receiver.
+    - name: FCTimeoutErrors
+      type: double
+      default: NaN
+      description: >
+          The total number of recovery trips due to Flow Credit timeout.
     - name: ueCount
       type: uint32
       description: >
@@ -53,7 +63,11 @@ properties:
       default: NaN
       description: >
           The total number of unsupported request counts on the device.
-          
+    - name: ReceiverErrorCount
+      type: double
+      default: NaN
+      description: >
+          The total number of receiver errors detected on the PCIe link.
     - name: PCIeType
       type: enum[self.PCIeTypes]
       default: 'Unknown'
