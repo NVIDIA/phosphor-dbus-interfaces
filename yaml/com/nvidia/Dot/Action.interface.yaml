@@ -1,0 +1,79 @@
+description: >
+  Implement to provide DOT (Device Ownership Transfer) functionalities.
+
+methods:
+  - name: DotCAKInstall
+    description: >
+      Install DOT CAK (Code Authentication Key).
+    parameters:
+      - name: CakKeyAuthScheme
+        type: enum[self.KeyAuthScheme]
+        description: >
+          CAK key authentication scheme.
+      - name: CakEcdsaKey
+        type: string
+        description: >
+          CAK ECDSA key data.
+      - name: CakLmsKey
+        type: string
+        description: >
+          CAK LMS key data.
+      - name: LakKeyAuthScheme
+        type: enum[self.KeyAuthScheme]
+        description: >
+          LAK key authentication scheme.
+      - name: LakEcdsaKey
+        type: string
+        description: >
+          LAK ECDSA key data.
+      - name: LakLmsKey
+        type: string
+        description: >
+          LAK LMS key data.
+      - name: LockDisable
+        type: boolean
+        description: >
+          Lock disable flag (false: lock enabled, true: lock disabled).
+      - name: MinSvn
+        type: uint32
+        description: >
+          Minimum Security Version Number.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+      - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+            DBus object path of the async operation status object.
+            Interface com.nvidia.Async.Status at this returned object path
+            can be used to retrieve the status of the operation.
+
+  - name: Bypass
+    description: >
+      Bypass DOT CAK installation. This method allows bypassing the 
+      DOT authentication requirement.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+      - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+            DBus object path of the async operation status object.
+            Interface com.nvidia.Async.Status at this returned object path
+            can be used to retrieve the status of the operation.
+
+enumerations:
+  - name: KeyAuthScheme
+    description: >
+      Key authentication scheme types for DOT operations.
+    values:
+      - name: Ecdsa
+        description: >
+          ECDSA-only authentication scheme.
+      - name: Hybrid
+        description: >
+          Hybrid ECDSA+LMS authentication scheme.
