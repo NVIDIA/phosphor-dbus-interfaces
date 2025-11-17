@@ -11,6 +11,7 @@ properties:
       type: variant[boolean,byte,uint16,int16,uint32,int32,uint64,int64,double,
             string,array[byte],struct[boolean,uint32],
             struct[uint16,string],
+            struct[uint16,byte,byte,array[byte]],
             unixfd,
             struct[enum[com.nvidia.DebugToken.TokenTypes],
                 enum[com.nvidia.DebugToken.TokenStatus],
