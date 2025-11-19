@@ -239,6 +239,106 @@ methods:
             Interface com.nvidia.Async.Status at this returned object path
             can be used to retrieve the status of the operation.
 
+  - name: RecoverDOT
+    description: >
+      This method is used only when DOT is corrupted in device and user has backup DOT.
+      Upon sending the DOT blob device will validate and recovers the DOT by updating
+      DOT blob in the device.
+    parameters:
+      - name: DOTData
+        type: unixfd
+        description: >
+          File descriptor containing backup DOT data.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+      - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+            DBus object path of the async operation status object.
+            Interface com.nvidia.Async.Status at this returned object path
+            can be used to retrieve the status of the operation.
+
+  - name: Override
+    description: >
+      Override DOT to reset ownership state when valid DOT data can no longer be recovered.
+      Requires vendor signature signed by Nvidia vendor key. UnlockChallenge with
+      VendorUnlock type should be used prior to Override.
+    parameters:
+      - name: VendorSignatureAuthScheme
+        type: enum[self.KeyAuthScheme]
+        description: >
+          Vendor signature authentication scheme.
+      - name: ECDSASignature
+        type: string
+        description: >
+          ECDSA signature with challenge from UnlockChallenge.
+      - name: LMSSignature
+        type: string
+        description: >
+          LMS signature with challenge from UnlockChallenge.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+      - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+            DBus object path of the async operation status object.
+            Interface com.nvidia.Async.Status at this returned object path
+            can be used to retrieve the status of the operation.
+
+  - name: Disable
+    description: >
+      Disable DOT to transition from uninitialized state to disabled state.
+    parameters:
+      - name: LakKeyAuthScheme
+        type: enum[self.KeyAuthScheme]
+        description: >
+          LAK key authentication scheme.
+      - name: LakEcdsaKey
+        type: string
+        description: >
+          LAK ECDSA key data.
+      - name: LakLmsKey
+        type: string
+        description: >
+          LAK LMS key data.
+      - name: UnlockMethod
+        type: enum[self.UnlockMethod]
+        description: >
+          Unlock method for disable operation.
+      - name: StaticChallenge
+        type: string
+        description: >
+          Required when Unlock_Method is StaticValue.
+      - name: DisableSignatureAuthScheme
+        type: enum[self.KeyAuthScheme]
+        description: >
+          Signature authentication scheme.
+      - name: ECDSASignature
+        type: string
+        description: >
+          ECDSA signature.
+      - name: LMSSignature
+        type: string
+        description: >
+          LMS signature.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+      - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+            DBus object path of the async operation status object.
+            Interface com.nvidia.Async.Status at this returned object path
+            can be used to retrieve the status of the operation.
+
 enumerations:
   - name: KeyAuthScheme
     description: >
