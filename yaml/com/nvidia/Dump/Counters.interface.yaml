@@ -1,12 +1,37 @@
 description: >
-    Implement to provide memory counters information for dump operations.
+    Implement to provide memory progress counters information for dump operations.
+
+properties:
+    - name: Description
+      type: string
+      description: >
+          Description of the Progress Counters data.
+    - name: CountersHeaders
+      type: array[string]
+      description: >
+          Names of the Progress Counters.
+    - name: CounterType
+      type: enum[self.CounterType]
+      description: >
+          Data type of the Progress Counter value.
+      default: UINT32
 
 methods:
     - name: GetFd
       description: >
-          Returns a file descriptor to a Counters data file.
+          Returns a file descriptor to a Progress Counters data file.
       returns:
           - name: data
             type: unixfd
             description: >
-                A file descriptor for a file that contains the Counters data.
+                A file descriptor for a file that contains the Progress Counters data.
+
+enumerations:
+  - name: CounterType
+    description: >
+        Data type of the Progress Counter value.
+    values:
+        - name: INT8
+          description: 8-bit signed integer
+        - name: UINT32
+          description: 32-bit unsigned integer
