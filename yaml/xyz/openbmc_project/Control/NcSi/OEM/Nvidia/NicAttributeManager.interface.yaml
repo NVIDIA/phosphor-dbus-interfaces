@@ -1,0 +1,15 @@
+description: >
+    Provides NIC attribute configuration management functionality to set and get multiple attributes at once managed by the service 'xyz.openbmc_project.Settings.connectx'.
+    The PendingAttributes property represents pending attributes that are staged to be applied on next NIC reset.
+    Reading this property returns all pending attributes. Writing this property sets multiple attributes at once, staging them for next NIC reset.
+
+properties:
+    - name: PendingAttributes
+      type: dict[string,variant[enum[xyz.openbmc_project.Control.NcSi.OEM.Nvidia.NicAttribute.Modes],enum[xyz.openbmc_project.Control.NcSi.OEM.Nvidia.NicTristateAttribute.Modes]]]
+      description: >
+          Dictionary mapping attribute names to their pending values from either NicAttribute.Modes or NicTristateAttribute.Modes enumerations.
+          Reading this property returns all pending attributes staged for next NIC reset.
+          Writing this property sets multiple attributes at once, staging them for next NIC reset.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.InvalidArgument
