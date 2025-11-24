@@ -16,6 +16,7 @@ properties:
                 enum[com.nvidia.DebugToken.TokenStatus],
                 enum[com.nvidia.DebugToken.AdditionalInfo],
                 uint32],
-            array[struct[uint32,uint32]]]
+            array[struct[uint32,uint32]],
+            array[struct[uint16,string,string]]]
       description: >
           Resultant value of the asynchronous method call operation

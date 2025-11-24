@@ -1,0 +1,40 @@
+description: >
+  Implement to provide aggregated debug token installation functionality across
+  multiple NSM devices. This interface enables installing debug tokens to
+  multiple devices simultaneously and returns per-device status.
+
+methods:
+  - name: InstallToken
+    description: >
+      Install signed token to multiple devices. Token file contains TLV-encoded
+      token data for all target devices. The file has two parts: a file header
+      followed by a set of tokens. Each token consists of a token header and
+      TLV-encoded (Type-Length-Value) fields. The operation returns per-device
+      installation status with error code, error message, and device name.
+      Device name is the Root of Trust name providing debug token support.
+    parameters:
+      - name: TokenData
+        type: unixfd
+        description: >
+          Memory file descriptor containing the aggregated TLV encoded token
+          data for multiple devices.
+    errors:
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+      - xyz.openbmc_project.Common.Error.Unavailable
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+          DBus object path of the async operation status object.
+          Interface com.nvidia.Async.Status at this returned object path
+          can be used to retrieve the status of the operation.
+          Interface com.nvidia.Async.Value at this returned object path
+          provides the per-device results as an array of tuples(uint16
+          error_code, string error_message, string device_name) containing
+          error code, error message, and device name. Error codes are derived
+          from debug token error code specification.
+
+paths:
+  - namespace: /xyz/openbmc_project/debug_token
+
