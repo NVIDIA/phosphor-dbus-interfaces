@@ -1,0 +1,106 @@
+description: >
+    Implement this interface to request image copy operations that copy
+    firmware from the active slot to the inactive slot. This interface
+    is implemented by RoT chassis objects at
+    /xyz/openbmc_project/inventory/system/chassis/<RoT>. A RoT may have
+    one or more firmware components associated with it.
+    This interface handles image copy requests and reports whether the
+    request is accepted or rejected, not the completion status of the
+    copy operation itself. The completion status of the operation is
+    tracked through the xyz.openbmc_project.Software.State interface for
+    each firmware component.
+
+    The RequestImageCopy method accepts a collection of firmware
+    inventory associated with the specific RoT. If no targets are
+    provided, the operation is performed on all applicable components.
+    The ImageCopyRequestStatus property reports the request status:
+    Processing while validating the request, Accepted when the request is
+    accepted, or Rejected when the request is rejected. If
+    RequestImageCopy is called while a previous request is still being
+    processed, the new request is rejected immediately with
+    xyz.openbmc_project.Common.Error.Unavailable. The ErrorCode property
+    provides additional details when a request is rejected.
+
+    Once the image copy request is accepted, the
+    xyz.openbmc_project.Software.State of the inactive slot will
+    transition from ImageCopyPending or Inactive state to
+    ImageCopyInProgress. If the image copy operation succeeds, the
+    inactive slot will transition to the final state of Inactive and
+    the firmware version of active and inactive slots will be the same.
+    If the image copy operation fails, the inactive slot will transition
+    to the final state of ImageCopyFailed.
+properties:
+    - name: ImageCopyRequestStatus
+      type: enum[self.ImageCopyRequestStatus]
+      description: >
+          The status of the image copy request acceptance.
+      flags:
+          - readonly
+    - name: ErrorCode
+      type: enum[self.ErrorCode]
+      description: >
+          Provides details on why a request was rejected.
+methods:
+    - name: RequestImageCopy
+      description: >
+          Requests a copy operation to copy firmware from the active slot
+          to the inactive slot for the specified components. The request
+          acceptance status can be monitored through the
+          ImageCopyRequestStatus property. If the request is rejected, the
+          ErrorCode property provides the rejection reason.
+      parameters:
+          - name: ObjectPaths
+            type: array[object_path]
+            description: >
+                D-Bus object paths of firmware components to copy. If empty,
+                all applicable components are copied.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.Unavailable
+enumerations:
+    - name: ImageCopyRequestStatus
+      description: >
+          The status of the image copy request.
+      values:
+          - name: None
+            description: >
+                No image copy request has been made.
+          - name: Processing
+            description: >
+                Request is being validated and processed.
+          - name: Accepted
+            description: >
+                Request was accepted and image copy operation started.
+          - name: Rejected
+            description: >
+                Request was rejected. See ErrorCode for details.
+    - name: ErrorCode
+      description: >
+          Error codes for image copy operations.
+      values:
+          - name: None
+            description: >
+                No error occurred.
+          - name: NoBootComplete
+            description: >
+                Boot complete indication not received; RoT is not ready.
+          - name: UpdateInProgress
+            description: >
+                A firmware update is in progress.
+          - name: ImageCopyInProgress
+            description: >
+                An image copy is already in progress.
+          - name: ImageCopyCompleted
+            description: >
+                Image copy recently completed; new request not allowed yet.
+          - name: FlashWearMitigation
+            description: >
+                A flash wear out mitigation policy is in effect.
+          - name: IncompleteComponentSet
+            description: >
+                Incomplete component set; all related components must be
+                specified together.
+          - name: TimedOut
+            description: >
+                Request processing timed out.
