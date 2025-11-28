@@ -1,0 +1,27 @@
+description: >
+    Implement this interface to configure the image copy policy. It
+    controls whether firmware copy from the active to the inactive slot
+    after successful activation is automatic or requires manual
+    initiation. This interface is implemented by RoT chassis objects at
+    /xyz/openbmc_project/inventory/system/chassis/<RoT>. The
+    ImageCopyPolicy property update operation is handled asynchronously
+    via the com.nvidia.Async.Set interface. The Set method returns an
+    object path implementing the com.nvidia.Async.Status interface to
+    monitor the ImageCopyPolicy update operation status.
+properties:
+    - name: ImageCopyPolicy
+      type: enum[self.ImageCopyPolicyState]
+      description: >
+          Indicates whether the ImageCopyPolicy configuration
+          is manual or automatic.
+enumerations:
+    - name: ImageCopyPolicyState
+      description: >
+          The possible states for the ImageCopyPolicy configuration.
+      values:
+          - name: Manual
+            description: >
+                Manual Image Copy
+          - name: Automatic
+            description: >
+                Automatic Image Copy
