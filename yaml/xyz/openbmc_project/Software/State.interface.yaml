@@ -33,3 +33,13 @@ enumerations:
       - name: FailedAuthentication
         descrition: >
           Firmware in failed authentication state
+      - name: ImageCopyPending
+        description: >
+          An image copy operation is pending.
+      - name: ImageCopyInProgress
+        description: >
+          An image copy operation is currently in progress.
+      - name: ImageCopyFailed
+        description: >
+          The image copy operation failed.
+
