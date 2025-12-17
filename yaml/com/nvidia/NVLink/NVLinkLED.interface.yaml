@@ -17,24 +17,33 @@ enumerations:
       description: >
         Possible states for the front panel NVLink staus LED's
       values:
-        - name: "Off"
+        - name: Utilization_0_Percent
           description: >
-            Front panel LED is off, no NVLink
-        - name: Steady_Green
+            LED Steady Green, Link Up, 0% Utilization
+        - name: Utilization_25_Percent
           description: >
-            Front panel LED is on and Green, NVLink connected
-        - name: Blinking_Green
+            LED Blinking Green, Link Up, 25% Utilization
+        - name: Utilization_50_Percent
           description: >
-            Front panel LED is on and blinking Green, NVLink traffic
-        - name: Steady_Amber
+            LED Blinking Green, Link Up, 50% Utilization
+        - name: Utilization_75_Percent
           description: >
-            Front panel LED is on and Amber, Physical link state
-        - name: Blinking_Amber
+            LED Blinking Green, Link Up, 75% Utilization
+        - name: Utilization_100_Percent
           description: >
-            Front panel LED is on and blinking Amber, beacon
+            LED Blinking Green, Link Up, 100% Utilization
+        - name: Disabled
+          description: >
+            LED Amber, Link up, Disabled
+        - name: No_Link
+          description: >
+            LED Off, No link
+        - name: Beacon
+          description: >
+            LED Blinking Amber, Beacon
         - name: Read_Error
           description: >
-            An error occured reading the front panel LED state
+            An error occured reading LED state
 
 
 
