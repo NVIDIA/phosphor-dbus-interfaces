@@ -1,0 +1,20 @@
+description: >
+    Implement this interface to set devices into recovery mode. Recovery
+    mode restores a device from a compromised or failed firmware state
+    back to a known-good, securely authenticated firmware state. The
+    device can be placed into recovery mode using a hardware sequence
+    like GPIO toggling or I2C commands, or using recovery protocols
+    like OCP. This interface is implemented by devices that support
+    recovery mode at the
+    /xyz/openbmc_project/inventory/system/chassis/<component_name>
+    namespace.
+
+methods:
+    - name: SetRecoveryMode
+      description: >
+          Requests to put the device into recovery mode. The operation is
+          handled synchronously.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.ResourceNotFound
+          - xyz.openbmc_project.Common.Error.Timeout
