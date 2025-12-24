@@ -1,0 +1,42 @@
+description: >
+    Implement this interface to configure the failover policy. The
+    failover policy defines the action to take when AP secure boot fails.
+    This interface is implemented by RoT chassis objects at
+    /xyz/openbmc_project/inventory/system/chassis/<RoT>. Objects
+    implementing this interface are expected to also implement the
+    com.nvidia.Async.Set interface.
+
+    When using the NoFailover policy, if a failure occurs while booting the
+    target firmware slot, the device immediately enters recovery mode.
+
+    When using the AutomaticFailover policy, if a failure occurs while
+    booting the target firmware slot, the device resets and attempts to
+    boot from the alternate firmware slot. If no firmware slot boots
+    successfully, the device enters recovery mode.
+
+    The FailoverPolicy property update operation is handled asynchronously
+    via the com.nvidia.Async.Set interface. The Set method returns an
+    object path implementing the com.nvidia.Async.Status interface to
+    monitor the FailoverPolicy update operation status.
+properties:
+    - name: FailoverPolicy
+      type: enum[self.FailoverPolicyState]
+      default: Unknown
+      description: >
+          Indicates whether the FailoverPolicy configuration
+          is automatic failover or no failover. This property is persistent
+          and should be stored across reboots.
+enumerations:
+    - name: FailoverPolicyState
+      description: >
+          The possible states for the FailoverPolicy configuration.
+      values:
+          - name: AutomaticFailover
+            description: >
+                Automatic Failover
+          - name: NoFailover
+            description: >
+                No Failover
+          - name: Unknown
+            description: >
+                Failover policy is unknown or cannot be determined
