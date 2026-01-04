@@ -2,20 +2,40 @@ description: >
   Implement to provide install and erase debug token functionalities for NSM
   devices.
 
+enumerations:
+  - name: EraseType
+    description: >
+      Enum describing debug token erase types.
+    values:
+      - name: TokenType
+        description: >
+          Erase a specific token type.
+      - name: EraseAll
+        description: >
+          Erase all tokens.
+      - name: EraseAllAndRatchetCounterIncreased
+        description: >
+          Erase all tokens and increment ratchet counter.
+
 methods:
   - name: EraseToken
     description: >
       Erase installed token.
     parameters:
-      - name: TokenType
-        type: uint32
+      - name: EraseType
+        type: enum[self.EraseType]
         description: >
-          Type of the token to erase. Setting the argument to 0xFFFFFFFF results
-          in all tokens getting erased, 0xFFFFFFFE results in all tokens getting
-          erased and the ratchet counter being incremented; other values specify
-          a specific token type to erase, bitmasks are not supported.
+          Type of erase operation. Set to TokenType to erase a specific token type,
+          EraseAll to erase all tokens, or EraseAllAndRatchetCounterIncreased to
+          erase all tokens and increment the ratchet counter.
+      - name: TokenType
+        type: enum[com.nvidia.DebugToken.Common.Types]
+        description: >
+          Type of the token to erase when EraseType is TokenType. Ignored for other
+          EraseType values.
     errors:
       - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.Error.InvalidArgument
       - xyz.openbmc_project.Common.Error.Unavailable
     returns:
       - name: ObjectPath

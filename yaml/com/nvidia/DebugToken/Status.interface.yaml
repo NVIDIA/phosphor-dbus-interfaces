@@ -8,9 +8,10 @@ properties:
       Token-specific device identification property of the device.
     default: ""
   - name: TokenType
-    type: array[struct[uint32,uint32]]
+    type: array[struct[enum[com.nvidia.DebugToken.Common.Types],array[enum[com.nvidia.DebugToken.Common.SubTypes]]]]
     description: >
       Array containing types and subtypes of the installed tokens.
+      Each element is a struct with token type enum and array of subtype enums.
   - name: InstallationStatus
     type: boolean
     description: >

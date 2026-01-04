@@ -1,0 +1,172 @@
+description: >
+  Common enumerations and types for Debug Token interfaces.
+
+enumerations:
+  - name: Types
+    description: >
+      Enum describing debug token types across all device types.
+    values:
+      - name: None
+        description: >
+          No token type.
+      - name: FRC
+        description: >
+          FRC token type.
+      - name: CRCS
+        description: >
+          CRCS token type.
+      - name: CRDT
+        description: >
+          CRDT token type.
+      - name: DebugFirmwareRunning
+        description: >
+          Debug firmware running token type.
+      - name: DebugFirmwareUnlock
+        description: >
+          Debug firmware unlock token type.
+      - name: OTPDumpEnable
+        description: >
+          OTP dump enable token type.
+      - name: JtagUnlock
+        description: >
+          JTAG unlock token type.
+      - name: HardwareUnlock
+        description: >
+          Hardware unlock token type.
+      - name: RuntimeDebugUnlock
+        description: >
+          Runtime debug unlock token type.
+      - name: FeatureUnlock
+        description: >
+          Feature unlock token type.
+      - name: MTDT
+        description: >
+          MTDT token type.
+      - name: CcplexArmJtagDebugCont
+        description: >
+          Ccplex ARM JTAG debug control token type.
+      - name: NVJtagControl
+        description: >
+          NVIDIA JTAG control token type.
+      - name: DiagnosticBoot
+        description: >
+          Diagnostic boot token type.
+      - name: BpmpFirmwareDebugFS
+        description: >
+          BPMP firmware DebugFS token type.
+      - name: FwDebugKnobs
+        description: >
+          Firmware debug knobs token type.
+      - name: FirewallLifting
+        description: >
+          Firewall lifting token type.
+      - name: Verbosity
+        description: >
+          Verbosity token type.
+      - name: RAS
+        description: >
+          RAS token type.
+  - name: SubTypes
+    description: >
+      Enum describing debug token subtypes across all device types and token types.
+    values:
+      - name: None
+        description: >
+          No subtype or not applicable.
+      # CPU/GPU Common subtypes
+      - name: OOBHub
+      - name: RAS
+      - name: Pcore
+      - name: PscFirmware
+      - name: MB1
+      - name: MB2
+      - name: BpmpFirmware
+      - name: BpmpIst
+      - name: BpmpDiag
+      - name: MSEQ
+      - name: C2C
+      - name: ATF
+      - name: RMM
+      - name: PscFmc
+      - name: EnableSensitiveLogging
+      # CPU CcplexArmJtagDebugCont subtypes
+      - name: Dbgen
+      - name: Niden
+      - name: Spiden
+      - name: Spniden
+      - name: JtagEnable
+      - name: DeviceenApbap
+      - name: DeviceenAxiap
+      - name: Rlpiden
+      - name: Rtpiden
+      - name: NvcpuUcfApb2ctlpDbgen
+      - name: NvcpuUcfElaEn
+      - name: EcProbesEn
+      - name: EnableCswp
+      # CPU NVJtagControl subtypes
+      - name: DftAccessAllowed
+      # CPU DiagnosticBoot subtypes
+      - name: BpmpDiagnosticBoot
+      - name: CPUDiagnosticBoot
+      # CPU FwDebugKnobs subtypes
+      - name: BpmpFwDebugfs
+      - name: MseqEnableSbeReporting
+      # CPU FirewallLifting subtypes
+      - name: GroupB
+      - name: GroupC
+      # SMA DebugFirmwareUnlock subtypes
+      - name: MCU
+      - name: CPLD
+      # GPU DebugFirmwareUnlock subtypes
+      - name: VBIOS
+      - name: FSPRT
+      - name: OOBHubRT
+      - name: NetIR
+      - name: PCIe
+      - name: FBFALCON
+      - name: CTCHBI
+      - name: BuildInfo
+      - name: DataTables
+      - name: PreltssmDevinit
+      - name: PostltssmDevinit
+      - name: PrimaryImage
+      - name: UEFIx86
+      - name: UEFIArm
+      - name: Duck
+      - name: InforomRO
+      - name: DevInit
+      - name: ExtensionImage
+      - name: MSE
+      - name: RomDirectory
+      - name: GspRm
+      # GPU HardwareUnlock subtypes
+      - name: MemQual
+      - name: GlobalFunctionalDebug
+      - name: SpeedoKappaIddq
+      - name: ECCEnable
+      - name: ReducedGlobalFunctionalDebug
+      - name: ECCUnlock
+      - name: Bar0DecouplerUnlock
+      - name: I2ccAccess
+      - name: ECCPoisonDisable
+      - name: NvlinkGlobalHulk
+      - name: LowerRomProtection
+      - name: RecreateInforomRW
+      - name: PrcKnobEn
+      - name: Nuke
+      - name: ArchFunctionalTests
+      - name: SsgDebug
+      - name: CxlDebug
+      - name: VideDebug
+      - name: GlobalFunctionalDebugMinimal
+      - name: IstDebug
+      - name: PxucGlobalHulk
+      # GPU RuntimeDebugUnlock subtypes
+      - name: NvlinkErrorInjectionEnable
+      - name: NvlinkDebugApiEnable
+      - name: NetIRUnitTestEnable
+      - name: NvlinkMissionDebugGmt
+      - name: PxucDebugApiEnable
+      - name: PxucErrorInjectionEnable
+      - name: PxucMissionDebugGmt
+      - name: EnableGspTaskDebug
