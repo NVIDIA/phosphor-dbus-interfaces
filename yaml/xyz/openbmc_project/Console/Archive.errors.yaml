@@ -1,0 +1,4 @@
+# xyz.openbmc_project.Console.Archive.Error.NoLogFilesFound
+- name: NoLogFilesFound
+  description: No console log files found to include in the archive.
+

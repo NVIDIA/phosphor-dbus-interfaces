@@ -1,0 +1,37 @@
+description: >
+    Implement to generate compressed archives of console log files on-demand. This
+    interface provides a method to aggregate all console log files under
+    /var/log/console/ into a single downloadable archive. The archive is
+    generated lazily when requested and returned as a file descriptor for
+    streaming.
+
+methods:
+    - name: GetLog
+      description: >
+          Method to generate a compressed archive (tar.gz) containing all console log
+          files on-demand. Discovers all files under /var/log/console/ and creates
+          a compressed tarball. Returns a file descriptor to the generated archive
+          file for streaming. The archive file is created in a temporary location and
+          cleaned up automatically when the file descriptor is closed. No file
+          persistence is required.
+      returns:
+          - name: ArchiveFD
+            type: unixfd
+            description: >
+                File descriptor to the generated archive file. The caller can read
+                from this descriptor to stream the archive content. The file is
+                created in a temporary location and cleaned up automatically when the
+                file descriptor is closed. No state tracking or manual cleanup is
+                required.
+      errors:
+          - xyz.openbmc_project.Common.File.Error.Open
+          - xyz.openbmc_project.Common.File.Error.Write
+          - xyz.openbmc_project.Console.Archive.Error.NoLogFilesFound
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+service_names:
+    - default: xyz.openbmc_project.Console.ArchiveManager
+
+paths:
+    - namespace: /xyz/openbmc_project/console
+
