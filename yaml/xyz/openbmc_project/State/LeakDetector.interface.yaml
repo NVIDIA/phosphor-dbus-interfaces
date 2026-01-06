@@ -22,7 +22,13 @@ enumerations:
          The state of the Leak Detector is OK.
       - name: Warning
         description: >
-         The state of the Leak Detector Warning and requires attention.
+         A warning level leak has been detected.
       - name: Critical
         description: >
-         The state of the Leak Detector is critical and requires immediate attention.
+         A critical level leak has been detected.
+      - name: Absent
+        description: >
+         The leak detector is not present.
+      - name: Unavailable
+        description: >
+         No data is available from the detector
