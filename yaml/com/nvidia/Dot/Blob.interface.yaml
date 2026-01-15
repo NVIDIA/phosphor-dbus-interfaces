@@ -1,0 +1,53 @@
+description: >
+  Interface for managing DOT (Device Ownership Transfer) blob storage on the BMC.
+  DOT blobs are binary data stored on BMC persistent storage and is used
+  during firmware recovery scenarios Each processor has its own blob storage
+  accessible via a unique D-Bus object path, Ex: /xyz/openbmc_project/dot_blob/CPU_0.
+  Service implementing this object path needs to make sure it's mapped to a binary
+  file for the device, which will be consumed by recovery service.
+
+methods:
+  - name: GetBlob
+    description: >
+      Retrieve the stored DOT blob from BMC persistent storage from the device. The client
+      shall use this action for redundancy checks in case of DOT `Lock`, `Disable`,
+      `CAKRotate` or `GetInfo` action and in recovery mode to recover the device with DOT data.
+    returns:
+      - name: BlobFd
+        type: unixfd
+        description: >
+          The file descriptor containing the DOT blob data.
+    errors:
+      - xyz.openbmc_project.Common.File.Error.Read
+      - xyz.openbmc_project.Common.File.Error.Open
+      - xyz.openbmc_project.Common.Error.ResourceNotFound
+
+  - name: UpdateBlob
+    description: >
+      Update the DOT blob stored on BMC persistent storage from the device.
+      The client shall use this action to update the DOT blob which was received as 
+      part of successful Lock, Disable, CAKRotate or GetInfo action. Successive firmware 
+      recovery in BMC will use the updated blob. Also empty blob with all 0s can be sent 
+      to initiate DOT override flow.
+    parameters:
+      - name: BlobFd
+        type: unixfd
+        description: >
+          The file descriptor containing the new DOT blob data.
+    returns:
+      - name: ObjectPath
+        type: object_path
+        description: >
+          DBus object path of the async operation status object.
+          Interface com.nvidia.Async.Status at this returned object path
+          can be used to retrieve the status of the operation.
+    errors:
+      - xyz.openbmc_project.Common.Error.Unavailable
+      - xyz.openbmc_project.Common.Error.InternalFailure
+      - xyz.openbmc_project.Common.File.Error.Read
+      - xyz.openbmc_project.Common.File.Error.Write
+      - xyz.openbmc_project.Common.File.Error.Open
+      - xyz.openbmc_project.Common.Error.InvalidArgument
+
+paths:
+  - namespace: /xyz/openbmc_project/dot_blob
