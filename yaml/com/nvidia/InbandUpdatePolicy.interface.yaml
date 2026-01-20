@@ -1,33 +1,18 @@
 description: >
-    Implement this interface if the device supports enabling and disabling inband update functionality.
+    Implement this interface to configure the inband update policy. It
+    controls whether inband update is enabled or disabled. This interface is
+    implemented by RoT chassis objects at
+    /xyz/openbmc_project/inventory/system/chassis/<RoT>. The
+    InbandUpdatePolicy property update operation is handled asynchronously
+    via the com.nvidia.Async.Set interface. The Set method returns an
+    object path implementing the com.nvidia.Async.Status interface to
+    monitor the InbandUpdatePolicy update operation status.
 properties:
     - name: InbandUpdatePolicy
       type: enum[self.InbandPolicyState]
       description: >
           Indicates whether the InbandUpdatePolicy configuration 
           is enabled or disabled.
-      flags:
-          - readonly
-    - name: ErrorCode
-      type: struct[uint16, string]
-      description: >
-          This property indicates the error code and message when an 
-          asynchronous command fails.
-methods:
-    - name: UpdatePolicy
-      description: >
-          This method updates the InbandUpdatePolicy 
-          for the device. Using a method is preferred over setting properties 
-          to support asynchronous operations.
-      parameters:
-          - name: State
-            type: boolean
-            description: >
-                Set this parameter to true to enable the InbandUpdatePolicy 
-                configuration and false to disable it.
-      errors:
-          - xyz.openbmc_project.Common.Error.InternalFailure
-          - xyz.openbmc_project.Common.Error.InvalidArgument
 enumerations:
     - name: InbandPolicyState
       description: >
@@ -35,10 +20,7 @@ enumerations:
       values:
           - name: Enabled
             description: >
-                Inband update is enabled
+                Inband update policy is enabled
           - name: Disabled
             description: >
-                Inband update is disabled
-          - name: NotApplicable
-            description: >
-                Inband update is not applicable.
+                Inband update policy is disabled
