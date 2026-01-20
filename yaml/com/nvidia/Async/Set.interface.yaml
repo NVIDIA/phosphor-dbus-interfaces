@@ -21,7 +21,7 @@ methods:
           - name: Value
             type: variant[boolean,byte,uint16,int16,uint32,int32,uint64,int64,
                   double,string,array[byte],struct[boolean,uint32], array[struct[string, uint32]],
-                  array[struct[string, variant[boolean,uint32,double]]]]
+                  array[struct[string, variant[boolean,uint32]]]]
             description: >
                 Value to be set
 
