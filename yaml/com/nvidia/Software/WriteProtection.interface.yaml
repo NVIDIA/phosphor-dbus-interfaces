@@ -1,0 +1,44 @@
+description: >
+    An interface for controlling write protection and getting its real-time
+    status. com.nvidia.Sofware.WriteProtection was added because
+        - xyz.openbmc_project.Software.Settings is a property-only interface, so it can't be async or report errors to the caller
+        - com.nvidia.Async.Set, or some other job management scheme, is overkill for controlling write protection
+        - DBus methods are asynchronous
+
+properties:
+  - name: WriteProtected
+    type: boolean
+    description: >
+        The read-only WriteProtected property reflects the real-time value of
+        the firmware's write protection. The value may change at any time due to
+        a fault or reset of the underlying device controlling the firmware's
+        write protection.
+    default: false
+    flags:
+      - readonly
+      - emits_change
+
+methods:
+  - name: SetWriteProtected
+    description: >
+        The SetWriteProtected method is used to control the firmware's write
+        protection and should return only after the operation completes.
+
+        Setting the firmware's write protection may not be supported. In this
+        case, calling SetWriteProtected should result in a
+        xyz.openbmc_project.Common.Error.NotAllowed error.
+
+        If changing the write protection fails due to communication failures,
+        exhausted retries, or other timeout condition, then a
+        xyz.openbmc_project.Common.Error.Timeout error should be returned.
+
+        A xyz.openbmc_project.Common.Error.InternalFailure should only be
+        returned in exceptional cases where there is a problem with the service
+        exposing an object with this interface.
+    parameters:
+      - name: Protected
+        type: boolean
+    errors:
+      - xyz.openbmc_project.Common.Error.Timeout
+      - xyz.openbmc_project.Common.Error.NotAllowed
+      - xyz.openbmc_project.Common.Error.InternalFailure
