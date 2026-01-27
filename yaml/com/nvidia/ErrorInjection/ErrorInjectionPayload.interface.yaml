@@ -3,6 +3,7 @@ description: >
 
 properties:
     - name: Payload
-      type: uint32
+      type: array[byte]
       description: >
-            This property shall indicate whether the error injection payload is triggred or cleared.
+            This property shall contain the payload to be injected to 
+            introduce the error during the error injection process.

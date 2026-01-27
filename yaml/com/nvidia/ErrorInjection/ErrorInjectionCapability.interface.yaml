@@ -46,6 +46,18 @@ enumerations:
           - name: "FatalErrors"
             description: >
                 The error injection type for support of the Fatal errors.
+          - name: "PortRecoveryErrors"
+            description: >
+                The error injection type for support of the port recovery errors.
+          - name: "USBBridgeEmulationErrors"
+            description: >
+                The error injection type for support of the USB emulation errors.
+          - name: "LeakDetectionErrors"
+            description: >
+                The error injection type for support of the leak detection errors.
+          - name: "GPIOSpoofingErrors"
+            description: >
+                The error injection type for support of the GPIO spoofing errors.
           - name: "Unknown"
             description: >
                 The unvalid unknown capability type holder.
