@@ -1,0 +1,11 @@
+description: >
+    Implement this interface to provide trigger capability.
+
+properties:
+    - name: Refresh
+      type: boolean
+      default: false
+      description: >
+          Set to true to initiate the operation.
+          This property is auto-cleared after the trigger is processed.
+
