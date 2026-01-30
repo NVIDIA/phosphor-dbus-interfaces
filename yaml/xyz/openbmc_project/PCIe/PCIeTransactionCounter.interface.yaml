@@ -46,3 +46,15 @@ properties:
       default: 0
       description: >
           The total number of Read requests dropped due to non-posted credit exhaustion.
+
+    - name: InboundTLPCount
+      type: uint64
+      default: 0
+      description: >
+          The total number of Inbound completion TLPs count.
+
+    - name: InboundTLPsTransfer
+      type: uint64
+      default: 0
+      description: >
+          The bytes transferred in inbound completion TLPs.

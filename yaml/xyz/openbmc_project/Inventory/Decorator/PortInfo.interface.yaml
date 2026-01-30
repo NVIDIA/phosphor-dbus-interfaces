@@ -32,6 +32,24 @@ properties:
       description: >
           The requested link speed configured in Gbps.
 
+    - name: MaxReadRequestSizeBytes
+      type: uint32
+      default: 128
+      description: >
+          Maximum Read Request Size in bytes (128, 256, 512, 1024, 2048, 4096).
+
+    - name: MaxPayloadSizeBytes
+      type: uint32
+      default: 128
+      description: >
+          Maximum Payload Size in bytes (128, 256, 512, 1024, 2048, 4096).
+
+    - name: CommonClockMode
+      type: enum[self.ClockMode]
+      default: SeparateClockMode
+      description: >
+          PCIe clock mode configuration indicating common or separate clock operation.
+
 enumerations:
     - name: PortType
       description: >
@@ -43,12 +61,18 @@ enumerations:
         - name: DownstreamPort
           description: >
               This port connects to a target device.
+        - name: EndpointPort
+          description: >
+              PCIe Endpoint device.
         - name: InterswitchPort
           description: >
               This port connects to another switch.
         - name: ManagementPort
           description: >
               This port connects to a switch manager.
+        - name: RootPort
+          description: >
+              Root Port of a Root Complex.
         - name: UnconfiguredPort
           description: >
               This port has not yet been configured.
@@ -78,3 +102,14 @@ enumerations:
         - name: InfiniBand
           description: >
               An InfiniBand.
+
+    - name: ClockMode
+      description: >
+          PCIe clock mode configuration.
+      values:
+        - name: SeparateClockMode
+          description: >
+              Separate reference clock mode (value 0).
+        - name: CommonClockMode
+          description: >
+              Common reference clock mode (value 1).

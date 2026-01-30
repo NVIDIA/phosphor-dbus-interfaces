@@ -65,6 +65,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
+    - name: Function0BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
 
     - name: Function1ClassCode
       type: string
@@ -98,7 +102,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function1BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: Function2ClassCode
       type: string
       description: >
@@ -131,6 +138,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
+    - name: Function2BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
 
     - name: Function3ClassCode
       type: string
@@ -164,7 +175,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function3BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: Function4ClassCode
       type: string
       description: >
@@ -197,7 +211,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function4BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: Function5ClassCode
       type: string
       description: >
@@ -230,7 +247,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function5BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: Function6ClassCode
       type: string
       description: >
@@ -263,7 +283,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function6BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: Function7ClassCode
       type: string
       description: >
@@ -296,7 +319,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function7BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: MaxLanes
       type: size
       default: 0
