@@ -33,13 +33,13 @@ properties:
           The requested link speed configured in Gbps.
 
     - name: MaxReadRequestSizeBytes
-      type: uint32
+      type: size
       default: 128
       description: >
           Maximum Read Request Size in bytes (128, 256, 512, 1024, 2048, 4096).
 
     - name: MaxPayloadSizeBytes
-      type: uint32
+      type: size
       default: 128
       description: >
           Maximum Payload Size in bytes (128, 256, 512, 1024, 2048, 4096).

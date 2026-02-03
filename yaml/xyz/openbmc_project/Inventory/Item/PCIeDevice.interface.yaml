@@ -3,6 +3,19 @@ description: >
     the device properties and function properties for all 8 possible functions
     that are needed for the device identification.
 
+    NOTE: Function-specific properties (Function0-7 properties) are to be
+    migrated to the upstream xyz.openbmc_project.Inventory.Item.PCIeFunction
+    interface in the future. Added property mapping for migration:
+      - Function{N}BusNumber -> BusNumber (byte)
+      - Function{N}DeviceId -> DeviceId (uint16)
+      - Function{N}VendorId -> VendorId (uint16)
+      - Function{N}SubsystemId -> SubsystemId (uint16)
+      - Function{N}SubsystemVendorId -> SubsystemVendorId (uint16)
+      - Function{N}RevisionId -> RevisionId (byte)
+      - Function{N}ClassCode -> BaseClassCode/SubClassCode/ProgrammingInterface (bytes)
+      - Function{N}DeviceClass -> DeviceClass (enum)
+      - Function{N}FunctionType -> FunctionType (enum)
+
 properties:
     - name: DeviceType
       type: enum[self.DeviceTypes]
