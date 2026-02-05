@@ -41,10 +41,16 @@ methods:
         type: boolean
         description: >
           Lock disable flag (false: lock enabled, true: lock disabled).
-      - name: MinSvn
-        type: uint32
+      - name: OwnerMinSvn
+        type: byte
         description: >
-          Minimum Security Version Number.
+          Owner-defined Minimum Security Version Number used to verify
+          the owner firmware security version in the Internal Root of Trust (IRoT).
+      - name: VendorMinSvn
+        type: byte
+        description: >
+          Vendor-defined Minimum Security Version Number used to verify the vendor
+          firmware security version in the Internal Root of Trust (IRoT).
     errors:
       - xyz.openbmc_project.Common.Error.InternalFailure
       - xyz.openbmc_project.Common.Error.InvalidArgument
