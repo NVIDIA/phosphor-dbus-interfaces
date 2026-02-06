@@ -3,69 +3,70 @@ description: >
 properties:
     - name: ceCount
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of the PCIe correctable errors on the device.
     - name: nonfeCount
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of the PCIe non-fatal errors on the device.
     - name: feCount
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of the PCIe fatal errors on the device.
     - name: L0ToRecoveryCount
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of times the PCIe link transitioned from
           L0 to the recovery state for the device.
     - name: ReplayCount
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of the replays issued on the PCIe link on
           the device.
     - name: ReplayRolloverCount
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of replay rollovers issued on the PCIe link
           on the device.
     - name: NAKSentCount
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of NAKs issued on the PCIe link on the device.
     - name: NAKReceivedCount
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of NAKs issued on the PCIe link by the receiver.
     - name: BadTLPCount
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of Bad TLPs issued on the PCIe link by the receiver.
     - name: FCTimeoutErrors
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of recovery trips due to Flow Credit timeout.
     - name: ueCount
       type: uint32
+      default: 0
       description: >
           The total number of the PCIe uncorrectable errors on the device.
     - name: UnsupportedRequestCount
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of unsupported request counts on the device.
     - name: ReceiverErrorCount
       type: double
-      default: NaN
+      default: 0.0
       description: >
           The total number of receiver errors detected on the PCIe link.
     - name: PCIeType
