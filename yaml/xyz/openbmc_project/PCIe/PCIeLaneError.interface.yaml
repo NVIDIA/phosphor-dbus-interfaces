@@ -1,0 +1,10 @@
+description: >
+    Per-lane PCIe error counters. Each lane object exposes this interface
+    to report lane-specific telemetry data.
+
+properties:
+    - name: CDRErrorCount
+      type: uint64
+      default: 0
+      description: >
+          CDR (Clock Data Recovery) error count for this lane.

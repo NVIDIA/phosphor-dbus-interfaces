@@ -112,11 +112,6 @@ properties:
           maxint is to accommodate the situation where the value of this
           property is not known due to some unknown reason, like hardware
           failure. The value of 0 indicates that the link is not active.
-    - name: CDRErrorsPerLane
-      type: array[uint64]
-      description: >
-          The total number of CDR errors detected on the link before
-          error correction for each lane.
 
 enumerations:
     - name: PCIeTypes
