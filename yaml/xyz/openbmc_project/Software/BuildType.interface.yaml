@@ -4,6 +4,7 @@ description: >
 properties:
     - name: BuildType
       type: enum[self.FirmwareBuildType]
+      default: Unknown
       description: >
         Build type of the firmware
 
@@ -18,3 +19,6 @@ enumerations:
       - name: Release
         description: >
           Release firmware
+      - name: Unknown
+        description: >
+          Firmware build type is unknown or cannot be determined
