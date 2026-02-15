@@ -1,0 +1,43 @@
+description: >
+    Implement to provide reference area for the location of the part.
+properties:
+    - name: LocationReference
+      type: enum[self.ReferenceAreas]
+      default: Unknown
+      description: >
+          The types of reference areas for a part within an enclosure.
+      flags:
+        - readonly
+
+enumerations:
+    - name: ReferenceAreas
+      description: >
+          Possible part Reference areas
+      values:
+        - name: Bottom
+          description: >
+              It indicates the part is in the bottom of the unit.
+        - name: Front
+          description: >
+              It indicates the part is in the front of the unit.
+        - name: Left
+          description: >
+              It indicates the part is in the left side of the unit.
+        - name: Middle
+          description: >
+              It indicates the part is in the middle of the unit.
+        - name: Rear
+          description: >
+              It indicates the part is in the rear of the unit.
+        - name: Right
+          description: >
+              It indicates the part is in the right side of the unit.
+        - name: Top
+          description: >
+              It indicates the part is in the top of the unit.
+        - name: Unknown
+          description: >
+              An unknown chassis type.
+
+paths:
+    - namespace: /xyz/openbmc_project/inventory
