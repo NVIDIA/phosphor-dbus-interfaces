@@ -3,6 +3,19 @@ description: >
     the device properties and function properties for all 8 possible functions
     that are needed for the device identification.
 
+    NOTE: Function-specific properties (Function0-7 properties) are to be
+    migrated to the upstream xyz.openbmc_project.Inventory.Item.PCIeFunction
+    interface in the future. Added property mapping for migration:
+      - Function{N}BusNumber -> BusNumber (byte)
+      - Function{N}DeviceId -> DeviceId (uint16)
+      - Function{N}VendorId -> VendorId (uint16)
+      - Function{N}SubsystemId -> SubsystemId (uint16)
+      - Function{N}SubsystemVendorId -> SubsystemVendorId (uint16)
+      - Function{N}RevisionId -> RevisionId (byte)
+      - Function{N}ClassCode -> BaseClassCode/SubClassCode/ProgrammingInterface (bytes)
+      - Function{N}DeviceClass -> DeviceClass (enum)
+      - Function{N}FunctionType -> FunctionType (enum)
+
 properties:
     - name: DeviceType
       type: enum[self.DeviceTypes]
@@ -65,6 +78,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
+    - name: Function0BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
 
     - name: Function1ClassCode
       type: string
@@ -98,7 +115,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function1BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: Function2ClassCode
       type: string
       description: >
@@ -131,6 +151,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
+    - name: Function2BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
 
     - name: Function3ClassCode
       type: string
@@ -164,7 +188,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function3BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: Function4ClassCode
       type: string
       description: >
@@ -197,7 +224,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function4BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: Function5ClassCode
       type: string
       description: >
@@ -230,7 +260,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function5BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: Function6ClassCode
       type: string
       description: >
@@ -263,7 +296,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function6BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: Function7ClassCode
       type: string
       description: >
@@ -296,7 +332,10 @@ properties:
       type: string
       description: >
           The Vendor ID for this function.
-
+    - name: Function7BusNumber
+      type: byte
+      description: >
+          The Bus Number for this function.
     - name: MaxLanes
       type: size
       default: 0

@@ -1,0 +1,28 @@
+description: >
+    Implement to provide PCIe clock mode configuration information.
+    This interface describes the clock synchronization mode between
+    PCIe link partners.
+
+properties:
+    - name: CommonClockMode
+      type: enum[self.ClockMode]
+      default: SeparateClockMode
+      description: >
+          PCIe clock mode configuration indicating common or separate clock operation.
+      flags:
+          - readonly
+
+enumerations:
+    - name: ClockMode
+      description: >
+          PCIe clock mode configuration.
+      values:
+        - name: SeparateClockMode
+          description: >
+              Separate reference clock mode
+        - name: CommonClockMode
+          description: >
+              Common reference clock mode
+        - name: Unknown
+          description: >
+            Unknown or unsupported clock mode value.

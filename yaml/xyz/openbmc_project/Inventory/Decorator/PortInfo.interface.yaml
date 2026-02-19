@@ -32,6 +32,18 @@ properties:
       description: >
           The requested link speed configured in Gbps.
 
+    - name: MaxReadRequestSizeBytes
+      type: size
+      default: 128
+      description: >
+          Maximum Read Request Size in bytes (128, 256, 512, 1024, 2048, 4096).
+
+    - name: MaxPayloadSizeBytes
+      type: size
+      default: 128
+      description: >
+          Maximum Payload Size in bytes (128, 256, 512, 1024, 2048, 4096).
+
 enumerations:
     - name: PortType
       description: >
@@ -43,12 +55,18 @@ enumerations:
         - name: DownstreamPort
           description: >
               This port connects to a target device.
+        - name: EndpointPort
+          description: >
+              PCIe Endpoint device.
         - name: InterswitchPort
           description: >
               This port connects to another switch.
         - name: ManagementPort
           description: >
               This port connects to a switch manager.
+        - name: RootPort
+          description: >
+              Root Port of a Root Complex.
         - name: UnconfiguredPort
           description: >
               This port has not yet been configured.

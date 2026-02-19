@@ -69,6 +69,31 @@ properties:
       default: 0.0
       description: >
           The total number of receiver errors detected on the PCIe link.
+    - name: TrainingSequenceErrorCount
+      type: double
+      default: 0.0
+      description: >
+          Training Sequence errors causing L0 to Recovery state transition.
+    - name: FramingErrorCount
+      type: double
+      default: 0.0
+      description: >
+          Framing errors causing L0 to Recovery state transition.
+    - name: LinkDownedCount
+      type: double
+      default: 0.0
+      description: >
+          Count of link down events
+    - name: DLLPCRCErrorCount
+      type: double
+      default: 0.0
+      description: >
+          Data Link Layer Packet (DLLP) CRC error counter.
+    - name: TLPCRCErrorCount
+      type: double
+      default: 0.0
+      description: >
+          Transaction Layer Packet (TLP) CRC error counter.
     - name: PCIeType
       type: enum[self.PCIeTypes]
       default: 'Unknown'
@@ -87,7 +112,7 @@ properties:
           maxint is to accommodate the situation where the value of this
           property is not known due to some unknown reason, like hardware
           failure. The value of 0 indicates that the link is not active.
-       
+
 enumerations:
     - name: PCIeTypes
       description: >
