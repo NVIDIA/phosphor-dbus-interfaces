@@ -1,16 +1,16 @@
 description: >
-    Implement to specify the Tor Switch Ports mode of operation.
+    Implement to specify the 3-Port Switch Ports mode of operation.
 
 properties:
-    - name: TorSwitchPortsMode
+    - name: ThreePortSwitchPortsMode
       type: enum[self.Modes]
       description: >
-          The Tor Switch Ports mode.
+          The 3-Port Switch Ports mode.
 
 enumerations:
     - name: Modes
       description: >
-          Possible modes of Tor Switch Ports.
+          Possible modes of 3-Port Switch Ports.
       values:
           - name: None
             description: >
@@ -26,4 +26,4 @@ enumerations:
                 Allow, both BMC and DPU to access the RJ45.
           - name: Disabled
             description: >
-                Tor Switch disabled.
+                3-Port Switch disabled.

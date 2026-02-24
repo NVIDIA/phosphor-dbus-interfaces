@@ -1,11 +1,11 @@
 # Generated file; do not modify.
 
-sdbusplus_current_path = 'xyz/openbmc_project/Control/TorSwitchPortsMode'
+sdbusplus_current_path = 'xyz/openbmc_project/Control/ThreePortSwitchPortsMode'
 
 generated_sources += custom_target(
-    'xyz/openbmc_project/Control/TorSwitchPortsMode__cpp'.underscorify(),
+    'xyz/openbmc_project/Control/ThreePortSwitchPortsMode__cpp'.underscorify(),
     input: [
-        '../../../../../yaml/xyz/openbmc_project/Control/TorSwitchPortsMode.interface.yaml',
+        '../../../../../yaml/xyz/openbmc_project/Control/ThreePortSwitchPortsMode.interface.yaml',
     ],
     output: [
         'common.hpp',
@@ -25,7 +25,7 @@ generated_sources += custom_target(
         sdbusplusplus_prog,
         '--directory',
         meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Control/TorSwitchPortsMode',
+        'xyz/openbmc_project/Control/ThreePortSwitchPortsMode',
     ],
     install: should_generate_cpp,
     install_dir: [

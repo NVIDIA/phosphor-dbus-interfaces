@@ -24,7 +24,7 @@ subdir('Security')
 subdir('Service')
 subdir('TPM')
 subdir('ThermalMode')
-subdir('TorSwitchPortsMode')
+subdir('ThreePortSwitchPortsMode')
 subdir('TransportRedundancy')
 subdir('Trigger')
 subdir('Valve')
@@ -466,11 +466,11 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
-    'xyz/openbmc_project/Control/TorSwitchPortsMode__markdown'.underscorify(),
+    'xyz/openbmc_project/Control/ThreePortSwitchPortsMode__markdown'.underscorify(),
     input: [
-        '../../../../yaml/xyz/openbmc_project/Control/TorSwitchPortsMode.interface.yaml',
+        '../../../../yaml/xyz/openbmc_project/Control/ThreePortSwitchPortsMode.interface.yaml',
     ],
-    output: ['TorSwitchPortsMode.md'],
+    output: ['ThreePortSwitchPortsMode.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -482,7 +482,7 @@ generated_markdown += custom_target(
         sdbusplusplus_prog,
         '--directory',
         meson.current_source_dir() / '../../../../yaml',
-        'xyz/openbmc_project/Control/TorSwitchPortsMode',
+        'xyz/openbmc_project/Control/ThreePortSwitchPortsMode',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],
