@@ -4,9 +4,9 @@ description: >
 properties:
   - name: DOTState
     type: enum[self.DOTStates]
+    default: Unknown
     description: >
       Current DOT state of the device.
-    default: Uninitialized
 
 methods:
   - name: DotCAKInstall
@@ -400,3 +400,6 @@ enumerations:
       - name: Disabled
         description: >
           DOT is in mutable disabled state.
+      - name: Unknown
+        description: >
+          DOT state is unknown or cannot be determined.
