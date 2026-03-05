@@ -1,0 +1,15 @@
+description: >
+    An indication of whether hardware write protection is enabled. A value of
+    `true` indicates that all applicable components in the chassis are write
+    protected.
+
+properties:
+  - name: WriteProtectedControl
+    type: boolean
+    description: >
+        Indicates whether global write protection is enabled externally through
+        hardware without software intervention.
+    default: false
+    flags:
+      - readonly
+      - emits_change
