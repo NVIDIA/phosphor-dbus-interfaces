@@ -1,0 +1,26 @@
+description: Provides nvidia specific control on user account. This provides
+    property to configure SSH authentication methods for all user accounts.
+
+properties:
+    - name: SSHPreferredAuthentication
+      type: array[enum[self.AuthenticationMethod]]
+      description: Contains list of authentication methods that are enabled to
+          be used for SSH. This property is persistent across boots/resets. It
+          will reset to default authentication method on factory reset.
+          By default public key and password based authentication methods are enabled.
+          Authentication methods not contained in property array are not available for
+          SSH authentication.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+enumerations:
+    - name: AuthenticationMethod
+      description: Defines available authentication method for SSH
+      values:
+          - name: Password
+            description: If present this will allow password based SSH authentication
+                as defined in RFC4252.
+          - name: PublicKey
+            description: If present this will allow SSH public key based authentication
+                as defined in RFC4252

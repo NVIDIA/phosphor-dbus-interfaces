@@ -47,6 +47,7 @@ subdir('StaticPowerHint')
 subdir('SwitchIsolation')
 subdir('SysGUID')
 subdir('UpdateSKU')
+subdir('User')
 
 sdbusplus_current_path = 'com/nvidia'
 
