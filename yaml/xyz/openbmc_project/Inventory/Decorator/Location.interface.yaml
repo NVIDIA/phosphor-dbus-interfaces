@@ -25,6 +25,9 @@ enumerations:
           description: >
               It indicates the part is embedded or otherwise permanently
               incorporated into a larger part or device.
+        - name: Connector
+          description: >
+              It indicates the part is located in a connector or port.
         - name: Unknown
           description: >
               An unknown chassis type.
