@@ -23,10 +23,15 @@ enumerations:
           Debug firmware running token type.
       - name: DebugFirmwareUnlock
         description: >
-          Debug firmware unlock token type.
+          Enables capability to run debug/test firmware without production
+          signature on production systems. Allows scale-out deployment of
+          non-production signed firmware on large quantities of production
+          fused devices. Software supports both device's default lifecycle and
+          debug token lifecycle simultaneously.
       - name: OTPDumpEnable
         description: >
-          OTP dump enable token type.
+          Legacy D-Bus enumeration slot that aligns with the SMA debug
+          capability token value (SMADebugCapability).
       - name: JtagUnlock
         description: >
           JTAG unlock token type.
@@ -44,10 +49,17 @@ enumerations:
           MTDT token type.
       - name: CcplexArmJtagDebugCont
         description: >
-          Ccplex ARM JTAG debug control token type.
+          ARM JTAG debug control token type for TH500 flow. Enables ARM JTAG
+          unlock capabilities to maintain compatibility with existing customer
+          tools. Controls ARM JTAG debug signals and requires an additional
+          check of secure_debug_control_toggle_allowed from PSC-BCT to enable
+          debug. PSC-BCT utilizes secure_debug_control_toggle_allowed to
+          control all signals for both nv-prod and stage2 scenarios.
       - name: NVJtagControl
         description: >
-          NVIDIA JTAG control token type.
+          NVIDIA JTAG control token type that allows Design-For-Test (DFT)
+          debug access in NVJTAG operations. Enables DFT access for internal
+          NVIDIA debugging and testing purposes.
       - name: DiagnosticBoot
         description: >
           Diagnostic boot token type.
@@ -59,13 +71,27 @@ enumerations:
           Firmware debug knobs token type.
       - name: FirewallLifting
         description: >
-          Firewall lifting token type.
+          Firewall lifting token type that allows selective removal of hardware
+          firewalls for debugging and testing purposes. Enables access to
+          normally protected system resources by lifting specific firewall
+          groups. Used for MODS testing and advanced debugging scenarios.
       - name: Verbosity
         description: >
-          Verbosity token type.
+          Verbosity token type that allows runtime control of UART/UTC output
+          and verbosity levels for different firmware components. Enables
+          detailed logging and debug output from various firmware modules that
+          is normally suppressed in production to aid in debugging and system
+          analysis.
       - name: RAS
         description: >
-          RAS token type.
+          Enable debug signing for Reliability, Availability, and
+          Serviceability (RAS) firmware component.
+      - name: SMADebugCapability
+        description: >
+          Unlock debug capabilities on SMA.
+      - name: CpldDebugCapability
+        description: >
+          Unlock debug capabilities on CPLD.
   - name: SubTypes
     description: >
       Enum describing debug token subtypes across all device types and token types.
@@ -117,6 +143,11 @@ enumerations:
       # SMA DebugFirmwareUnlock subtypes
       - name: MCU
       - name: CPLD
+      # SMA SMADebugCapability subtypes
+      - name: RasTest
+      - name: PowerFailI2cDebug
+      # SMA CpldDebugCapability subtypes
+      - name: CpldDebugEnable
       # GPU DebugFirmwareUnlock subtypes
       - name: VBIOS
       - name: FSPRT
@@ -161,6 +192,7 @@ enumerations:
       - name: GlobalFunctionalDebugMinimal
       - name: IstDebug
       - name: PxucGlobalHulk
+      - name: TargetMaskUnlock
       # GPU RuntimeDebugUnlock subtypes
       - name: NvlinkErrorInjectionEnable
       - name: NvlinkDebugApiEnable
