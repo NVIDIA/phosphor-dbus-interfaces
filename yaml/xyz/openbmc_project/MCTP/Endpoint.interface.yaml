@@ -26,6 +26,34 @@ properties:
           duplicated or overlap from one MCTP network to the next. This is also
           referred to as "endpoint ID" and abbreviated as "EID".
 
+    - name: LocalEID
+      type: byte
+      description: >
+          The local endpoint ID assigned to the bus owner's MCTP network
+          interface through which this remote endpoint is reachable. This
+          serves as the source address for messages originating from this
+          bus owner and destined to the remote endpoint. In topologies with
+          multiple bus owners (e.g., bridged MCTP networks), each bus owner
+          has its own LocalEID on its respective network segment. The
+          LocalEID is specific to the network interface, not the bus owner
+          as a whole - a single bus owner may have different LocalEIDs on
+          different interfaces. LocalEIDs are not required to be unique
+          across interfaces or network segments.
+
+          Example - Same LocalEID on different interfaces:
+
+            BMC (bus owner) has two I2C buses connecting to GPU_A and GPU_B.
+            Both interfaces are assigned LocalEID = 8.
+              mctpi2c3 -> GPU_A (EID 12), LocalEID = 8
+              mctpi2c7 -> GPU_B (EID 13), LocalEID = 8
+
+          Example - Different LocalEIDs on different interfaces:
+
+            BMC has an I2C bus and a USB gadget interface, each assigned a
+            distinct LocalEID on its network segment.
+              mctpi2c3 -> GPU_A (EID 12), LocalEID = 8
+              mctpusbg0 -> HMC (EID 9),  LocalEID = 10
+
     - name: SupportedMessageTypes
       type: array[byte]
       description: >
