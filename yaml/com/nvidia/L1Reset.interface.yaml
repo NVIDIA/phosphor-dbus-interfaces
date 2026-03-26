@@ -1,0 +1,14 @@
+description: >
+    Initiate an L1 software main reset of a Vera CPU node using the TB50x
+    EXT_Messaging interface. The request is addressed to a single socket,
+    but is expected to propagate to all sockets in a multi-socket cluster.
+
+methods:
+    - name: Reset
+      description: >
+          Perform the L1 software main reset. Executes one EXT_Messaging
+          write operation to the exposed L1 reset CPU register. The method
+          is synchronous and returns after the operation completes.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.Unavailable
