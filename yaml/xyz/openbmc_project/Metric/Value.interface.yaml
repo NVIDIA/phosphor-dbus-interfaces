@@ -45,6 +45,9 @@ enumerations:
           - name: Percent
             description: >
                 Unit to indicate percentage.
+          - name: Seconds
+            description: >
+                Unit to indicate time duration in seconds.
 
 associations:
     - name: measuring
@@ -125,6 +128,16 @@ paths:
                 EMMC health statistics to track the consumption state of
                 reserved blocks.
             value: emmc/blocks
+          - name: Time
+            description: >
+                A namespace for metrics whose values represent time durations,
+                expressed in seconds, such as intervals, latencies, or uptimes.
+            value: time
+          - name: Count
+            description: >
+                A namespace for metrics whose values represent counts,
+                expressed as non‑negative numbers.
+            value: count
     - name: BMC
       description: >
           The BMC metrics.
