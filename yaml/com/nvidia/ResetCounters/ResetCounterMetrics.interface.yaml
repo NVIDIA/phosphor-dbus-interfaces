@@ -59,7 +59,7 @@ enumerations:
       description: >
         Reset types.
       values:
-          - name: "PFFLR"
+          - name: "PF_FLR"
             description: >
               PF-FLR reset type, Power Loss and Factory Programming Reset
           - name: "Conventional"
