@@ -59,3 +59,6 @@ enumerations:
         - name: Board
           description: >
             A circuit board.
+        - name: DCBus
+          description: >
+            A DC electrical bus.
