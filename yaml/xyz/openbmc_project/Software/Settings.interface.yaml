@@ -9,6 +9,8 @@ properties:
           This property shall indicate whether the software image can be
           overwritten, where a value `true` shall indicate that the software
           cannot be altered or overwritten.
+      errors:
+          - xyz.openbmc_project.Common.Error.NotAllowed
     - name: WriteProtectedControl
       type: boolean
       default: false
@@ -16,3 +18,5 @@ properties:
           This property shall indicate whether the software image can be
           overwritten, where a value `true` shall indicate that the software
           cannot be altered or overwritten.
+      errors:
+          - xyz.openbmc_project.Common.Error.NotAllowed
