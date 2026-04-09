@@ -1,16 +1,6 @@
-version: 1.0.1
+version: 1.2.0
 
 errors:
-    - name: InvalidSensorReading
-      severity: warning
-      errno: EIO
-      metadata:
-          - name: SensorName
-            description: The name or identifier of the sensor.
-            type: object_path
-            primary: true
-      redfish-mapping: SensorEvent.InvalidSensorReading
-
     - name: ReadingAboveLowerCriticalThreshold
       severity: warning
       errno: ERANGE
@@ -363,15 +353,59 @@ errors:
             primary: true
       redfish-mapping: SensorEvent.ReadingBelowFatalThreshold
 
-    - name: SensorFailure
-      severity: critical
-      errno: EIO
+    - name: ReadingWarning
+      severity: warning
+      errno: ERANGE
       metadata:
           - name: SensorName
             description: The name or identifier of the sensor.
             type: object_path
             primary: true
-      redfish-mapping: SensorEvent.SensorFailure
+          - name: ReadingValue
+            description: The reading of the sensor.
+            type: double
+            primary: true
+          - name: Units
+            description: The reading units of measure.
+            type: enum[xyz.openbmc_project.Sensor.Value.Unit]
+            primary: true
+      redfish-mapping: SensorEvent.ReadingWarning
+
+    - name: ReadingCritical
+      severity: critical
+      errno: ERANGE
+      metadata:
+          - name: SensorName
+            description: The name or identifier of the sensor.
+            type: object_path
+            primary: true
+          - name: ReadingValue
+            description: The reading of the sensor.
+            type: double
+            primary: true
+          - name: Units
+            description: The reading units of measure.
+            type: enum[xyz.openbmc_project.Sensor.Value.Unit]
+            primary: true
+      redfish-mapping: SensorEvent.ReadingCritical
+
+    - name: ReadingNoLongerCritical
+      severity: warning
+      errno: ERANGE
+      metadata:
+          - name: SensorName
+            description: The name or identifier of the sensor.
+            type: object_path
+            primary: true
+          - name: ReadingValue
+            description: The reading of the sensor.
+            type: double
+            primary: true
+          - name: Units
+            description: The reading units of measure.
+            type: enum[xyz.openbmc_project.Sensor.Value.Unit]
+            primary: true
+      redfish-mapping: SensorEvent.ReadingNoLongerCritical
 
 events:
     - name: SensorReadingNormalRange
@@ -389,11 +423,3 @@ events:
             type: enum[xyz.openbmc_project.Sensor.Value.Unit]
             primary: true
       redfish-mapping: SensorEvent.SensorReadingNormalRange
-
-    - name: SensorRestored
-      metadata:
-          - name: SensorName
-            description: The name or identifier of the sensor.
-            type: object_path
-            primary: true
-      redfish-mapping: SensorEvent.SensorRestored

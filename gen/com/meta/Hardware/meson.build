@@ -1,11 +1,38 @@
 # Generated file; do not modify.
+subdir('Anacapa')
 subdir('BMC')
+subdir('Catalina')
+subdir('Clemente')
 subdir('Harma')
 subdir('Minerva')
+subdir('SanMiguel')
 subdir('Santabarbara')
+subdir('Ventura2')
 subdir('Yosemite5')
 
 sdbusplus_current_path = 'com/meta/Hardware'
+
+generated_markdown += custom_target(
+    'com/meta/Hardware/Anacapa__markdown'.underscorify(),
+    input: ['../../../../yaml/com/meta/Hardware/Anacapa.interface.yaml'],
+    output: ['Anacapa.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'com/meta/Hardware/Anacapa',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
 
 generated_markdown += custom_target(
     'com/meta/Hardware/BMC__markdown'.underscorify(),
@@ -23,6 +50,50 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../../yaml',
         'com/meta/Hardware/BMC',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'com/meta/Hardware/Catalina__markdown'.underscorify(),
+    input: ['../../../../yaml/com/meta/Hardware/Catalina.interface.yaml'],
+    output: ['Catalina.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'com/meta/Hardware/Catalina',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'com/meta/Hardware/Clemente__markdown'.underscorify(),
+    input: ['../../../../yaml/com/meta/Hardware/Clemente.interface.yaml'],
+    output: ['Clemente.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'com/meta/Hardware/Clemente',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],
@@ -74,6 +145,28 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
+    'com/meta/Hardware/SanMiguel__markdown'.underscorify(),
+    input: ['../../../../yaml/com/meta/Hardware/SanMiguel.interface.yaml'],
+    output: ['SanMiguel.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'com/meta/Hardware/SanMiguel',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
     'com/meta/Hardware/Santabarbara__markdown'.underscorify(),
     input: ['../../../../yaml/com/meta/Hardware/Santabarbara.interface.yaml'],
     output: ['Santabarbara.md'],
@@ -89,6 +182,28 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../../yaml',
         'com/meta/Hardware/Santabarbara',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'com/meta/Hardware/Ventura2__markdown'.underscorify(),
+    input: ['../../../../yaml/com/meta/Hardware/Ventura2.interface.yaml'],
+    output: ['Ventura2.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'com/meta/Hardware/Ventura2',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],

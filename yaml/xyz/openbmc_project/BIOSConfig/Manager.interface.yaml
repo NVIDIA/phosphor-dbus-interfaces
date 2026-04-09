@@ -178,3 +178,6 @@ enumerations:
           - name: OneOf
             description: >
                 Used to define the enumeration options.
+
+paths:
+    - instance: /xyz/openbmc_project/bios_config/manager

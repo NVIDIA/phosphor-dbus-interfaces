@@ -2,8 +2,21 @@ description: >
     Implement to specify the power consumption cap and bounds
 
 properties:
+    - name: DefaultPowerCap
+      type: uint32
+      flags:
+          - readonly
+      default: maxint
+      description: >
+          This is the default cap value, when a user hasn't set PowerCap, that
+          the power usage of the associated item will be limited to. This value
+          is in Watts. If such a default doesn't exist , the value will be
+          maxint. A user specified value for PowerCap may override the
+          DefaultPowerCap value.
+
     - name: PowerCap
       type: uint32
+      default: maxint
       description: >
           Power cap value. This is the user specified power cap.  When enabled
           the power usage of the system will be limited to keep the power at or
@@ -97,3 +110,13 @@ enumerations:
           - name: Oem
             description: >
                 OEM defined action.
+
+associations:
+    - name: controlling
+      description: >
+          Objects implementing Power.Cap can optionally implement the
+          'controlling' association to provide a link to the chassis item whose
+          power is being controlled.
+      reverse_name: controlled_by
+      required_endpoint_interfaces:
+          - xyz.openbmc_project.Inventory.Item.Chassis

@@ -59,8 +59,6 @@ enumerations:
       description: >
           Defines a action which is taken once threshold condition is met.
       values:
-          - name: LogToJournal
-            description: Trigger will log to journal.
           - name: LogToRedfishEventLog
             description: Trigger will log Redfish message.
           - name: UpdateReport
@@ -101,3 +99,6 @@ enumerations:
           - name: OK
           - name: Warning
           - name: Critical
+
+paths:
+    - namespace: /xyz/openbmc_project/Telemetry/Triggers

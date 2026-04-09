@@ -24,6 +24,9 @@ endif
 
 # Parse options to determine appropriate subdirectories to support.
 yaml_selected_subdirs = []
+if get_option('data_com_ampere')
+    yaml_selected_subdirs += 'com/ampere'
+endif
 if get_option('data_com_google')
     yaml_selected_subdirs += 'com/google'
 endif
@@ -35,6 +38,9 @@ if get_option('data_com_intel')
 endif
 if get_option('data_com_meta')
     yaml_selected_subdirs += 'com/meta'
+endif
+if get_option('data_com_qualcomm')
+    yaml_selected_subdirs += 'com/qualcomm'
 endif
 if get_option('data_org_freedesktop')
     yaml_selected_subdirs += 'org/freedesktop'
@@ -73,7 +79,7 @@ should_generate_registry = true
 subdir('gen')
 
 # Source the extra target to copy registry files into a separate tree so they
-# can be useful for dependees when we are built as a sub-project.
+# can be useful for dependencies when we are built as a sub-project.
 subdir('registry')
 
 # Define and build libphosphor_dbus.so from the C++ files.

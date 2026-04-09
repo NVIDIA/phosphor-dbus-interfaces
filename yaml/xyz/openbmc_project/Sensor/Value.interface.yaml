@@ -14,6 +14,7 @@ description: >
       pressure
       temperature
       utilization
+      valve
       voltage
       counter
 
@@ -63,7 +64,9 @@ properties:
           "Pascals" For objects in the temperature namespace, Unit must be
           "DegreesC". For objects in the utilization namespace, Unit must be
           "Percent" For objects in the voltage namespace, Unit must be "Volts",
-          For objects in the liquidflow namespace, Unit must be "LPM".
+          For objects in the liquidflow namespace, Unit must be "LPM". For
+          objects in the frequency namespace, Unit must be "Hertz". For objects
+          in the valve namespace, Unit must be "Percent".
 
 enumerations:
     - name: Unit
@@ -105,7 +108,7 @@ enumerations:
                 Frequency of rotation as revolutions per minute.
           - name: Volts
             description: >
-                Electomotive force as volts.
+                Electromotive force as volts.
           - name: Watts
             description: >
                 Rate of energy transfer as Watts.
@@ -118,16 +121,14 @@ associations:
       description: >
           Sensors may implement an 'inventory' to 'sensors' association with the
           inventory item related to it.
-      reverse_names:
-          - sensors
+      reverse_name: sensors
       required_endpoint_interfaces:
           - xyz.openbmc_project.Inventory.Item
     - name: monitoring
       description: >
           Sensors may monitor the BMC's resource utilization and implement an
           association to the Bmc item.
-      reverse_names:
-          - monitored_by
+      reverse_name: monitored_by
       required_endpoint_interfaces:
           - xyz.openbmc_project.Inventory.Item.Bmc
 
@@ -144,6 +145,8 @@ paths:
             value: energy
           - name: FanTach
             value: fan_tach
+          - name: Frequency
+            value: frequency
           - name: Humidity
             value: humidity
           - name: Liquidflow
@@ -156,5 +159,10 @@ paths:
             value: temperature
           - name: Utilization
             value: utilization
+          - name: Valve
+            value: valve
+            description: >
+                This path segment implements the value interface for the valve,
+                representing its open status.
           - name: Voltage
             value: voltage

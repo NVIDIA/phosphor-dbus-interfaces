@@ -97,8 +97,7 @@ associations:
       description: >
           Sensors may implement an 'inventory' to 'sensors' association with the
           inventory item related to it.
-      reverse_names:
-          - inventory
+      reverse_name: inventory
       required_endpoint_interfaces:
           - xyz.openbmc_project.Sensor.Value
     - name: authenticated_by
@@ -124,6 +123,5 @@ associations:
       reverse_name: connecting
       required_endpoint_interfaces:
           - xyz.openbmc_project.Inventory.Item.Cable
-
 paths:
     - namespace: /xyz/openbmc_project/inventory

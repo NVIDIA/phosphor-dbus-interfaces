@@ -114,3 +114,5 @@ paths:
             value: bmc
           - name: System
             value: system
+          - name: NIC
+            value: nic
