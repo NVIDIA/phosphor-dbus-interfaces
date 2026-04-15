@@ -1,0 +1,21 @@
+description: >
+    Optional “configuration request” notifier PDI. Implement it on the same
+    D-Bus object that exposes com.nvidia.DeviceConfiguration.ConfigUpdater when
+    the device can tell management it is ready for a configuration workflow
+    without carrying payload in the signal.
+
+    Relationship to ConfigUpdater: implementations that emit
+    DeviceConfigurationRequested should also implement
+    com.nvidia.DeviceConfiguration.ConfigUpdater on that object. Clients use this
+    signal only as a hint; they MUST use ConfigUpdater SetDeviceConfiguration /
+    GetDeviceConfiguration to exchange configuration
+    type and data. Endpoints that only expose ConfigUpdater and never need a
+    readiness broadcast do not implement this interface.
+
+signals:
+    - name: DeviceConfigurationRequested
+      description: >
+          Emitted when the implementation determines the device is ready for
+          configuration actions by a management consumer. No parameters;
+          subscribers use com.nvidia.DeviceConfiguration.ConfigUpdater to perform
+          set or get operations as appropriate.

@@ -1,0 +1,86 @@
+description: >
+    Configuration updater PDI for device objects whose configuration apply or
+    query cannot finish inside a single blocking D-Bus method call.
+
+    Implement com.nvidia.DeviceConfiguration.ConfigUpdater on a BMC object
+    (typically inventory-backed) when management must push or pull opaque
+    configuration blobs—such as platform-specific NSM device-configuration
+    payloads—and the path through firmware, transport, or file-descriptor I/O
+    can take noticeable time or fail after validation.
+
+methods:
+    - name: SetDeviceConfiguration
+      description: >
+          Requests that configuration identified by the type be applied using
+          the supplied payload. Completion and errors are reported through
+          com.nvidia.Async.Status at the returned object path.
+      parameters:
+          - name: ConfigurationType
+            type: enum[self.ConfigurationType]
+            description: >
+                Selector for which configuration is being applied; see
+                enumerations.ConfigurationType.
+          - name: Data
+            type: unixfd
+            description: >
+                Readable file descriptor for the configuration payload. The
+                service reads from offset zero through end-of-file. Maximum
+                acceptable length and format are defined by the implementation.
+                The caller retains the descriptor; memfd and pipe sources are
+                typical.
+      errors:
+        - xyz.openbmc_project.Common.Error.NotAllowed
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+      returns:
+          - name: RetValue
+            type: object_path
+            description: >
+                Object path exposing com.nvidia.Async.Status for this operation.
+
+    - name: GetDeviceConfiguration
+      description: >
+          Requests the configuration associated with the type, optionally scoped
+          by a query payload. Completion is reported through
+          com.nvidia.Async.Status at the returned path; on success,
+          com.nvidia.Async.Value carries the result (for example as a unixfd to
+          opaque bytes—encoding is implementation-defined).
+      parameters:
+          - name: ConfigurationType
+            type: enum[self.ConfigurationType]
+            description: >
+                Selector for which configuration is being queried; see
+                enumerations.ConfigurationType.
+          - name: Data
+            type: unixfd
+            description: >
+                Readable file descriptor for an optional query or selector blob.
+                Read from offset zero through end-of-file; an empty payload
+                denotes no query. Interpretation and maximum size are defined by
+                the implementation.
+      errors:
+        - xyz.openbmc_project.Common.Error.NotAllowed
+        - xyz.openbmc_project.Common.Error.Timeout
+        - xyz.openbmc_project.Common.Error.Unavailable
+        - xyz.openbmc_project.Common.Error.InvalidArgument
+      returns:
+          - name: RetValue
+            type: object_path
+            description: >
+                Object path exposing com.nvidia.Async.Status and
+                com.nvidia.Async.Value for this operation.
+
+enumerations:
+  - name: ConfigurationType
+    description: >
+        Supported device configuration types for the Get/Set Device Config
+        NSM commands.
+    values:
+      - name: NVLinkAccessRegister
+        value: 0
+        description: >
+            NVLINK TLV Configuration. Stored in volatile memory and limited
+            to 256 bytes (excluding header). Requires a port reset for any
+            affected NVLink port to take effect. Redfish mapping is not
+            available for this generic configuration type.
