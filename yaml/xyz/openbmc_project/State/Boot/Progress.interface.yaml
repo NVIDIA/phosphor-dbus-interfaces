@@ -33,6 +33,11 @@ enumerations:
           - name: Unspecified
             description: >
                 Unknown state.
+          - name: ResetBootROM
+            description: >
+                The device has just been powered on or reset, and it is
+                initializing basic hardware and loading the first firmware
+                mutable FW components.
           - name: PrimaryProcInit
             description: >
                 Primary Processor Initialization
@@ -51,18 +56,40 @@ enumerations:
           - name: SystemInitComplete
             description: >
                 System firmware completed booting
+          - name: SystemSetup
+            description: >
+                System firmware has entered a setup state
+          - name: MotherboardInit
+            description: >
+                Motherboard/Baseboard Initialization.
           - name: OSStart
             description: >
                 Starting Operating System.
           - name: OSRunning
             description: >
                 Operating System up and running
-          - name: SystemSetup
+          - name: OSQuiesced
             description: >
-                System firmware has entered a setup state
-          - name: MotherboardInit
+                Operating System in low-power standby mode or is placed into
+                quiesce state, conserving energy while remaining operational.
+          - name: FWUpdateInProgress
             description: >
-                Motherboard/Basebord Initialization.
+                Firmware is being updated with a new image.
+          - name: OSCrashDumpInProgress
+            description: >
+                Operating System is in the process of capturing diagnostic
+                information about an OS crash or error that has occurred.
+          - name: OSCrashDumpCompleted
+            description: >
+                Operating System has concluded recording a crash dump.
+          - name: FWFaultInProgress
+            description: >
+                Firmware is collecting diagnostic data related to
+                a FW fault or error in its operation.
+          - name: FWFaultCompleted
+            description: >
+                Firmware has finished collecting diagnostic data about a
+                fault.
           - name: OEM
             description: >
                  The OEM value is used to indicate the OEM bootprogress stages .
