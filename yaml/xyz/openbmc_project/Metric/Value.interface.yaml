@@ -138,6 +138,11 @@ paths:
                 A namespace for metrics whose values represent counts,
                 expressed as non‑negative numbers.
             value: count
+          - name: Bandwidth
+            description: >
+                A namespace for metrics whose values represent bandwidth,
+                expressed in bytes.
+            value: bandwidth
     - name: BMC
       description: >
           The BMC metrics.
