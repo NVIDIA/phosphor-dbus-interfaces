@@ -1,0 +1,21 @@
+description: >
+    An interface that advertises the maximum expected duration of a firmware
+    update for the object implementing it. Firmware update orchestrators read
+    this property to determine how long to wait for the update on this target
+    before declaring a timeout.
+
+    This interface is implemented by non-PLDM firmware update target objects
+    at /xyz/openbmc_project/inventory/system/... (e.g. inventory items for
+    CPLD, PSU, Retimer, and recovery-flavoured update targets) where the
+    update is driven via systemd units rather than the PLDM firmware update
+    protocol. Each implementing object advertises its own fixed timeout.
+
+properties:
+    - name: Timeout
+      type: uint64
+      description: >
+          The maximum time, in seconds, that a firmware update on this object
+          is expected to take. Consumers should treat this as the upper bound
+          when waiting for the update to complete on this target.
+      flags:
+          - readonly
