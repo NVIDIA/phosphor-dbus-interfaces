@@ -1,0 +1,31 @@
+description: >
+    An interface to trigger a full secure erase of the eMMC storage device,
+    including the read-write filesystem (rwfs) partition if it's mounted on
+    the eMMC. The erase is performed upon the next BMC reboot by setting
+    the u-boot environment variable emmc_full_secure_erase. All data on the
+    device is permanently wiped, with no rwfs backup/restore.
+
+    Service: com.Nvidia.EmmcManager
+    Path: /xyz/openbmc_project/software
+    Sync/Async: Synchronous method, like emmc-secure-erase.
+    Progress: No progress tracking. The method only sets the env variable
+    and returns; the actual erase occurs upon the next reboot.
+    Concurrent calls: The actual erase occurs upon reboot - at that time
+    nvidia-emmc-monitor / bmcweb are not running, so the method cannot
+    be invoked while the erase is in progress. If called again before
+    reboot: (1) Before the first call completes - the service is
+    single-threaded, subsequent calls are queued and run sequentially.
+    (2) After the first call returns - a second call simply sets the same
+    env var (emmc_full_secure_erase=yes) again.
+methods:
+    - name: EmmcFullSecureErase
+      description: >
+          Sets the u-boot environment variable emmc_full_secure_erase=yes
+          to trigger a full secure erase of the eMMC storage device upon
+          the next BMC reboot, including the rwfs partition (no backup,
+          no restore). Synchronous method - the caller blocks until the
+          env variable is written.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+paths:
+  - namespace: /xyz/openbmc_project/software
