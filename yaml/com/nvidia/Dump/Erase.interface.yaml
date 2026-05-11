@@ -84,3 +84,19 @@ enumerations:
       - name: "UnsupportedRequest"
         description: >
           The Operation is not supported for the object.
+      - name: "InvalidArgument"
+        description: >
+          The value of one or more arguments is invalid for this
+          Operation.
+      - name: "WriteFailure"
+        description: >
+          The Operation failed while sending write request to the device
+          or while writing data locally.
+      - name: "ConflictingOperation"
+        description: >
+          The Operation was rejected because another conflicting
+          operation is currently in progress.
+      - name: "ResourceNotFound"
+        description: >
+          The Object on which the operation is being performed is not
+          found.
