@@ -28,6 +28,9 @@ enumerations:
         - name: Connector
           description: >
               It indicates the part is located in a connector or port.
+        - name: Bay
+          description: >
+              It indicates the part is located in a bay.
         - name: Unknown
           description: >
               An unknown chassis type.
