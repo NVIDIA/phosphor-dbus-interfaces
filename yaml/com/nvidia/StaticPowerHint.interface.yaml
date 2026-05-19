@@ -1,6 +1,6 @@
 description: >
   Implement to provide Static Power Hint calculator for querying TDP of CPU to setting it ahead of running the application.
-  Static Power Hint = function(workload factor, CPU Clock, Temperature)
+  Static Power Hint = function(workload factor, CPU Clock, Temperature, Number of Cores)
 
 properties:
   - name: PowerEstimate
@@ -69,6 +69,24 @@ properties:
       minimum allowable value of WorkloadFactor parameter.
     flags:
       - readonly
+  - name: NumberOfCores
+    type: uint32
+    description: >
+      The Number of Cores parameter for this estimation.
+    flags:
+      - readonly
+  - name: MaxNumberOfCores
+    type: uint32
+    description: >
+      Maximum allowable value of Number of Cores parameter.
+    flags:
+      - readonly
+  - name: MinNumberOfCores
+    type: uint32
+    description: >
+      Minimum allowable value of Number of Cores parameter.
+    flags:
+      - readonly
   - name: StateOfLastEstimatePower
     type: enum[self.StateOfEstimatePower]
     default: "Invalid"
@@ -78,8 +96,8 @@ properties:
 methods:
   - name: EstimatePower
     description: >
-      This method estimates the power consumption according the input CPU clock frequency,
-      Workload factor and temperature.
+      This method estimates the power consumption according to the input CPU clock frequency,
+      Workload factor, temperature and number of cores.
     parameters:
       - name: CpuClockFrequency
         type: double
@@ -93,6 +111,10 @@ methods:
         type: double
         description: >
           Temperature in degrees Celsius
+      - name: NumberOfCores
+        type: uint32
+        description: >
+          Number of active CPU cores
     errors:
       - xyz.openbmc_project.Common.Error.Unavailable
       - xyz.openbmc_project.Common.Error.InvalidArgument
