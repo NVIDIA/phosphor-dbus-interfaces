@@ -1,0 +1,42 @@
+description: >
+    Implement to provide location ordinal information of an inventory item.
+properties:
+    - name: Orientation
+      type: enum[self.Orientations]
+      default: Unknown
+      description: >
+          The orientation for the ordering of the location ordinal value.
+    - name: LocationOrdinalValue
+      type: uint64
+      default: 0
+      description: >
+          The number that represents the location of the part within its
+          location type, measured based on the orientation value starting with
+          0.
+
+enumerations:
+    - name: Orientations
+      description: >
+          Possible orientations for ordering location ordinal values.
+      values:
+        - name: FrontToBack
+          description: >
+              It indicates the ordering is front to back.
+        - name: BackToFront
+          description: >
+              It indicates the ordering is back to front.
+        - name: TopToBottom
+          description: >
+              It indicates the ordering is top to bottom.
+        - name: BottomToTop
+          description: >
+              It indicates the ordering is bottom to top.
+        - name: LeftToRight
+          description: >
+              It indicates the ordering is left to right.
+        - name: RightToLeft
+          description: >
+              It indicates the ordering is right to left.
+        - name: Unknown
+          description: >
+              An unknown orientation.

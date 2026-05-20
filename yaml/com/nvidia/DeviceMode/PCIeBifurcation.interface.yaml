@@ -1,0 +1,42 @@
+description: >
+    PCIe link bifurcation configuration for BlueField and ConnectX
+    devices. Defines the PCIe bifurcation mode aligned with the PCIe
+    specification: 0 = invalid, 1 = no bifurcation (default, single
+    full-width link), 2 = bifurcation into 2 equal-sized links, 4, 8,
+    etc. for future expansion.
+    This is a non-volatile setting that requires a device reset to
+    take effect.
+
+properties:
+    - name: CurrentMode
+      type: byte
+      flags:
+          - readonly
+      description: >
+          The PCIe bifurcation mode currently active on the device,
+          as reported by the device firmware (NvU8).
+
+    - name: PendingMode
+      type: byte
+      description: >
+          The PCIe bifurcation mode that will be applied after the
+          next device reset (NvU8). When this value differs from
+          CurrentMode, the change has been accepted by the device but
+          the required device reset has not yet occurred.
+          Only writable when IsModeConfigurable is true. Attempts to
+          write when IsModeConfigurable is false shall return NotAllowed.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+    - name: IsModeConfigurable
+      type: boolean
+      flags:
+          - readonly
+      default: false
+      description: >
+          An indication of whether PendingMode is
+          writable on this device. Determined by the device and platform
+          capabilities.

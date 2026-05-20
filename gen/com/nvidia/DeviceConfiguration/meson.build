@@ -1,13 +1,15 @@
 # Generated file; do not modify.
-subdir('UpdateTimeout')
-subdir('WriteProtection')
+subdir('ConfigRequester')
+subdir('ConfigUpdater')
 
-sdbusplus_current_path = 'com/nvidia/Software'
+sdbusplus_current_path = 'com/nvidia/DeviceConfiguration'
 
 generated_markdown += custom_target(
-    'com/nvidia/Software/UpdateTimeout__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Software/UpdateTimeout.interface.yaml'],
-    output: ['UpdateTimeout.md'],
+    'com/nvidia/DeviceConfiguration/ConfigRequester__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/com/nvidia/DeviceConfiguration/ConfigRequester.interface.yaml',
+    ],
+    output: ['ConfigRequester.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -19,7 +21,7 @@ generated_markdown += custom_target(
         sdbusplusplus_prog,
         '--directory',
         meson.current_source_dir() / '../../../../yaml',
-        'com/nvidia/Software/UpdateTimeout',
+        'com/nvidia/DeviceConfiguration/ConfigRequester',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],
@@ -27,11 +29,11 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
-    'com/nvidia/Software/WriteProtection__markdown'.underscorify(),
+    'com/nvidia/DeviceConfiguration/ConfigUpdater__markdown'.underscorify(),
     input: [
-        '../../../../yaml/com/nvidia/Software/WriteProtection.interface.yaml',
+        '../../../../yaml/com/nvidia/DeviceConfiguration/ConfigUpdater.interface.yaml',
     ],
-    output: ['WriteProtection.md'],
+    output: ['ConfigUpdater.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -43,7 +45,7 @@ generated_markdown += custom_target(
         sdbusplusplus_prog,
         '--directory',
         meson.current_source_dir() / '../../../../yaml',
-        'com/nvidia/Software/WriteProtection',
+        'com/nvidia/DeviceConfiguration/ConfigUpdater',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],

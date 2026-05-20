@@ -62,3 +62,6 @@ enumerations:
         - name: DCBus
           description: >
             A DC electrical bus.
+        - name: Manager
+          description: >
+            A software-defined management controller.

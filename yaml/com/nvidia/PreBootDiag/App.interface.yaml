@@ -1,0 +1,57 @@
+description: >
+    Implement this interface to let external components push pre-boot
+    diagnostic lifecycle events to the prebootdiag service. Callers invoke
+    Notify with the new state and an optional JSON payload; prebootdiag
+    advances its internal state machine accordingly.
+
+methods:
+    - name: Notify
+      description: >
+          Notify prebootdiag of a lifecycle event. Payload carries
+          state-specific data. Empty for states that do not carry data.
+      parameters:
+          - name: State
+            type: enum[self.StateType]
+            description: >
+                The new lifecycle state being signaled.
+          - name: Payload
+            type: string
+            description: >
+                Event-specific data. Empty string when the state does not carry
+                data.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+
+enumerations:
+    - name: StateType
+      description: >
+          Lifecycle states pushed to prebootdiag. The first is the
+          boot-sequence gate that advances prebootdiag into the NSM
+          event loop; the remainder are NSM events forwarded from nsmd
+          during the test loop.
+      values:
+          - name: PostCodeReceived
+            description: >
+                A generic post code was recieved.
+          - name: SystemConfigRequested
+            description: >
+                CPU has requested the system-level diagnostic config via
+                NSM event 0x00. prebootdiag replies with Cmd 0x80.
+          - name: TIDConfigRequested
+            description: >
+                CPU has requested the per-TestID diagnostic config via
+                NSM event 0x01. Payload carries the requested TID.
+          - name: HeartbeatReceived
+            description: >
+                NSM flow-control heartbeat received (event 0x03) during
+                test execution.
+          - name: ResultReceived
+            description: >
+                A per-TID diagnostic result has arrived via NSM event
+                0x02. Payload carries the result record.
+          - name: SessionEnded
+            description: >
+                The diagnostic session has finished (all TIDs delivered
+                or CPU reported end-of-run). prebootdiag proceeds to the
+                CPU recovery step.

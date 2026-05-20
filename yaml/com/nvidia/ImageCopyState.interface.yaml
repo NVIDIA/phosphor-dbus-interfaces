@@ -1,0 +1,55 @@
+description: >
+    Indicates the RoT's current image copy status and progress.
+
+properties:
+  - name: Status
+    type: enum[self.Status]
+    description: >
+        The status of the image copy operation. The status is not required to be
+        persistent across resets. If the image copy operation could not be
+        initiated, then its status will be ImageCopyNotTriggered. If initiated
+        successfully, the status should immediately transition to InProgress,
+        Complete, or one of the failure states. After the copy operation
+        completes successfully and the destination slot is authenticated, the
+        status should transition to Complete.
+    flags:
+      - readonly
+  - name: Progress
+    type: byte
+    description: >
+        The progress, in percent (0-100), of the image copy operation. If
+        progress reporting is not supported, then the progress shall be reported
+        as 0x65 (101).
+    flags:
+      - readonly
+
+enumerations:
+  - name: Status
+    values:
+      - name: ImageCopyNotTriggered
+        description: >
+            An image copy has not been requested, or a request failed and an
+            image copy was not triggered
+      - name: InProgress
+        description: >
+            The image copy operation is in progress.
+      - name: Complete
+        description: >
+            The image copy operation has completed successfully.
+      - name: UndefinedFailure
+        description: >
+            Failure encountered without detailed information.
+      - name: NoValidImage
+        description: >
+            Failed to initiate because there are no image slots which have
+            passed authentication.
+      - name: DestinationWriteProtected
+        description: >
+            Failed due to write protection.
+      - name: FailFlashAccess
+        description: >
+            Failed due to other failures accessing the flash not due to write
+            protection.
+      - name: FailedVerify
+        description: >
+            The image was copied but the destination slot failed authentication.

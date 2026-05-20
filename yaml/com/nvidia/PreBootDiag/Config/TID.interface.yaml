@@ -1,0 +1,14 @@
+description: >
+    Pre-boot diagnostic per-TID configuration. The `Value` property carries a
+    JSON-encoded array of per-TID objects (each with Tid 0x01..0x0A,
+    TestDuration, Loops, LogLevel, DynamicData fields per spec §5.2.3 / §10.1,
+    max 10 entries).
+
+properties:
+    - name: Value
+      type: string
+      description: >
+          JSON-encoded TIDConfig payload (array of per-TID objects, max 10).
+          Each object contains Tid (uint8, 0x01-0x0A), TestDuration (uint8),
+          Loops (uint16), LogLevel (uint8), and optional DynamicData (array of
+          uint8, max 244 bytes per spec).

@@ -128,6 +128,9 @@ enumerations:
           - name: "InfoROMFileSystemRecreate"
             description: >
                 The in-band settings for InfoROM file system recreate.
+          - name: "RISTDiagnostic"
+            description: >
+                Knob for Run Time In System Test settings.
           - name: "Unknown"
             description: >
                 The unvalid unknown feature type holder.

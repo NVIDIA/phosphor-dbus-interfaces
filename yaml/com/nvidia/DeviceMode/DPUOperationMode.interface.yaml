@@ -1,0 +1,54 @@
+description: >
+    Operational mode for BlueField DPU devices. Defines whether the device
+    operates as a full Data Processing Unit (DPU) with embedded Arm cores
+    and accelerators, or as a standard Network Interface Card (NIC).
+    This is a non-volatile setting that requires a full power cycle to
+    take effect.
+
+properties:
+    - name: CurrentMode
+      type: enum[self.OperationMode]
+      flags:
+          - readonly
+      description: >
+          The operational mode currently active on the device.
+
+    - name: PendingMode
+      type: enum[self.OperationMode]
+      description: >
+          The operational mode that will be applied after the next full
+          power cycle. When this value differs from CurrentMode, the
+          change has been accepted by the device but the required power
+          cycle has not yet occurred.
+          Only writable when IsModeConfigurable is true. Attempts to
+          write when IsModeConfigurable is false shall return NotAllowed.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+    - name: IsModeConfigurable
+      type: boolean
+      flags:
+          - readonly
+      default: false
+      description: >
+          An indication of whether PendingMode is writable on
+          this device. Determined by the device and platform capabilities.
+
+enumerations:
+    - name: OperationMode
+      description: >
+          DPU operational mode settings.
+      values:
+          - name: DPU
+            description: >
+                Device operates in DPU mode with full data processing
+                capabilities, including embedded Arm cores, hardware
+                accelerators, and infrastructure offloads for networking,
+                storage, and security.
+          - name: NIC
+            description: >
+                Device operates in NIC mode as a standard network
+                interface card without DPU data processing features.

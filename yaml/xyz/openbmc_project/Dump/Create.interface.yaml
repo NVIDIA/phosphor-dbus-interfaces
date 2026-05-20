@@ -103,6 +103,12 @@ enumerations:
           - name: "Ramoops"
             description: >
                 Dump triggered due to Ramoops type error commit.
+          - name: "Kdump"
+            description: >
+                Dump triggered after kernel-panic capture (vmcore-dmesg
+                extracted by the crash kernel and persisted to eMMC). The
+                FilePath parameter MUST be supplied with the absolute path
+                to the captured artifact on persistent storage.
 
 service_names:
     - default: xyz.openbmc_project.Dump.Manager

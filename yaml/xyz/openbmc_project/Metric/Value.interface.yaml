@@ -300,6 +300,11 @@ paths:
                 The operating frequency of a device. Examples are operating
                 frequency of a processor/memory/etc. Measured in hertz.
             value: operating_frequency
+          - name: Bandwidth
+            description: >
+                A namespace for metrics whose values represent bandwidth,
+                expressed in bytes.
+            value: bandwidth
     - name: BMC
       description: >
           The BMC metrics.

@@ -1,0 +1,57 @@
+description: >
+    Controlled East/West traffic configuration for BlueField and ConnectX
+    devices. Controls whether the device East/West inter-domain traffic
+    is managed via the Embedded CPU (ECPF). When enabled, the ECPF
+    controls traffic flow between east and west PCIe domains.
+    This is a non-volatile setting that requires a device reset to take
+    effect.
+
+properties:
+    - name: CurrentMode
+      type: enum[self.EWTrafficMode]
+      flags:
+          - readonly
+      description: >
+          The East/West traffic control mode currently active on
+          the device.
+
+    - name: PendingMode
+      type: enum[self.EWTrafficMode]
+      description: >
+          The East/West traffic control mode that will be applied after
+          the next device reset. When this value differs from
+          CurrentMode, the change has been accepted by the device but
+          the required device reset has not yet occurred.
+          Only writable when IsModeConfigurable is true. Attempts to
+          write when IsModeConfigurable is false shall return NotAllowed.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+    - name: IsModeConfigurable
+      type: boolean
+      flags:
+          - readonly
+      default: false
+      description: >
+          An indication of whether PendingMode is
+          writable on this device. Determined by the device and platform
+          capabilities.
+
+enumerations:
+    - name: EWTrafficMode
+      description: >
+          East/West inter-domain traffic control settings via the
+          Embedded CPU (ECPF).
+      values:
+          - name: Disabled
+            description: >
+                East/West traffic control via the Embedded CPU is
+                disabled.
+          - name: Enabled
+            description: >
+                East/West traffic control via the Embedded CPU is
+                enabled. The ECPF manages traffic flow between east
+                and west PCIe domains.

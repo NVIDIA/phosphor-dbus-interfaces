@@ -43,3 +43,7 @@ enumerations:
           - name: "WriteFailure"
             description: >
                 The Operation failed while sending write request to the device.
+          - name: "ConflictingOperation"
+            description: >
+                The Operation was rejected because another conflicting
+                operation is currently in progress.
