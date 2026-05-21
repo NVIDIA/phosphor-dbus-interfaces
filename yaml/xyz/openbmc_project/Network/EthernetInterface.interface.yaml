@@ -28,6 +28,8 @@ properties:
       description: >
           This indicates the size in bytes of largest protocol data unit, which
           can be passed in an Ethernet frame on the interface.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
     - name: DomainName
       type: array[string]
       description: >
