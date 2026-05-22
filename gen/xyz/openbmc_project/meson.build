@@ -47,7 +47,9 @@ sdbusplus_current_path = 'xyz/openbmc_project'
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Association__markdown'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/Association.interface.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/Association.interface.yaml',
+    ],
     output: ['Association.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -69,7 +71,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Certs__markdown'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/Certs.errors.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/Certs.errors.yaml',
+    ],
     output: ['Certs.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -91,7 +95,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Common__markdown'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/Common.errors.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/Common.errors.yaml',
+    ],
     output: ['Common.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -113,7 +119,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/HardwareIsolation__markdown'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/HardwareIsolation.errors.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/HardwareIsolation.errors.yaml',
+    ],
     output: ['HardwareIsolation.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -135,7 +143,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Inventory__markdown'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/Inventory.errors.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/Inventory.errors.yaml',
+    ],
     output: ['Inventory.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -157,7 +167,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Logging__markdown'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/Logging.events.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/Logging.events.yaml',
+    ],
     output: ['Logging.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -179,7 +191,9 @@ generated_markdown += custom_target(
 
 generated_registry += custom_target(
     'xyz/openbmc_project/Logging__registry'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/Logging.events.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/Logging.events.yaml',
+    ],
     output: ['Logging.json'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -201,7 +215,9 @@ generated_registry += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/ObjectMapper__markdown'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/ObjectMapper.interface.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/ObjectMapper.interface.yaml',
+    ],
     output: ['ObjectMapper.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -223,7 +239,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/ScheduledTime__markdown'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/ScheduledTime.errors.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/ScheduledTime.errors.yaml',
+    ],
     output: ['ScheduledTime.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -245,7 +263,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Sensor__markdown'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/Sensor.events.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/Sensor.events.yaml',
+    ],
     output: ['Sensor.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -267,7 +287,9 @@ generated_markdown += custom_target(
 
 generated_registry += custom_target(
     'xyz/openbmc_project/Sensor__registry'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/Sensor.events.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/Sensor.events.yaml',
+    ],
     output: ['Sensor.json'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -289,7 +311,9 @@ generated_registry += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Time__markdown'.underscorify(),
-    input: ['../../../yaml/xyz/openbmc_project/Time.errors.yaml'],
+    input: [
+        '../../../yaml/xyz/openbmc_project/Time.errors.yaml',
+    ],
     output: ['Time.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

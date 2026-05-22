@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/SMUtilization'
 
 generated_sources += custom_target(
     'com/nvidia/SMUtilization__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/SMUtilization.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/SMUtilization.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

@@ -4,7 +4,9 @@ sdbusplus_current_path = 'xyz/openbmc_project/Common/SCP'
 
 generated_sources += custom_target(
     'xyz/openbmc_project/Common/SCP__cpp'.underscorify(),
-    input: ['../../../../../yaml/xyz/openbmc_project/Common/SCP.interface.yaml'],
+    input: [
+        '../../../../../yaml/xyz/openbmc_project/Common/SCP.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

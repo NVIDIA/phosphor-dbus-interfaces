@@ -30,7 +30,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Network/LLDP/TLVs__markdown'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/Network/LLDP/TLVs.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/Network/LLDP/TLVs.interface.yaml',
+    ],
     output: ['TLVs.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

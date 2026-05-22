@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/Dot/Blob'
 
 generated_sources += custom_target(
     'com/nvidia/Dot/Blob__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/Dot/Blob.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/Dot/Blob.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

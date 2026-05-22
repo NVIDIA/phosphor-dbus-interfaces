@@ -36,7 +36,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Common/ClearPowerCap__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Common/ClearPowerCap.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Common/ClearPowerCap.interface.yaml',
+    ],
     output: ['ClearPowerCap.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -82,7 +84,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Common/CompleteReset__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Common/CompleteReset.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Common/CompleteReset.interface.yaml',
+    ],
     output: ['CompleteReset.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -104,7 +108,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Common/EmmcSecureErase__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Common/EmmcSecureErase.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Common/EmmcSecureErase.interface.yaml',
+    ],
     output: ['EmmcSecureErase.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -126,7 +132,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Common/GUID__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Common/GUID.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Common/GUID.interface.yaml',
+    ],
     output: ['GUID.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -148,7 +156,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Common/LogDump__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Common/LogDump.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Common/LogDump.interface.yaml',
+    ],
     output: ['LogDump.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -170,7 +180,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Common/ResetEdppAsync__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Common/ResetEdppAsync.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Common/ResetEdppAsync.interface.yaml',
+    ],
     output: ['ResetEdppAsync.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

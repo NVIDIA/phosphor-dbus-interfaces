@@ -23,8 +23,13 @@ sdbusplus_current_path = 'xyz/openbmc_project/Common'
 
 generated_sources += custom_target(
     'xyz/openbmc_project/Common__cpp'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Common.errors.yaml'],
-    output: ['error.cpp', 'error.hpp'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Common.errors.yaml',
+    ],
+    output: [
+        'error.cpp',
+        'error.hpp',
+    ],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
@@ -39,13 +44,18 @@ generated_sources += custom_target(
         'xyz/openbmc_project/Common',
     ],
     install: should_generate_cpp,
-    install_dir: [false, get_option('includedir') / sdbusplus_current_path],
+    install_dir: [
+        false,
+        get_option('includedir') / sdbusplus_current_path,
+    ],
     build_by_default: should_generate_cpp,
 )
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Common/Callout__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Common/Callout.errors.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Common/Callout.errors.yaml',
+    ],
     output: ['Callout.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -67,7 +77,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Common/Device__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Common/Device.errors.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Common/Device.errors.yaml',
+    ],
     output: ['Device.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -161,7 +173,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Common/File__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Common/File.errors.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Common/File.errors.yaml',
+    ],
     output: ['File.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -207,7 +221,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Common/HTTP__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Common/HTTP.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Common/HTTP.interface.yaml',
+    ],
     output: ['HTTP.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -325,7 +341,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Common/SCP__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Common/SCP.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Common/SCP.interface.yaml',
+    ],
     output: ['SCP.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -371,7 +389,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Common/TFTP__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Common/TFTP.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Common/TFTP.interface.yaml',
+    ],
     output: ['TFTP.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -417,7 +437,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Common/UUID__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Common/UUID.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Common/UUID.interface.yaml',
+    ],
     output: ['UUID.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

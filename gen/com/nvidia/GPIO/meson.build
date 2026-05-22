@@ -5,7 +5,9 @@ sdbusplus_current_path = 'com/nvidia/GPIO'
 
 generated_markdown += custom_target(
     'com/nvidia/GPIO/State__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/GPIO/State.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/GPIO/State.interface.yaml',
+    ],
     output: ['State.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

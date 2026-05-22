@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/DebugToken/Action'
 
 generated_sources += custom_target(
     'com/nvidia/DebugToken/Action__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/DebugToken/Action.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/DebugToken/Action.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

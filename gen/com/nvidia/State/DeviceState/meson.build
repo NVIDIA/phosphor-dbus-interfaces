@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/State/DeviceState'
 
 generated_sources += custom_target(
     'com/nvidia/State/DeviceState__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/State/DeviceState.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/State/DeviceState.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

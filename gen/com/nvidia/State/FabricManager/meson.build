@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/State/FabricManager'
 
 generated_sources += custom_target(
     'com/nvidia/State/FabricManager__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/State/FabricManager.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/State/FabricManager.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/GraceSPIData'
 
 generated_sources += custom_target(
     'com/nvidia/GraceSPIData__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/GraceSPIData.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/GraceSPIData.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

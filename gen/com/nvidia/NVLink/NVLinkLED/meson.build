@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/NVLink/NVLinkLED'
 
 generated_sources += custom_target(
     'com/nvidia/NVLink/NVLinkLED__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/NVLink/NVLinkLED.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/NVLink/NVLinkLED.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

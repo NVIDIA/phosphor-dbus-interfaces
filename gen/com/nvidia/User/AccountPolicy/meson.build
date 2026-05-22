@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/User/AccountPolicy'
 
 generated_sources += custom_target(
     'com/nvidia/User/AccountPolicy__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/User/AccountPolicy.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/User/AccountPolicy.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

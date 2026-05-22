@@ -88,7 +88,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Network/IP__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Network/IP.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Network/IP.interface.yaml',
+    ],
     output: ['IP.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -230,7 +232,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Network/VLAN__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Network/VLAN.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Network/VLAN.interface.yaml',
+    ],
     output: ['VLAN.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

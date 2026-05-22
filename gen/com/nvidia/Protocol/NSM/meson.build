@@ -5,7 +5,9 @@ sdbusplus_current_path = 'com/nvidia/Protocol/NSM'
 
 generated_markdown += custom_target(
     'com/nvidia/Protocol/NSM/Raw__markdown'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/Protocol/NSM/Raw.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/Protocol/NSM/Raw.interface.yaml',
+    ],
     output: ['Raw.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

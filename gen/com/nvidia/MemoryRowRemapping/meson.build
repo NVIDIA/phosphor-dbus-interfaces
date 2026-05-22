@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/MemoryRowRemapping'
 
 generated_sources += custom_target(
     'com/nvidia/MemoryRowRemapping__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/MemoryRowRemapping.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/MemoryRowRemapping.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

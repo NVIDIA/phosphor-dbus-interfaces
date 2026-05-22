@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/RoT/BootStatus'
 
 generated_sources += custom_target(
     'com/nvidia/RoT/BootStatus__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/RoT/BootStatus.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/RoT/BootStatus.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

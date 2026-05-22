@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/FailoverPolicy'
 
 generated_sources += custom_target(
     'com/nvidia/FailoverPolicy__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/FailoverPolicy.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/FailoverPolicy.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

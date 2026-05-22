@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/InbandReconfigSettings'
 
 generated_sources += custom_target(
     'com/nvidia/InbandReconfigSettings__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/InbandReconfigSettings.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/InbandReconfigSettings.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

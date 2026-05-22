@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/DeviceProtection'
 
 generated_sources += custom_target(
     'com/nvidia/DeviceProtection__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/DeviceProtection.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/DeviceProtection.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

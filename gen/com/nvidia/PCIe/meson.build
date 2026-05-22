@@ -5,7 +5,9 @@ sdbusplus_current_path = 'com/nvidia/PCIe'
 
 generated_markdown += custom_target(
     'com/nvidia/PCIe/AERErrorStatus__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/PCIe/AERErrorStatus.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/PCIe/AERErrorStatus.interface.yaml',
+    ],
     output: ['AERErrorStatus.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

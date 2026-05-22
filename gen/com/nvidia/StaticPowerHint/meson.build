@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/StaticPowerHint'
 
 generated_sources += custom_target(
     'com/nvidia/StaticPowerHint__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/StaticPowerHint.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/StaticPowerHint.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

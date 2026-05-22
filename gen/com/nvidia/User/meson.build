@@ -5,7 +5,9 @@ sdbusplus_current_path = 'com/nvidia/User'
 
 generated_markdown += custom_target(
     'com/nvidia/User/AccountPolicy__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/User/AccountPolicy.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/User/AccountPolicy.interface.yaml',
+    ],
     output: ['AccountPolicy.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

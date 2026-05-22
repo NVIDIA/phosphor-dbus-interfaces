@@ -5,7 +5,9 @@ sdbusplus_current_path = 'com/nvidia/Protocol/SMBPBI'
 
 generated_markdown += custom_target(
     'com/nvidia/Protocol/SMBPBI/Raw__markdown'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/Protocol/SMBPBI/Raw.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/Protocol/SMBPBI/Raw.interface.yaml',
+    ],
     output: ['Raw.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

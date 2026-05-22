@@ -6,7 +6,9 @@ sdbusplus_current_path = 'com/nvidia/PreBootDiag'
 
 generated_markdown += custom_target(
     'com/nvidia/PreBootDiag/App__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/PreBootDiag/App.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/PreBootDiag/App.interface.yaml',
+    ],
     output: ['App.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

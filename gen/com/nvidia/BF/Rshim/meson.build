@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/BF/Rshim'
 
 generated_sources += custom_target(
     'com/nvidia/BF/Rshim__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/BF/Rshim.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/BF/Rshim.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

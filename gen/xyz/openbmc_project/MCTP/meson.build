@@ -7,7 +7,9 @@ sdbusplus_current_path = 'xyz/openbmc_project/MCTP'
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/MCTP/Binding__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/MCTP/Binding.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/MCTP/Binding.interface.yaml',
+    ],
     output: ['Binding.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -29,7 +31,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/MCTP/Endpoint__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/MCTP/Endpoint.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/MCTP/Endpoint.interface.yaml',
+    ],
     output: ['Endpoint.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -51,7 +55,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/MCTP/UUID__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/MCTP/UUID.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/MCTP/UUID.interface.yaml',
+    ],
     output: ['UUID.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

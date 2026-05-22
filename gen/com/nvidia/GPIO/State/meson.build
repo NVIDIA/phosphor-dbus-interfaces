@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/GPIO/State'
 
 generated_sources += custom_target(
     'com/nvidia/GPIO/State__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/GPIO/State.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/GPIO/State.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

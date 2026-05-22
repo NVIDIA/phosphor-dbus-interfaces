@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/PCIe/AERErrorStatus'
 
 generated_sources += custom_target(
     'com/nvidia/PCIe/AERErrorStatus__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/PCIe/AERErrorStatus.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/PCIe/AERErrorStatus.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

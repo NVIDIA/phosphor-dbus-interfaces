@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/SwitchIsolation'
 
 generated_sources += custom_target(
     'com/nvidia/SwitchIsolation__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/SwitchIsolation.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/SwitchIsolation.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

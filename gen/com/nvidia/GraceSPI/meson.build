@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/GraceSPI'
 
 generated_sources += custom_target(
     'com/nvidia/GraceSPI__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/GraceSPI.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/GraceSPI.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

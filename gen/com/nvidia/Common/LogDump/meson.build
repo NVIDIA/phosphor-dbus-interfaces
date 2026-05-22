@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/Common/LogDump'
 
 generated_sources += custom_target(
     'com/nvidia/Common/LogDump__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/Common/LogDump.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/Common/LogDump.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

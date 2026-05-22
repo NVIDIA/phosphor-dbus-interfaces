@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/Common/GUID'
 
 generated_sources += custom_target(
     'com/nvidia/Common/GUID__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/Common/GUID.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/Common/GUID.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

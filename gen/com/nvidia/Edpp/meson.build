@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/Edpp'
 
 generated_sources += custom_target(
     'com/nvidia/Edpp__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Edpp.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Edpp.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

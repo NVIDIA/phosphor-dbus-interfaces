@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/UpdateSKU'
 
 generated_sources += custom_target(
     'com/nvidia/UpdateSKU__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/UpdateSKU.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/UpdateSKU.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

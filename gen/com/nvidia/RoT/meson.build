@@ -5,7 +5,9 @@ sdbusplus_current_path = 'com/nvidia/RoT'
 
 generated_markdown += custom_target(
     'com/nvidia/RoT/BootStatus__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/RoT/BootStatus.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/RoT/BootStatus.interface.yaml',
+    ],
     output: ['BootStatus.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

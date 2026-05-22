@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/PowerMode'
 
 generated_sources += custom_target(
     'com/nvidia/PowerMode__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/PowerMode.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/PowerMode.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

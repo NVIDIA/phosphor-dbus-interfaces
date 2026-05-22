@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/L1Reset'
 
 generated_sources += custom_target(
     'com/nvidia/L1Reset__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/L1Reset.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/L1Reset.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

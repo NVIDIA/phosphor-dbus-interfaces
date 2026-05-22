@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/Async/Set'
 
 generated_sources += custom_target(
     'com/nvidia/Async/Set__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/Async/Set.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/Async/Set.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

@@ -9,7 +9,9 @@ sdbusplus_current_path = 'com/nvidia/DebugToken'
 
 generated_sources += custom_target(
     'com/nvidia/DebugToken__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/DebugToken.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/DebugToken.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',
@@ -43,7 +45,9 @@ generated_sources += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/DebugToken/Action__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/DebugToken/Action.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/DebugToken/Action.interface.yaml',
+    ],
     output: ['Action.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -65,7 +69,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/DebugToken/Aggregation__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/DebugToken/Aggregation.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/DebugToken/Aggregation.interface.yaml',
+    ],
     output: ['Aggregation.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -87,7 +93,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/DebugToken/Common__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/DebugToken/Common.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/DebugToken/Common.interface.yaml',
+    ],
     output: ['Common.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -109,7 +117,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/DebugToken/ErasePolicy__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/DebugToken/ErasePolicy.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/DebugToken/ErasePolicy.interface.yaml',
+    ],
     output: ['ErasePolicy.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -131,7 +141,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/DebugToken/Status__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/DebugToken/Status.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/DebugToken/Status.interface.yaml',
+    ],
     output: ['Status.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

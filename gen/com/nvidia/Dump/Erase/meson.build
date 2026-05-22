@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/Dump/Erase'
 
 generated_sources += custom_target(
     'com/nvidia/Dump/Erase__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/Dump/Erase.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/Dump/Erase.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

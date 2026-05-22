@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/Dump/Counters'
 
 generated_sources += custom_target(
     'com/nvidia/Dump/Counters__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/Dump/Counters.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/Dump/Counters.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

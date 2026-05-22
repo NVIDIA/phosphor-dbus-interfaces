@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/GPMMetrics'
 
 generated_sources += custom_target(
     'com/nvidia/GPMMetrics__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/GPMMetrics.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/GPMMetrics.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

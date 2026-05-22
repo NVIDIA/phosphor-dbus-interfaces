@@ -6,7 +6,9 @@ sdbusplus_current_path = 'com/nvidia/Dot'
 
 generated_markdown += custom_target(
     'com/nvidia/Dot/Action__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Dot/Action.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Dot/Action.interface.yaml',
+    ],
     output: ['Action.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -28,7 +30,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Dot/Blob__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Dot/Blob.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Dot/Blob.interface.yaml',
+    ],
     output: ['Blob.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

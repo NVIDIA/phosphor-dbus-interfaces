@@ -7,7 +7,9 @@ sdbusplus_current_path = 'com/nvidia/PowerProfile'
 
 generated_markdown += custom_target(
     'com/nvidia/PowerProfile/Profile__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/PowerProfile/Profile.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/PowerProfile/Profile.interface.yaml',
+    ],
     output: ['Profile.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

@@ -58,7 +58,9 @@ sdbusplus_current_path = 'com/nvidia'
 
 generated_markdown += custom_target(
     'com/nvidia/CCMode__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/CCMode.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/CCMode.interface.yaml',
+    ],
     output: ['CCMode.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -80,7 +82,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/ClockMode__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/ClockMode.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/ClockMode.interface.yaml',
+    ],
     output: ['ClockMode.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -102,7 +106,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/ComputeHash__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/ComputeHash.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/ComputeHash.interface.yaml',
+    ],
     output: ['ComputeHash.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -124,7 +130,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/DebugToken__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/DebugToken.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/DebugToken.interface.yaml',
+    ],
     output: ['DebugToken.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -146,7 +154,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/DeviceProtection__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/DeviceProtection.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/DeviceProtection.interface.yaml',
+    ],
     output: ['DeviceProtection.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -168,7 +178,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Edpp__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/Edpp.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/Edpp.interface.yaml',
+    ],
     output: ['Edpp.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -190,7 +202,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/EgmMode__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/EgmMode.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/EgmMode.interface.yaml',
+    ],
     output: ['EgmMode.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -212,7 +226,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/FailoverPolicy__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/FailoverPolicy.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/FailoverPolicy.interface.yaml',
+    ],
     output: ['FailoverPolicy.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -234,7 +250,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/GPMMetrics__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/GPMMetrics.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/GPMMetrics.interface.yaml',
+    ],
     output: ['GPMMetrics.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -256,7 +274,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/GraceSPI__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/GraceSPI.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/GraceSPI.interface.yaml',
+    ],
     output: ['GraceSPI.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -278,7 +298,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/GraceSPIData__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/GraceSPIData.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/GraceSPIData.interface.yaml',
+    ],
     output: ['GraceSPIData.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -300,7 +322,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/ImageCopy__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/ImageCopy.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/ImageCopy.interface.yaml',
+    ],
     output: ['ImageCopy.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -322,7 +346,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/ImageCopyPolicy__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/ImageCopyPolicy.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/ImageCopyPolicy.interface.yaml',
+    ],
     output: ['ImageCopyPolicy.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -344,7 +370,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/ImageCopyState__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/ImageCopyState.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/ImageCopyState.interface.yaml',
+    ],
     output: ['ImageCopyState.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -366,7 +394,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/InbandReconfigSettings__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/InbandReconfigSettings.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/InbandReconfigSettings.interface.yaml',
+    ],
     output: ['InbandReconfigSettings.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -388,7 +418,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/InbandUpdatePolicy__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/InbandUpdatePolicy.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/InbandUpdatePolicy.interface.yaml',
+    ],
     output: ['InbandUpdatePolicy.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -410,7 +442,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/L1Reset__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/L1Reset.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/L1Reset.interface.yaml',
+    ],
     output: ['L1Reset.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -432,7 +466,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/MemoryPageRetirementCount__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/MemoryPageRetirementCount.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/MemoryPageRetirementCount.interface.yaml',
+    ],
     output: ['MemoryPageRetirementCount.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -454,7 +490,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/MemoryPerformance__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/MemoryPerformance.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/MemoryPerformance.interface.yaml',
+    ],
     output: ['MemoryPerformance.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -476,7 +514,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/MemoryRowRemapping__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/MemoryRowRemapping.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/MemoryRowRemapping.interface.yaml',
+    ],
     output: ['MemoryRowRemapping.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -498,7 +538,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/MemorySpareChannel__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/MemorySpareChannel.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/MemorySpareChannel.interface.yaml',
+    ],
     output: ['MemorySpareChannel.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -520,7 +562,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/MigMode__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/MigMode.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/MigMode.interface.yaml',
+    ],
     output: ['MigMode.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -542,7 +586,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/PowerMode__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/PowerMode.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/PowerMode.interface.yaml',
+    ],
     output: ['PowerMode.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -564,7 +610,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/ProcessorPowerBreak__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/ProcessorPowerBreak.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/ProcessorPowerBreak.interface.yaml',
+    ],
     output: ['ProcessorPowerBreak.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -586,7 +634,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/SMUtilization__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/SMUtilization.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/SMUtilization.interface.yaml',
+    ],
     output: ['SMUtilization.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -608,7 +658,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/SetRecoveryMode__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/SetRecoveryMode.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/SetRecoveryMode.interface.yaml',
+    ],
     output: ['SetRecoveryMode.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -630,7 +682,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/StaticPowerHint__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/StaticPowerHint.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/StaticPowerHint.interface.yaml',
+    ],
     output: ['StaticPowerHint.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -652,7 +706,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/SwitchIsolation__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/SwitchIsolation.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/SwitchIsolation.interface.yaml',
+    ],
     output: ['SwitchIsolation.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -674,7 +730,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/UpdateSKU__markdown'.underscorify(),
-    input: ['../../../yaml/com/nvidia/UpdateSKU.interface.yaml'],
+    input: [
+        '../../../yaml/com/nvidia/UpdateSKU.interface.yaml',
+    ],
     output: ['UpdateSKU.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

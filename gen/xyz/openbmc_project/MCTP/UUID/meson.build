@@ -4,7 +4,9 @@ sdbusplus_current_path = 'xyz/openbmc_project/MCTP/UUID'
 
 generated_sources += custom_target(
     'xyz/openbmc_project/MCTP/UUID__cpp'.underscorify(),
-    input: ['../../../../../yaml/xyz/openbmc_project/MCTP/UUID.interface.yaml'],
+    input: [
+        '../../../../../yaml/xyz/openbmc_project/MCTP/UUID.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

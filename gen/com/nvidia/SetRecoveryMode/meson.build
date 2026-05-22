@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/SetRecoveryMode'
 
 generated_sources += custom_target(
     'com/nvidia/SetRecoveryMode__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/SetRecoveryMode.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/SetRecoveryMode.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

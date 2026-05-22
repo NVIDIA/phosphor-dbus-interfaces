@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/ImageCopyState'
 
 generated_sources += custom_target(
     'com/nvidia/ImageCopyState__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/ImageCopyState.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/ImageCopyState.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

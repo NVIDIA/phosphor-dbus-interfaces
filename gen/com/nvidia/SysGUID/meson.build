@@ -5,7 +5,9 @@ sdbusplus_current_path = 'com/nvidia/SysGUID'
 
 generated_markdown += custom_target(
     'com/nvidia/SysGUID/SysGUID__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/SysGUID/SysGUID.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/SysGUID/SysGUID.interface.yaml',
+    ],
     output: ['SysGUID.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

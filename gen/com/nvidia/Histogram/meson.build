@@ -6,7 +6,9 @@ sdbusplus_current_path = 'com/nvidia/Histogram'
 
 generated_markdown += custom_target(
     'com/nvidia/Histogram/BucketInfo__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Histogram/BucketInfo.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Histogram/BucketInfo.interface.yaml',
+    ],
     output: ['BucketInfo.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

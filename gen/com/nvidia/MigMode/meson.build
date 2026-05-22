@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/MigMode'
 
 generated_sources += custom_target(
     'com/nvidia/MigMode__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/MigMode.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/MigMode.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

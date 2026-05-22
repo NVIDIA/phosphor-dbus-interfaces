@@ -9,7 +9,9 @@ sdbusplus_current_path = 'com/nvidia/Dump'
 
 generated_markdown += custom_target(
     'com/nvidia/Dump/AllowableValues__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Dump/AllowableValues.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Dump/AllowableValues.interface.yaml',
+    ],
     output: ['AllowableValues.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -31,7 +33,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Dump/Counters__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Dump/Counters.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Dump/Counters.interface.yaml',
+    ],
     output: ['Counters.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -53,7 +57,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Dump/DebugInfo__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Dump/DebugInfo.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Dump/DebugInfo.interface.yaml',
+    ],
     output: ['DebugInfo.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -75,7 +81,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Dump/Erase__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Dump/Erase.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Dump/Erase.interface.yaml',
+    ],
     output: ['Erase.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -97,7 +105,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/Dump/LogInfo__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Dump/LogInfo.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Dump/LogInfo.interface.yaml',
+    ],
     output: ['LogInfo.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

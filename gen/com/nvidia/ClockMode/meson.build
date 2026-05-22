@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/ClockMode'
 
 generated_sources += custom_target(
     'com/nvidia/ClockMode__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/ClockMode.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/ClockMode.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

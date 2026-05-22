@@ -83,7 +83,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/NVLink/NVLinkLED__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/NVLink/NVLinkLED.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/NVLink/NVLinkLED.interface.yaml',
+    ],
     output: ['NVLinkLED.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -105,7 +107,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/NVLink/NVLinkMetrics__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/NVLink/NVLinkMetrics.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/NVLink/NVLinkMetrics.interface.yaml',
+    ],
     output: ['NVLinkMetrics.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -127,7 +131,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/NVLink/NVLinkRefClock__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/NVLink/NVLinkRefClock.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/NVLink/NVLinkRefClock.interface.yaml',
+    ],
     output: ['NVLinkRefClock.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

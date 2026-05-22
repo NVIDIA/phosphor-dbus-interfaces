@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/Secureboot/Cec'
 
 generated_sources += custom_target(
     'com/nvidia/Secureboot/Cec__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/Secureboot/Cec.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/Secureboot/Cec.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

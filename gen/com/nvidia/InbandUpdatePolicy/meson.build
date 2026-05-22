@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/InbandUpdatePolicy'
 
 generated_sources += custom_target(
     'com/nvidia/InbandUpdatePolicy__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/InbandUpdatePolicy.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/InbandUpdatePolicy.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

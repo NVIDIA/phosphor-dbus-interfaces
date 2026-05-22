@@ -5,7 +5,9 @@ sdbusplus_current_path = 'xyz/openbmc_project/GpuMgr'
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/GpuMgr/Server__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/GpuMgr/Server.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/GpuMgr/Server.interface.yaml',
+    ],
     output: ['Server.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

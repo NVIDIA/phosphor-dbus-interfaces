@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/Protocol/NSM/Raw'
 
 generated_sources += custom_target(
     'com/nvidia/Protocol/NSM/Raw__cpp'.underscorify(),
-    input: ['../../../../../../yaml/com/nvidia/Protocol/NSM/Raw.interface.yaml'],
+    input: [
+        '../../../../../../yaml/com/nvidia/Protocol/NSM/Raw.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

@@ -58,7 +58,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Dump/Entry__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Dump/Entry.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Dump/Entry.interface.yaml',
+    ],
     output: ['Entry.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -80,7 +82,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Dump/Misc__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Dump/Misc.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Dump/Misc.interface.yaml',
+    ],
     output: ['Misc.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -102,7 +106,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/Dump/NewDump__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/Dump/NewDump.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Dump/NewDump.interface.yaml',
+    ],
     output: ['NewDump.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

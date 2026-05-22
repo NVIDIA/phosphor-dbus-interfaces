@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/BF/BMCConfigManager'
 
 generated_sources += custom_target(
     'com/nvidia/BF/BMCConfigManager__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/BF/BMCConfigManager.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/BF/BMCConfigManager.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

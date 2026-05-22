@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/PreBootDiag/App'
 
 generated_sources += custom_target(
     'com/nvidia/PreBootDiag/App__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/PreBootDiag/App.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/PreBootDiag/App.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

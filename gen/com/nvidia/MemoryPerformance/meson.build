@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/MemoryPerformance'
 
 generated_sources += custom_target(
     'com/nvidia/MemoryPerformance__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/MemoryPerformance.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/MemoryPerformance.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

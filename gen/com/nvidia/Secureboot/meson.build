@@ -5,7 +5,9 @@ sdbusplus_current_path = 'com/nvidia/Secureboot'
 
 generated_markdown += custom_target(
     'com/nvidia/Secureboot/Cec__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Secureboot/Cec.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Secureboot/Cec.interface.yaml',
+    ],
     output: ['Cec.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

@@ -7,7 +7,9 @@ sdbusplus_current_path = 'com/nvidia/State'
 
 generated_markdown += custom_target(
     'com/nvidia/State/DeviceState__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/State/DeviceState.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/State/DeviceState.interface.yaml',
+    ],
     output: ['DeviceState.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -29,7 +31,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/State/FabricManager__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/State/FabricManager.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/State/FabricManager.interface.yaml',
+    ],
     output: ['FabricManager.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

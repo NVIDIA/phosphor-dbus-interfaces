@@ -6,7 +6,9 @@ sdbusplus_current_path = 'com/nvidia/Software'
 
 generated_markdown += custom_target(
     'com/nvidia/Software/UpdateTimeout__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/Software/UpdateTimeout.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/Software/UpdateTimeout.interface.yaml',
+    ],
     output: ['UpdateTimeout.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

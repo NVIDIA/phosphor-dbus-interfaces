@@ -7,7 +7,9 @@ sdbusplus_current_path = 'com/nvidia/BF'
 
 generated_markdown += custom_target(
     'com/nvidia/BF/BMCConfigManager__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/BF/BMCConfigManager.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/BF/BMCConfigManager.interface.yaml',
+    ],
     output: ['BMCConfigManager.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -29,7 +31,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/BF/GoldenImageUpdater__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/BF/GoldenImageUpdater.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/BF/GoldenImageUpdater.interface.yaml',
+    ],
     output: ['GoldenImageUpdater.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
@@ -51,7 +55,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'com/nvidia/BF/Rshim__markdown'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/BF/Rshim.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/BF/Rshim.interface.yaml',
+    ],
     output: ['Rshim.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

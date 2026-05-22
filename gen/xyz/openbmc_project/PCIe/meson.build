@@ -83,7 +83,9 @@ generated_markdown += custom_target(
 
 generated_markdown += custom_target(
     'xyz/openbmc_project/PCIe/PCIeECC__markdown'.underscorify(),
-    input: ['../../../../yaml/xyz/openbmc_project/PCIe/PCIeECC.interface.yaml'],
+    input: [
+        '../../../../yaml/xyz/openbmc_project/PCIe/PCIeECC.interface.yaml',
+    ],
     output: ['PCIeECC.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [

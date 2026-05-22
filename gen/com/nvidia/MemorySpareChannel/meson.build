@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/MemorySpareChannel'
 
 generated_sources += custom_target(
     'com/nvidia/MemorySpareChannel__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/MemorySpareChannel.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/MemorySpareChannel.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

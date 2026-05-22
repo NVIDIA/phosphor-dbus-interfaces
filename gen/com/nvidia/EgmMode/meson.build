@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/EgmMode'
 
 generated_sources += custom_target(
     'com/nvidia/EgmMode__cpp'.underscorify(),
-    input: ['../../../../yaml/com/nvidia/EgmMode.interface.yaml'],
+    input: [
+        '../../../../yaml/com/nvidia/EgmMode.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',

@@ -4,7 +4,9 @@ sdbusplus_current_path = 'com/nvidia/Dot/Action'
 
 generated_sources += custom_target(
     'com/nvidia/Dot/Action__cpp'.underscorify(),
-    input: ['../../../../../yaml/com/nvidia/Dot/Action.interface.yaml'],
+    input: [
+        '../../../../../yaml/com/nvidia/Dot/Action.interface.yaml',
+    ],
     output: [
         'common.hpp',
         'server.hpp',
