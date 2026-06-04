@@ -18,3 +18,11 @@ signals:
     - name: Pressed
       description: >
           ID button pressed signal
+    - name: PressedLong
+      description: >
+          ID button long pressed signal
+      properties:
+          - name: time
+            type: uint64
+            description: >
+                ID button pressing duration in microseconds
