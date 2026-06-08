@@ -15,6 +15,7 @@ methods:
       errors:
         - xyz.openbmc_project.Common.Error.InternalFailure
         - xyz.openbmc_project.Common.Error.Unavailable
+        - xyz.openbmc_project.Common.Error.NotAllowed
 
     - name: ReadSpi 
       description: >
@@ -29,6 +30,6 @@ methods:
       errors:
         - xyz.openbmc_project.Common.Error.InternalFailure
         - xyz.openbmc_project.Common.Error.Unavailable
-
+        - xyz.openbmc_project.Common.Error.NotAllowed
 
       
