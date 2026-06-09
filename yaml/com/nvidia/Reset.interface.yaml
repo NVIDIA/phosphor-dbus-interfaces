@@ -17,6 +17,10 @@ enumerations:
         NVIDIA-specific reset types for BF4 and CX9 devices exposed via
         NSM Type 4 command 0x06.
       values:
+        - name: DeviceFullReset
+          description: >
+            Resets the entire device, including compute and network subsystems.
+            This target does not reset pluggable optical modules.
         - name: NetworkGracefulReset
           description: >
             Orchestrated reset of the network subsystem only. Reset takes
