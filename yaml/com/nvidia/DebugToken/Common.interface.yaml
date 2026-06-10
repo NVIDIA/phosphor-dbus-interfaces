@@ -143,6 +143,7 @@ enumerations:
       # SMA DebugFirmwareUnlock subtypes
       - name: MCU
       - name: CPLD
+      - name: LPX
       # SMA SMADebugCapability subtypes
       - name: RasTest
       - name: PowerFailI2cDebug
@@ -193,6 +194,7 @@ enumerations:
       - name: IstDebug
       - name: PxucGlobalHulk
       - name: TargetMaskUnlock
+      - name: I2cVregUnlock
       # GPU RuntimeDebugUnlock subtypes
       - name: NvlinkErrorInjectionEnable
       - name: NvlinkDebugApiEnable
