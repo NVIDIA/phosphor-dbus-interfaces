@@ -110,6 +110,7 @@ properties:
           Default IPv4 gateway of the ethernet interface.
       errors:
           - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
     - name: DefaultGateway6
       type: string
       description: >
@@ -119,6 +120,7 @@ properties:
           https://man7.org/linux/man-pages/man3/inet_pton.3.html
       errors:
           - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
     - name: EmitLLDP
       type: boolean
       default: false
