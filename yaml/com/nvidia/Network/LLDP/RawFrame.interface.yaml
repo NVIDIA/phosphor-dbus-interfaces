@@ -1,0 +1,20 @@
+description: >
+    Raw LLDP frame buffer for the most recent LLDP frame transmitted by the device 
+    (TX) or received from a peer (RX).
+
+properties:
+    - name: Data
+      type: array[byte]
+      flags:
+          - readonly
+      description: >
+          Raw LLDP frame bytes. Empty if no frame has been transmitted (TX)
+          or received (RX) on this port since LLDP was enabled.
+    - name: LastUpdateTimestamp
+      type: uint64
+      flags:
+          - readonly
+      description: >
+          The update timestamp of the data property in microseconds on the
+          system monotonic clock. Zero if data has never been populated since
+          LLDP was enabled.

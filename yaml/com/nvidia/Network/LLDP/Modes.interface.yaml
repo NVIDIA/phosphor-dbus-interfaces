@@ -1,0 +1,44 @@
+description: >
+    LLDP mode configuration for a device. Controls LLDP
+    transmit and receive behavior and DCBX enablement.
+
+properties:
+    - name: TXMode
+      type: enum[self.LLDPModeType]
+      description: >
+          Controls which LLDP TLVs the device transmits.
+    - name: RXMode
+      type: enum[self.LLDPModeType]
+      description: >
+          Controls how the device processes received LLDP frames.
+    - name: DCBXMode
+      type: enum[self.DCBXModeType]
+      description: >
+          Controls whether DCBX runs on top of LLDP.
+enumerations:
+    - name: LLDPModeType
+      description: >
+          LLDP transmit or receive mode values.
+      values:
+          - name: "Off"
+            description: >
+                LLDP processing disabled for this direction. For transmit,
+                the device does not send LLDP frames.
+          - name: Mandatory
+            description: >
+                Only mandatory LLDP TLVs are processed.
+          - name: All
+            description: >
+                All LLDP TLVs are processed, including mandatory, optional,
+                and organization-specific TLVs.
+    - name: DCBXModeType
+      description: >
+          DCBX protocol enable state.
+      values:
+          - name: Disabled
+            description: >
+                DCBX is disabled.
+          - name: Enabled
+            description: >
+                DCBX is enabled. Effective only when TXMode and RXMode are
+                both All.
