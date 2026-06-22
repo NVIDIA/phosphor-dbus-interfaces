@@ -1,0 +1,47 @@
+description: >
+    NVIDIA-specific reset types for NIC and BlueField devices.
+    Implement alongside xyz.openbmc_project.Control.ResetAsync to expose
+    the reset variant each D-Bus reset control object represents.
+
+properties:
+    - name: ResetType
+      type: enum[self.NvidiaResetTypes]
+      description: >
+        The NVIDIA-specific reset variant this D-Bus object represents.
+        Used by bmcweb to match a Redfish ResetType request to the correct
+        D-Bus reset object via the reset_controls association.
+
+enumerations:
+    - name: NvidiaResetTypes
+      description: >
+        NVIDIA-specific reset types for BF4 and CX9 devices exposed via
+        NSM Type 4 command 0x06.
+      values:
+        - name: DeviceFullReset
+          description: >
+            Resets the entire device, including compute and network subsystems.
+            This target does not reset pluggable optical modules.
+        - name: NetworkGracefulReset
+          description: >
+            Orchestrated reset of the network subsystem only. Reset takes
+            effect after host PERST# synchronization, PCIe link disable, or
+            driver-ready conditions are met.
+        - name: ComputeGracefulReset
+          description: >
+            Hard reset of the compute subsystem (CPU/GPU) only.
+            The network subsystem remains active throughout the operation.
+        - name: ComputeGracefulShutDown
+          description: >
+            Graceful software/OS shutdown of the compute subsystem without
+            a hardware reset. The network subsystem remains active throughout
+            the operation.
+        - name: NetworkLinkReset
+          description: >
+            Orchestrated full device reset that takes effect only after all
+            attached hosts have disabled their PCIe links. May occur with or
+            without a corresponding PERST# assertion.
+        - name: OpticalModuleGracefulReset
+          description: >
+            Hardware reset of the optical transceiver module on a specific
+            port. Only the targeted port is reset; all other ports and
+            device functionality remain unaffected.
