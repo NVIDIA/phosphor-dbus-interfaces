@@ -21,6 +21,7 @@ Methods:
 
 - `SetAttribute` -To set the particular BIOS attribute with new value.
 - `GetAttribute` -To get the bios attribute current and pending values.
+- `GetAllAttributes` -To get all bios attribute types and current values.
 
 Properties:
 
