@@ -51,6 +51,18 @@ methods:
           - xyz.openbmc_project.Common.Error.InternalFailure
           - xyz.openbmc_project.BIOSConfig.Common.Error.AttributeNotFound
 
+    - name: GetAllAttributes
+      description: >
+          To get the attribute value type and current value for all existing BIOS
+          attributes.
+
+      returns:
+          - name: Attributes
+            type: dict[string,struct[enum[self.AttributeType],variant[int64,string]]]
+            description: >
+                Map of BIOS attribute names to their attribute value type and
+                current value.
+
 properties:
     - name: ResetBIOSSettings
       type: enum[self.ResetFlag]
