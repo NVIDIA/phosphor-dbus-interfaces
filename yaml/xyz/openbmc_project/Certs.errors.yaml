@@ -6,3 +6,6 @@
   description: >
       The CommonName provided for the CSR is invalid (for example, empty when a
       value is required).
+# xyz.openbmc_project.Certs.Error.CertificateLimitReached
+- name: CertificateLimitReached
+  description: The maximum number of certificates allowed has been reached.
