@@ -1,0 +1,30 @@
+description: >
+    PCIe root-port link enable mask control for a CPU package on platforms
+    where host PCIe link-up is gated on BMC/HMC authorization. Bit i
+    (i = 0..47) of the mask set to 1 enables link-up on PCIe root port i of
+    the package; 0 leaves the link gated. Bits 48-63 are reserved and must
+    be written as zero.
+
+properties:
+    - name: EnableMask
+      type: uint64
+      description: >
+          Per-root-port PCIe link enable bitmask. Reads return the last
+          value known to the platform and are valid at any time. Writes
+          are accepted only while the platform is authorizing link-up,
+          and are rejected with NotAllowed otherwise. Writing a value
+          with any reserved bit (48-63) set is rejected with
+          InvalidArgument.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure
+
+    - name: SupportedMask
+      type: uint64
+      flags:
+          - readonly
+      description: >
+          Mask of root-port bits that are valid on this package
+          (0x0000FFFFFFFFFFFF for a package with 48 root ports).
