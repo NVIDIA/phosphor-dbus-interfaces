@@ -1,0 +1,32 @@
+description: >
+    DOT Code Authentication Key (CAK) verification state for a firmware slot.
+    This interface needs to be implemented when device supports DOT. It is
+    present on the same D-Bus object path as
+    xyz.openbmc_project.Software.Slot, which identifies the specific
+    firmware slot.
+
+properties:
+    - name: DOTAuthState
+      type: enum[self.AuthState]
+      default: Unknown
+      description: >
+        Indicates firmware image authentication status against the installed
+        DOT CAK.
+
+enumerations:
+  - name: AuthState
+    description: >
+      Result of verifying a firmware slot image against the installed DOT CAK.
+    values:
+      - name: Unknown
+        description: >
+          DOT auth state has not yet been determined or is unavailable.
+      - name: DOTNotInstalled
+        description: >
+          No DOT CAK is installed; DOT-based verification does not apply.
+      - name: AuthenticationSuccess
+        description: >
+          The firmware image verified successfully under the installed DOT CAK.
+      - name: AuthenticationFailed
+        description: >
+          The firmware image failed to verify under the installed DOT CAK.
