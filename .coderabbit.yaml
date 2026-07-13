@@ -1,0 +1,57 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "en-US"
+early_access: false
+inheritance: true
+
+reviews:
+    profile: "assertive"
+    high_level_summary: true
+    high_level_summary_in_walkthrough: true
+    review_status: true
+    poem: false
+    request_changes_workflow: false
+    commit_status: false
+
+    path_instructions:
+        - path: "**/*.interface.yaml"
+          instructions: |
+              ## phosphor-dbus-interfaces review rules
+
+              **PDI-AP1 – D-Bus interface wrapping hardware directly**
+              Flag any interface definition where the interface name,
+              a property name, or a method name contains "gpio", "pin",
+              "line", or "gpiochip" (case-insensitive).
+
+              A D-Bus interface must model behaviour, not hardware.
+              Resolution: rename to the behaviour (e.g. "IdentifyLED",
+              "PowerButton") and keep GPIO as an implementation detail
+              in the application.
+
+              **PDI-CG1 – String type used for numeric property**
+              Flag any property whose `type:` field is `s` (D-Bus string)
+              but whose name or description implies a purely numeric value
+              used for measurement or comparison (e.g. Temperature, Voltage,
+              Current, Speed, Count, Index, Offset, Size, Threshold).
+
+              Do NOT flag identifier-style fields whose values contain
+              dots, hyphens, or letters (e.g. semantic versions like
+              "1.2.3", revision labels like "rev-1a", or build IDs) —
+              these are correctly typed as string.
+
+              Use the correct D-Bus type for true numeric values:
+              `d` for floating-point, `u`/`i` for 32-bit integer,
+              `t`/`x` for 64-bit, `y` for byte, `q`/`n` for 16-bit.
+              If the value contains non-digit characters or formatting
+              (dots, hyphens, letters), keep it as string.
+
+              **PDI-CG2 – Use enum for fixed-value properties**
+              Flag any property declared as `type: s` (string) or an integer
+              type when the name, description, or context implies a fixed,
+              closed set of acceptable values (e.g. states, modes, variants,
+              categories). Such properties should use a D-Bus enum so that
+              the schema enforces valid values at the interface level.
+              Resolution: replace the string/int type with an `enum:` entry
+              (sdbusplus enum type) listing all valid values.
+
+chat:
+    auto_reply: true
