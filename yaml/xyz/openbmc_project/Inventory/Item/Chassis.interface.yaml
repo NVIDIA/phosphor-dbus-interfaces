@@ -64,3 +64,10 @@ associations:
       reverse_name: powering
       required_endpoint_interfaces:
           - xyz.openbmc_project.Inventory.Item.PowerSupply
+    - name: computer_system
+      description: >
+          Defines the association between a system inventory item and the
+          chassis inventory item or items that physically enclose that system.
+      reverse_name: chassis
+      required_endpoint_interfaces:
+          - xyz.openbmc_project.Inventory.Item.System
