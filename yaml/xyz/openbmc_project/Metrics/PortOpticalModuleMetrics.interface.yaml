@@ -1,0 +1,37 @@
+description: >
+    Per-lane optical module telemetry metrics for a network port.
+    Exposes per-lane RX power, TX power, TX bias current, and
+    signal-to-noise ratio.
+
+properties:
+    - name: RXInputPowerMilliWatts
+      type: array[double]
+      description: >
+          Array of per-lane RX input optical power values in milliwatts,
+          indexed by lane number (lane 0 = index 0). 8 values for an 8-lane port.
+      flags:
+          - readonly
+
+    - name: TXOutputPowerMilliWatts
+      type: array[double]
+      description: >
+          Array of per-lane TX output optical power values in milliwatts,
+          indexed by lane number.
+      flags:
+          - readonly
+
+    - name: TXBiasCurrentMilliAmps
+      type: array[double]
+      description: >
+          Array of per-lane TX bias current values in milliamperes,
+          indexed by lane number.
+      flags:
+          - readonly
+
+    - name: SignalToNoiseRatioPerLane
+      type: array[double]
+      description: >
+          Array of per-lane signal-to-noise ratio values in decibels (dB),
+          indexed by lane number.
+      flags:
+          - readonly
