@@ -1,16 +1,13 @@
 # Generated file; do not modify.
 
-sdbusplus_current_path = 'xyz/openbmc_project/Common/FactoryReset'
+sdbusplus_current_path = 'xyz/openbmc_project/Configuration/AnalogValve/SetPointDAC'
 
 generated_sources += custom_target(
-    'xyz/openbmc_project/Common/FactoryReset__cpp'.underscorify(),
+    'xyz/openbmc_project/Configuration/AnalogValve/SetPointDAC__cpp'.underscorify(),
     input: [
-        '../../../../../yaml/xyz/openbmc_project/Common/FactoryReset.events.yaml',
-        '../../../../../yaml/xyz/openbmc_project/Common/FactoryReset.interface.yaml',
+        '../../../../../../yaml/xyz/openbmc_project/Configuration/AnalogValve/SetPointDAC.interface.yaml',
     ],
     output: [
-        'event.cpp',
-        'event.hpp',
         'common.hpp',
         'server.hpp',
         'server.cpp',
@@ -27,13 +24,11 @@ generated_sources += custom_target(
         '--tool',
         sdbusplusplus_prog,
         '--directory',
-        meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Common/FactoryReset',
+        meson.current_source_dir() / '../../../../../../yaml',
+        'xyz/openbmc_project/Configuration/AnalogValve/SetPointDAC',
     ],
     install: should_generate_cpp,
     install_dir: [
-        false,
-        get_option('includedir') / sdbusplus_current_path,
         get_option('includedir') / sdbusplus_current_path,
         get_option('includedir') / sdbusplus_current_path,
         false,

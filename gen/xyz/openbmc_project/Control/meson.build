@@ -10,9 +10,9 @@ subdir('FanRedundancy')
 subdir('FanSpeed')
 subdir('FieldMode')
 subdir('Host')
-subdir('MinimumShipLevel')
 subdir('Mode')
 subdir('NcSi')
+subdir('OperatingClockSpeed')
 subdir('Power')
 subdir('PowerSupplyAttributes')
 subdir('PowerSupplyRedundancy')
@@ -274,30 +274,6 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
-    'xyz/openbmc_project/Control/MinimumShipLevel__markdown'.underscorify(),
-    input: [
-        '../../../../yaml/xyz/openbmc_project/Control/MinimumShipLevel.interface.yaml',
-    ],
-    output: ['MinimumShipLevel.md'],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog,
-        '--command',
-        'markdown',
-        '--output',
-        meson.current_build_dir(),
-        '--tool',
-        sdbusplusplus_prog,
-        '--directory',
-        meson.current_source_dir() / '../../../../yaml',
-        'xyz/openbmc_project/Control/MinimumShipLevel',
-    ],
-    install: should_generate_markdown,
-    install_dir: [inst_markdown_dir / sdbusplus_current_path],
-    build_by_default: should_generate_markdown,
-)
-
-generated_markdown += custom_target(
     'xyz/openbmc_project/Control/Mode__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Control/Mode.interface.yaml',
@@ -315,6 +291,30 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/Control/Mode',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Control/OperatingClockSpeed__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Control/OperatingClockSpeed.interface.yaml',
+    ],
+    output: ['OperatingClockSpeed.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Control/OperatingClockSpeed',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],

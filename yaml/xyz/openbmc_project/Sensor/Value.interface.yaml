@@ -4,6 +4,7 @@ description: >
     namespace.  The following sensor hierarchies are recognized:
       airflow
       altitude
+      charge
       current
       energy
       fan_tach
@@ -12,6 +13,7 @@ description: >
       liquidflow
       power
       pressure
+      rotational_position
       temperature
       utilization
       valve
@@ -66,7 +68,9 @@ properties:
           "Percent" For objects in the voltage namespace, Unit must be "Volts",
           For objects in the liquidflow namespace, Unit must be "LPM". For
           objects in the frequency namespace, Unit must be "Hertz". For objects
-          in the valve namespace, Unit must be "Percent".
+          in the valve namespace, Unit must be "Percent". For objects in the
+          charge namespace, Unit must be "AmpereHours". For objects in the
+          rotational_position namespace, Unit must be "Radians".
 
 enumerations:
     - name: Unit
@@ -91,6 +95,9 @@ enumerations:
           - name: LPM
             description: >
                 To calculate the liquid flow in Liters Per Minute.
+          - name: AmpereHours
+            description: >
+                Electrical charge in ampere-hours.
           - name: Meters
             description: >
                 Length as meters.
@@ -103,6 +110,9 @@ enumerations:
           - name: Pascals
             description: >
                 Pressure as pascals.
+          - name: Radians
+            description: >
+                Rotational position as radians.
           - name: RPMS
             description: >
                 Frequency of rotation as revolutions per minute.
@@ -139,6 +149,8 @@ paths:
             value: airflow
           - name: Altitude
             value: altitude
+          - name: Charge
+            value: charge
           - name: Current
             value: current
           - name: Energy
@@ -155,6 +167,8 @@ paths:
             value: power
           - name: Pressure
             value: pressure
+          - name: RotationalPosition
+            value: rotational_position
           - name: Temperature
             value: temperature
           - name: Utilization

@@ -6,6 +6,7 @@ description: >
     hierarchies are recognized:
       airflow
       altitude
+      charge
       current
       energy
       fan_tach
@@ -14,6 +15,7 @@ description: >
       liquidflow
       power
       pressure
+      rotational_position
       temperature
       utilization
       voltage

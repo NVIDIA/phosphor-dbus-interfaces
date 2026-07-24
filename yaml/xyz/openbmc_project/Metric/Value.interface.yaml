@@ -285,6 +285,14 @@ paths:
                 The total number of collisions that occurred after one slot time
                 as defined by IEEE 802.3.
             value: nic/tx_late_collisions
+          - name: ValveClosedDuration
+            description: >
+                The duration since the valve was fully closed.
+            value: valve/closed_duration
+          - name: ValveOpenDuration
+            description: >
+                The duration since the valve was fully open.
+            value: valve/open_duration
           - name: PowerLimitThrottleDuration
             description: >
                 The total duration of throttling caused by a power limit of the
@@ -305,6 +313,16 @@ paths:
                 A namespace for metrics whose values represent bandwidth,
                 expressed in bytes.
             value: bandwidth
+          - name: ProcessorBandwidth
+            description: >
+                Bandwidth usage of the processor as a percentage of total
+                processor bandwidth.
+            value: processor_bandwidth
+          - name: MemoryBandwidth
+            description: >
+                Bandwidth usage of the memory as a percentage of total memory
+                bandwidth.
+            value: memory_bandwidth
     - name: BMC
       description: >
           The BMC metrics.

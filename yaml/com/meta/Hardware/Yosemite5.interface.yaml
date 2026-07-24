@@ -53,4 +53,17 @@ enumerations:
       values:
           - name: TPS25990_p12v_aux
           - name: MP5998_p12v_aux
+          - name: RS31390_p12v_aux
           - name: XDP71X_p52v_hsc
+
+    - name: Boards
+      description: >
+          The compatible hardware strings for the Boards on Yosemite5.
+      values:
+          - name: CXL_Board
+          - name: E1S_x4_Expansion_Board
+          - name: MB
+          - name: Medusa_Board
+          - name: Paddle_Board
+          - name: SCM_2600
+          - name: SCM_2700

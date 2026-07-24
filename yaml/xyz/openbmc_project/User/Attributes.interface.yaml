@@ -51,13 +51,12 @@ properties:
 
     - name: UserPasswordExpired
       type: boolean
-      flags:
-          - const
       description: >
           True when the user's password must be changed before access should be
           granted.
       errors:
           - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.NotAllowed
 
     - name: TOTPSecretkeyRequired
       type: boolean
@@ -77,3 +76,12 @@ properties:
           that the user password expiration is not specified.
       errors:
           - xyz.openbmc_project.Common.Error.InvalidArgument
+    - name: UserType
+      type: enum[xyz.openbmc_project.User.Manager.UserType]
+      flags:
+          - const
+      default: Internal
+      description: >
+          Indicates the authentication backend of the user. Internal for locally
+          managed users, LDAP for OpenLDAP authenticated users, and AD for
+          Active Directory authenticated users.

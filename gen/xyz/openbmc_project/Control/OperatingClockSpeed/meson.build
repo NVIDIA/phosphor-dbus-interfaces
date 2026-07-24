@@ -1,11 +1,11 @@
 # Generated file; do not modify.
 
-sdbusplus_current_path = 'xyz/openbmc_project/Inventory/Decorator/MeetsMinimumShipLevel'
+sdbusplus_current_path = 'xyz/openbmc_project/Control/OperatingClockSpeed'
 
 generated_sources += custom_target(
-    'xyz/openbmc_project/Inventory/Decorator/MeetsMinimumShipLevel__cpp'.underscorify(),
+    'xyz/openbmc_project/Control/OperatingClockSpeed__cpp'.underscorify(),
     input: [
-        '../../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/MeetsMinimumShipLevel.interface.yaml',
+        '../../../../../yaml/xyz/openbmc_project/Control/OperatingClockSpeed.interface.yaml',
     ],
     output: [
         'common.hpp',
@@ -24,8 +24,8 @@ generated_sources += custom_target(
         '--tool',
         sdbusplusplus_prog,
         '--directory',
-        meson.current_source_dir() / '../../../../../../yaml',
-        'xyz/openbmc_project/Inventory/Decorator/MeetsMinimumShipLevel',
+        meson.current_source_dir() / '../../../../../yaml',
+        'xyz/openbmc_project/Control/OperatingClockSpeed',
     ],
     install: should_generate_cpp,
     install_dir: [

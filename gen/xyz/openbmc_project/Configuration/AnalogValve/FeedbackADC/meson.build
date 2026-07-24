@@ -1,11 +1,11 @@
 # Generated file; do not modify.
 
-sdbusplus_current_path = 'xyz/openbmc_project/Control/MinimumShipLevel'
+sdbusplus_current_path = 'xyz/openbmc_project/Configuration/AnalogValve/FeedbackADC'
 
 generated_sources += custom_target(
-    'xyz/openbmc_project/Control/MinimumShipLevel__cpp'.underscorify(),
+    'xyz/openbmc_project/Configuration/AnalogValve/FeedbackADC__cpp'.underscorify(),
     input: [
-        '../../../../../yaml/xyz/openbmc_project/Control/MinimumShipLevel.interface.yaml',
+        '../../../../../../yaml/xyz/openbmc_project/Configuration/AnalogValve/FeedbackADC.interface.yaml',
     ],
     output: [
         'common.hpp',
@@ -24,8 +24,8 @@ generated_sources += custom_target(
         '--tool',
         sdbusplusplus_prog,
         '--directory',
-        meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Control/MinimumShipLevel',
+        meson.current_source_dir() / '../../../../../../yaml',
+        'xyz/openbmc_project/Configuration/AnalogValve/FeedbackADC',
     ],
     install: should_generate_cpp,
     install_dir: [
