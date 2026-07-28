@@ -80,3 +80,15 @@ properties:
           - const
       errors:
           - xyz.openbmc_project.Common.Error.InternalFailure
+
+    - name: VerifyCertificate
+      type: boolean
+      description: >
+          Controls whether TLS certificate verification is performed when
+          mounting an HTTPS image. Defaults to false for backward compatibility
+          with deployments that use self-signed or private-CA certificates. Set
+          to true to verify the remote server's certificate against the system
+          CA store. This property must be configured before calling Mount; the
+          value is latched for the duration of the active session.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
