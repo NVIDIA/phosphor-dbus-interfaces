@@ -1,0 +1,37 @@
+description: >
+    PCore dump collection trigger for a CPU package on platforms that
+    expose per-PCore raw dumps as a diagnostic function of the processor
+    (Vera PCore Dump).
+
+methods:
+    - name: CreateDump
+      description: >
+          Request a raw dump of a single PCore of this processor.
+      parameters:
+          - name: PCoreId
+            type: uint64
+            description: >
+                Selector of the PCore to dump, within the inclusive range
+                MinPCoreId to MaxPCoreId.
+      errors:
+          # PCoreId lies outside the MinPCoreId to MaxPCoreId range.
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          # The device is unreachable or is not in an Enabled state.
+          - xyz.openbmc_project.Common.Error.Unavailable
+          # A collection is already in flight for this processor.
+          - xyz.openbmc_project.Common.Error.NotAllowed
+
+properties:
+    - name: MinPCoreId
+      type: uint64
+      flags:
+          - readonly
+      description: >
+          Lowest PCore selector this processor accepts.
+
+    - name: MaxPCoreId
+      type: uint64
+      flags:
+          - readonly
+      description: >
+          Highest PCore selector this processor accepts.
