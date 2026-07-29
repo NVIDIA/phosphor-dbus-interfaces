@@ -1,0 +1,25 @@
+description: >
+    Implement to provide GPU AdaptiveTGPMode details. This feature manages
+    the Adaptive Total Graphics Power Mode (Dual Part Number) on GPUs
+    via OOB NSM Type 5 device configuration controls.
+
+properties:
+    - name: AdaptiveTGPModeEnabled
+      type: boolean
+      description: >
+            AdaptiveTGPMode is enabled for this processor. When true, the GPU
+            operates under the alternate power/part-number profile. The value is
+            persisted non-volatilely by GPU firmware (FSP). bmcweb PATCHes this
+            property directly to trigger an OOB mode change.
+      errors:
+          - xyz.openbmc_project.Common.Error.Timeout
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure
+    - name: PendingAdaptiveTGPMode
+      type: boolean
+      flags:
+          - readonly
+      description: >
+            AdaptiveTGPMode pending status enabled. Reflects the mode the GPU
+            will operate under once the host GPU driver is loaded, which differs
+            from AdaptiveTGPModeEnabled while a mode change is staged.

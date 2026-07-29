@@ -131,6 +131,10 @@ enumerations:
           - name: "RISTDiagnostic"
             description: >
                 Knob for Run Time In System Test settings.
+          - name: "AdaptiveTGPMode"
+            description: >
+                The in-band settings for adaptive Total GPU Power mode
+                (Dual Part Number).
           - name: "Unknown"
             description: >
                 The unvalid unknown feature type holder.
