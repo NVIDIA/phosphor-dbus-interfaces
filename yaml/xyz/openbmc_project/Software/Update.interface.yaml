@@ -38,22 +38,6 @@ methods:
                 the firmware package, only the matching targets will be updated.
                 If the Targets property is empty, the targets intended to be
                 updated by package will be updated.
-          - name: PreUpdateValidation
-            type: boolean
-            description: >
-                When true, every update target in scope for this request is
-                validated before any image transfer begins, so that a request
-                which cannot complete fails fast rather than part-way through,
-                leaving the system partially updated. For each target,
-                validation establishes that it is present and reachable over
-                its management interface, that its reported health and status
-                allow an update to be applied, that it does not require a
-                different update path such as recovery, and that the firmware
-                package contains an image applicable to it. If any target
-                fails, the request is rejected before transfer and no target
-                is updated. This validation reflects target state at the time
-                of the check and does not guarantee update success. When
-                false, target validation is skipped.
       returns:
           - name: ObjectPath
             type: object_path
@@ -79,15 +63,6 @@ properties:
       description: >
           This property indicates whether force update is allowed for this
           firmware or not.
-      flags:
-          - readonly
-      default: false
-    - name: AllowedPreUpdateValidation
-      type: boolean
-      description: >
-          This property indicates whether the entity implementing StartUpdate
-          supports pre-update validation. When true, the PreUpdateValidation
-          parameter in the StartUpdate method is accepted.
       flags:
           - readonly
       default: false
