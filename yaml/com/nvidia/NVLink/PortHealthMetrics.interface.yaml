@@ -1,0 +1,64 @@
+description: >
+    Exposes per-port NVLink early health indication and attention trigger
+    reason. This is an NVIDIA OEM interface.
+
+properties:
+    - name: EarlyHealthIndication
+      type: enum[self.EarlyHealthIndicationValues]
+      description: >
+          Per-port NVLink early health state as reported by GPU firmware.
+          Healthy indicates normal operation; Attention indicates the firmware
+          has detected a condition that may require intervention before a link
+          failure occurs; Unknown indicates the health state is not yet
+          available or the link is not active.
+      flags:
+          - readonly
+
+    - name: AttentionTriggerReason
+      type: enum[self.AttentionTriggerReasonValues]
+      description: >
+          Trigger reason for the Attention health state. Valid when
+          EarlyHealthIndication is Attention.
+      flags:
+          - readonly
+
+enumerations:
+    - name: EarlyHealthIndicationValues
+      description: Possible states for EarlyHealthIndication.
+      values:
+          - name: Unknown
+            description: >
+                Health state not available or not applicable. Reported before
+                the link is active or when health state is not yet determined.
+          - name: Attention
+            description: >
+                Firmware has detected a link health condition requiring
+                attention. Consult AttentionTriggerReason for the specific
+                trigger.
+          - name: Healthy
+            description: >
+                Link is operating normally.
+
+    - name: AttentionTriggerReasonValues
+      description: Possible trigger reasons for the Attention health state.
+      values:
+          - name: Unknown
+            description: No trigger or not applicable.
+          - name: RawBER
+            description: Raw bit error rate exceeded threshold.
+          - name: EffectiveBER
+            description: Effective bit error rate exceeded threshold.
+          - name: SymbolBER
+            description: Symbol bit error rate exceeded threshold.
+          - name: PLRTXBandwidthLoss
+            description: PLR TX bandwidth loss detected.
+          - name: PLRRXBandwidthLoss
+            description: PLR RX bandwidth loss detected.
+          - name: RecoveryBandwidthLoss
+            description: Recovery bandwidth loss detected.
+          - name: PortTotalBandwidthLoss
+            description: Port total bandwidth loss detected.
+          - name: LinkDownCount
+            description: Link down count exceeded threshold.
+          - name: SymbolErrorCount
+            description: Symbol error count exceeded threshold.
