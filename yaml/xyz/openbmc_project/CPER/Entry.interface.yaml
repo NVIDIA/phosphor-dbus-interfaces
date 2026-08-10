@@ -1,0 +1,60 @@
+description: >
+    Implement this interface on a CPER entry object to expose a CPER
+    (Common Platform Error Record) event on D-Bus. This interface is
+    populated by the cper-logger service after parsing the raw CPER binary
+    via libcper.
+
+    The design mirrors xyz.openbmc_project.Logging.Diagnostic.CPER: all
+    decoded CPER fields are carried as a JSON string in DiagnosticInfo rather
+    than as individual properties, keeping the interface stable as the set of
+    decoded fields evolves.
+
+properties:
+
+    - name: DiagnosticDataType
+      type: enum[self.DiagnosticDataType]
+      description: >
+          The type of diagnostic data associated with the log entry.
+
+          This property identifies whether the associated diagnostic data
+          represents a complete CPER record or an individual CPER section.
+
+    - name: DiagnosticInfo
+      type: string
+      description: >
+          JSON-formatted diagnostic information derived from the CPER record,
+          as produced by libcper. Contains all decoded fields including core
+          header fields (NotificationType, SectionType, Severity, Timestamp),
+          NVIDIA IP-specific fields (FruId, NvIpSignature, NvSeverity,
+          NvSocketNumber), and PCIe section fields. Surfaced in Redfish as
+          CPER.Oem.Nvidia after key capitalisation.
+
+    - name: CperLogFilePath
+      type: string
+      description: >
+          Path to the raw CPER binary file on the BMC filesystem
+          (e.g. /var/lib/cper-logger/0000000001.bin). The file contains
+          the original CPER data as received from the firmware.
+
+enumerations:
+
+    - name: DiagnosticDataType
+      description: >
+          Identifies the type of CPER record.
+      values:
+          - name: CPER
+            description: >
+                A complete Common Platform Error Record.
+
+          - name: CPERSection
+            description: >
+                A Common Platform Error Record section.
+
+service_names:
+    - default: xyz.openbmc_project.CPERLogger
+
+paths:
+    - namespace: /xyz/openbmc_project/cper
+      segments:
+          - name: Entry
+            value: entry
