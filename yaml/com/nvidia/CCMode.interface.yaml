@@ -1,5 +1,12 @@
 description: >
-   Implement to provide GPU CCMode details. This new feature manage confidential compute mode on GPUs.
+   Provides GPU Confidential Compute (CC), Bare Metal Secure AI (BMSAI), and
+   NVLink Encryption (NVLE) state. Current properties describe the active
+   device state. Properties prefixed with Pending describe the configured
+   state that will become active after the required device reset.
+
+   Implementations shall leave an enum property at Unknown when the device has
+   not returned a valid value. An unsupported command or reserved value shall
+   not be represented as Disabled.
 
 properties:
     - name: CCModeEnabled
@@ -19,3 +26,68 @@ properties:
       description: >
             Confidential Compute (CC) Development mode pending status enabled.
 
+    - name: BMSAIMode
+      type: enum[self.BareMetalSecureAIMode]
+      default: Unknown
+      description: >
+            Active Bare Metal Secure AI mode for this processor. Unknown
+            indicates that the value has not been received, is unsupported, or
+            is temporarily unavailable.
+
+    - name: PendingBMSAIMode
+      type: enum[self.BareMetalSecureAIMode]
+      default: Unknown
+      description: >
+            Configured Bare Metal Secure AI mode for this processor. When this
+            differs from BMSAIMode, a device reset is required before the
+            configured value becomes active. Unknown indicates that no valid
+            pending value is available.
+
+    - name: NVLinkEncryptionState
+      type: enum[self.NVLinkEncryptionStateType]
+      default: Unknown
+      description: >
+            Active NVLink encryption state for this processor. Unknown
+            indicates that the value has not been received, is unsupported, or
+            is temporarily unavailable.
+
+    - name: PendingNVLinkEncryptionState
+      type: enum[self.NVLinkEncryptionStateType]
+      default: Unknown
+      description: >
+            Configured NVLink encryption state for this processor. When this
+            differs from NVLinkEncryptionState, a device reset is required
+            before the configured value becomes active. Unknown indicates that
+            no valid pending value is available.
+
+enumerations:
+    - name: BareMetalSecureAIMode
+      description: >
+          Bare Metal Secure AI operating mode.
+      values:
+          - name: Unknown
+            description: >
+                The BMSAI mode is unavailable or unsupported.
+          - name: Disabled
+            description: >
+                Bare Metal Secure AI is disabled.
+          - name: Production
+            description: >
+                Bare Metal Secure AI production mode is enabled.
+          - name: DevTools
+            description: >
+                Bare Metal Secure AI development-tools mode is enabled.
+
+    - name: NVLinkEncryptionStateType
+      description: >
+          NVLink encryption state.
+      values:
+          - name: Unknown
+            description: >
+                The NVLink encryption state is unavailable or unsupported.
+          - name: Disabled
+            description: >
+                NVLink encryption is disabled.
+          - name: Enabled
+            description: >
+                NVLink encryption is enabled.
