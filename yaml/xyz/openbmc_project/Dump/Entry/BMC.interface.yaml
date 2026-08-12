@@ -3,3 +3,26 @@ description: >
 
     BMC dump is generated on the BMC with debug data for debugging the issues
     encountered on the BMC.
+
+properties:
+    - name: AdditionalTypeName
+      type: enum[self.AdditionalType]
+      default: None
+      description: >
+          The OEM diagnostic type this BMC dump entry was collected for. None
+          for a standard (dreport) BMC dump. Consumers render a non-None value
+          as the Redfish OEMDiagnosticDataType.
+
+enumerations:
+    - name: AdditionalType
+      description: >
+          OEM diagnostic type a BMC dump entry was collected for. Extend this
+          list when a new OEM diagnostic type is added to the BMC dump.
+      values:
+          - name: None
+            description: >
+                Standard (dreport) BMC dump - no OEM diagnostic type.
+          - name: ContainerRuntimeMetrics
+            description: >
+                vHMC container runtime metrics dump (CPU, memory, PIDs and IO
+                of the vHMC container).

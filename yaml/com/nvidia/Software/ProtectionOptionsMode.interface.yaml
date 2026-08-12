@@ -1,0 +1,81 @@
+description: >
+    Protection options mode for a device. Exposes boolean flags that control
+    host access restrictions for firmware and configuration updates on the
+    device and its transceivers. Implement this interface on chassis object
+    (Item.Chassis) to avoid additional assoications on dbus.
+
+properties:
+    - name: HostFirmwareUpdateRestrictionEnabled
+      type: boolean
+      flags:
+          - readonly
+      description: >
+          When true, in-band firmware update requests issued by the host CPU
+          to this device are blocked by the device; the host receives an error
+          response and the device firmware is not modified. When false, in-band
+          firmware updates are permitted. Updated by SetProtectionOptions.
+
+    - name: HostConfigurationChangeRestrictionEnabled
+      type: boolean
+      flags:
+          - readonly
+      description: >
+          When true, in-band configuration write requests issued by the host
+          CPU to this device are blocked by the device; the host receives an
+          error response and the device configuration is not modified. When
+          false, in-band configuration changes are permitted. Updated by
+          SetProtectionOptions.
+
+    - name: HostTransceiverFirmwareUpdateRestrictionEnabled
+      type: boolean
+      flags:
+          - readonly
+      description: >
+          When true, in-band firmware update requests issued by the host CPU
+          to the pluggable transceiver module attached to this device are
+          blocked; the host receives an error response and the transceiver
+          firmware is not modified. When false, in-band transceiver firmware
+          updates are permitted. Updated by SetProtectionOptions.
+
+    - name: HostTransceiverConfigurationChangeRestrictionEnabled
+      type: boolean
+      flags:
+          - readonly
+      description: >
+          When true, in-band configuration write requests issued by the host
+          CPU to the pluggable transceiver module attached to this device are
+          blocked; the host receives an error response and the transceiver
+          configuration is not modified. When false, in-band transceiver
+          configuration changes are permitted. Updated by SetProtectionOptions.
+
+methods:
+    - name: SetProtectionOptions
+      description: >
+          Writes all four protection flags. On success, all four D-Bus
+          properties are updated. On failure, D-Bus properties are
+          unchanged and an error is returned.
+      parameters:
+          - name: FirmwareUpdateRestrictionEnabled
+            type: boolean
+            description: >
+                New value for HostFirmwareUpdateRestrictionEnabled.
+
+          - name: ConfigurationChangeRestrictionEnabled
+            type: boolean
+            description: >
+                New value for HostConfigurationChangeRestrictionEnabled.
+
+          - name: TransceiverFirmwareUpdateRestrictionEnabled
+            type: boolean
+            description: >
+                New value for HostTransceiverFirmwareUpdateRestrictionEnabled.
+
+          - name: TransceiverConfigurationChangeRestrictionEnabled
+            type: boolean
+            description: >
+                New value for HostTransceiverConfigurationChangeRestrictionEnabled.
+
+      errors:
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.Unavailable
