@@ -137,6 +137,10 @@ enumerations:
             description: >
                 The host firmware crashed and the BMC has automatically
                 initiated a restart of the host firmware
+          - name: "Unsupported"
+            description: >
+                Restart cause is not applicable on this platform. Consumers
+                should treat the property as absent rather than "Unknown".
 
 paths:
     - namespace: /xyz/openbmc_project/state
