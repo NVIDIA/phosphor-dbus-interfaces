@@ -1,0 +1,52 @@
+description: >
+    Controls whether UPhy (Physical Layer Recovery) mode is enabled or disabled
+    on a device.
+
+properties:
+    - name: CurrentMode
+      type: enum[self.UPhyMode]
+      flags:
+          - readonly
+      description: >
+          The current UPhy recovery mode as last reported by the device.
+          Always resolves to Enabled or Disabled;
+
+    - name: PendingMode
+      type: enum[self.UPhyMode]
+      description: >
+          The requested UPhy mode. The implementation determines when this mode
+          becomes current.
+          Implementations shall publish the resolved Enabled or Disabled
+          value. Default is accepted as a reset request but shall not be
+          retained as the property value.
+          Only writable when IsModeConfigurable is true. Attempts to write
+          when IsModeConfigurable is false shall return NotAllowed.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+    - name: IsModeConfigurable
+      type: boolean
+      flags:
+          - readonly
+      default: false
+      description: >
+          An indication of whether PendingMode is writable. Determined by the
+          implementation and platform capabilities.
+
+enumerations:
+    - name: UPhyMode
+      description: >
+          UPhy (Physical Layer Recovery) mode values.
+      values:
+          - name: Default
+            description: >
+                Requests that the implementation restore its default UPhy
+                mode. This value is write-only; CurrentMode and PendingMode
+                shall report the resolved Enabled or Disabled value.
+          - name: Enabled
+            description: UPhy mode is enabled.
+          - name: Disabled
+            description: UPhy mode is disabled.
