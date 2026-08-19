@@ -14,15 +14,19 @@ properties:
       flags:
           - readonly
     - name: RowRemappingFailureState
-      type: boolean
+      type: enum[self.RowRemappingFailureStates]
+      default: Unknown
       description: >
-          Represents RowRemapping Failure state.
+          Indicates whether row-remapping has failed. Unknown marks the
+          reading as not available (device unreachable or not yet polled).
       flags:
           - readonly
     - name: RowRemappingPendingState
-      type: boolean
+      type: enum[self.RowRemappingPendingStates]
+      default: Unknown
       description: >
-          Represents RowRemapping Pending state.
+          Indicates whether row-remapping is pending. Unknown marks the
+          reading as not available (device unreachable or not yet polled).
       flags:
           - readonly
     - name: MaxRemappingAvailablityBankCount
@@ -56,3 +60,32 @@ properties:
       flags:
           - readonly
 
+enumerations:
+    - name: RowRemappingFailureStates
+      description: >
+          Row-remapping failure state.
+      values:
+          - name: 'True'
+            description: >
+                Row-remapping has failed.
+          - name: 'False'
+            description: >
+                Row-remapping has not failed.
+          - name: Unknown
+            description: >
+                Failure state is not available (device unreachable or not
+                yet polled).
+    - name: RowRemappingPendingStates
+      description: >
+          Row-remapping pending state.
+      values:
+          - name: 'True'
+            description: >
+                Row-remapping is pending.
+          - name: 'False'
+            description: >
+                Row-remapping is not pending.
+          - name: Unknown
+            description: >
+                Pending state is not available (device unreachable or not
+                yet polled).
