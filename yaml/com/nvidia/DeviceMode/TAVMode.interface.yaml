@@ -1,0 +1,55 @@
+description: >
+    Controls whether Temperature Aware Voltage (TAV) is enabled or disabled.
+    TAV thresholds, deltas, and hysteresis are firmware-internal and not
+    configurable through this interface.
+
+properties:
+    - name: CurrentMode
+      type: enum[self.TAVModeValue]
+      flags:
+          - readonly
+      description: >
+          The current TAV mode. Implementations shall publish Enabled or
+          Disabled.
+
+    - name: PendingMode
+      type: enum[self.TAVModeValue]
+      description: >
+          The requested TAV mode. The implementation shall retain this value
+          across BMC restarts and apply it on the next device reset.
+          Implementations shall publish the resolved Enabled or Disabled
+          value. Default is accepted as a reset request but shall not be
+          retained as the property value.
+          Only writable when IsModeConfigurable is true. Attempts to write
+          when IsModeConfigurable is false shall return NotAllowed.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+    - name: IsModeConfigurable
+      type: boolean
+      flags:
+          - readonly
+      default: false
+      description: >
+          An indication of whether PendingMode is writable. Determined by the
+          implementation and platform capabilities.
+
+enumerations:
+    - name: TAVModeValue
+      description: >
+          Temperature Aware Voltage mode values.
+      values:
+          - name: Default
+            description: >
+                Requests that the implementation restore its default TAV
+                mode. This value is write-only; CurrentMode and PendingMode
+                shall report the resolved Enabled or Disabled value.
+          - name: Enabled
+            description: >
+                Temperature Aware Voltage is enabled.
+          - name: Disabled
+            description: >
+                Temperature Aware Voltage is disabled.
