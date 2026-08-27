@@ -1,0 +1,54 @@
+description: >
+    Provides platform power-cycle operations that may remove and restore
+    standby or utility-equivalent power. Implementations advertise only the
+    operations supported for each target and hide platform-specific sequencing
+    mechanisms such as systemd units and GPIOs from clients.
+
+paths:
+    - namespace: /xyz/openbmc_project/control/power_cycle
+      description: >
+          Root path for per-host platform power-cycle control objects.
+
+methods:
+    - name: RequestPowerCycle
+      description: >
+          Requests the selected platform power-cycle operation. A successful
+          method return means the implementation accepted and dispatched the
+          request; it does not indicate that the physical power cycle completed.
+      parameters:
+          - name: Type
+            type: enum[self.PowerCycleType]
+            description: >
+                Power-cycle operation to request. The value must be present in
+                SupportedPowerCycleTypes on this object.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+properties:
+    - name: SupportedPowerCycleTypes
+      type: array[enum[self.PowerCycleType]]
+      description: >
+          Power-cycle operations supported by this object. Clients shall not
+          request or advertise operations absent from this list.
+      flags:
+          - readonly
+
+enumerations:
+    - name: PowerCycleType
+      description: Platform power-cycle operations.
+      values:
+          - name: AuxPowerCycle
+            description: >
+                Performs the platform-defined auxiliary or standby power-cycle
+                sequence, including normal host shutdown policy when available.
+          - name: AuxPowerCycleForce
+            description: >
+                Performs the platform-defined forced auxiliary or standby
+                power-cycle sequence without requiring successful host shutdown.
+          - name: FullPowerCycle
+            description: >
+                Performs an immediate full platform power cycle as close as
+                possible to removing and restoring utility power.
