@@ -10,6 +10,11 @@ properties:
           Groups to which the user belong.
       errors:
           - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.User.Common.Error.UserNameDoesNotExist
+          - xyz.openbmc_project.User.Common.Error.UserNameGroupFail
+          - xyz.openbmc_project.User.Common.Error.NoResource
 
     - name: UserPrivilege
       type: string
@@ -20,6 +25,9 @@ properties:
           - xyz.openbmc_project.Common.Error.InternalFailure
           - xyz.openbmc_project.Common.Error.InvalidArgument
           - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.User.Common.Error.UserNameDoesNotExist
+          - xyz.openbmc_project.User.Common.Error.UserNameGroupFail
+          - xyz.openbmc_project.User.Common.Error.NoResource
 
     - name: UserEnabled
       type: boolean
