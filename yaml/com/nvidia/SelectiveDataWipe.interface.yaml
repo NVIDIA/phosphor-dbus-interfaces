@@ -1,0 +1,86 @@
+description: >
+    Interface to wipe selected logical persistent-data classes on a
+    device. This models the wipe operation, not a transport-specific
+    command. A successful result means the device accepted logical
+    invalidation of the requested classes;
+
+    Implement on the device inventory object that supports the wipe.
+    Service: the owner of that inventory object.
+    Path: the device inventory path (for example a NetworkAdapter under
+    /xyz/openbmc_project/inventory/...).
+    Prerequisites: the inventory object exists; WipeStatus is not
+    InProgress. Concurrent Wipe calls while InProgress raise
+    xyz.openbmc_project.Common.Error.Unavailable.
+
+properties:
+    - name: WipeStatus
+      type: enum[self.OperationStatus]
+      default: Unavailable
+      description: >
+          Status of the last Wipe method call. Default is Unavailable
+          until a Wipe has been issued. The implementing service shall
+          emit PropertiesChanged when this value changes.
+
+methods:
+    - name: Wipe
+      description: >
+          Request wipe of one or more persistent-data classes. The method
+          returns immediately. Follow progress on WipeStatus.
+      parameters:
+          - name: Targets
+            type: array[enum[self.DataClass]]
+            description: >
+                Logical persistent-data classes to wipe. At least one value
+                is required. Duplicate values are ignored.
+      errors:
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+
+enumerations:
+    - name: DataClass
+      description: >
+          Logical persistent-data classes that may be selected for wipe.
+      values:
+          - name: ScratchData
+            description: >
+                Persistent temporary buffers, staging regions, and caches.
+          - name: DiagnosticData
+            description: >
+                Persisted crash dumps, debug captures, and diagnostic
+                artifacts.
+          - name: LogData
+            description: >
+                Persistent event, telemetry, audit, and operational log data.
+          - name: UserData
+            description: >
+                Tenant-controlled or user-controlled persistent configuration
+                and data.
+          - name: All
+            description: >
+                All persistent data classes.
+    - name: OperationStatus
+      description: >
+          The status of the Wipe method call.
+      values:
+          - name: "InProgress"
+            description: >
+                The operation is in progress.
+          - name: "Success"
+            description: >
+                The operation completed successfully.
+          - name: "InternalFailure"
+            description: >
+                The operation failed internally.
+          - name: "Unavailable"
+            description: >
+                The object is temporarily unavailable, or no Wipe has been
+                issued yet.
+          - name: "UnsupportedRequest"
+            description: >
+                The operation is not supported for the object.
+          - name: "InvalidArgument"
+            description: >
+                The value of one or more arguments is invalid.
+          - name: "WriteFailure"
+            description: >
+                The operation failed while sending the request to the device.
