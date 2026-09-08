@@ -14,6 +14,7 @@ properties:
           - xyz.openbmc_project.Common.Error.NotAllowed
           - xyz.openbmc_project.User.Common.Error.UserNameDoesNotExist
           - xyz.openbmc_project.User.Common.Error.UserNameGroupFail
+          - xyz.openbmc_project.User.Common.Error.RestrictedGroup
           - xyz.openbmc_project.User.Common.Error.NoResource
 
     - name: UserPrivilege
