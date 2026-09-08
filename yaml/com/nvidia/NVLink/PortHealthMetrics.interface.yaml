@@ -1,16 +1,21 @@
 description: >
-    Exposes per-port NVLink early health indication and attention trigger
-    reason. This is an NVIDIA OEM interface.
+    Exposes the NVLink early health indication of one port, the detail of what
+    triggered an Attention state, and a method to clear the latched indication
+    of this port. The device latches Attention until it is cleared by an
+    operator or the link re-trains; the clear method acts only on the port that
+    hosts this interface.
 
 properties:
     - name: EarlyHealthIndication
       type: enum[self.EarlyHealthIndicationValues]
       description: >
-          Per-port NVLink early health state as reported by GPU firmware.
+          Per-port NVLink early health state as reported by device firmware.
           Healthy indicates normal operation; Attention indicates the firmware
           has detected a condition that may require intervention before a link
           failure occurs; Unknown indicates the health state is not yet
-          available or the link is not active.
+          available or the link is not active; Unavailable indicates the
+          device reports the health record as supported but currently
+          unreadable, in which case no stale value is retained.
       flags:
           - readonly
 
@@ -22,14 +27,75 @@ properties:
       flags:
           - readonly
 
+    - name: AttentionTriggerMetricId
+      type: byte
+      default: 0
+      description: >
+          Index (1 to 15) of the configured link health monitor, in the port's
+          active link health profile, whose threshold crossing raised Attention.
+          Consumers correlate it with the profile the fabric manager configured
+          (readable in-band) to learn the evaluation window and threshold that
+          fired, since AttentionTriggerReason alone is ambiguous across windows;
+          0 when the port is not in Attention or the index is not reported,
+          reserved values report 0, and the device reports a single trigger per
+          port.
+      flags:
+          - readonly
+
+    - name: AttentionTriggerConfiguration
+      type: enum[self.AttentionTriggerConfigurationValues]
+      default: Unknown
+      description: >
+          Whether the Attention state reflects the current link health metric
+          configuration. Unknown when the port is not in Attention or the
+          value is not available; reserved encodings map to Unknown.
+      flags:
+          - readonly
+
+    - name: ClearEarlyHealthIndicationSupported
+      type: boolean
+      default: false
+      description: >
+          True when the device supports clearing the latched early health
+          indication of this port. Consumers advertise the clear operation
+          only when true.
+      flags:
+          - readonly
+
+methods:
+    - name: ClearEarlyHealthIndication
+      description: >
+          Request the device to clear the latched early health indication of
+          this port as a whole — state, trigger cause, monitor index and
+          configuration indicator — and restart its link health monitoring
+          windows. The clear is not per monitor and takes no parameters. The
+          call returns immediately; the outcome is reported through
+          com.nvidia.Async.Status at the returned object path (Success,
+          UnsupportedRequest, InvalidArgument, Unavailable, InProgress, Timeout
+          or InternalFailure). Ports whose device does not support the clear
+          report UnsupportedRequest and publish
+          ClearEarlyHealthIndicationSupported as false. Throws
+          xyz.openbmc_project.Common.Error.Unavailable only when no asynchronous
+          result object is free; device-side unavailability is reported as
+          Async.Status Unavailable.
+      returns:
+          - name: RetValue
+            type: object_path
+            description: >
+                DBus Object Path. Interface com.nvidia.Async.Status at this
+                returned Object Path can be used to retrieve the status of
+                the operation.
+      errors:
+          - xyz.openbmc_project.Common.Error.Unavailable
+
 enumerations:
     - name: EarlyHealthIndicationValues
       description: Possible states for EarlyHealthIndication.
       values:
           - name: Unknown
             description: >
-                Health state not available or not applicable. Reported before
-                the link is active or when health state is not yet determined.
+                Health record not reported or not applicable: link not active,
+                health not yet determined, or a reserved encoding.
           - name: Attention
             description: >
                 Firmware has detected a link health condition requiring
@@ -38,6 +104,10 @@ enumerations:
           - name: Healthy
             description: >
                 Link is operating normally.
+          - name: Unavailable
+            description: >
+                The device reports the link health record as supported but
+                currently unreadable. No stale value is retained.
 
     - name: AttentionTriggerReasonValues
       description: Possible trigger reasons for the Attention health state.
@@ -62,3 +132,20 @@ enumerations:
             description: Link down count exceeded threshold.
           - name: SymbolErrorCount
             description: Symbol error count exceeded threshold.
+
+    - name: AttentionTriggerConfigurationValues
+      description: Possible values for AttentionTriggerConfiguration.
+      values:
+          - name: Unknown
+            description: >
+                The link health state is not Attention, or the configuration
+                state is not available.
+          - name: Current
+            description: >
+                The Attention state reflects a threshold crossing under the
+                current link health metric configuration.
+          - name: Modified
+            description: >
+                The Attention state was raised under a previous configuration
+                and a parameter of an associated metric has since been
+                modified.
