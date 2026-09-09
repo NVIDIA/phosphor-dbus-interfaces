@@ -7,6 +7,9 @@
 # xyz.openbmc_project.User.Common.Error.UserNameGroupFail
 - name: UserNameGroupFail
   description: Specified Group related restriction failure for user name.
+# xyz.openbmc_project.User.Common.Error.RestrictedGroup
+- name: RestrictedGroup
+  description: The requested group is reserved for the UID 0 user.
 # xyz.openbmc_project.User.Common.Error.UserNamePrivFail
 - name: UserNamePrivFail
   description: Specified privilege related restriction failure for user name.
