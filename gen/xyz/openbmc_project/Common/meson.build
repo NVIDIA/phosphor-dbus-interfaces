@@ -3,12 +3,11 @@ subdir('Callout')
 subdir('Device')
 subdir('DownloadProgress')
 subdir('FactoryReset')
-subdir('FaultLogType')
 subdir('File')
 subdir('FilePath')
 subdir('HTTP')
-subdir('ObjectPath')
 subdir('OriginatedBy')
+subdir('PhysicalContext')
 subdir('Priority')
 subdir('Progress')
 subdir('SCP')
@@ -178,30 +177,6 @@ generated_registry += custom_target(
 )
 
 generated_markdown += custom_target(
-    'xyz/openbmc_project/Common/FaultLogType__markdown'.underscorify(),
-    input: [
-        '../../../../yaml/xyz/openbmc_project/Common/FaultLogType.interface.yaml',
-    ],
-    output: ['FaultLogType.md'],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog,
-        '--command',
-        'markdown',
-        '--output',
-        meson.current_build_dir(),
-        '--tool',
-        sdbusplusplus_prog,
-        '--directory',
-        meson.current_source_dir() / '../../../../yaml',
-        'xyz/openbmc_project/Common/FaultLogType',
-    ],
-    install: should_generate_markdown,
-    install_dir: [inst_markdown_dir / sdbusplus_current_path],
-    build_by_default: should_generate_markdown,
-)
-
-generated_markdown += custom_target(
     'xyz/openbmc_project/Common/File__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Common/File.errors.yaml',
@@ -274,30 +249,6 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
-    'xyz/openbmc_project/Common/ObjectPath__markdown'.underscorify(),
-    input: [
-        '../../../../yaml/xyz/openbmc_project/Common/ObjectPath.interface.yaml',
-    ],
-    output: ['ObjectPath.md'],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog,
-        '--command',
-        'markdown',
-        '--output',
-        meson.current_build_dir(),
-        '--tool',
-        sdbusplusplus_prog,
-        '--directory',
-        meson.current_source_dir() / '../../../../yaml',
-        'xyz/openbmc_project/Common/ObjectPath',
-    ],
-    install: should_generate_markdown,
-    install_dir: [inst_markdown_dir / sdbusplus_current_path],
-    build_by_default: should_generate_markdown,
-)
-
-generated_markdown += custom_target(
     'xyz/openbmc_project/Common/OriginatedBy__markdown'.underscorify(),
     input: [
         '../../../../yaml/xyz/openbmc_project/Common/OriginatedBy.interface.yaml',
@@ -315,6 +266,30 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../../yaml',
         'xyz/openbmc_project/Common/OriginatedBy',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'xyz/openbmc_project/Common/PhysicalContext__markdown'.underscorify(),
+    input: [
+        '../../../../yaml/xyz/openbmc_project/Common/PhysicalContext.interface.yaml',
+    ],
+    output: ['PhysicalContext.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../yaml',
+        'xyz/openbmc_project/Common/PhysicalContext',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],

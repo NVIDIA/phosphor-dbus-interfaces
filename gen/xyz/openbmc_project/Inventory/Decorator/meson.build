@@ -2,11 +2,9 @@
 subdir('Area')
 subdir('Asset')
 subdir('AssetTag')
-subdir('CLEI')
 subdir('Cacheable')
 subdir('Compatible')
 subdir('CoolingType')
-subdir('Dimension')
 subdir('FpgaType')
 subdir('I2CDevice')
 subdir('Instance')
@@ -17,7 +15,6 @@ subdir('LocationContext')
 subdir('LocationOrdinal')
 subdir('LocationReference')
 subdir('ManagedHost')
-subdir('ManufacturerExt')
 subdir('MeetsMinimumShipLevel')
 subdir('PCIeRefClock')
 subdir('PortInfo')
@@ -28,10 +25,8 @@ subdir('Replaceable')
 subdir('Revision')
 subdir('SKU')
 subdir('Slot')
-subdir('ThermalDirection')
 subdir('UniqueIdentifier')
 subdir('VendorInformation')
-subdir('VoltageControl')
 
 sdbusplus_current_path = 'xyz/openbmc_project/Inventory/Decorator'
 
@@ -108,30 +103,6 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
-    'xyz/openbmc_project/Inventory/Decorator/CLEI__markdown'.underscorify(),
-    input: [
-        '../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/CLEI.interface.yaml',
-    ],
-    output: ['CLEI.md'],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog,
-        '--command',
-        'markdown',
-        '--output',
-        meson.current_build_dir(),
-        '--tool',
-        sdbusplusplus_prog,
-        '--directory',
-        meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Inventory/Decorator/CLEI',
-    ],
-    install: should_generate_markdown,
-    install_dir: [inst_markdown_dir / sdbusplus_current_path],
-    build_by_default: should_generate_markdown,
-)
-
-generated_markdown += custom_target(
     'xyz/openbmc_project/Inventory/Decorator/Cacheable__markdown'.underscorify(),
     input: [
         '../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/Cacheable.interface.yaml',
@@ -197,30 +168,6 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../../../yaml',
         'xyz/openbmc_project/Inventory/Decorator/CoolingType',
-    ],
-    install: should_generate_markdown,
-    install_dir: [inst_markdown_dir / sdbusplus_current_path],
-    build_by_default: should_generate_markdown,
-)
-
-generated_markdown += custom_target(
-    'xyz/openbmc_project/Inventory/Decorator/Dimension__markdown'.underscorify(),
-    input: [
-        '../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/Dimension.interface.yaml',
-    ],
-    output: ['Dimension.md'],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog,
-        '--command',
-        'markdown',
-        '--output',
-        meson.current_build_dir(),
-        '--tool',
-        sdbusplusplus_prog,
-        '--directory',
-        meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Inventory/Decorator/Dimension',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],
@@ -468,30 +415,6 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
-    'xyz/openbmc_project/Inventory/Decorator/ManufacturerExt__markdown'.underscorify(),
-    input: [
-        '../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/ManufacturerExt.interface.yaml',
-    ],
-    output: ['ManufacturerExt.md'],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog,
-        '--command',
-        'markdown',
-        '--output',
-        meson.current_build_dir(),
-        '--tool',
-        sdbusplusplus_prog,
-        '--directory',
-        meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Inventory/Decorator/ManufacturerExt',
-    ],
-    install: should_generate_markdown,
-    install_dir: [inst_markdown_dir / sdbusplus_current_path],
-    build_by_default: should_generate_markdown,
-)
-
-generated_markdown += custom_target(
     'xyz/openbmc_project/Inventory/Decorator/MeetsMinimumShipLevel__markdown'.underscorify(),
     input: [
         '../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/MeetsMinimumShipLevel.interface.yaml',
@@ -732,30 +655,6 @@ generated_markdown += custom_target(
 )
 
 generated_markdown += custom_target(
-    'xyz/openbmc_project/Inventory/Decorator/ThermalDirection__markdown'.underscorify(),
-    input: [
-        '../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/ThermalDirection.interface.yaml',
-    ],
-    output: ['ThermalDirection.md'],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog,
-        '--command',
-        'markdown',
-        '--output',
-        meson.current_build_dir(),
-        '--tool',
-        sdbusplusplus_prog,
-        '--directory',
-        meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Inventory/Decorator/ThermalDirection',
-    ],
-    install: should_generate_markdown,
-    install_dir: [inst_markdown_dir / sdbusplus_current_path],
-    build_by_default: should_generate_markdown,
-)
-
-generated_markdown += custom_target(
     'xyz/openbmc_project/Inventory/Decorator/UniqueIdentifier__markdown'.underscorify(),
     input: [
         '../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/UniqueIdentifier.interface.yaml',
@@ -797,30 +696,6 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../../../yaml',
         'xyz/openbmc_project/Inventory/Decorator/VendorInformation',
-    ],
-    install: should_generate_markdown,
-    install_dir: [inst_markdown_dir / sdbusplus_current_path],
-    build_by_default: should_generate_markdown,
-)
-
-generated_markdown += custom_target(
-    'xyz/openbmc_project/Inventory/Decorator/VoltageControl__markdown'.underscorify(),
-    input: [
-        '../../../../../yaml/xyz/openbmc_project/Inventory/Decorator/VoltageControl.interface.yaml',
-    ],
-    output: ['VoltageControl.md'],
-    depend_files: sdbusplusplus_depfiles,
-    command: [
-        sdbuspp_gen_meson_prog,
-        '--command',
-        'markdown',
-        '--output',
-        meson.current_build_dir(),
-        '--tool',
-        sdbusplusplus_prog,
-        '--directory',
-        meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Inventory/Decorator/VoltageControl',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],

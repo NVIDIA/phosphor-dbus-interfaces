@@ -1,9 +1,11 @@
 # Generated file; do not modify.
+subdir('CPER')
 subdir('Capacity')
 subdir('Create')
 subdir('Entry')
 subdir('ErrorBlocksTransition')
 subdir('Event')
+subdir('Extension')
 subdir('IPMI')
 subdir('Namespace')
 subdir('RsyslogActionsManager')
@@ -11,7 +13,6 @@ subdir('RsyslogClient')
 subdir('RsyslogFwd')
 subdir('SEL')
 subdir('Settings')
-subdir('Syslog')
 
 sdbusplus_current_path = 'xyz/openbmc_project/Logging'
 

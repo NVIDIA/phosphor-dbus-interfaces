@@ -2,7 +2,6 @@
 subdir('Client')
 subdir('DHCPConfiguration')
 subdir('EthernetInterface')
-subdir('Experimental')
 subdir('IP')
 subdir('LLDP')
 subdir('LinkType')
