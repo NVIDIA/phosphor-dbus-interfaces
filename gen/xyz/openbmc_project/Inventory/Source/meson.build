@@ -1,5 +1,6 @@
 # Generated file; do not modify.
 subdir('DevicePresence')
+subdir('Modbus')
 subdir('PLDM')
 
 sdbusplus_current_path = 'xyz/openbmc_project/Inventory/Source'
