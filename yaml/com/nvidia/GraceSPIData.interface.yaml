@@ -1,6 +1,18 @@
-properties:
-  - name: SpiReadFd
-    type: unixfd
-    description: >
-      File descriptor pointing to file containing the last acquired spi contents.
-      Populated after a successful execution of the ReadSpi method.
+description: >
+    Holds the result of a Grace SPI read operation.
+
+methods:
+    - name: GetReadFd
+      description: >
+          Return a file descriptor to the file containing the contents from the
+          last successful ReadSpi execution on this progress object.
+
+      returns:
+          - name: Fd
+            type: unixfd
+            description: >
+                File descriptor pointing to the file containing the last
+                acquired spi contents.
+
+      errors:
+        - xyz.openbmc_project.Common.Error.Unavailable
