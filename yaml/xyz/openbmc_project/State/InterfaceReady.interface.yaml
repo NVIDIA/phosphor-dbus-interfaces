@@ -5,7 +5,7 @@ properties:
       type: enum[self.States]
       description: >
         The object known state.
-    - name: InterfaceType
+    - name: Type
       type: enum[self.InterfaceTypes]
       description: >
         The object known interface type
