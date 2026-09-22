@@ -1,0 +1,136 @@
+description: >
+    Astra (Advanced Secure Trusted Resource Architecture) control for a
+    baseboard. An implementation aggregates the devices that participate in
+    Astra on the baseboard and manages them as one group. The object shall be
+    placed below the inventory object of the chassis it controls, with at most
+    one per chassis. A requested mode takes effect only after a power cycle of
+    the baseboard; until then each device stores it as its pending mode.
+
+properties:
+    - name: State
+      type: enum[self.State]
+      default: Unknown
+      flags:
+          - readonly
+      description: >
+          The Astra state in effect across the participating devices.
+
+    - name: PendingState
+      type: enum[self.State]
+      default: Unknown
+      flags:
+          - readonly
+      description: >
+          The Astra state that takes effect across the participating devices
+          after the next power cycle of the baseboard. When neither State nor
+          PendingState is Unknown or Error and the two differ, a request has
+          been accepted but is not yet in effect.
+
+methods:
+    - name: SetAstraMode
+      description: >
+          Request the given Astra mode on every participating device. The call
+          returns immediately with an object path implementing
+          com.nvidia.Async.Status, which reports the outcome; the Value
+          property of com.nvidia.Async.Value at that path is not used. The
+          requested mode takes effect only after a power cycle of the
+          baseboard.
+
+          If fewer devices participate than the platform has, or any device is
+          unreachable, not yet discovered or not configurable, no device is
+          written and the status is Unavailable. Otherwise the implementation
+          writes every device, waits an implementation-defined settle time,
+          and reads every device back to verify the request. If any write or
+          verification fails, the implementation requests Disabled on every
+          device, verifies that rollback in the same way, and the status is
+          WriteFailure; otherwise the status is Success.
+
+          Per-device outcomes are xyz.openbmc_project.Logging.Entry objects
+          whose EventId is the returned object path, each carrying one Redfish
+          message in its REDFISH_MESSAGE_ID and REDFISH_MESSAGE_ARGS
+          AdditionalData. Base.PropertyValueModified, with the path of the
+          device's settings property and the value written, reports a request
+          or rollback written to a device.
+          NvidiaResourceEvent.DeviceDriverErrorsDetected, with the step (the
+          request or its rollback), the device and the reason, reports a
+          device that cannot be reached or does not take the request or its
+          rollback. Every entry is created before the status leaves
+          InProgress.
+
+          Throws xyz.openbmc_project.Common.Error.Unavailable when an operation
+          is already in progress or no asynchronous result object is free, and
+          xyz.openbmc_project.Common.Error.InternalFailure when the request
+          cannot be started for any other reason.
+      parameters:
+          - name: Mode
+            type: enum[self.AstraMode]
+            description: >
+                The Astra mode to request on every participating device.
+      returns:
+          - name: RetValue
+            type: object_path
+            description: >
+                DBus Object Path. Interface com.nvidia.Async.Status at this
+                returned Object Path can be used to retrieve the status of the
+                operation.
+      errors:
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+associations:
+    - name: chassis
+      description: >
+          Objects that implement Astra shall implement the "chassis"
+          association to link to the chassis they control.
+      reverse_name: astra
+      required_endpoint_interfaces:
+          - xyz.openbmc_project.Inventory.Item.Chassis
+    - name: network_adapters
+      description: >
+          Objects that implement Astra shall implement the "network_adapters"
+          association to link to each participating network adapter.
+      reverse_name: astra
+      required_endpoint_interfaces:
+          - xyz.openbmc_project.Inventory.Item.NetworkInterface
+    - name: pcie_topologies
+      description: >
+          Objects that implement Astra shall implement the "pcie_topologies"
+          association to link to each PCIe fabric that connects the
+          participating devices.
+      reverse_name: astra
+      required_endpoint_interfaces:
+          - xyz.openbmc_project.Inventory.Item.Fabric
+
+enumerations:
+    - name: AstraMode
+      description: >
+          Astra modes that can be requested.
+      values:
+          - name: Enabled
+            description: >
+                Enable Astra on every participating device.
+          - name: Disabled
+            description: >
+                Disable Astra on every participating device.
+
+    - name: State
+      description: >
+          Astra states aggregated across the participating devices.
+      values:
+          - name: Unknown
+            description: >
+                The state of at least one device is not known, because the
+                device is unreachable, not yet discovered or has not yet
+                reported its mode, or because fewer devices participate than
+                the platform has.
+          - name: Enabled
+            description: >
+                Astra is enabled on every participating device.
+          - name: Disabled
+            description: >
+                Astra is disabled on every participating device.
+          - name: Error
+            description: >
+                The participating devices report inconsistent states, or at
+                least one of them cannot be configured for Astra. Takes
+                precedence over Unknown.
