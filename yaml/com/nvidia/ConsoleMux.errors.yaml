@@ -1,0 +1,9 @@
+- name: Busy
+  description: >
+      The console UART is in use by another operation, such as a firmware
+      flash, a probe or another switch. Retry later.
+- name: InvalidArgument
+  description: The requested endpoint is not Tegra or SMCU.
+- name: SwitchFailed
+  description: >
+      The switch failed, timed out, or the new routing could not be confirmed.

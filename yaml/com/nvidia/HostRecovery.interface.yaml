@@ -1,0 +1,354 @@
+description: >
+    Recovery mode (RCM) control for a host SoC that the BMC can force into its
+    USB recovery bootloader, such as the IGX Tegra. Entering recovery pulses
+    the recovery strap, resets the host and re-routes the host USB port from
+    the external connector to the BMC so the recovery device (APX) can be
+    detected and flashed. The implementation owns the correlated recovery
+    state and persists it across restarts of the service. One object per
+    host; on IGX it is /com/nvidia/HostRecovery, owned by the
+    com.nvidia.HostRecovery service.
+
+    String-valued state properties carry the bare value names listed in their
+    descriptions, not fully qualified enumeration names.
+
+    Timestamps ending in "At" are CLOCK_BOOTTIME nanoseconds of the current
+    BMC boot unless stated otherwise, and 0 means never.
+
+properties:
+    - name: RecoveryActive
+      type: boolean
+      default: false
+      flags:
+          - readonly
+      description: >
+          True while a recovery session is active. A session starts when Enter
+          issues the strap pulse. It ends when entry fails, when the host is
+          reset or powered off, when the host is seen to leave recovery, or
+          when AbandonUnverifiedRecoverySession completes.
+
+    - name: RecoveryState
+      type: string
+      default: "Unknown"
+      flags:
+          - readonly
+      description: >
+          The correlated recovery state. One of: "Unknown" (no session, or the
+          state was abandoned), "Requested" (strap pulse issued, entry not yet
+          confirmed), "Confirmed" (the recovery device was detected or boot
+          evidence confirmed entry), "EnterFailed" (strap pulse issued but the
+          recovery device was not detected), "ExitRequested" (a reset out of
+          recovery was issued), "ExitObserved" (the host was seen to leave
+          recovery), "PoweredOff" (the host was powered off during a session).
+
+    - name: LastCheckStatus
+      type: string
+      default: "NeverRun"
+      flags:
+          - readonly
+      description: >
+          Result of the most recent recovery device probe, from Enter or
+          CheckStatus. One of: "NeverRun", "Detected", "NotDetected",
+          "TimedOut", "RouteFailed" (the USB route to the BMC could not be
+          set), "EnumerationFailed", "RestoreFailed" (the USB route back to the
+          external connector could not be restored).
+
+    - name: OperationState
+      type: string
+      default: "Idle"
+      flags:
+          - readonly
+      description: >
+          The operation in progress. One of: "Idle", "EnteringRecovery",
+          "Resetting", "Checking", "RestoringUsb", "Abandoning". Methods that
+          start an operation fail with self.Error.Busy unless this is "Idle".
+
+    - name: EvidenceProviderAvailable
+      type: boolean
+      default: false
+      flags:
+          - readonly
+      description: >
+          True while the service that reports host boot evidence through
+          ReportBootEvidence is running.
+
+    - name: EvidenceSource
+      type: string
+      default: ""
+      flags:
+          - readonly
+      description: >
+          What produced the most recent state transition. One of: "" (none),
+          "EnterAPX", "StartupAPX", "CheckAPX", "BootLog", "ChassisPowerOff",
+          "ManualOverride".
+
+    - name: ObservedTegraState
+      type: string
+      default: ""
+      flags:
+          - readonly
+      description: >
+          The host state last reported through ReportBootEvidence, as given by
+          the evidence provider. Empty if none has been accepted.
+
+    - name: BmcBootId
+      type: string
+      default: ""
+      flags:
+          - readonly
+      description: >
+          The BMC boot id (/proc/sys/kernel/random/boot_id) the recovery state
+          belongs to. Evidence tagged with another boot id is rejected.
+
+    - name: RecoveryGeneration
+      type: uint64
+      default: 0
+      flags:
+          - readonly
+      description: >
+          Incremented each time Enter starts a new recovery session. Evidence
+          is accepted only for the current generation.
+
+    - name: ActivationEpoch
+      type: uint64
+      default: 0
+      flags:
+          - readonly
+      description: >
+          Incremented on every transition of RecoveryActive from false to true,
+          so each activation is distinct even within one generation.
+
+    - name: StateRevision
+      type: uint64
+      default: 0
+      flags:
+          - readonly
+      description: >
+          Incremented on every change to the recovery state. A client can use
+          it to discard an older snapshot that arrives after a newer one.
+
+    - name: RecoveryRequestedAt
+      type: uint64
+      default: 0
+      flags:
+          - readonly
+      description: >
+          When the current session's strap pulse was issued.
+
+    - name: LastRecoveryRequestedAt
+      type: uint64
+      default: 0
+      flags:
+          - readonly
+      description: >
+          When recovery was last requested, as wall-clock seconds since the
+          Unix epoch. Unlike the other timestamps it is kept across BMC boots.
+
+    - name: LastCheckedAt
+      type: uint64
+      default: 0
+      flags:
+          - readonly
+      description: >
+          When the recovery device was last probed.
+
+    - name: LastEvidenceAt
+      type: uint64
+      default: 0
+      flags:
+          - readonly
+      description: >
+          When evidence last changed the recovery state.
+
+    - name: RecoveryAttemptCount
+      type: uint32
+      default: 0
+      flags:
+          - readonly
+      description: >
+          Enter attempts in the current attempt window of this BMC boot.
+
+    - name: NextRecoveryAttemptAllowedAt
+      type: uint64
+      default: 0
+      flags:
+          - readonly
+      description: >
+          When Enter is next allowed after the attempt limit was reached. 0
+          when Enter is not rate limited.
+
+methods:
+    - name: Enter
+      description: >
+          Put the host into recovery: route the host USB to the BMC, pulse the
+          recovery strap and reset the host, then, if VerifyAfterEnter is
+          true, wait for the recovery device and restore the USB route. The
+          call returns when the operation finishes, which can take up to 105
+          seconds; callers should allow at least 150 seconds. The outcome is
+          returned as a result document (see RetValue); an entry that was
+          attempted but not confirmed returns normally with Outcome
+          "EnterFailed" or "Requested" rather than an error.
+      parameters:
+          - name: VerifyAfterEnter
+            type: boolean
+            description: >
+                Wait for the recovery device to enumerate before returning.
+          - name: AcknowledgeUsbDisruption
+            type: boolean
+            description: >
+                Must be true. The operation disconnects the host USB port from
+                the external connector while it runs.
+      returns:
+          - name: RetValue
+            type: string
+            description: >
+                A JSON object with the members RecoveryState, LastCheckStatus,
+                OperationState (strings, values as for the properties of the
+                same names), RecoveryActive (boolean), Outcome (string, one of
+                the RecoveryState values) and Message (string, human readable).
+                Every member is always present.
+      errors:
+          - self.Error.NotSupported
+          - self.Error.NotAcknowledged
+          - self.Error.Busy
+          - self.Error.PoweredOff
+          - self.Error.AttemptLimit
+          - self.Error.Failed
+          - self.Error.RestoreFailed
+
+    - name: CheckStatus
+      description: >
+          Probe for the recovery device: route the host USB to the BMC, look
+          for the device and restore the route. The call returns when the probe
+          finishes; callers should allow at least 90 seconds. Not every
+          platform enables this method.
+      parameters:
+          - name: AcknowledgeUsbDisruption
+            type: boolean
+            description: >
+                Must be true. The probe disconnects the host USB port from the
+                external connector while it runs.
+      returns:
+          - name: RetValue
+            type: string
+            description: >
+                A result document as returned by Enter. Outcome is the
+                resulting RecoveryState.
+      errors:
+          - self.Error.NotSupported
+          - self.Error.NotAcknowledged
+          - self.Error.Busy
+          - self.Error.Failed
+          - self.Error.RestoreFailed
+
+    - name: ExitHostRecovery
+      description: >
+          Leave recovery: restore the host USB route to the external connector
+          and reset the host without the recovery strap so it boots normally.
+          Only valid while RecoveryActive is true. Callers should allow at
+          least 120 seconds.
+      parameters:
+          - name: Reason
+            type: string
+            description: >
+                Free text recorded in the journal. Truncated to 256 printable
+                ASCII characters.
+      returns:
+          - name: RetValue
+            type: string
+            description: >
+                A result document as returned by Enter. Outcome is the
+                resulting RecoveryState.
+      errors:
+          - self.Error.NotSupported
+          - self.Error.Busy
+          - self.Error.Failed
+
+    - name: AbandonUnverifiedRecoverySession
+      description: >
+          Clear RecoveryActive and set RecoveryState to "Unknown" without
+          touching the host, which stays in its current state. Generation and
+          history are kept.
+      parameters:
+          - name: Reason
+            type: string
+            description: >
+                Free text recorded in the journal. Truncated to 256 printable
+                ASCII characters.
+      errors:
+          - self.Error.Busy
+          - self.Error.Failed
+
+    - name: ReportPowerOperation
+      description: >
+          Called by the host power control service after a host power
+          operation, so a reset or power off during an active session updates
+          the recovery state. Ignored when Success is false or no session is
+          active.
+      parameters:
+          - name: OperationId
+            type: string
+            description: >
+                Identifier of the power operation, for correlation in the
+                journal.
+          - name: Operation
+            type: string
+            description: >
+                The operation performed: "reset", "power_cycle" or
+                "power_off".
+          - name: Success
+            type: boolean
+            description: >
+                Whether the operation succeeded.
+      errors:
+          - self.Error.Failed
+
+    - name: ReportBootEvidence
+      description: >
+          Called by the evidence provider when the host console log shows the
+          host booting. The evidence is accepted only if it is tagged with the
+          current BmcBootId and RecoveryGeneration, is newer than the last
+          accepted evidence, a session is active, and the matched log line
+          starts after the boundary recorded when recovery was entered.
+      parameters:
+          - name: BmcBootId
+            type: string
+            description: >
+                The BmcBootId the evidence was gathered for.
+          - name: RecoveryGeneration
+            type: uint64
+            description: >
+                The RecoveryGeneration the evidence was gathered for.
+          - name: StateRevision
+            type: uint64
+            description: >
+                The evidence provider's revision of this report. Must increase
+                between accepted reports.
+          - name: LogDevice
+            type: uint64
+            description: >
+                Device number of the console log file the line was read from.
+          - name: LogInode
+            type: uint64
+            description: >
+                Inode number of the console log file the line was read from.
+          - name: LogOffsetStart
+            type: uint64
+            description: >
+                Byte offset in the log file where the matched line starts.
+          - name: LogOffsetEnd
+            type: uint64
+            description: >
+                Byte offset in the log file where the matched line ends.
+          - name: TegraState
+            type: string
+            description: >
+                The host state the provider derived from the log, published as
+                ObservedTegraState.
+      returns:
+          - name: Accepted
+            type: boolean
+            description: >
+                True if the evidence was accepted. A provider shall not treat
+                evidence as delivered when this is false.
+      errors:
+          - self.Error.Failed

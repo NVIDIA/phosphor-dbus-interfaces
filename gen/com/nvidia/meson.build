@@ -7,6 +7,7 @@ subdir('CCMode')
 subdir('ClockMode')
 subdir('Common')
 subdir('ComputeHash')
+subdir('ConsoleMux')
 subdir('Control')
 subdir('DebugToken')
 subdir('DeviceConfiguration')
@@ -23,6 +24,7 @@ subdir('GPMMetrics')
 subdir('GraceSPI')
 subdir('GraceSPIData')
 subdir('Histogram')
+subdir('HostRecovery')
 subdir('ImageCopy')
 subdir('ImageCopyPolicy')
 subdir('ImageCopyState')
@@ -176,6 +178,31 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../yaml',
         'com/nvidia/ComputeHash',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'com/nvidia/ConsoleMux__markdown'.underscorify(),
+    input: [
+        '../../../yaml/com/nvidia/ConsoleMux.errors.yaml',
+        '../../../yaml/com/nvidia/ConsoleMux.interface.yaml',
+    ],
+    output: ['ConsoleMux.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/ConsoleMux',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],
@@ -368,6 +395,31 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../yaml',
         'com/nvidia/GraceSPIData',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'com/nvidia/HostRecovery__markdown'.underscorify(),
+    input: [
+        '../../../yaml/com/nvidia/HostRecovery.errors.yaml',
+        '../../../yaml/com/nvidia/HostRecovery.interface.yaml',
+    ],
+    output: ['HostRecovery.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/HostRecovery',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],

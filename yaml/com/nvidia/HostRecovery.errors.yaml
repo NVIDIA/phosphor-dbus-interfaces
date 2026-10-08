@@ -1,0 +1,23 @@
+- name: Busy
+  description: >
+      Another recovery operation, exit or host power operation is in progress.
+      Retry later.
+- name: NotAcknowledged
+  description: AcknowledgeUsbDisruption was not true.
+- name: PoweredOff
+  description: The host is powered off, so recovery was not attempted.
+- name: AttemptLimit
+  description: >
+      Too many Enter attempts in the current window. Retry after
+      NextRecoveryAttemptAllowedAt.
+- name: NotSupported
+  description: >
+      The operation is disabled on this platform, or not valid in the current
+      state, such as ExitHostRecovery without an active session.
+- name: Failed
+  description: The operation failed, or the recovery state could not be saved.
+- name: RestoreFailed
+  description: >
+      The host USB route could not be restored to the external connector. The
+      service retries in the background for a limited time. LastCheckStatus
+      stays RestoreFailed until a later check reports a different status.

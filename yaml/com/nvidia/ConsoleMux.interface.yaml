@@ -1,0 +1,48 @@
+description: >
+    Routing of a serial console that is shared by more than one endpoint, such
+    as the IGX BMC console UART that can be connected to either the host SoC
+    (Tegra) or the safety microcontroller (SMCU). One object per shared
+    console; on IGX it is /com/nvidia/ConsoleMux, owned by the
+    com.nvidia.ConsoleMux service.
+
+properties:
+    - name: Source
+      type: string
+      default: ""
+      flags:
+          - readonly
+      description: >
+          The endpoint the console is currently routed to: "Tegra" or "SMCU".
+          An empty string means the routing is indeterminate, for example while
+          a switch is in progress or before the console muxer has run in the
+          current BMC boot. An implementation shall not report an endpoint it
+          has not confirmed.
+
+    - name: LastSwitchTime
+      type: string
+      default: ""
+      flags:
+          - readonly
+      description: >
+          When the console was last routed to the endpoint in Source, as
+          reported by systemd for the console muxer unit (for example
+          "2026-10-07 10:15:02 UTC"). Empty when Source is empty or the time is
+          not known.
+
+methods:
+    - name: Switch
+      description: >
+          Route the console to the given endpoint. The call returns after the
+          new routing has been confirmed, or fails. Switching to the endpoint
+          already in Source succeeds without changing anything. A switch can
+          take tens of seconds; callers should allow at least 75 seconds.
+      parameters:
+          - name: Source
+            type: string
+            description: >
+                The endpoint to route the console to: "Tegra" or "SMCU". The
+                comparison is case-insensitive.
+      errors:
+          - self.Error.Busy
+          - self.Error.InvalidArgument
+          - self.Error.SwitchFailed
