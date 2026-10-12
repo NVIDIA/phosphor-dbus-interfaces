@@ -5,13 +5,8 @@ description: >
 methods:
     - name: GetWipeNonce
       description: >
-          Generate a new wipe nonce on the ERoT identified by EID and return
+          Generate a new wipe nonce on the ERoT and return
           it. The caller does not choose the nonce value.
-      parameters:
-          - name: EID
-            type: byte
-            description: >
-                Endpoint ID of the ERoT that generates the nonce.
       errors:
           - xyz.openbmc_project.Common.Error.InternalFailure
           - xyz.openbmc_project.Common.Error.NotAllowed
@@ -27,16 +22,12 @@ methods:
 
     - name: EnrollWipeKey
       description: >
-          Enroll or replace the wipe public key on the ERoT identified by
-          EID. An empty Signature enrolls the first key. A Signature replaces
+          Enroll or replace the wipe public key on the ERoT. 
+          An empty Signature enrolls the first key. A Signature replaces
           a key that is already enrolled and covers the currently enrolled
           key and the nonce that ERoT holds. The caller does not supply the
           nonce.
       parameters:
-          - name: EID
-            type: byte
-            description: >
-                Endpoint ID of the ERoT that receives the key.
           - name: PublicKey
             type: array[byte]
             description: >

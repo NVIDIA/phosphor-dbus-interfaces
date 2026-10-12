@@ -1,11 +1,11 @@
 # Generated file; do not modify.
 
-sdbusplus_current_path = 'com/nvidia/BF/FactoryReset'
+sdbusplus_current_path = 'com/nvidia/BF/AttestedWipe'
 
 generated_sources += custom_target(
-    'com/nvidia/BF/FactoryReset__cpp'.underscorify(),
+    'com/nvidia/BF/AttestedWipe__cpp'.underscorify(),
     input: [
-        '../../../../../yaml/com/nvidia/BF/FactoryReset.interface.yaml',
+        '../../../../../yaml/com/nvidia/BF/AttestedWipe.interface.yaml',
     ],
     output: [
         'common.hpp',
@@ -25,7 +25,7 @@ generated_sources += custom_target(
         sdbusplusplus_prog,
         '--directory',
         meson.current_source_dir() / '../../../../../yaml',
-        'com/nvidia/BF/FactoryReset',
+        'com/nvidia/BF/AttestedWipe',
     ],
     install: should_generate_cpp,
     install_dir: [
