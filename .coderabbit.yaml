@@ -1,17 +1,13 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+#
+# Shared OpenBMC review rules live in dgx/bmc/coderabbit and are pulled in
+# via inheritance. Only rules unique to phosphor-dbus-interfaces belong in
+# this file.
 language: "en-US"
 early_access: false
 inheritance: true
 
 reviews:
-    profile: "assertive"
-    high_level_summary: true
-    high_level_summary_in_walkthrough: true
-    review_status: true
-    poem: false
-    request_changes_workflow: false
-    commit_status: false
-
     path_instructions:
         - path: "**/*.interface.yaml"
           instructions: |
