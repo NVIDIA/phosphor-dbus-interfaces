@@ -7,7 +7,11 @@ description: >
 paths:
     - namespace: /xyz/openbmc_project/control/power_cycle
       description: >
-          Root path for per-host platform power-cycle control objects.
+          Root path for platform power-cycle control objects: one object per
+          host (for example host0) for host-level operations, and one object
+          per component that can be power-cycled on its own (for example
+          cpu0). A component object implements the "chassis" association to
+          its chassis inventory object.
 
 methods:
     - name: RequestPowerCycle
@@ -35,6 +39,24 @@ properties:
           request or advertise operations absent from this list.
       flags:
           - readonly
+    - name: Description
+      type: string
+      description: >
+          Human-readable description of what a power cycle of this object
+          covers, for clients to show next to the operation. Empty when the
+          object does not provide one.
+      flags:
+          - readonly
+
+associations:
+    - name: chassis
+      description: >
+          Per-component objects shall implement the "chassis" association to
+          link to the chassis inventory object of the component they
+          power-cycle.
+      reverse_name: power_cycle
+      required_endpoint_interfaces:
+          - xyz.openbmc_project.Inventory.Item.Chassis
 
 enumerations:
     - name: PowerCycleType
@@ -52,3 +74,8 @@ enumerations:
             description: >
                 Performs an immediate full platform power cycle as close as
                 possible to removing and restoring utility power.
+          - name: ComponentPowerCycle
+            description: >
+                Power-cycles only the component this object represents, for
+                example a CPU, without resetting the rest of the platform.
+                Reported only by per-component objects.
