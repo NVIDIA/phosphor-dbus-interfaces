@@ -29,16 +29,16 @@ methods:
           nonce.
       parameters:
           - name: PublicKey
-            type: array[byte]
+            type: string
             description: >
-                The P-384 wipe public key. The array length is exactly 96
+                The P-384 wipe public key. The string size is exactly 96
                 bytes.
           - name: Signature
-            type: array[byte]
+            type: string
             description: >
                 Signature over the currently enrolled key and the nonce the
                 ERoT holds. Empty for the first enrollment. Otherwise the
-                array length is exactly 96 bytes.
+                string size is exactly 96 bytes.
       errors:
           - xyz.openbmc_project.Common.Error.InternalFailure
           - xyz.openbmc_project.Common.Error.InvalidArgument
