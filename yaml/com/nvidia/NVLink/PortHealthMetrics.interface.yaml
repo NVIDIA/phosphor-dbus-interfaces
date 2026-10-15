@@ -12,10 +12,14 @@ properties:
           Per-port NVLink early health state as reported by device firmware.
           Healthy indicates normal operation; Attention indicates the firmware
           has detected a condition that may require intervention before a link
-          failure occurs; Unknown indicates the health state is not yet
-          available or the link is not active; Unavailable indicates the
-          device reports the health record as supported but currently
-          unreadable, in which case no stale value is retained.
+          failure occurs; Disabled indicates the device reports link health
+          monitoring as disabled, because link health is not supported on the
+          device or no link health metric is enabled on the port; NotMonitored
+          indicates the physical link is down and the device is not evaluating
+          link health; Unknown indicates no health record was reported or the
+          reported value is not recognized; Unavailable indicates the device
+          reports the health record as supported but currently unreadable, in
+          which case no stale value is retained.
       flags:
           - readonly
 
@@ -94,8 +98,8 @@ enumerations:
       values:
           - name: Unknown
             description: >
-                Health record not reported or not applicable: link not active,
-                health not yet determined, or a reserved encoding.
+                No health record has been reported, or the reported value is a
+                reserved encoding.
           - name: Attention
             description: >
                 Firmware has detected a link health condition requiring
@@ -108,6 +112,17 @@ enumerations:
             description: >
                 The device reports the link health record as supported but
                 currently unreadable. No stale value is retained.
+          - name: Disabled
+            description: >
+                The device reports link health monitoring as disabled: link
+                health is not supported on the device, or no link health metric
+                is enabled on the port.
+          - name: NotMonitored
+            description: >
+                The physical link is down and the device is not evaluating link
+                health metrics. The device reports the evaluated state again
+                when the link comes up. Not reported for a port whose link
+                health is Disabled.
 
     - name: AttentionTriggerReasonValues
       description: Possible trigger reasons for the Attention health state.
