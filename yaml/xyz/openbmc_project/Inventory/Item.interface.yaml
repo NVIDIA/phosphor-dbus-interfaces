@@ -133,6 +133,14 @@ associations:
           - xyz.openbmc_project.Control.Valve
           - xyz.openbmc_project.Control.Power.Cap
           - xyz.openbmc_project.Control.OperatingClockSpeed
+    - name: described_by
+      description: >
+          Objects that implement Item can optionally implement the
+          'described_by' association to provide a link to the binary image of
+          their data.
+      reverse_name: describing
+      required_endpoint_interfaces:
+          - xyz.openbmc_project.Inventory.BinaryData
 
 paths:
     - namespace: /xyz/openbmc_project/inventory

@@ -1,0 +1,81 @@
+description: >
+    Implement to provide a binary image of the data of an inventory item. The
+    format of the image is implementation defined. The object implementing the
+    interface is linked to the inventory item by the 'describing' association.
+    It also implements xyz.openbmc_project.Common.Progress, whose Status
+    reports the outcome of the last SetData or ResetToDefaults request. Either
+    method is rejected with Unavailable while Status is InProgress.
+
+properties:
+    - name: Resettable
+      type: boolean
+      description: >
+          Whether or not the item data can be restored to its defaults.
+      flags:
+          - readonly
+      default: false
+
+methods:
+    - name: GetData
+      description: >
+          Get the image of the current item data. The mode of the file
+          descriptor is read-only.
+      returns:
+          - name: Data
+            type: unixfd
+            description: >
+                The file descriptor to the image.
+      errors:
+          - xyz.openbmc_project.Common.Device.Error.ReadFailure
+          - xyz.openbmc_project.Common.Error.Unavailable
+
+    - name: SetData
+      description: >
+          Replace the image of the item data. The method returns once the
+          image is validated and accepted; a rejected image changes nothing.
+          Follow the update on xyz.openbmc_project.Common.Progress on this
+          object: Status is InProgress when the method returns, then
+          Completed once the item data, and with it GetData, reflects the new
+          image, or Failed with the item data left unchanged.
+      parameters:
+          - name: Data
+            type: unixfd
+            description: >
+                The file descriptor to the new image. It must refer to a
+                regular file or a memory file, read from its beginning. The
+                image is expected to be small, in the order of a FRU EEPROM;
+                implementations may reject larger images with InvalidArgument.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.File.Error.Read
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure
+
+    - name: ResetToDefaults
+      description: >
+          Restore the item data to its defaults. The method returns once the
+          request is accepted. Follow the update on
+          xyz.openbmc_project.Common.Progress on this object, as for SetData:
+          Status is InProgress when the method returns, then Completed once
+          the item data, and with it GetData, reflects the defaults, or Failed
+          with the item data left unchanged.
+      errors:
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.Common.Error.Unavailable
+          - xyz.openbmc_project.Common.Device.Error.WriteFailure
+
+paths:
+    - namespace: /xyz/openbmc_project/inventory/binary_data
+      description: >
+          The root path for the binary images of inventory item data.
+
+associations:
+    - name: describing
+      description: >
+          Objects that implement BinaryData must implement the 'describing'
+          association to provide a link to the inventory item whose data the
+          image holds.
+      reverse_name: described_by
+      required_endpoint_interfaces:
+          - xyz.openbmc_project.Inventory.Item
