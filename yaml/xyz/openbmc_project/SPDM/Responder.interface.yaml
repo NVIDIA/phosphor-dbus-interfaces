@@ -12,7 +12,8 @@ methods:
           SPDM interface client should wait on an event of changing the Status property
           and check its value for required action.
           If this command is received before finishing communication requested
-          by the earlier command then it will be ignored.
+          by the earlier command then it fails with Unavailable and the
+          caller can retry later.
       parameters:
         - name: slot
           type: byte
@@ -40,6 +41,8 @@ methods:
               Session ID chosen for the communication channel.
               For now this parameter is optional as this implementation does not provide
               secure sessions implementation.
+      errors:
+        - xyz.openbmc_project.Common.Error.Unavailable
 
 properties:
     - name: Measurements
