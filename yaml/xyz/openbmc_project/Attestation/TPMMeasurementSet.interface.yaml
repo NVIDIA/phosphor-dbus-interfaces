@@ -1,0 +1,46 @@
+description: >
+    Implement to represent the set of Platform Configuration Register (PCR)
+    measurements of a Trusted Platform Module (TPM). The BMC does not read the
+    TPM itself; the measurements are supplied by the host firmware, which reads
+    them from the TPM during boot and pushes them to the BMC. Objects
+    implementing this interface are expected to also implement
+    xyz.openbmc_project.Attestation.ComponentIntegrity with Type set to TPM.
+
+properties:
+    - name: Measurements
+      type: array[dict[string,variant[uint32,string,array[byte],uint64]]]
+      flags:
+          - readonly
+      description: >
+          The PCR measurements, one entry per PCR per active hash bank. Each
+          entry is a dictionary with four keys. "Pcr" (uint32) is the PCR
+          index, 0 through 23. "HashAlgorithm" (string) is the hash algorithm
+          of the bank as a TCG Algorithm Registry name, for example "SHA256"
+          or "SHA384". "Digest" (array[byte]) is the raw digest held in the
+          PCR; its length is fixed by the algorithm, 32 bytes for SHA256 and
+          48 for SHA384. "Updated" (uint64) is when this entry was last
+          written, in milliseconds since the UNIX epoch.
+
+          A given Pcr and HashAlgorithm pair appears at most once. The set is
+          replaced as a whole. An implementation shall reject a replacement
+          that contains any invalid entry and retain the previous set.
+
+methods:
+    - name: UpdateMeasurements
+      description: >
+          Replace the measurement set. Intended to be called by the Redfish
+          front end on behalf of the host firmware. The implementation
+          validates every entry before storing and rejects the whole set if
+          any entry is invalid.
+      parameters:
+          - name: Measurements
+            type: array[dict[string,variant[uint32,string,array[byte],uint64]]]
+            description: >
+                The new measurement set, in the same shape as the Measurements
+                property.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+paths:
+    - namespace: /xyz/openbmc_project/component_integrity
