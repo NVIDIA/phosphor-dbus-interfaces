@@ -1,0 +1,34 @@
+description: >
+    Power profiles of a device that supports selectable power capping
+    profiles, such as an NVSwitch ASIC. Each profile is identified by a
+    device-assigned ID and name; the device applies one profile at a time.
+
+properties:
+    - name: ActiveProfileId
+      type: byte
+      flags:
+          - readonly
+      description: >
+          The ID of the profile the device reports as active. ID 0 selects the
+          hardware default profile. Changes are requested through the
+          com.nvidia.Async.Set interface; the outcome is reported by the
+          com.nvidia.Async.Status of the returned operation object. A successful
+          request means the device accepted the requested ID; this property then
+          shows the ID the device reports. The requested ID shall be listed in
+          AvailableProfiles.
+
+    - name: ActiveProfileName
+      type: string
+      flags:
+          - readonly
+      description: >
+          The name of the active profile, as listed in AvailableProfiles.
+
+    - name: AvailableProfiles
+      type: array[struct[byte, string, boolean]]
+      flags:
+          - readonly
+      description: >
+          The profiles the device offers, as (ID, name, active) entries. The
+          first entry is always the hardware default profile (ID 0), named
+          HardwareDefault unless the device reports a name for it.
