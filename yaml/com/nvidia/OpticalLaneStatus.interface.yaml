@@ -1,0 +1,28 @@
+description: >
+    Per-lane transmit and receive status of an optical module, for example a
+    near-package optic or an OSFP transceiver. Each array is indexed by lane.
+properties:
+    - name: TxFault
+      type: array[enum[self.LaneStatus]]
+      description: >
+          Per-lane transmitter fault, indexed by lane. Asserted when that
+          lane's transmitter has faulted.
+      flags:
+        - readonly
+    - name: RxLossOfSignal
+      type: array[enum[self.LaneStatus]]
+      description: >
+          Per-lane receiver loss of signal, indexed by lane. Asserted when
+          that lane has lost its receive signal.
+      flags:
+        - readonly
+
+enumerations:
+    - name: LaneStatus
+      values:
+        - name: Clear
+          description: >
+              The condition is not present on the lane.
+        - name: Asserted
+          description: >
+              The condition is present on the lane.
