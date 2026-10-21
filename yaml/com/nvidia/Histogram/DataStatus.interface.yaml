@@ -1,0 +1,55 @@
+description: >
+    Implement to report whether the histogram data on the same object can be
+    trusted, based on the outcome of the most recent read from the device. The
+    bucket data keeps the last valid sample when a read fails.
+
+properties:
+    - name: Status
+      type: enum[self.States]
+      default: Unknown
+      flags:
+          - readonly
+      description: >
+          The outcome of the most recent histogram read.
+
+    - name: Reason
+      type: string
+      flags:
+          - readonly
+      description: >
+          Device and transport codes for the most recent failed read, for
+          debugging. Empty when Status is Valid or Unknown.
+
+    - name: LastSampleTimestamp
+      type: uint64
+      default: 0
+      flags:
+          - readonly
+      description: >
+          Time of the most recent valid read, in microseconds since the epoch.
+          0 when no valid read has happened.
+
+enumerations:
+    - name: States
+      description: >
+          Possible outcomes of a histogram read.
+      values:
+          - name: Unknown
+            description: >
+                No read has completed yet.
+          - name: Valid
+            description: >
+                The read succeeded and the bucket data is current.
+          - name: AsicNotReady
+            description: >
+                The device is busy, not ready, booting or updating. A later
+                read may succeed.
+          - name: UnsupportedFirmware
+            description: >
+                The device firmware does not support reading this histogram.
+          - name: TransportError
+            description: >
+                No response was received from the device.
+          - name: ProtocolError
+            description: >
+                The device returned a malformed or failed response.
