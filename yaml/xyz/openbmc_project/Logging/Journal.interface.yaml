@@ -1,0 +1,10 @@
+description: >
+    Configure systemd-journald local journal store verbosity (MaxLevelStore).
+properties:
+    - name: LowestSeverity
+      type: enum[xyz.openbmc_project.Logging.Entry.Level]
+      description: >
+          Lowest severity stored in the local journal. Maps to journald
+          MaxLevelStore.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
