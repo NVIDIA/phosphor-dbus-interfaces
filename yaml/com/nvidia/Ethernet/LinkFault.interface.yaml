@@ -1,0 +1,41 @@
+description: >
+    Fault indications of an Ethernet link, read from the MAC and PCS of the
+    port. Each property is the state the last read found; Unknown means the
+    port reported no reading for that indication.
+properties:
+    - name: LocalFault
+      type: enum[self.FaultState]
+      default: Unknown
+      description: >
+          Local fault: the receive path of this port sees no valid signal.
+      flags:
+        - readonly
+    - name: RemoteFault
+      type: enum[self.FaultState]
+      default: Unknown
+      description: >
+          Remote fault: the link partner reports that it sees no valid
+          signal from this port.
+      flags:
+        - readonly
+    - name: HighBER
+      type: enum[self.FaultState]
+      default: Unknown
+      description: >
+          High bit error ratio: the PCS of this port measures a bit error
+          ratio above its threshold.
+      flags:
+        - readonly
+
+enumerations:
+    - name: FaultState
+      values:
+        - name: Clear
+          description: >
+              The indication is not asserted.
+        - name: Asserted
+          description: >
+              The indication is asserted.
+        - name: Unknown
+          description: >
+              The port reported no reading for the indication.
