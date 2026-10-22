@@ -1,0 +1,187 @@
+description: >
+    Persistent power capping policy of one device, such as an NVSwitch ASIC.
+    The policy holds the desired power capping state and power profile. The
+    implementation stores the policy across BMC reboots and applies it to the
+    device whenever the device becomes available, including after a device
+    reset. A request may be made while the device is not available; it is
+    stored and applied when the device becomes available. A desired value of
+    Unset means the implementation does not change that setting on the device.
+    The current device values are reported by the device's
+    com.nvidia.DeviceMode.PowerCappingMode and com.nvidia.PowerCapping.Profile
+    interfaces.
+
+properties:
+    - name: DesiredState
+      type: enum[self.DesiredCapMode]
+      default: Unset
+      flags:
+          - readonly
+      description: >
+          The desired power capping state. Changes are requested through the
+          com.nvidia.Async.Set interface, with the value given as the full
+          enumeration string. Setting Unset stops enforcing the state; the
+          device keeps its current state.
+
+    - name: DesiredProfile
+      type: struct[int16, string]
+      default: '{-1, ""}'
+      flags:
+          - readonly
+      description: >
+          The desired power profile as (ID, name). The ID is 0 to 255, or -1
+          with an empty name when unset. Unset is the default and means the
+          implementation never changes the profile on the device. ID 0 selects the hardware default
+          profile. Changes are requested through the SetDesiredProfile method.
+          The profile is applied only while the device lists this ID with this
+          name in its com.nvidia.PowerCapping.Profile AvailableProfiles. When
+          the device lists the ID under a different name, nothing is written
+          and ApplyStatus is ProfileMismatch.
+
+    - name: ApplyStatus
+      type: enum[self.ApplyStatuses]
+      default: Unset
+      flags:
+          - readonly
+      description: >
+          The result of applying the desired policy to the device.
+
+    - name: LastError
+      type: enum[self.Errors]
+      default: None
+      flags:
+          - readonly
+      description: >
+          The error of the most recent failed apply attempt. None when the most
+          recent apply succeeded or no apply has been attempted.
+
+    - name: Online
+      type: boolean
+      default: false
+      flags:
+          - readonly
+      description: >
+          Whether the device is currently available to the implementation.
+
+    - name: LastApplyTime
+      type: uint64
+      default: 0
+      flags:
+          - readonly
+      description: >
+          Time of the most recent completed apply, in microseconds since the
+          epoch. 0 when no apply has completed.
+
+methods:
+    - name: SetDesiredProfile
+      description: >
+          Set the desired power profile. An ID of -1 with an empty name
+          clears the desired profile; it is always accepted, and the device
+          keeps its current profile. Any other request needs an ID from 0 to
+          255 and a non-empty name, otherwise it fails with InvalidArgument.
+          When the device is available, the (ID, name) pair shall match an
+          entry of the device's com.nvidia.PowerCapping.Profile
+          AvailableProfiles, otherwise the request fails with InvalidArgument
+          and nothing is stored. When the device is not available, the pair
+          is stored and checked once the device becomes available.
+      parameters:
+          - name: Id
+            type: int16
+            description: >
+                Profile ID, 0 to 255, or -1 to unset.
+          - name: Name
+            type: string
+            description: >
+                Profile name as listed by the device. Empty when Id is -1.
+      returns:
+          - name: ObjectPath
+            type: object_path
+            description: >
+                DBus Object Path. Interface com.nvidia.Async.Status at this
+                returned Object Path reports the result: the apply result when
+                the device is available, otherwise the result of storing the
+                request.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.NotAllowed
+          - xyz.openbmc_project.Common.Error.InternalFailure
+
+enumerations:
+    - name: DesiredCapMode
+      description: >
+          Desired power capping state values.
+      values:
+          - name: Unset
+            description: >
+                No state is desired; the device state is not changed.
+          - name: Enabled
+            description: >
+                Power capping shall be enabled.
+          - name: Disabled
+            description: >
+                Power capping shall be disabled.
+
+    - name: ApplyStatuses
+      description: >
+          Possible results of applying the policy.
+      values:
+          - name: Unset
+            description: >
+                Nothing is desired; the device is not changed.
+          - name: Pending
+            description: >
+                A policy is stored and waits for the device to become
+                available.
+          - name: InProgress
+            description: >
+                The policy is being applied to the device.
+          - name: Applied
+            description: >
+                The device reports the desired state and profile.
+          - name: AppliedOnReset
+            description: >
+                The device accepted the desired state, which becomes current
+                after the next device reset. The desired profile, if any, is
+                active.
+          - name: Failed
+            description: >
+                Applying the policy failed after retries. LastError holds the
+                cause. The policy is applied again when the device next becomes
+                available or a new request is made.
+          - name: InvalidProfile
+            description: >
+                The desired profile ID is not offered by the device. Nothing
+                was written to the device, including the desired state.
+          - name: ProfileMismatch
+            description: >
+                The device lists the desired profile ID under a different name
+                than the stored one. Nothing was written to the device,
+                including the desired state, until a new profile is set.
+          - name: NotSupported
+            description: >
+                The device does not support a desired setting.
+
+    - name: Errors
+      description: >
+          Apply error values.
+      values:
+          - name: None
+            description: >
+                No error.
+          - name: Unavailable
+            description: >
+                The device or its management service was not available.
+          - name: Timeout
+            description: >
+                The device did not complete the request in time.
+          - name: WriteFailure
+            description: >
+                The device rejected or failed the write.
+          - name: ReadbackMismatch
+            description: >
+                The device accepted the write but reports a different value.
+          - name: InvalidArgument
+            description: >
+                The device rejected the desired value as invalid.
+          - name: UnsupportedRequest
+            description: >
+                The device does not support the desired setting.
