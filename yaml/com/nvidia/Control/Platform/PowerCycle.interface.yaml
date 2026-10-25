@@ -24,9 +24,12 @@ methods:
             type: enum[self.PowerCycleType]
             description: >
                 Power-cycle operation to request. The value must be present in
-                SupportedPowerCycleTypes on this object.
+                SupportedPowerCycleTypes on this object. Implementations should
+                reject a valid type that is not present with
+                UnsupportedRequest.
       errors:
           - xyz.openbmc_project.Common.Error.InvalidArgument
+          - xyz.openbmc_project.Common.Error.UnsupportedRequest
           - xyz.openbmc_project.Common.Error.NotAllowed
           - xyz.openbmc_project.Common.Error.Unavailable
           - xyz.openbmc_project.Common.Error.InternalFailure
