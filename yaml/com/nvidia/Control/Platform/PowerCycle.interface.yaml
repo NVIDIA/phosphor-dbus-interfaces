@@ -10,7 +10,7 @@ paths:
           Root path for platform power-cycle control objects: one object per
           host (for example host0) for host-level operations, and one object
           per component that can be power-cycled on its own (for example
-          cpu0). A component object implements the "chassis" association to
+          cpu0). A component object implements the "powering" association to
           its chassis inventory object.
 
 methods:
@@ -52,12 +52,12 @@ properties:
           - readonly
 
 associations:
-    - name: chassis
+    - name: powering
       description: >
-          Per-component objects shall implement the "chassis" association to
+          Per-component objects shall implement the "powering" association to
           link to the chassis inventory object of the component they
           power-cycle.
-      reverse_name: power_cycle
+      reverse_name: powered_by
       required_endpoint_interfaces:
           - xyz.openbmc_project.Inventory.Item.Chassis
 

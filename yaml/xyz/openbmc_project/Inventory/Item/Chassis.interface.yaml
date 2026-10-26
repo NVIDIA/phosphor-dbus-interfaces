@@ -60,10 +60,12 @@ associations:
       description: >
           Objects that implement Chassis can optionally implement the
           'powered_by' association to provide a link to one or more power
-          supplies.
+          supplies, and to the power-cycle control object of a component in
+          the chassis that can be power-cycled on its own.
       reverse_name: powering
       required_endpoint_interfaces:
           - xyz.openbmc_project.Inventory.Item.PowerSupply
+          - com.nvidia.Control.Platform.PowerCycle
     - name: computer_system
       description: >
           Defines the association between a system inventory item and the
@@ -71,12 +73,3 @@ associations:
       reverse_name: chassis
       required_endpoint_interfaces:
           - xyz.openbmc_project.Inventory.Item.System
-    - name: power_cycle
-      description: >
-          Objects that implement Chassis can optionally implement the
-          'power_cycle' association to provide a link to the power-cycle
-          control object of a component in the chassis that can be
-          power-cycled on its own.
-      reverse_name: chassis
-      required_endpoint_interfaces:
-          - com.nvidia.Control.Platform.PowerCycle
