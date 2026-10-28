@@ -4,7 +4,7 @@ methods:
     - name: Install
       description: >
           Install the certificate and restart the associated services.
-          NotAllowed error thrown if certificate already exists.
+          CertificateAlreadyExists error thrown if certificate already exists.
       parameters:
           - name: Path
             type: string
@@ -23,3 +23,4 @@ methods:
           - xyz.openbmc_project.Common.Error.InternalFailure
           - xyz.openbmc_project.Common.Error.NotAllowed
           - xyz.openbmc_project.Certs.Error.InvalidCertificate
+          - xyz.openbmc_project.Certs.Error.CertificateAlreadyExists
