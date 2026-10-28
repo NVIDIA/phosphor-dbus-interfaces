@@ -1,0 +1,16 @@
+description: >
+    Interface for clearing BIOS non-volatile configuration storage.
+
+methods:
+    - name: Clear
+      description: >
+          Start an asynchronous clear of the BIOS NVRAM configuration region.
+      returns:
+          - name: ObjectPath
+            type: object_path
+            description: >
+                The object path implementing
+                xyz.openbmc_project.Common.Progress for this operation.
+      errors:
+          - xyz.openbmc_project.Common.Error.InternalFailure
+          - xyz.openbmc_project.Common.Error.Unavailable
