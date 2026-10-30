@@ -26,6 +26,9 @@ enumerations:
         - name: Fan
           description: >
             A fan.
+        - name: FPGA
+          description: >
+            A Field Programmable Gate Array (FPGA).
         - name: Front
           description: >
             The front of the chassis.
