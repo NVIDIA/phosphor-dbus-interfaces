@@ -236,6 +236,9 @@ enumerations:
           - name: LPDDR5_SDRAM
             description: >
                 Low-Power Double Data Rate 5 SDRAM.
+          - name: MRDIMM
+            description: >
+                Multiplexed Rank DIMM.
     - name: FormFactor
       description: >
           Implementation form factor for this memory device.
@@ -273,3 +276,9 @@ enumerations:
           - name: Die
             description: >
                 A die within a package.
+          - name: CUDIMM
+            description: >
+                Clocked Unbuffered DIMM.
+          - name: CSODIMM
+            description: >
+                Clocked Small Outline DIMM.
