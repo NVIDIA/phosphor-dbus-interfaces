@@ -37,3 +37,4 @@ generated_sources += custom_target(
     ],
     build_by_default: should_generate_cpp,
 )
+
