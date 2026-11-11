@@ -4,13 +4,9 @@ description: >
 methods:
     - name: Clear
       description: >
-          Start an asynchronous clear of the BIOS NVRAM configuration region.
-      returns:
-          - name: ObjectPath
-            type: object_path
-            description: >
-                The object path implementing
-                xyz.openbmc_project.Common.Progress for this operation.
+          Clear the BIOS NVRAM configuration region. This D-Bus method replies
+          only after the clear operation reaches a terminal state. Callers must
+          set the D-Bus method-call timeout to at least 60 seconds.
       errors:
           - xyz.openbmc_project.Common.Error.InternalFailure
           - xyz.openbmc_project.Common.Error.Unavailable
