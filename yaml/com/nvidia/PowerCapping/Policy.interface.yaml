@@ -137,11 +137,6 @@ enumerations:
           - name: Applied
             description: >
                 The device reports the desired state and profile.
-          - name: AppliedOnReset
-            description: >
-                The device accepted the desired state, which becomes current
-                after the next device reset. The desired profile, if any, is
-                active.
           - name: Failed
             description: >
                 Applying the policy failed after retries. LastError holds the
