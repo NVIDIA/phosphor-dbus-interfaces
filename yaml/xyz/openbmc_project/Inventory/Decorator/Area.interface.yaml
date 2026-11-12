@@ -68,3 +68,6 @@ enumerations:
         - name: Manager
           description: >
             A software-defined management controller.
+        - name: Transceiver
+          description: >
+            A pluggable or co-packaged optical transceiver.
