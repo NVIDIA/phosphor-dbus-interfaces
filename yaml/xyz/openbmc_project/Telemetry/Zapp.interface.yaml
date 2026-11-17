@@ -46,8 +46,25 @@ properties:
       description: >
           Egress profile towards the telemetry destination, from the Zapp
           specification's protocol table. An HMC producer streams UDP to the
-          gateway on the internal link; a BMC gateway may use UDP or either
-          QUIC profile towards the collector.
+          gateway on the internal link; a BMC gateway streams to the collector
+          over a QUIC stream. A value outside AllowedTransports is refused by
+          the Redfish layer on write and by the consumer on read.
+    - name: AllowedTransports
+      type: array[enum[self.Transport]]
+      flags:
+          - readonly
+      description: >
+          The egress profiles this Manager may use, set by the platform (the
+          settings defaults of the machine), not by the operator: on a BMC
+          whose destination is a collector on the customer network the two
+          QUIC profiles, QUICStream and QUICDatagram, because UDP egress
+          would carry device telemetry unauthenticated and unencrypted over
+          that network; on an HMC whose destination is the gateway on the
+          internal link, UDP. The Redfish
+          layer rejects a write of Transport (or of an endpoint URI that
+          implies one) outside this list; a consumer that finds Transport
+          outside the list refuses to stream and reports the reason. An empty
+          list means the platform states no restriction.
     - name: ActuationEnabled
       type: boolean
       default: false
