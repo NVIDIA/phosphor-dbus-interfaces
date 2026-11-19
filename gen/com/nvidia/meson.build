@@ -63,6 +63,7 @@ subdir('State')
 subdir('StaticPowerHint')
 subdir('SwitchIsolation')
 subdir('SysGUID')
+subdir('Telemetry')
 subdir('UpdateSKU')
 subdir('User')
 

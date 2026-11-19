@@ -1,11 +1,11 @@
 # Generated file; do not modify.
 
-sdbusplus_current_path = 'xyz/openbmc_project/Telemetry/Zapp'
+sdbusplus_current_path = 'com/nvidia/Telemetry/Zapp'
 
 generated_sources += custom_target(
-    'xyz/openbmc_project/Telemetry/Zapp__cpp'.underscorify(),
+    'com/nvidia/Telemetry/Zapp__cpp'.underscorify(),
     input: [
-        '../../../../../yaml/xyz/openbmc_project/Telemetry/Zapp.interface.yaml',
+        '../../../../../yaml/com/nvidia/Telemetry/Zapp.interface.yaml',
     ],
     output: [
         'common.hpp',
@@ -25,7 +25,7 @@ generated_sources += custom_target(
         sdbusplusplus_prog,
         '--directory',
         meson.current_source_dir() / '../../../../../yaml',
-        'xyz/openbmc_project/Telemetry/Zapp',
+        'com/nvidia/Telemetry/Zapp',
     ],
     install: should_generate_cpp,
     install_dir: [
