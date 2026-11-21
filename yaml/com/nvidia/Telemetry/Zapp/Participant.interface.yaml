@@ -1,0 +1,109 @@
+description: >
+    Lifecycle read-out of one Zapp participant: a daemon that forwards
+    (gateway) or sends (producer) Zapp streaming telemetry. Each
+    participant publishes exactly one object with this interface on its
+    own service, from daemon start, so every participant can be found by
+    this interface name alone. Configuration is not here: the participant
+    follows the Zapp settings object (com.nvidia.Telemetry.Zapp) and
+    reports how far it has got with it. All properties are read-only;
+    State, Reason and Connected emit PropertiesChanged.
+
+properties:
+    - name: Name
+      type: string
+      flags:
+          - const
+      description: >
+          Stable short name of the participant for lists, for example
+          "gateway", "nsmd" or "pldmd". Constant for the life of the
+          object.
+    - name: Role
+      type: enum[self.Role]
+      flags:
+          - const
+      description: >
+          What this participant does with the stream. Constant for the
+          life of the object.
+    - name: State
+      type: enum[self.State]
+      flags:
+          - readonly
+      description: >
+          How far the participant has got with the stored configuration.
+    - name: Reason
+      type: enum[self.Reason]
+      flags:
+          - readonly
+      description: >
+          Why State is Stopped or Failed. None while Running.
+    - name: Connected
+      type: boolean
+      flags:
+          - readonly
+      description: >
+          The link is up: the egress to the collector on a gateway, the
+          sends to the gateway ingress on a producer. False while Running
+          means the participant is retrying.
+
+enumerations:
+    - name: Role
+      description: >
+          Zapp participant roles.
+      values:
+          - name: Gateway
+            description: >
+                Forwards the producers' telemetry to the collector.
+          - name: Producer
+            description: >
+                Sends device telemetry to a gateway.
+    - name: State
+      description: >
+          Zapp participant lifecycle states.
+      values:
+          - name: Stopped
+            description: >
+                Nothing runs; Reason says why.
+          - name: Running
+            description: >
+                The stored configuration was accepted. On a gateway the
+                ingress socket is bound and the egress is being
+                established or up; on a producer sends to the gateway
+                ingress are running. Any link failure is retried on its
+                own; Connected says whether the link is up.
+          - name: Failed
+            description: >
+                The stored configuration cannot be applied as it is;
+                nothing changes until the settings change or the daemon
+                restarts, except for Reason IngressUnavailable, which
+                clears on its own once the bind succeeds. Reason says why.
+    - name: Reason
+      description: >
+          Why a Zapp participant is Stopped or Failed.
+      values:
+          - name: None
+            description: >
+                Running.
+          - name: Disabled
+            description: >
+                The settings object says disabled for this role.
+          - name: SettingsNotRead
+            description: >
+                The settings object has not been read yet.
+          - name: LibraryNotReady
+            description: >
+                The Zapp library instance is not created yet.
+          - name: InvalidConfiguration
+            description: >
+                The stored configuration is malformed for this role, for
+                example an unparsable destination.
+          - name: TransportNotAllowed
+            description: >
+                Transport is outside AllowedTransports.
+          - name: IngressUnavailable
+            description: >
+                A gateway could not bind its ingress address and port; it
+                retries and the state clears by itself when the bind
+                succeeds. Never reported by a producer.
+          - name: LibraryLost
+            description: >
+                The library instance was lost; a daemon restart is needed.
