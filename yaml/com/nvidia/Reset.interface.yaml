@@ -45,3 +45,9 @@ enumerations:
             Hardware reset of the optical transceiver module on a specific
             port. Only the targeted port is reset; all other ports and
             device functionality remain unaffected.
+        - name: FactoryDefaultReset
+          description: >
+            Restores the NIC configuration to NVIDIA factory defaults,
+            clearing the user nvconfig (TLVs) in the NV_DATA flash partition.
+            Availability is advertised per-device via the Get Supported Device
+            Resets command.
