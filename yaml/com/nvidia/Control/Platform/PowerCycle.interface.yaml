@@ -42,14 +42,6 @@ properties:
           request or advertise operations absent from this list.
       flags:
           - readonly
-    - name: Description
-      type: string
-      description: >
-          Human-readable description of what a power cycle of this object
-          covers, for clients to show next to the operation. Empty when the
-          object does not provide one.
-      flags:
-          - readonly
 
 associations:
     - name: powering
