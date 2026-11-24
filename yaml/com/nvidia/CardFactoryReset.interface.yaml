@@ -1,0 +1,58 @@
+description: >
+    Orchestrates a device factory reset to NVIDIA defaults. A single
+    Reset call selects the scope; progress is tracked via a returned object that
+    implements xyz.openbmc_project.Common.Progress.
+
+methods:
+    - name: Reset
+      description: >
+          Begin a factory-reset transaction with the requested scope. Returns
+          immediately; the reset completes across subsequent reboots. Only one
+          transaction may be active at a time.
+      parameters:
+          - name: Type
+            type: enum[self.ResetTypes]
+            description: >
+                Reset scope — FactoryReset (including the CPU OS/NVMe wipe),
+                FactoryResetWithoutOsWipe (everything except the CPU OS
+                wipe), or RMA (full RMA wipe).
+      returns:
+          - name: Operation
+            type: object_path
+            description: >
+                The object path of the object that implements
+                xyz.openbmc_project.Common.Progress to track the progress of the
+                factory reset. A client (e.g. bmcweb) binds a task to this object
+                and maps its Status/Progress to the task state.
+      errors:
+          - xyz.openbmc_project.Common.Error.Unavailable   # a reset is already in progress
+          - xyz.openbmc_project.Common.Error.NotAllowed    # preconditions not met
+
+properties:
+    - name: SupportedResetTypes
+      type: array[enum[self.ResetTypes]]
+      description: >
+          Reset types supported by this implementation on the current platform.
+          Each value matches a name from the ResetTypes enumeration defined in
+          this interface (com.nvidia.CardFactoryReset.ResetTypes). Clients may
+          use this list to discover valid arguments for the Reset method.
+      flags:
+          - const
+
+enumerations:
+    - name: ResetTypes
+      description: Factory-reset scope selector.
+      values:
+          - name: FactoryReset
+            description: >
+                Full reset to NVIDIA defaults INCLUDING the CPU OS storage
+                (NVMe/SSD) wipe — DPU-BMC config, CPU UEFI variables, CPU
+                OS storage, and NIC nvconfig.
+          - name: FactoryResetWithoutOsWipe
+            description: >
+                Full reset to NVIDIA defaults EXCLUDING the CPU OS storage
+                wipe — DPU-BMC config, CPU UEFI variables, and NIC nvconfig;
+                the CPU OS (NVMe/SSD) content is preserved.
+          - name: RMA
+            description: >
+                Full RMA wipe

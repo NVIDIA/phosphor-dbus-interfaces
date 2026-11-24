@@ -5,6 +5,7 @@ subdir('Async')
 subdir('BF')
 subdir('BIOS')
 subdir('CCMode')
+subdir('CardFactoryReset')
 subdir('ClockMode')
 subdir('Common')
 subdir('ComputeHash')
@@ -135,6 +136,30 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../yaml',
         'com/nvidia/CCMode',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'com/nvidia/CardFactoryReset__markdown'.underscorify(),
+    input: [
+        '../../../yaml/com/nvidia/CardFactoryReset.interface.yaml',
+    ],
+    output: ['CardFactoryReset.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../yaml',
+        'com/nvidia/CardFactoryReset',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],
