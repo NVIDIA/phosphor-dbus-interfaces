@@ -1,10 +1,10 @@
 description: >
-    Lifecycle read-out of one Zapp participant: a daemon that forwards
-    (gateway) or sends (producer) Zapp streaming telemetry. Each
+    Lifecycle read-out of one NST participant: a daemon that forwards
+    (gateway) or sends (producer) NST streaming telemetry. Each
     participant publishes exactly one object with this interface on its
     own service, from daemon start, so every participant can be found by
     this interface name alone. Configuration is not here: the participant
-    follows the Zapp settings object (com.nvidia.Telemetry.Zapp) and
+    follows the NST settings object (com.nvidia.Telemetry.Nst) and
     reports how far it has got with it. All properties are read-only;
     State, Reason and Connected emit PropertiesChanged.
 
@@ -48,7 +48,7 @@ properties:
 enumerations:
     - name: Role
       description: >
-          Zapp participant roles.
+          NST participant roles.
       values:
           - name: Gateway
             description: >
@@ -58,7 +58,7 @@ enumerations:
                 Sends device telemetry to a gateway.
     - name: State
       description: >
-          Zapp participant lifecycle states.
+          NST participant lifecycle states.
       values:
           - name: Stopped
             description: >
@@ -78,7 +78,7 @@ enumerations:
                 clears on its own once the bind succeeds. Reason says why.
     - name: Reason
       description: >
-          Why a Zapp participant is Stopped or Failed.
+          Why an NST participant is Stopped or Failed.
       values:
           - name: None
             description: >
@@ -91,7 +91,7 @@ enumerations:
                 The settings object has not been read yet.
           - name: LibraryNotReady
             description: >
-                The Zapp library instance is not created yet.
+                The NST library (libnst) instance is not created yet.
           - name: InvalidConfiguration
             description: >
                 The stored configuration is malformed for this role, for

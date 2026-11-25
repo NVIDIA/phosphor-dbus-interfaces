@@ -1,16 +1,16 @@
 description: >
-    Manager-wide configuration for Zapp streaming telemetry. One instance of
+    Manager-wide configuration for NST streaming telemetry. One instance of
     this interface, hosted by the settings service, is the single source of
-    truth every Zapp component on a Manager consumes: the producers (for
+    truth every NST component on a Manager consumes: the producers (for
     example nsmd and pldmd) on an HMC, the gateway daemon on a BMC. They watch
     this object for PropertiesChanged and reconfigure at run time without a
     restart.
 
     The endpoint is typed (address, port, transport) in the manner of
     xyz.openbmc_project.Network.Client. The Redfish representation composes
-    it into the single URI the Zapp specification defines (TelemetryEndpoint)
+    it into the single URI the NST specification defines (TelemetryEndpoint)
     and splits it again on write; that mapping is bmcweb's and is not part of
-    this interface. The Zapp specification defines one endpoint: the actuation
+    this interface. The NST specification defines one endpoint: the actuation
     control channel (specification section 19) goes to the same host and port
     over TCP when ActuationEnabled is true, so it has no address of its own.
 
@@ -19,7 +19,7 @@ properties:
       type: boolean
       default: false
       description: >
-          Whether Zapp telemetry streaming is enabled on this Manager. When
+          Whether NST telemetry streaming is enabled on this Manager. When
           false, producers emit nothing and a gateway forwards nothing; both
           stay otherwise running. Defaults to false so telemetry is opt-in.
     - name: Address
@@ -36,7 +36,7 @@ properties:
       type: uint16
       default: 9091
       description: >
-          UDP or QUIC port of the telemetry destination. 9091 is the Zapp
+          UDP or QUIC port of the telemetry destination. 9091 is the NST
           specification's default. 0 is not a valid value.
       errors:
           - xyz.openbmc_project.Common.Error.InvalidArgument
@@ -44,7 +44,7 @@ properties:
       type: enum[self.Transport]
       default: UDP
       description: >
-          Egress profile towards the telemetry destination, from the Zapp
+          Egress profile towards the telemetry destination, from the NST
           specification's protocol table. An HMC producer streams UDP to the
           gateway on the internal link; a BMC gateway streams to the collector
           over a QUIC stream. A value outside AllowedTransports is refused by
@@ -80,14 +80,14 @@ properties:
 enumerations:
     - name: Transport
       description: >
-          Zapp egress profiles.
+          NST egress profiles.
       values:
           - name: UDP
             description: >
-                Zapp containers in UDP datagrams.
+                NST containers in UDP datagrams.
           - name: QUICStream
             description: >
-                Zapp containers on a QUIC stream (TLS 1.3).
+                NST containers on a QUIC stream (TLS 1.3).
           - name: QUICDatagram
             description: >
-                Zapp containers in QUIC DATAGRAM frames (TLS 1.3).
+                NST containers in QUIC DATAGRAM frames (TLS 1.3).

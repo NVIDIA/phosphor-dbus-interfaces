@@ -1,11 +1,11 @@
 # Generated file; do not modify.
 
-sdbusplus_current_path = 'com/nvidia/Telemetry/Zapp/Participant'
+sdbusplus_current_path = 'com/nvidia/Telemetry/Nst/Participant'
 
 generated_sources += custom_target(
-    'com/nvidia/Telemetry/Zapp/Participant__cpp'.underscorify(),
+    'com/nvidia/Telemetry/Nst/Participant__cpp'.underscorify(),
     input: [
-        '../../../../../../yaml/com/nvidia/Telemetry/Zapp/Participant.interface.yaml',
+        '../../../../../../yaml/com/nvidia/Telemetry/Nst/Participant.interface.yaml',
     ],
     output: [
         'common.hpp',
@@ -25,7 +25,7 @@ generated_sources += custom_target(
         sdbusplusplus_prog,
         '--directory',
         meson.current_source_dir() / '../../../../../../yaml',
-        'com/nvidia/Telemetry/Zapp/Participant',
+        'com/nvidia/Telemetry/Nst/Participant',
     ],
     install: should_generate_cpp,
     install_dir: [

@@ -1,12 +1,12 @@
 # Generated file; do not modify.
 subdir('Participant')
 
-sdbusplus_current_path = 'com/nvidia/Telemetry/Zapp'
+sdbusplus_current_path = 'com/nvidia/Telemetry/Nst'
 
 generated_sources += custom_target(
-    'com/nvidia/Telemetry/Zapp__cpp'.underscorify(),
+    'com/nvidia/Telemetry/Nst__cpp'.underscorify(),
     input: [
-        '../../../../../yaml/com/nvidia/Telemetry/Zapp.interface.yaml',
+        '../../../../../yaml/com/nvidia/Telemetry/Nst.interface.yaml',
     ],
     output: [
         'common.hpp',
@@ -26,7 +26,7 @@ generated_sources += custom_target(
         sdbusplusplus_prog,
         '--directory',
         meson.current_source_dir() / '../../../../../yaml',
-        'com/nvidia/Telemetry/Zapp',
+        'com/nvidia/Telemetry/Nst',
     ],
     install: should_generate_cpp,
     install_dir: [
@@ -40,9 +40,9 @@ generated_sources += custom_target(
 )
 
 generated_markdown += custom_target(
-    'com/nvidia/Telemetry/Zapp/Participant__markdown'.underscorify(),
+    'com/nvidia/Telemetry/Nst/Participant__markdown'.underscorify(),
     input: [
-        '../../../../../yaml/com/nvidia/Telemetry/Zapp/Participant.interface.yaml',
+        '../../../../../yaml/com/nvidia/Telemetry/Nst/Participant.interface.yaml',
     ],
     output: ['Participant.md'],
     depend_files: sdbusplusplus_depfiles,
@@ -56,7 +56,7 @@ generated_markdown += custom_target(
         sdbusplusplus_prog,
         '--directory',
         meson.current_source_dir() / '../../../../../yaml',
-        'com/nvidia/Telemetry/Zapp/Participant',
+        'com/nvidia/Telemetry/Nst/Participant',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],
