@@ -1,0 +1,67 @@
+description: >
+    Where a gateway Manager (the BMC) listens for its producers, the HMCs
+    and AMCs that stream telemetry to it and connect to it for actuation.
+    Only a gateway carries this interface, on the object
+    /xyz/openbmc_project/telemetry/nst/ingress hosted by the settings
+    service; a producer has no ingress, so the presence of this object is
+    what marks a Manager as a gateway. Telemetry arrives at Address and Port
+    over TelemetryProtocol; actuation connections arrive at the same Address
+    and Port over ActuationProtocol.
+
+    The platform sets these values in its settings defaults; neither the
+    operator nor any client configures them, so every property is
+    read-only. They are called protocols, not transports, because the
+    platform and the NST specification fix them; nothing here is
+    selectable. The gateway daemon reads the object for its listener; the
+    producers of the system are pointed at the same address and port in
+    their own settings defaults.
+
+properties:
+    - name: Address
+      type: string
+      default: ""
+      flags:
+          - readonly
+      description: >
+          IP address the gateway listens on for telemetry and actuation from
+          its producers. Empty means the platform states no ingress address.
+    - name: Port
+      type: uint16
+      default: 9091
+      flags:
+          - readonly
+      description: >
+          Port the gateway listens on, the same number for telemetry and
+          actuation. 9091 is the NST specification's default.
+    - name: TelemetryProtocol
+      type: enum[self.Protocol]
+      default: UDP
+      flags:
+          - readonly
+      description: >
+          Protocol the gateway listens with for telemetry from its producers.
+          UDP per the NST specification.
+    - name: ActuationProtocol
+      type: enum[self.Protocol]
+      default: TCP
+      flags:
+          - readonly
+      description: >
+          Protocol the gateway listens with for actuation connections from
+          its producers. TCP per the NST specification; the producers'
+          actuation transport follows it.
+
+enumerations:
+    - name: Protocol
+      description: >
+          In-system protocols a gateway listens with. Fixed by the platform
+          and the NST specification, not selectable.
+      values:
+          - name: UDP
+            description: >
+                NST containers in UDP datagrams, the telemetry protocol from
+                a producer to the BMC.
+          - name: TCP
+            description: >
+                In-system actuation connections from the producers to the
+                BMC ingress.

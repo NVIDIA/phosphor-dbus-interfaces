@@ -4,8 +4,10 @@ description: >
     participant publishes exactly one object with this interface on its
     own service, from daemon start, so every participant can be found by
     this interface name alone. Configuration is not here: the participant
-    follows the NST settings object (com.nvidia.Telemetry.Nst) and
-    reports how far it has got with it. All properties are read-only;
+    follows the NST settings objects under /xyz/openbmc_project/telemetry/nst
+    (com.nvidia.Telemetry.Nst.Telemetry, com.nvidia.Telemetry.Nst.Actuation
+    and, on a gateway, com.nvidia.Telemetry.Nst.Ingress) and reports how
+    far it has got with them. All properties are read-only;
     State, Reason and Connected emit PropertiesChanged.
 
 properties:

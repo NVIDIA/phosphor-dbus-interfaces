@@ -1,0 +1,82 @@
+description: >
+    Whether a Manager's NST actuation channel is on and where its
+    connections go. Every Manager carries this interface, on the object
+    /xyz/openbmc_project/telemetry/nst/actuation hosted by the settings
+    service, because every Manager has an actuation channel; only its shape
+    differs. A producer Manager (an HMC or AMC) opens a TCP connection to
+    the BMC ingress, the same address and port its telemetry goes to, and
+    receives actuation requests on it. A gateway Manager (the BMC) carries
+    actuation on the bidirectional QUIC stream to the operator's NST Edge
+    and may receive requests from it.
+
+    This interface does not tie the actuation destination to the telemetry
+    destination. Whether they may differ, and whether an operator may set
+    the actuation destination at all, is the policy of the Manager's
+    configuration front end, which writes the object; a producer's front
+    end keeps Address and Port at the telemetry destination, a gateway's
+    may accept a separate destination once its gateway supports one.
+
+properties:
+    - name: Enabled
+      type: boolean
+      default: false
+      description: >
+          Whether the actuation channel is on. Independent of the telemetry
+          stream. When false, a producer opens no actuation connection and a
+          gateway carries no actuation on its stream; both stay otherwise
+          running. Defaults to false so actuation is opt-in.
+    - name: Address
+      type: string
+      default: ""
+      description: >
+          IP address or resolvable host name of where actuation connections
+          go: on a producer the BMC ingress, the same as the telemetry
+          destination; on a gateway the NST Edge. Empty means no actuation
+          destination is configured and the channel stays closed regardless
+          of Enabled.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+    - name: Port
+      type: uint16
+      default: 9095
+      description: >
+          Port of where actuation connections go. 9095 is the NST
+          specification's default for QUIC; on a producer the port is the
+          telemetry port, because actuation shares the BMC ingress with
+          telemetry. 0 is not a valid value.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+    - name: Transport
+      type: enum[self.Transport]
+      default: TCP
+      description: >
+          The actuation channel's transport. A producer connects over TCP to
+          the BMC ingress; a gateway carries actuation on its QUIC stream to
+          the NST Edge. A writer must refuse a value outside
+          AllowedTransports; a consumer that finds one keeps the channel
+          closed and reports the reason.
+    - name: AllowedTransports
+      type: array[enum[self.Transport]]
+      flags:
+          - readonly
+      description: >
+          The transports the platform permits for the actuation channel of
+          this Manager, set in the settings defaults of the machine, not by
+          the operator: TCP on a producer, QUICStream on a gateway. A writer
+          rejects a Transport outside this list; a consumer that finds
+          Transport outside the list keeps the channel closed and reports
+          the reason. An empty list means the platform states no
+          restriction.
+
+enumerations:
+    - name: Transport
+      description: >
+          NST actuation transports.
+      values:
+          - name: TCP
+            description: >
+                In-system actuation connections to the BMC ingress.
+          - name: QUICStream
+            description: >
+                Actuation on the bidirectional QUIC stream to the NST Edge
+                (TLS 1.3).

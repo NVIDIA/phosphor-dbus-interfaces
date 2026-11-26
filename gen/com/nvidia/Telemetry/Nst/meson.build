@@ -1,42 +1,57 @@
 # Generated file; do not modify.
+subdir('Actuation')
+subdir('Ingress')
 subdir('Participant')
+subdir('Telemetry')
 
 sdbusplus_current_path = 'com/nvidia/Telemetry/Nst'
 
-generated_sources += custom_target(
-    'com/nvidia/Telemetry/Nst__cpp'.underscorify(),
+generated_markdown += custom_target(
+    'com/nvidia/Telemetry/Nst/Actuation__markdown'.underscorify(),
     input: [
-        '../../../../../yaml/com/nvidia/Telemetry/Nst.interface.yaml',
+        '../../../../../yaml/com/nvidia/Telemetry/Nst/Actuation.interface.yaml',
     ],
-    output: [
-        'common.hpp',
-        'server.hpp',
-        'server.cpp',
-        'aserver.hpp',
-        'client.hpp',
-    ],
+    output: ['Actuation.md'],
     depend_files: sdbusplusplus_depfiles,
     command: [
         sdbuspp_gen_meson_prog,
         '--command',
-        'cpp',
+        'markdown',
         '--output',
         meson.current_build_dir(),
         '--tool',
         sdbusplusplus_prog,
         '--directory',
         meson.current_source_dir() / '../../../../../yaml',
-        'com/nvidia/Telemetry/Nst',
+        'com/nvidia/Telemetry/Nst/Actuation',
     ],
-    install: should_generate_cpp,
-    install_dir: [
-        get_option('includedir') / sdbusplus_current_path,
-        get_option('includedir') / sdbusplus_current_path,
-        false,
-        get_option('includedir') / sdbusplus_current_path,
-        get_option('includedir') / sdbusplus_current_path,
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'com/nvidia/Telemetry/Nst/Ingress__markdown'.underscorify(),
+    input: [
+        '../../../../../yaml/com/nvidia/Telemetry/Nst/Ingress.interface.yaml',
     ],
-    build_by_default: should_generate_cpp,
+    output: ['Ingress.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../../yaml',
+        'com/nvidia/Telemetry/Nst/Ingress',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
 )
 
 generated_markdown += custom_target(
@@ -57,6 +72,30 @@ generated_markdown += custom_target(
         '--directory',
         meson.current_source_dir() / '../../../../../yaml',
         'com/nvidia/Telemetry/Nst/Participant',
+    ],
+    install: should_generate_markdown,
+    install_dir: [inst_markdown_dir / sdbusplus_current_path],
+    build_by_default: should_generate_markdown,
+)
+
+generated_markdown += custom_target(
+    'com/nvidia/Telemetry/Nst/Telemetry__markdown'.underscorify(),
+    input: [
+        '../../../../../yaml/com/nvidia/Telemetry/Nst/Telemetry.interface.yaml',
+    ],
+    output: ['Telemetry.md'],
+    depend_files: sdbusplusplus_depfiles,
+    command: [
+        sdbuspp_gen_meson_prog,
+        '--command',
+        'markdown',
+        '--output',
+        meson.current_build_dir(),
+        '--tool',
+        sdbusplusplus_prog,
+        '--directory',
+        meson.current_source_dir() / '../../../../../yaml',
+        'com/nvidia/Telemetry/Nst/Telemetry',
     ],
     install: should_generate_markdown,
     install_dir: [inst_markdown_dir / sdbusplus_current_path],

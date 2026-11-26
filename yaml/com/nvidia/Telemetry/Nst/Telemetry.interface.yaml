@@ -1,0 +1,96 @@
+description: >
+    Whether a Manager's NST telemetry stream is on and where it goes. NST
+    knows two kinds of Manager. A producer Manager (an HMC or AMC) streams
+    its sensors over UDP to the BMC and receives actuation requests over
+    TCP at the same address and port it streams to. A gateway Manager (the
+    BMC) forwards everything it receives over QUIC to the operator's NST
+    Edge and may receive actuation requests from it.
+
+    The NST settings of a Manager live on three objects under
+    /xyz/openbmc_project/telemetry/nst, hosted by the settings service, one
+    interface per object because each channel has its own address, port
+    and transport:
+
+        telemetry   this interface, com.nvidia.Telemetry.Nst.Telemetry:
+                    whether the telemetry stream is on and where it goes.
+                    Every Manager.
+        actuation   com.nvidia.Telemetry.Nst.Actuation: whether the
+                    actuation channel is on and where its connections go.
+                    Every Manager.
+        ingress     com.nvidia.Telemetry.Nst.Ingress: where a gateway
+                    listens for its producers. Gateway only; its presence
+                    is what marks a Manager as a gateway.
+
+    The objects are the single source of truth every NST component on the
+    Manager consumes: the producers (for example nsmd and pldmd) on an HMC,
+    the gateway daemon on a BMC. They watch the objects for
+    PropertiesChanged and reconfigure at run time without a restart. The
+    configuration front end of the Manager writes the objects; how it
+    presents them to an operator is its own matter and not part of these
+    interfaces.
+
+properties:
+    - name: Enabled
+      type: boolean
+      default: false
+      description: >
+          Whether the telemetry stream is on. When false, producers emit
+          nothing and a gateway forwards nothing; both stay otherwise
+          running. Defaults to false so telemetry is opt-in.
+    - name: Address
+      type: string
+      default: ""
+      description: >
+          IP address or resolvable host name of where the telemetry stream
+          goes: the NST Edge for a gateway, the BMC ingress for a producer.
+          Empty means no destination is configured and streaming stays
+          inactive regardless of Enabled.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+    - name: Port
+      type: uint16
+      default: 9091
+      description: >
+          UDP or QUIC port of where the telemetry stream goes. 9091 is the
+          NST specification's default. 0 is not a valid value.
+      errors:
+          - xyz.openbmc_project.Common.Error.InvalidArgument
+    - name: Transport
+      type: enum[self.Transport]
+      default: UDP
+      description: >
+          The telemetry stream's egress profile, from the NST specification's
+          protocol table. A producer streams UDP to the BMC on the internal
+          link; a gateway streams to the NST Edge over a QUIC stream. A
+          writer must refuse a value outside AllowedTransports; a consumer
+          that finds one refuses to stream and reports the reason.
+    - name: AllowedTransports
+      type: array[enum[self.Transport]]
+      flags:
+          - readonly
+      description: >
+          The egress profiles the platform permits for the telemetry stream
+          of this Manager, set in the settings defaults of the machine, not
+          by the operator: on a BMC whose destination is the NST Edge on the
+          customer network the two QUIC profiles, QUICStream and
+          QUICDatagram, because UDP egress would carry device telemetry
+          unauthenticated and unencrypted over that network; on an HMC whose
+          destination is the BMC on the internal link, UDP. A writer rejects
+          a Transport outside this list; a consumer that finds Transport
+          outside the list refuses to stream and reports the reason. An
+          empty list means the platform states no restriction.
+
+enumerations:
+    - name: Transport
+      description: >
+          NST egress profiles for the telemetry stream.
+      values:
+          - name: UDP
+            description: >
+                NST containers in UDP datagrams.
+          - name: QUICStream
+            description: >
+                NST containers on a QUIC stream (TLS 1.3).
+          - name: QUICDatagram
+            description: >
+                NST containers in QUIC DATAGRAM frames (TLS 1.3).
